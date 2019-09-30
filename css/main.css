@@ -1180,7 +1180,7 @@ body {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #087ae4;
+  background: #c31a59;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1359,7 +1359,6 @@ body {
 .post-toc .nav-item {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
   line-height: 1.8;
 }
 .post-toc .nav .nav-child {
