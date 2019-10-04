@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="写在前面写在前面这周的周赛就很鬼畜了，A题题意看了很久，好在之后思路就比较顺利，最后还是把所有题都过了(最后一分钟) 第 151 场周赛">
+<meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode151周赛">
+<meta property="og:url" content="http://endacsd.github.io/2019/09/29/LeetcodeWk151/index.html">
+<meta property="og:site_name" content="endacsd">
+<meta property="og:description" content="写在前面写在前面这周的周赛就很鬼畜了，A题题意看了很久，好在之后思路就比较顺利，最后还是把所有题都过了(最后一分钟) 第 151 场周赛">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-04T06:52:54.987Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode151周赛">
+<meta name="twitter:description" content="写在前面写在前面这周的周赛就很鬼畜了，A题题意看了很久，好在之后思路就比较顺利，最后还是把所有题都过了(最后一分钟) 第 151 场周赛">
+  <link rel="canonical" href="http://endacsd.github.io/2019/09/29/LeetcodeWk151/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>leetcode151周赛 | endacsd</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">endacsd</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-playlist">
+      
+    
+
+    <a href="/playlist/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>歌单</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/endacsd" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/09/29/LeetcodeWk151/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="endacsd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="endacsd">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">leetcode151周赛
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-29 14:48:18" itemprop="dateCreated datePublished" datetime="2019-09-29T14:48:18+08:00">2019-09-29</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-04 14:52:54" itemprop="dateModified" datetime="2019-10-04T14:52:54+08:00">2019-10-04</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><h2 id="写在前面-1"><a href="#写在前面-1" class="headerlink" title="写在前面"></a>写在前面</h2><p>这周的周赛就很鬼畜了，A题题意看了很久，好在之后思路就比较顺利，最后还是把所有题都过了(最后一分钟)</p>
+<p><a href="https://leetcode-cn.com/contest/weekly-contest-151" target="_blank" rel="noopener">第 151 场周赛</a></p>
+<a id="more"></a>
+<meta name="referrer" content="no-referrer">
+
+
+
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="查询无效交易"><a href="#查询无效交易" class="headerlink" title="查询无效交易"></a>查询无效交易</h3><p>如果出现下述两种情况，交易 <strong>可能无效</strong>：</p>
+<ul>
+<li>交易金额超过 ¥1000</li>
+<li>或者，它和另一个城市中同名的另一笔交易相隔不超过 60 分钟（包含 60 分钟整）</li>
+</ul>
+<p>每个交易字符串 <code>transactions[i]</code> 由一些用逗号分隔的值组成，这些值分别表示交易的名称，时间（以分钟计），金额以及城市。</p>
+<p>给你一份交易清单 <code>transactions</code>，返回可能无效的交易列表。你可以按任何顺序返回答案。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：transactions = [&quot;alice,20,800,mtv&quot;,&quot;alice,50,100,beijing&quot;]</span><br><span class="line">输出：[&quot;alice,20,800,mtv&quot;,&quot;alice,50,100,beijing&quot;]</span><br><span class="line">解释：第一笔交易是无效的，因为第二笔交易和它间隔不超过 60 分钟、名称相同且发生在不同的城市。同样，第二笔交易也是无效的。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：transactions = [&quot;alice,20,800,mtv&quot;,&quot;alice,50,1200,mtv&quot;]</span><br><span class="line">输出：[&quot;alice,50,1200,mtv&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：transactions = [&quot;alice,20,800,mtv&quot;,&quot;bob,50,1200,mtv&quot;]</span><br><span class="line">输出：[&quot;bob,50,1200,mtv&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>transactions.length &lt;= 1000</code></li>
+<li>每笔交易 <code>transactions[i]</code> 按 <code>&quot;{name},{time},{amount},{city}&quot;</code> 的格式进行记录</li>
+<li>每个交易名称 <code>{name}</code> 和城市 <code>{city}</code> 都由小写英文字母组成，长度在 <code>1</code> 到 <code>10</code> 之间</li>
+<li>每个交易时间 <code>{time}</code> 由一些数字组成，表示一个 <code>0</code> 到 <code>1000</code> 之间的整数</li>
+<li>每笔交易金额 <code>{amount}</code> 由一些数字组成，表示一个 <code>0</code> 到 <code>2000</code> 之间的整数</li>
+</ul>
+<p>表示看了好久才把题目看懂</p>
+<p>直接按交易名称合并，按上面的要求跑一遍，添加到答案里面就好了</p>
+<p>注意时间和金额都是按字符串存的，要转化为整数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">invalidTransactions</span><span class="params">(self, transactions: List[str])</span> -&gt; List[str]:</span></span><br><span class="line">        dic = dict()</span><br><span class="line">        <span class="keyword">for</span> st <span class="keyword">in</span> transactions :</span><br><span class="line">            dat = st.split(<span class="string">','</span>)</span><br><span class="line">            s= dat[<span class="number">0</span>]</span><br><span class="line">            t= int(dat[<span class="number">1</span>])</span><br><span class="line">            m= int(dat[<span class="number">2</span>])</span><br><span class="line">            c= dat[<span class="number">3</span>]</span><br><span class="line">            <span class="keyword">if</span> s <span class="keyword">not</span> <span class="keyword">in</span> dic:</span><br><span class="line">                dic[s]=[]</span><br><span class="line">            dic[s].append((t,m,c))</span><br><span class="line">        ans = []</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> dic :</span><br><span class="line">            n = len(dic[s]) </span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(n) :</span><br><span class="line">                t= dic[s][i][<span class="number">0</span>]</span><br><span class="line">                m= dic[s][i][<span class="number">1</span>]</span><br><span class="line">                c= dic[s][i][<span class="number">2</span>]</span><br><span class="line">                app = s +<span class="string">','</span> + str(t) +<span class="string">','</span> + str(m)+ <span class="string">','</span>+ c</span><br><span class="line">                <span class="keyword">if</span> m &gt; <span class="number">1000</span> :</span><br><span class="line">                    ans.append(app)</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(n) :</span><br><span class="line">                    <span class="keyword">if</span> i == j :</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                    <span class="keyword">if</span> <span class="keyword">not</span> dic[s][i][<span class="number">2</span>] == dic[s][j][<span class="number">2</span>] : </span><br><span class="line">                        dt = dic[s][j][<span class="number">0</span>] - t</span><br><span class="line">                        <span class="keyword">if</span> dt &lt; <span class="number">0</span> :</span><br><span class="line">                            dt =-dt</span><br><span class="line">                        <span class="keyword">if</span> dt &lt;= <span class="number">60</span> :</span><br><span class="line">                            ans.append(app)</span><br><span class="line">                            <span class="keyword">break</span></span><br><span class="line">                    </span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p><del>这个代码可以说是很丑了</del></p>
+<h3 id="比较字符串最小字母出现频次"><a href="#比较字符串最小字母出现频次" class="headerlink" title="比较字符串最小字母出现频次"></a>比较字符串最小字母出现频次</h3><p>我们来定义一个函数 <code>f(s)</code>，其中传入参数 <code>s</code> 是一个非空字符串；该函数的功能是统计 <code>s</code>  中（按字典序比较）最小字母的出现频次。</p>
+<p>例如，若 <code>s = &quot;dcce&quot;</code>，那么 <code>f(s) = 2</code>，因为最小的字母是 <code>&quot;c&quot;</code>，它出现了 2 次。</p>
+<p>现在，给你两个字符串数组待查表 <code>queries</code> 和词汇表 <code>words</code>，请你返回一个整数数组 <code>answer</code> 作为答案，其中每个 <code>answer[i]</code> 是满足 <code>f(queries[i])</code> &lt; <code>f(W)</code> 的词的数目，<code>W</code> 是词汇表 <code>words</code> 中的词。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：queries = [&quot;cbd&quot;], words = [&quot;zaaaz&quot;]</span><br><span class="line">输出：[1]</span><br><span class="line">解释：查询 f(&quot;cbd&quot;) = 1，而 f(&quot;zaaaz&quot;) = 3 所以 f(&quot;cbd&quot;) &lt; f(&quot;zaaaz&quot;)。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：queries = [&quot;bbb&quot;,&quot;cc&quot;], words = [&quot;a&quot;,&quot;aa&quot;,&quot;aaa&quot;,&quot;aaaa&quot;]</span><br><span class="line">输出：[1,2]</span><br><span class="line">解释：第一个查询 f(&quot;bbb&quot;) &lt; f(&quot;aaaa&quot;)，第二个查询 f(&quot;aaa&quot;) 和 f(&quot;aaaa&quot;) 都 &gt; f(&quot;cc&quot;)。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= queries.length &lt;= 2000</code></li>
+<li><code>1 &lt;= words.length &lt;= 2000</code></li>
+<li><code>1 &lt;= queries[i].length, words[i].length &lt;= 10</code></li>
+<li><code>queries[i][j]</code>, <code>words[i][j]</code> 都是小写英文字母</li>
+</ul>
+<p>我们直接计算每个字符串的f函数值，然后再模拟一遍，</p>
+<p>当然也可以考虑给queries 按f排序，然后可以按单指针来算一下，这样可以把算ans的复杂度优化到O(n)</p>
+<p><del>显然这个题目的数据不用那我们也就不这样写了</del></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numSmallerByFrequency</span><span class="params">(self, queries: List[str], words: List[str])</span> -&gt; List[int]:</span></span><br><span class="line">        fq = []</span><br><span class="line">        fw = []</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> queries :</span><br><span class="line">            st=list(s)</span><br><span class="line">            st.sort()</span><br><span class="line">            dic =dict()</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> s :</span><br><span class="line">                <span class="keyword">if</span> c <span class="keyword">in</span> dic :</span><br><span class="line">                    dic[c] +=<span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span> :</span><br><span class="line">                    dic[c]=<span class="number">1</span></span><br><span class="line">            fq.append(dic[st[<span class="number">0</span>]])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> words :</span><br><span class="line">            st=list(s)</span><br><span class="line">            st.sort()</span><br><span class="line">            dic =dict()</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> s :</span><br><span class="line">                <span class="keyword">if</span> c <span class="keyword">in</span> dic :</span><br><span class="line">                    dic[c] +=<span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span> :</span><br><span class="line">                    dic[c]=<span class="number">1</span></span><br><span class="line">            fw.append(dic[st[<span class="number">0</span>]])</span><br><span class="line">        ans=[]</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> fq :</span><br><span class="line">            cur = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> y <span class="keyword">in</span> fw :</span><br><span class="line">                <span class="keyword">if</span> x &lt; y :</span><br><span class="line">                    cur+=<span class="number">1</span></span><br><span class="line">            ans.append(cur)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p><del>这个代码也可以说是非常的丑了</del></p>
+<h3 id="从链表中删去总和值为零的连续节点"><a href="#从链表中删去总和值为零的连续节点" class="headerlink" title="从链表中删去总和值为零的连续节点"></a>从链表中删去总和值为零的连续节点</h3><p>给你一个链表的头节点 <code>head</code>，请你编写代码，反复删去链表中由 <strong>总和</strong> 值为 <code>0</code> 的连续节点组成的序列，直到不存在这样的序列为止。</p>
+<p>删除完毕后，请你返回最终结果链表的头节点。</p>
+<p>你可以返回任何满足题目要求的答案。</p>
+<p>（注意，下面示例中的所有序列，都是对 <code>ListNode</code> 对象序列化的表示。）</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2,-3,3,1]</span><br><span class="line">输出：[3,1]</span><br><span class="line">提示：答案 [1,2,1] 也是正确的。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2,3,-3,4]</span><br><span class="line">输出：[1,2,4]</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2,3,-3,-2]</span><br><span class="line">输出：[1]</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li>给你的链表中可能有 <code>1</code> 到 <code>1000</code> 个节点。</li>
+<li>对于链表中的每个节点，节点的值：<code>-1000 &lt;= node.val &lt;= 1000</code>.</li>
+</ul>
+<p>这个题目想了一下，想到一个nlogn的算法，然后看了一下数据，有点怀疑算法是假的。不过想了想应该没有问题。</p>
+<p>对于一段连续和为零，其实就是$a_l+a_{l+1}+ \dots + a_r = 0$ 考虑求一个前缀和，实际上就是 $s_{l-1} = s_r$</p>
+<p>对于每一个前缀和$s_r$，如果是已经出现过了，我们就可以直接删掉</p>
+<p>考虑head 是否被删掉即可</p>
+<p>查找值考虑数据结构优化，这里我直接用了dict ,当然可以用平衡树或则是散列表来实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.next = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeZeroSumSublists</span><span class="params">(self, head: ListNode)</span> -&gt; ListNode:</span></span><br><span class="line">        arr = []</span><br><span class="line">        dic = dict()</span><br><span class="line">        dic[<span class="number">0</span>]=<span class="literal">None</span>  </span><br><span class="line">        sum = <span class="number">0</span></span><br><span class="line">        cur = head</span><br><span class="line">        pre = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">while</span> cur :</span><br><span class="line">            sum += cur.val</span><br><span class="line">            <span class="keyword">if</span> sum <span class="keyword">in</span> dic :</span><br><span class="line">                k=dic[sum]</span><br><span class="line">                <span class="keyword">if</span> k :</span><br><span class="line">                    k.next = cur.next </span><br><span class="line">                    pre = k</span><br><span class="line">                <span class="keyword">else</span> :</span><br><span class="line">                    head = cur.next</span><br><span class="line">            <span class="keyword">else</span> : </span><br><span class="line">                dic[sum]=cur</span><br><span class="line">            cur=cur.next</span><br><span class="line">        <span class="keyword">return</span> head</span><br></pre></td></tr></table></figure>
+<p>这里我们不需要维护dic, 即使是重复删除，对链表也没有影响</p>
+<h3 id="餐盘栈"><a href="#餐盘栈" class="headerlink" title="餐盘栈"></a>餐盘栈</h3><p>我们把无限数量 ∞ 的栈排成一行，按从左到右的次序从 0 开始编号。每个栈的的最大容量 <code>capacity</code> 都相同。</p>
+<p>实现一个叫「餐盘」的类 <code>DinnerPlates</code>：</p>
+<ul>
+<li><code>DinnerPlates(int capacity)</code> - 给出栈的最大容量 <code>capacity</code>。</li>
+<li><code>void push(int val)</code> - 将给出的正整数 <code>val</code> 推入 <strong>从左往右第一个</strong> 没有满的栈。</li>
+<li><code>int pop()</code> - 返回 <strong>从右往左第一个</strong> 非空栈顶部的值，并将其从栈中删除；如果所有的栈都是空的，请返回 <code>-1</code>。</li>
+<li><code>int popAtStack(int index)</code> - 返回编号 <code>index</code> 的栈顶部的值，并将其从栈中删除；如果编号 <code>index</code> 的栈是空的，请返回 <code>-1</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">输入： </span><br><span class="line">[&quot;DinnerPlates&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;popAtStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;popAtStack&quot;,&quot;popAtStack&quot;,&quot;pop&quot;,&quot;pop&quot;,&quot;pop&quot;,&quot;pop&quot;,&quot;pop&quot;]</span><br><span class="line">[[2],[1],[2],[3],[4],[5],[0],[20],[21],[0],[2],[],[],[],[],[]]</span><br><span class="line">输出：</span><br><span class="line">[null,null,null,null,null,null,2,null,null,20,21,5,4,3,1,-1]</span><br><span class="line"></span><br><span class="line">解释：</span><br><span class="line">DinnerPlates D = DinnerPlates(2);  // 初始化，栈最大容量 capacity = 2</span><br><span class="line">D.push(1);</span><br><span class="line">D.push(2);</span><br><span class="line">D.push(3);</span><br><span class="line">D.push(4);</span><br><span class="line">D.push(5);         // 栈的现状为：    2  4</span><br><span class="line">                                    1  3  5</span><br><span class="line">                                    ﹈ ﹈ ﹈</span><br><span class="line">D.popAtStack(0);   // 返回 2。栈的现状为：      4</span><br><span class="line">                                          1  3  5</span><br><span class="line">                                          ﹈ ﹈ ﹈</span><br><span class="line">D.push(20);        // 栈的现状为：  20  4</span><br><span class="line">                                   1  3  5</span><br><span class="line">                                   ﹈ ﹈ ﹈</span><br><span class="line">D.push(21);        // 栈的现状为：  20  4 21</span><br><span class="line">                                   1  3  5</span><br><span class="line">                                   ﹈ ﹈ ﹈</span><br><span class="line">D.popAtStack(0);   // 返回 20。栈的现状为：       4 21</span><br><span class="line">                                            1  3  5</span><br><span class="line">                                            ﹈ ﹈ ﹈</span><br><span class="line">D.popAtStack(2);   // 返回 21。栈的现状为：       4</span><br><span class="line">                                            1  3  5</span><br><span class="line">                                            ﹈ ﹈ ﹈ </span><br><span class="line">D.pop()            // 返回 5。栈的现状为：        4</span><br><span class="line">                                            1  3 </span><br><span class="line">                                            ﹈ ﹈  </span><br><span class="line">D.pop()            // 返回 4。栈的现状为：    1  3 </span><br><span class="line">                                           ﹈ ﹈   </span><br><span class="line">D.pop()            // 返回 3。栈的现状为：    1 </span><br><span class="line">                                           ﹈   </span><br><span class="line">D.pop()            // 返回 1。现在没有栈。</span><br><span class="line">D.pop()            // 返回 -1。仍然没有栈。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= capacity &lt;= 20000</code></li>
+<li><code>1 &lt;= val &lt;= 20000</code></li>
+<li><code>0 &lt;= index &lt;= 100000</code></li>
+<li>最多会对 <code>push</code>，<code>pop</code>，和 <code>popAtStack</code> 进行 <code>200000</code> 次调用。</li>
+</ul>
+<p>这个题目其实也很简单的</p>
+<p>我们来看看每一个操作，不难发现我们要尽可能的让pop,和push变快，其实就是要很快知道应该去哪个栈进行这样的操作。 </p>
+<p>pop的要求是最大，push的要求是最小，我们可以考虑用两个平衡树来维护</p>
+<p>然后在操作的时候维护就好了</p>
+<p>根据不同的情况更新一下即可</p>
+<p>(因为栈写错而调了很久)</p>
+<p>(因为没有删掉printf而T了一发)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DinnerPlates</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; fst;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; bst;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; cnt;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; stk;</span><br><span class="line">    <span class="keyword">int</span> siz;</span><br><span class="line">    <span class="keyword">int</span> ard;</span><br><span class="line">    DinnerPlates(<span class="keyword">int</span> capacity) &#123;</span><br><span class="line">        </span><br><span class="line">        ard=<span class="number">-1</span>;</span><br><span class="line">        siz = capacity;</span><br><span class="line">        fst.clear();</span><br><span class="line">        bst.clear();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(fst.size()!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> id= *fst.begin();</span><br><span class="line">            stk[id][++cnt[id]] = val;</span><br><span class="line">            <span class="keyword">if</span>(cnt[id]==siz) fst.erase(id);</span><br><span class="line">            bst.insert(id);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            ard++;</span><br><span class="line">            cnt.push_back(<span class="number">0</span>);</span><br><span class="line">            stk.push_back(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(siz+<span class="number">1</span>,<span class="number">0</span>));</span><br><span class="line">            fst.insert(ard);</span><br><span class="line">            push(val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(bst.size()==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> id= *(--bst.end());</span><br><span class="line">            <span class="keyword">int</span> ret =stk[id][cnt[id]--];</span><br><span class="line">            fst.insert(id);</span><br><span class="line">            <span class="keyword">if</span>(cnt[id]==<span class="number">0</span>) bst.erase(id);</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">popAtStack</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cnt[index]==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            fst.insert(index);</span><br><span class="line">            <span class="keyword">if</span>(cnt[index]==<span class="number">1</span>) bst.erase(index);</span><br><span class="line">            <span class="keyword">int</span> ret =stk[index][cnt[index]--];</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your DinnerPlates object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * DinnerPlates* obj = new DinnerPlates(capacity);</span></span><br><span class="line"><span class="comment"> * obj-&gt;push(val);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj-&gt;pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj-&gt;popAtStack(index);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次做的情况比上次要好很多，当然也犯了很多sb错误，比如第一题没有写break.</p>
+<p>最后一道题目栈写错了等等sb错误耽误了很多时间</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/08/19/LeetcodeWk150/" rel="next" title="leetcode150周赛">
+                  <i class="fa fa-chevron-left"></i> leetcode150周赛
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/01/LeetcodeWk156/" rel="prev" title="leetcode156周赛">
+                  leetcode156周赛 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面-1"><span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询无效交易"><span class="nav-text">查询无效交易</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较字符串最小字母出现频次"><span class="nav-text">比较字符串最小字母出现频次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从链表中删去总和值为零的连续节点"><span class="nav-text">从链表中删去总和值为零的连续节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#餐盘栈"><span class="nav-text">餐盘栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="endacsd">
+  <p class="site-author-name" itemprop="name">endacsd</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">endacsd</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var id = element.id || '';
+    var src = element.src || '';
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (id !=='') {
+      script.id = element.id;
+    }
+    if (src !== '') {
+      script.src = src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>
