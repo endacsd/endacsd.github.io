@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="写在前面这次比较简单,就是读错题了很难受 第 157 场周赛">
+<meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode157周赛">
+<meta property="og:url" content="http://endacsd.github.io/2019/10/06/LeetcodeWk157/index.html">
+<meta property="og:site_name" content="endacsd">
+<meta property="og:description" content="写在前面这次比较简单,就是读错题了很难受 第 157 场周赛">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-06T12:54:38.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode157周赛">
+<meta name="twitter:description" content="写在前面这次比较简单,就是读错题了很难受 第 157 场周赛">
+  <link rel="canonical" href="http://endacsd.github.io/2019/10/06/LeetcodeWk157/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Leetcode157周赛 | endacsd</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">endacsd</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-playlist">
+      
+    
+
+    <a href="/playlist/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>歌单</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/endacsd" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/10/06/LeetcodeWk157/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="endacsd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="endacsd">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Leetcode157周赛
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-06 18:28:54 / 修改时间：20:54:38" itemprop="dateCreated datePublished" datetime="2019-10-06T18:28:54+08:00">2019-10-06</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>这次比较简单,就是读错题了很难受</p>
+<p><a href="https://leetcode-cn.com/contest/weekly-contest-157" target="_blank" rel="noopener">第 157 场周赛</a></p>
+<a id="more"></a>
+<p><meta name="referrer" content="no-referrer"></p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="A-玩筹码"><a href="#A-玩筹码" class="headerlink" title="A. 玩筹码"></a>A. 玩筹码</h3><p>数轴上放置了一些筹码，每个筹码的位置存在数组 <code>chips</code> 当中。</p>
+<p>你可以对 <strong>任何筹码</strong> 执行下面两种操作之一（<strong>不限操作次数</strong>，0 次也可以）：</p>
+<ul>
+<li>将第 <code>i</code> 个筹码向左或者右移动 2 个单位，代价为 <strong>0</strong>。</li>
+<li>将第 <code>i</code> 个筹码向左或者右移动 1 个单位，代价为 <strong>1</strong>。</li>
+</ul>
+<p>最开始的时候，同一位置上也可能放着两个或者更多的筹码。</p>
+<p>返回将所有筹码移动到同一位置（任意位置）上所需要的最小代价。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：chips = [1,2,3]</span><br><span class="line">输出：1</span><br><span class="line">解释：第二个筹码移动到位置三的代价是 1，第一个筹码移动到位置三的代价是 0，总代价为 1。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：chips = [2,2,2,3,3]</span><br><span class="line">输出：2</span><br><span class="line">解释：第四和第五个筹码移动到位置二的代价都是 1，所以最小总代价为 2。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= chips.length &lt;= 100</code></li>
+<li><code>1 &lt;= chips[i] &lt;= 10^9</code></li>
+</ul>
+<p>实际上从奇(偶数)数位置移动到奇(偶数)位置的花费是0</p>
+<p>若不同则是1,我们只需要考虑奇偶数就好了</p>
+<p>直接比较奇数和偶数的个数即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minCostToMoveChips</span><span class="params">(<span class="keyword">int</span>[] chips)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> []buk=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x : chips)&#123;</span><br><span class="line">            buk[x%<span class="number">2</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.min(buk[<span class="number">0</span>],buk[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="B-最长定差子序列"><a href="#B-最长定差子序列" class="headerlink" title="B. 最长定差子序列"></a>B. 最长定差子序列</h3><p>给你一个整数数组 <code>arr</code> 和一个整数 <code>difference</code>，请你找出 <code>arr</code> 中所有相邻元素之间的差等于给定 <code>difference</code> 的等差子序列，并返回其中最长的等差子序列的长度。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：arr = [1,2,3,4], difference = 1</span><br><span class="line">输出：4</span><br><span class="line">解释：最长的等差子序列是 [1,2,3,4]。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：arr = [1,3,5,7], difference = 1</span><br><span class="line">输出：1</span><br><span class="line">解释：最长的等差子序列是任意单个元素。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3：</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：arr = [1,5,7,8,5,3,4,2,1], difference = -2</span><br><span class="line">输出：4</span><br><span class="line">解释：最长的等差子序列是 [7,5,3,1]。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= arr.length &lt;= 10^5</code></li>
+<li><code>-10^4 &lt;= arr[i], difference &lt;= 10^4</code></li>
+</ul>
+<p>一开始读错题了，以为和顺序没有关系</p>
+<p>然后WA 了两发</p>
+<p>我们考虑到数的范围比较小</p>
+<p>我们可以考虑以x 为结束 的最长的序列. </p>
+<p>这样直接转移即可</p>
+<p>负数我们加一个数让它变成正数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestSubsequence</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> difference)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> d=difference;</span><br><span class="line">        <span class="keyword">int</span> n=arr.length;</span><br><span class="line">        <span class="keyword">int</span> len=(<span class="keyword">int</span>)(<span class="number">1e5</span>); </span><br><span class="line">        <span class="keyword">int</span> []dp=<span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">        len/=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> x=arr[i]+len;</span><br><span class="line">            dp[x]=dp[x-d]+<span class="number">1</span>;</span><br><span class="line">            ans=Math.max(dp[x],ans);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="B-黄金矿工"><a href="#B-黄金矿工" class="headerlink" title="B. 黄金矿工"></a>B. 黄金矿工</h3><p>你要开发一座金矿，地质勘测学家已经探明了这座金矿中的资源分布，并用大小为 <code>m * n</code> 的网格 <code>grid</code> 进行了标注。每个单元格中的整数就表示这一单元格中的黄金数量；如果该单元格是空的，那么就是 <code>0</code>。</p>
+<p>为了使收益最大化，矿工需要按以下规则来开采黄金：</p>
+<ul>
+<li>每当矿工进入一个单元，就会收集该单元格中的所有黄金。</li>
+<li>矿工每次可以从当前位置向上下左右四个方向走。</li>
+<li>每个单元格只能被开采（进入）一次。</li>
+<li><strong>不得开采</strong>（进入）黄金数目为 <code>0</code> 的单元格。</li>
+<li>矿工可以从网格中 <strong>任意一个</strong> 有黄金的单元格出发或者是停止。</li>
+</ul>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：grid = [[0,6,0],[5,8,7],[0,9,0]]</span><br><span class="line">输出：24</span><br><span class="line">解释：</span><br><span class="line">[[0,6,0],</span><br><span class="line"> [5,8,7],</span><br><span class="line"> [0,9,0]]</span><br><span class="line">一种收集最多黄金的路线是：9 -&gt; 8 -&gt; 7。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入：grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]]</span><br><span class="line">输出：28</span><br><span class="line">解释：</span><br><span class="line">[[1,0,7],</span><br><span class="line"> [2,0,6],</span><br><span class="line"> [3,4,5],</span><br><span class="line"> [0,3,0],</span><br><span class="line"> [9,0,20]]</span><br><span class="line">一种收集最多黄金的路线是：1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= grid.length, grid[i].length &lt;= 15</code></li>
+<li><code>0 &lt;= grid[i][j] &lt;= 100</code></li>
+<li>最多 <strong>25</strong> 个单元格中有黄金。</li>
+</ul>
+<p>我们直接dfs即可，考虑到为空以后不能再走，所以我们要直接把当前节点变成0,在dfs 这个节点完以后再变回来</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> dx[]=&#123;<span class="number">1</span>,-<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> dy[]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,-<span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> [][] mp;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> cur)</span></span>&#123;</span><br><span class="line">       <span class="comment">// System.out.println(x+" "+y);</span></span><br><span class="line">        <span class="keyword">int</span> k=mp[x][y];mp[x][y]=<span class="number">0</span>;</span><br><span class="line">        ans=Math.max(cur,ans);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> nx=dx[i]+x;</span><br><span class="line">            <span class="keyword">int</span> ny=dy[i]+y;</span><br><span class="line">            <span class="keyword">if</span>(nx&gt;=n||nx&lt;<span class="number">0</span>||ny&gt;=m||ny&lt;<span class="number">0</span>||mp[nx][ny]==<span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            dfs(nx,ny,cur+mp[nx][ny]);</span><br><span class="line">        &#125;</span><br><span class="line">        mp[x][y]=k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMaximumGold</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        mp=grid;</span><br><span class="line">        n=mp.length;</span><br><span class="line">        m=mp[<span class="number">0</span>].length;</span><br><span class="line">        ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(mp[i][j]!=<span class="number">0</span>)</span><br><span class="line">                dfs(i,j,mp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="D-统计元音字母序列的数目"><a href="#D-统计元音字母序列的数目" class="headerlink" title="D. 统计元音字母序列的数目"></a>D. 统计元音字母序列的数目</h3><p>给你一个整数 <code>n</code>，请你帮忙统计一下我们可以按下述规则形成多少个长度为 <code>n</code> 的字符串：</p>
+<ul>
+<li>字符串中的每个字符都应当是小写元音字母（<code>&#39;a&#39;</code>, <code>&#39;e&#39;</code>, <code>&#39;i&#39;</code>, <code>&#39;o&#39;</code>, <code>&#39;u&#39;</code>）</li>
+<li>每个元音 <code>&#39;a&#39;</code> 后面都只能跟着 <code>&#39;e&#39;</code></li>
+<li>每个元音 <code>&#39;e&#39;</code> 后面只能跟着 <code>&#39;a&#39;</code> 或者是 <code>&#39;i&#39;</code></li>
+<li>每个元音 <code>&#39;i&#39;</code> 后面 <strong>不能</strong> 再跟着另一个 <code>&#39;i&#39;</code></li>
+<li>每个元音 <code>&#39;o&#39;</code> 后面只能跟着 <code>&#39;i&#39;</code> 或者是 <code>&#39;u&#39;</code></li>
+<li>每个元音 <code>&#39;u&#39;</code> 后面只能跟着 <code>&#39;a&#39;</code></li>
+</ul>
+<p>由于答案可能会很大，所以请你返回 模 <code>10^9 + 7</code> 之后的结果。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 1</span><br><span class="line">输出：5</span><br><span class="line">解释：所有可能的字符串分别是：&quot;a&quot;, &quot;e&quot;, &quot;i&quot; , &quot;o&quot; 和 &quot;u&quot;。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 2</span><br><span class="line">输出：10</span><br><span class="line">解释：所有可能的字符串分别是：&quot;ae&quot;, &quot;ea&quot;, &quot;ei&quot;, &quot;ia&quot;, &quot;ie&quot;, &quot;io&quot;, &quot;iu&quot;, &quot;oi&quot;, &quot;ou&quot; 和 &quot;ua&quot;。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 5</span><br><span class="line">输出：68</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 2 * 10^4</code></li>
+</ul>
+<p>这显然是一个递推，我们枚举以某个字母为结束的就好了</p>
+<p>这样我们可以直接通过题意来转移，这样的复杂度已经足够</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> MOD = (<span class="keyword">int</span>)(<span class="number">1e9</span>+<span class="number">7</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countVowelPermutation</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// a e i o u</span></span><br><span class="line">        <span class="comment">// 0 1 2 3 4 </span></span><br><span class="line">        <span class="keyword">long</span> [][]dp=<span class="keyword">new</span> <span class="keyword">long</span>[n+<span class="number">1</span>][<span class="number">5</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">5</span>;j++) dp[<span class="number">1</span>][j]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>]=(dp[i-<span class="number">1</span>][<span class="number">1</span>]+dp[i-<span class="number">1</span>][<span class="number">4</span>]+dp[i-<span class="number">1</span>][<span class="number">2</span>])%MOD;</span><br><span class="line">            dp[i][<span class="number">1</span>]=(dp[i-<span class="number">1</span>][<span class="number">0</span>]+dp[i-<span class="number">1</span>][<span class="number">2</span>])%MOD;</span><br><span class="line">            dp[i][<span class="number">2</span>]=(dp[i-<span class="number">1</span>][<span class="number">1</span>]+dp[i-<span class="number">1</span>][<span class="number">3</span>])%MOD;</span><br><span class="line">            dp[i][<span class="number">3</span>]=(dp[i-<span class="number">1</span>][<span class="number">2</span>])%MOD;</span><br><span class="line">            dp[i][<span class="number">4</span>]=(dp[i-<span class="number">1</span>][<span class="number">2</span>]+dp[i-<span class="number">1</span>][<span class="number">3</span>])%MOD;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++) ans= (<span class="keyword">int</span>)((ans+(<span class="keyword">int</span>)dp[n][i])%MOD);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然我们也可以构造矩阵，通过快速幂来降低复杂度</p>
+<p>实际上我们需要一个 6 * 6 的矩阵 </p>
+<p>构造出来以后实际上是这个样子的</p>
+<script type="math/tex; mode=display">
+\begin{matrix}
+0 & 0 & 0 &0 & 0 & 0 \\
+1 & 0 & 1 &1 & 0 & 1 \\
+1 & 1 & 0 &1 & 0 & 0 \\
+1 & 0 & 1 &0 & 1 & 0 \\
+1 & 0 & 0 &1 & 0 & 0 \\
+1 & 0 & 0 &1 & 1 & 0 \\
+\end{matrix}</script><p>通过这个矩阵我们就可以快速计算了</p>
+<p>构造是这样的 我们考虑第一列 的第二行到第6行表示以某个字符为结束的方案数 ，然后通过矩阵的乘法构造就可以了，实际上和上面一种做法是一样的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Mat</span></span>&#123;</span><br><span class="line">        <span class="keyword">long</span> arr[][];</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        Mat(<span class="keyword">int</span> n)&#123;</span><br><span class="line">            arr=<span class="keyword">new</span> <span class="keyword">long</span>[n][n];</span><br><span class="line">            <span class="keyword">this</span>.n=n;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) arr[i-<span class="number">1</span>][i-<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">Mat <span class="title">mul</span><span class="params">(Mat rsh)</span></span>&#123;</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">            Mat ret=<span class="keyword">new</span> Mat(rsh.n);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                    <span class="keyword">long</span> rev=<span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;n;k++)&#123;</span><br><span class="line">                        rev = (rev + arr[i][k]*rsh.arr[k][j] %MOD ) %MOD;</span><br><span class="line">                    &#125;</span><br><span class="line">                    ret.arr[i][j]=rev;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> MOD = (<span class="keyword">int</span>)(<span class="number">1e9</span>+<span class="number">7</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="function">Mat <span class="title">pow</span><span class="params">(Mat a,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        Mat ret=<span class="keyword">new</span> Mat(a.n);</span><br><span class="line">        <span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n%<span class="number">2</span>==<span class="number">1</span>) ret=ret.mul(a);</span><br><span class="line">            a=a.mul(a);</span><br><span class="line">            n/=<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countVowelPermutation</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// a e i o u</span></span><br><span class="line">        <span class="comment">// 0 1 2 3 4 </span></span><br><span class="line">        Mat a = <span class="keyword">new</span> Mat(<span class="number">6</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++) <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">6</span>;j++) a.arr[i][j]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">6</span>;i++) a.arr[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">long</span> [][]b=a.arr;</span><br><span class="line">        b[<span class="number">1</span>][<span class="number">2</span>]=<span class="number">1</span>;b[<span class="number">1</span>][<span class="number">3</span>]=<span class="number">1</span>;b[<span class="number">1</span>][<span class="number">5</span>]=<span class="number">1</span>;</span><br><span class="line">        b[<span class="number">2</span>][<span class="number">1</span>]=<span class="number">1</span>;b[<span class="number">2</span>][<span class="number">3</span>]=<span class="number">1</span>;</span><br><span class="line">        b[<span class="number">3</span>][<span class="number">2</span>]=<span class="number">1</span>;b[<span class="number">3</span>][<span class="number">4</span>]=<span class="number">1</span>;</span><br><span class="line">        b[<span class="number">4</span>][<span class="number">3</span>]=<span class="number">1</span>;</span><br><span class="line">        b[<span class="number">5</span>][<span class="number">3</span>]=<span class="number">1</span>;b[<span class="number">5</span>][<span class="number">4</span>]=<span class="number">1</span>;</span><br><span class="line">        a=pow(a,n);</span><br><span class="line">        <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++) ans = (ans + a.arr[i][<span class="number">0</span>]) %MOD;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>看错题就很难受了，手速还有待提高</p>
+
+    <div id="aplayer-YQENcXRg" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="532931" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/06/LeetcodeBWk10/" rel="next" title="Leetcode10双周赛">
+                  <i class="fa fa-chevron-left"></i> Leetcode10双周赛
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/14/LeetcodeWk158/" rel="prev" title="LeetcodeWk158">
+                  LeetcodeWk158 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-玩筹码"><span class="nav-text">A. 玩筹码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-最长定差子序列"><span class="nav-text">B. 最长定差子序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-黄金矿工"><span class="nav-text">B. 黄金矿工</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-统计元音字母序列的数目"><span class="nav-text">D. 统计元音字母序列的数目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="endacsd">
+  <p class="site-author-name" itemprop="name">endacsd</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">endacsd</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var id = element.id || '';
+    var src = element.src || '';
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (id !=='') {
+      script.id = element.id;
+    }
+    if (src !== '') {
+      script.src = src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>
