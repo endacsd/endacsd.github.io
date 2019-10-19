@@ -55,14 +55,19 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="endacsd">
-<meta property="og:url" content="http://endacsd.github.io/categories/LeetCode/index.html">
+  <meta name="description" content="写在前面被坑了很久，网上的教程真的没有问题吗   在windows10 下安装MySQL先下载安装包 MySQL 下载  解压在C:\web\mysql-8.0.18-winx64(filename) 然后配置MySQL 的配置文件 在刚才的目录下创建my.ini 配置文件，编辑my.ini 配置一下基本信息   123456789[client]# 设置mysql客户端默认字符集default-">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL搭建">
+<meta property="og:url" content="http://endacsd.github.io/2019/10/16/build-mysql/index.html">
 <meta property="og:site_name" content="endacsd">
+<meta property="og:description" content="写在前面被坑了很久，网上的教程真的没有问题吗   在windows10 下安装MySQL先下载安装包 MySQL 下载  解压在C:\web\mysql-8.0.18-winx64(filename) 然后配置MySQL 的配置文件 在刚才的目录下创建my.ini 配置文件，编辑my.ini 配置一下基本信息   123456789[client]# 设置mysql客户端默认字符集default-">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-19T07:41:28.322Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="endacsd">
-  <link rel="canonical" href="http://endacsd.github.io/categories/LeetCode/">
+<meta name="twitter:title" content="MySQL搭建">
+<meta name="twitter:description" content="写在前面被坑了很久，网上的教程真的没有问题吗   在windows10 下安装MySQL先下载安装包 MySQL 下载  解压在C:\web\mysql-8.0.18-winx64(filename) 然后配置MySQL 的配置文件 在刚才的目录下创建my.ini 配置文件，编辑my.ini 配置一下基本信息   123456789[client]# 设置mysql客户端默认字符集default-">
+  <link rel="canonical" href="http://endacsd.github.io/2019/10/16/build-mysql/">
 
 
 <script id="page-configurations">
@@ -70,13 +75,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>分类: LeetCode | endacsd</title>
+  <title>MySQL搭建 | endacsd</title>
   
 
 
@@ -252,229 +257,153 @@
         <div class="content-wrap">
             
 
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-  
-
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block category">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">LeetCode<small>分类</small>
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/10/16/build-mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="endacsd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="endacsd">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">MySQL搭建
+
+          
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-16 00:05:49" itemprop="dateCreated datePublished" datetime="2019-10-16T00:05:49+08:00">2019-10-16</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-19 15:41:28" itemprop="dateModified" datetime="2019-10-19T15:41:28+08:00">2019-10-19</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>被坑了很久，网上的教程真的没有问题吗</p>
+<meta name="referrer" content="no-referrer">
 
-  
-  
+<h3 id="在windows10-下安装MySQL"><a href="#在windows10-下安装MySQL" class="headerlink" title="在windows10 下安装MySQL"></a>在windows10 下安装<strong>MySQL</strong></h3><p>先下载安装包</p>
+<p><a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL 下载</a> </p>
+<p>解压在<strong>C:\web\mysql-8.0.18-winx64(filename)</strong></p>
+<p>然后配置MySQL 的配置文件</p>
+<p>在刚才的目录下创建my.ini 配置文件，编辑my.ini 配置一下基本信息  </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line"># 设置mysql客户端默认字符集</span><br><span class="line"><span class="keyword">default</span>-character-<span class="built_in">set</span>=utf8</span><br><span class="line"> </span><br><span class="line">[mysqld]</span><br><span class="line"># 设置<span class="number">3306</span>端口</span><br><span class="line">port = <span class="number">3306</span></span><br><span class="line"># 设置mysql的安装目录</span><br><span class="line">basedir=C:\\web\\mysql<span class="number">-8.0</span><span class="number">.18</span>-winx64</span><br></pre></td></tr></table></figure>
+<p>然后以<strong>管理员</strong> 身份运行cmd </p>
+<p>切换目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd C:\web\\mysql-8.0.18-winx64\bin</span><br></pre></td></tr></table></figure>
+<p>初始化数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld --initialize --console</span><br></pre></td></tr></table></figure>
+<p>然后会出现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\web\mysql-8.0.18-winx64\bin&gt;mysqld --initialize --console </span><br><span class="line">2019-10-15T15:44:17.770101Z 0 [System] [MY-013169] [Server] C:\web\mysql-8.0.18winx64\bin\mysqld.exe (mysqld 8.0.18) initializing of server in progress as process 18420                                                                                      2019-10-15T15:44:27.230321Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: sdWkukAYW6+f</span><br></pre></td></tr></table></figure>
+<p>sdWkukAYW6+f 是<strong>初始密码</strong></p>
+<p><strong>一定要把最后的sdWkukAYW6+f记住</strong>，因为等一会会用到</p>
+<p>然后输入安装命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld install</span><br></pre></td></tr></table></figure>
+<p>初始化 data 目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld --initialize-insecure</span><br></pre></td></tr></table></figure>
+<p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql</span><br></pre></td></tr></table></figure>
+<h2 id="登录MySQL"><a href="#登录MySQL" class="headerlink" title="登录MySQL"></a>登录MySQL</h2><p>启动服务成功后</p>
+<p>登录本机的 MySQL 数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>按回车确认, 如果安装正确且 MySQL 正在运行, 会得到以下响应:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter password:</span><br></pre></td></tr></table></figure>
+<p>输入我们刚才记好的初始密码，登录成功会显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">C:\web\mysql-8.0.18-winx64\bin&gt;mysql -u root -p</span><br><span class="line">Enter password: ******</span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 17</span><br><span class="line">Server version: 8.0.18 MySQL Community Server - GPL</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line">Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<p>然后我们需要更改初始密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password = &apos;password&apos;(your password);</span><br></pre></td></tr></table></figure>
+<p>然后退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>然后就完成了</p>
 
-  
+    </div>
+
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-14T18:43:47+08:00"
-              content="2019-10-14">
-          10-14
-        </time>
-      </div>
-
-      <h2 class="post-title">
+    
+    
         
-          <a class="post-title-link" href="/2019/10/14/LeetcodeWk158/" itemprop="url">
-            <span itemprop="name">LeetcodeWk158</span>
-          </a>
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            
+          </div>
         
-      </h2>
 
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-06T18:28:54+08:00"
-              content="2019-10-06">
-          10-06
-        </time>
-      </div>
-
-      <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/10/06/LeetcodeWk157/" itemprop="url">
-            <span itemprop="name">Leetcode157周赛</span>
-          </a>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/14/LeetcodeWk158/" rel="next" title="LeetcodeWk158">
+                  <i class="fa fa-chevron-left"></i> LeetcodeWk158
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-06T14:56:18+08:00"
-              content="2019-10-06">
-          10-06
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/06/LeetcodeBWk10/" itemprop="url">
-            <span itemprop="name">Leetcode10双周赛</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-01T15:07:50+08:00"
-              content="2019-10-01">
-          10-01
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/01/LeetcodeWk156/" itemprop="url">
-            <span itemprop="name">leetcode156周赛</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-29T14:48:18+08:00"
-              content="2019-09-29">
-          09-29
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/09/29/LeetcodeWk151/" itemprop="url">
-            <span itemprop="name">leetcode151周赛</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-19T01:31:07+08:00"
-              content="2019-08-19">
-          08-19
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/19/LeetcodeWk150/" itemprop="url">
-            <span itemprop="name">leetcode150周赛</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-    </div>
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
@@ -493,6 +422,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -505,6 +439,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-text">写在前面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在windows10-下安装MySQL"><span class="nav-text">在windows10 下安装MySQL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录MySQL"><span class="nav-text">登录MySQL</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
