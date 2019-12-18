@@ -55,19 +55,25 @@
   };
 </script>
 
-  <meta name="description" content="MIPS 指令集">
+  <meta name="description" content="MIPS指令集的核心子集 处理器和流水线">
 <meta name="keywords" content="计算机组成原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="指令">
-<meta property="og:url" content="http://endacsd.github.io/2019/12/17/POD2/index.html">
+<meta property="og:title" content="处理器">
+<meta property="og:url" content="http://endacsd.github.io/2019/12/17/POD4/index.html">
 <meta property="og:site_name" content="endacsd">
-<meta property="og:description" content="MIPS 指令集">
+<meta property="og:description" content="MIPS指令集的核心子集 处理器和流水线">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-17T13:35:40.695Z">
+<meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576165462855.png">
+<meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576165462855.png">
+<meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576165462855.png">
+<meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576165462855.png">
+<meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576165462855.png">
+<meta property="og:updated_time" content="2019-12-18T12:35:50.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="指令">
-<meta name="twitter:description" content="MIPS 指令集">
-  <link rel="canonical" href="http://endacsd.github.io/2019/12/17/POD2/">
+<meta name="twitter:title" content="处理器">
+<meta name="twitter:description" content="MIPS指令集的核心子集 处理器和流水线">
+<meta name="twitter:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576165462855.png">
+  <link rel="canonical" href="http://endacsd.github.io/2019/12/17/POD4/">
 
 
 <script id="page-configurations">
@@ -81,7 +87,7 @@
   };
 </script>
 
-  <title>指令 | endacsd</title>
+  <title>处理器 | endacsd</title>
   
 
 
@@ -266,7 +272,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/12/17/POD2/">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/12/17/POD4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="endacsd">
@@ -278,7 +284,7 @@
       <meta itemprop="name" content="endacsd">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">指令
+        <h1 class="post-title" itemprop="name headline">处理器
 
           
         </h1>
@@ -294,11 +300,19 @@
                 
               
 
-              <time title="创建时间：2019-12-17 21:18:29 / 修改时间：21:35:40" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:29+08:00">2019-12-17</time>
+              <time title="创建时间：2019-12-17 21:18:39" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:39+08:00">2019-12-17</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 20:35:50" itemprop="dateModified" datetime="2019-12-18T20:35:50+08:00">2019-12-18</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -326,181 +340,345 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>MIPS 指令集</p>
+        <p>MIPS指令集的核心子集</p>
+<p>处理器和流水线</p>
 <a id="more"></a>
 <meta name="referrer" content="no-referrer">
 
 
 
-<ul>
-<li>指令集 一个给定的计算机体系结构所包含的指令集集合</li>
+
+<h4 id="一个基本的MIPS实现"><a href="#一个基本的MIPS实现" class="headerlink" title="一个基本的MIPS实现"></a>一个基本的MIPS实现</h4><ul>
+<li>存储器访问指令：取字lw 存字 sw</li>
+<li>算术逻辑指令： 加法 add 减法sub  and or slt</li>
+<li>分支指令： 相等则分支beq 跳转j</li>
 </ul>
+<p>实现方式概述</p>
+<p>1） 程序计数器(PC) 指向指令所在的存储单元，从中取出指令</p>
+<p>2）通过指令字段内容，选择读取一个或两个寄存器。对于取字指令，只需读取一个寄存器</p>
+<p>（这里需要一张图</p>
+<h4 id="逻辑设计的一般方法"><a href="#逻辑设计的一般方法" class="headerlink" title="逻辑设计的一般方法"></a>逻辑设计的一般方法</h4><p>MIPS 实现数据通路部件包括两种不同的逻辑单元</p>
 <ul>
-<li>存储程序概念 多种类型的指令和数据均以数字形式存储于存储器中的盖帘，存储程序型计算机即来源于此</li>
+<li>处理数据值的单元</li>
+<li>处理存储状态的单元</li>
 </ul>
-<p>  MIPS</p>
-<p>  32 个寄存器</p>
-<p>  $2^{30}$个存储器字</p>
+<p>处理数据值的单元都是组合单元</p>
 <ul>
-<li>字 计算机中的基本访问单元 通常时32位为一组 </li>
+<li>组合单元 一个操作单元，</li>
+<li>状态单元 一个存储单元，</li>
 </ul>
+<h4 id="建立数据通路"><a href="#建立数据通路" class="headerlink" title="建立数据通路"></a>建立数据通路</h4><ul>
+<li>数据通路部件 一个用来操作或保存处理器中数据的单元。在MIPS实现中，数据通路部件包括指令存储器，数据存储器，寄存器堆，ALU和加法器</li>
+<li>程序计数器 存放下一条将要被执行指令的地址的寄存器</li>
+</ul>
+<p>处理器的32通用存储器位于一个叫寄存器堆的结构中</p>
 <ul>
-<li><p>设计原则1 简单源于规整</p>
+<li>寄存器堆 包含一系列寄存器的状态单元，可以通过提供寄存器号进行写读</li>
+<li>符号扩展 为增加数据项的长度，将原数据项的最高位复制到新数据项多出来的高位</li>
+</ul>
+<h4 id="一个简单的实现机制"><a href="#一个简单的实现机制" class="headerlink" title="一个简单的实现机制"></a>一个简单的实现机制</h4><h5 id="1-ALU-控制"><a href="#1-ALU-控制" class="headerlink" title="1 . ALU 控制"></a>1 . ALU 控制</h5><h5 id="2-主控制单元的设计"><a href="#2-主控制单元的设计" class="headerlink" title="2 . 主控制单元的设计"></a>2 . 主控制单元的设计</h5><p>字段           </p>
+<p>比特位位置</p>
+<p>a)R型</p>
+<p>字段           </p>
+<p>比特位位置</p>
+<p>b) 存取指令</p>
+<p>字段</p>
+<p>比特位位置</p>
+<p>c)分支指令</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">控制信号名</th>
+<th style="text-align:left">无效时的含义</th>
+<th style="text-align:left">有效时的含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">RegDst</td>
+<td style="text-align:left">写寄存器的目标寄存器来自rt字段</td>
+<td style="text-align:left">写寄存器的目标寄存器来自rd字段</td>
+</tr>
+<tr>
+<td style="text-align:left">RegWrite</td>
+<td style="text-align:left">无</td>
+<td style="text-align:left">寄存器堆写有效</td>
+</tr>
+<tr>
+<td style="text-align:left">PCSrc</td>
+<td style="text-align:left">PC 由PC+4 代替</td>
+<td style="text-align:left">PC由分支目标地址代替</td>
+</tr>
+<tr>
+<td style="text-align:left">MemRead</td>
+<td style="text-align:left">无</td>
+<td style="text-align:left">将写入地址输入端的数据写入到用地址指定存储器单元中取</td>
+</tr>
+<tr>
+<td style="text-align:left">MemtoReg</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">写入寄存器的数据来自数据存储器</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\1576165462855.png" alt="1576165462855"></p>
+<p>数据通路的操作</p>
+<ul>
+<li>存储器访问指令：取字lw 存字 sw</li>
+<li>算术逻辑指令： 加法 add 减法sub  and or slt</li>
+<li>分支指令： 相等则分支beq 跳转j</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">控制信号名</th>
+<th style="text-align:left">RegDst</th>
+<th style="text-align:left">RegWrite</th>
+<th>ALUsrc</th>
+<th>PCSrc</th>
+<th>MemRead</th>
+<th>MemWrite</th>
+<th>MemtoReg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">状态</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>执行过程</p>
+<ul>
+<li>lw 取字</li>
+</ul>
+<p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\1576165462855.png" alt="1576165462855"></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">控制信号名</th>
+<th style="text-align:left">RegDst</th>
+<th style="text-align:left">RegWrite</th>
+<th>ALUsrc</th>
+<th>PCSrc</th>
+<th>MemRead</th>
+<th>MemWrite</th>
+<th>MemtoReg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">状态</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>sw 存字</li>
+</ul>
+<p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\1576165462855.png" alt="1576165462855"></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">控制信号名</th>
+<th style="text-align:left">RegDst</th>
+<th style="text-align:left">RegWrite</th>
+<th>ALUsrc</th>
+<th>PCSrc</th>
+<th>MemRead</th>
+<th>MemWrite</th>
+<th>MemtoReg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">状态</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>add</li>
+</ul>
+<p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\1576165462855.png" alt="1576165462855"></p>
+<p>add a,b,c         a=b+c       op   c a b  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">控制信号名</th>
+<th style="text-align:left">RegDst</th>
+<th style="text-align:left">RegWrite</th>
+<th>ALUsrc</th>
+<th>PCSrc</th>
+<th>MemRead</th>
+<th>MemWrite</th>
+<th>MemtoReg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">状态</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>beq</li>
+</ul>
+<p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\1576165462855.png" alt="1576165462855"></p>
+<p>beq a b L1</p>
+<p>PCsrc 和ALU zero 共同决定PC Mux 的选择</p>
+<p>（换图</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">控制信号名</th>
+<th style="text-align:left">RegDst</th>
+<th style="text-align:left">RegWrite</th>
+<th>ALUsrc</th>
+<th>PCSrc</th>
+<th>MemRead</th>
+<th>MemWrite</th>
+<th>MemtoReg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">状态</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>j 无条件跳转</li>
+</ul>
+<p>图中未给出具体实现</p>
+<p>格式为  </p>
+<p>op    address</p>
+<p>6      26</p>
+<p>将PC高四位和address左移两位后加在一起</p>
+<p>控制的结束</p>
+<p>Q: 为什么不用单周期方式实现</p>
+<p>效率太低</p>
+<h4 id="流水线概述"><a href="#流水线概述" class="headerlink" title="流水线概述"></a>流水线概述</h4><ul>
+<li>流水线 一种实现多条指令重叠执行的技术</li>
+</ul>
+<p>MIPS 指令包含</p>
+<ul>
+<li>1) 从指令存储器中读取指令 IF</li>
+<li>2）指令译码器的同时读取寄存器。MIPS的指令格式允许同时进行译码和读寄存器 ID</li>
+<li>3）执行操作或计算地址 EX</li>
+<li>4）从数据存储器中读取操作数 MEM</li>
+<li>5) 将结果写回寄存器  WB</li>
+</ul>
+<p>理想情况下，流水线机器上的指令执行时间为</p>
+<p>$指令执行时间_{流水线}=\frac{指令执行时间_{非流水线}}{流水线级数}$</p>
+<h5 id="流水线冒险"><a href="#流水线冒险" class="headerlink" title="流水线冒险"></a>流水线冒险</h5><ul>
+<li>结构冒险</li>
+<li>数据冒险</li>
+<li>控制冒险</li>
+</ul>
+<h6 id="结构冒险"><a href="#结构冒险" class="headerlink" title="结构冒险"></a>结构冒险</h6><p>因缺乏硬件支持而导致指令不能再预定的时钟周期内执行的情况</p>
+<h6 id="数据冒险"><a href="#数据冒险" class="headerlink" title="数据冒险"></a>数据冒险</h6><p>也称为流水线数据冒险，即因为无法提供指令执行所需数据而导致指令不能再预定时钟周期内执行的情况</p>
+<p>add $s0 , $to, $t1</p>
+<p>sub $t2 , $s0, $t3</p>
+<p>需要前推，即将数据直接转发，</p>
+<ul>
+<li>前推 也称为旁路。一种解决数据冒险的方法，具体做法是从内部寄存器而非程序员可见的寄存器或存储器中提前取出数据。</li>
+</ul>
+<p>阴影表示该资源被指令使用，左写右读</p>
+<p>取数-使用型数据冒险</p>
+<p>流水线阻塞</p>
+<p>重排可以有效避免流水线阻塞</p>
+<h6 id="控制冒险"><a href="#控制冒险" class="headerlink" title="控制冒险"></a>控制冒险</h6><p>也称为分支冒险。因为取到的指令并不是所需要的(或则说指令地址的变化并不是流水线所预期的)而导致指令不能在预定的时钟周期内执行</p>
+<ul>
+<li>延迟 流水线的级数或则顺序执行过程中两条指令间的级数</li>
+</ul>
+<h4 id="流水线数据通路及其控制"><a href="#流水线数据通路及其控制" class="headerlink" title="流水线数据通路及其控制"></a>流水线数据通路及其控制</h4><p>1) IF: 取指令</p>
+<p>2) ID: 指令译码</p>
+<p>3) EX: 执行或计算地址</p>
+<p>4) MEM:数据存储器访问</p>
+<p>5)WB: 写回</p>
+<p>数据通路的修正 </p>
+<p>在寄存器写入数据时，需要正确的寄存器地址</p>
+<p>流水线控制</p>
+<p>需要增加流水线寄存器</p>
+<p>左边代表读，右代表写</p>
+<p>灰色表示在使用</p>
+<h4 id="数据冒险-旁路与阻塞"><a href="#数据冒险-旁路与阻塞" class="headerlink" title="数据冒险  旁路与阻塞"></a>数据冒险  旁路与阻塞</h4><p>1.a EX/MEM . RegisterRd = ID/EX . RegisterRs</p>
+<p>1.b EX/MEM . RegisterRd = ID/EX . RegisterRt</p>
+<p>2.a MEM/WB . RegisterRd = ID/EX . RegisterRs</p>
+<p>2.b MEM/WB . RegisterRd = ID/EX . RegisterRt</p>
+<p>Rd!=0</p>
+<p>$zero 不用处理，其值始终为0</p>
+<p>MEM 级时， 由于 是先读后写，可以由寄存器堆进行转发(即通过寄存器堆进行转发)</p>
+<ul>
+<li>空指令 一种不进行任何操作或则不改变任何状态的指令</li>
+</ul>
+<h4 id="控制冒险-1"><a href="#控制冒险-1" class="headerlink" title="控制冒险"></a>控制冒险</h4><p>假定分支不发生</p>
+<p>如果发生，就丢弃已经读取并译码的指令</p>
+<ul>
+<li>清除 因发生了以外而丢弃流水线中的指令</li>
+</ul>
+<p>缩短分支延迟</p>
+<p>将分支执行提前到ID级</p>
+<p>动态分支预测</p>
+<ul>
+<li><p>动态分支预测 根据运行信息在运行中进行分支预测</p>
 </li>
-<li><p>设计原则2 越小越快</p>
+<li><p>分支预测缓存 也称为分支历史记录表 一小块按照分支指令的低位地址索引的存储器区，其中包括一位或多位数据用以说明最近是否发生过分支</p>
 </li>
 </ul>
-<p>存储器操作数</p>
+<p>例外：</p>
 <ul>
-<li>数据传送指令 再存储器和寄存器之间移动数据的命令</li>
-<li>地址 用于在存储器空间中指明某特定数据元素位置的值</li>
+<li>写回阶段，它把结果写回数据通路中间的寄存器堆中</li>
+<li>选择PC 的下一个值时，需在自增的PC和MEM级的分支地址间进行选择</li>
 </ul>
-<p>常数或立即数操作数</p>
-<h4 id="有符号数和无符号数"><a href="#有符号数和无符号数" class="headerlink" title="有符号数和无符号数"></a>有符号数和无符号数</h4><ul>
-<li>最高有效位 在MIPS字中最右边的一位</li>
-<li>最低有效位 在MIPS字中最左边的一位</li>
-</ul>
-<p>原码 反码 补码</p>
-<p>偏移表示法 加偏移表示数字   如 1111 表示最大 0000 表示最小</p>
-<h4 id="指令的表示"><a href="#指令的表示" class="headerlink" title="指令的表示"></a>指令的表示</h4><p>指令的布局形式叫做指令格式</p>
-<p>指令的数字形式称为机器语言 这样的指令序列称为机器码</p>
-<ul>
-<li>指令格式 二进制数字段组成的指令表示形式</li>
-<li>机器语言 在计算机系统中用于交流的二进制表示形式</li>
-</ul>
-<p>MIPS 字段</p>
-<ul>
-<li>操作码 指令中用来表示操作和格式的字段</li>
-</ul>
-<p>R 型(用于寄存器)</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">op</th>
-<th>rs</th>
-<th>rt</th>
-<th>rd</th>
-<th>shamt</th>
-<th>funct</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">6bit</td>
-<td>5bit</td>
-<td>5bit</td>
-<td>5bit</td>
-<td>5bit</td>
-<td>6bit</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li>op 指令的基本操作，即操作码</li>
-<li>rs 第一个源操作数寄存器</li>
-<li>rt 第二个源操作数寄存器</li>
-<li>rd 用于存放操作结果的目的寄存器</li>
-<li>shamt 位移量 </li>
-<li>funct 功能码 用于指明op字段中操作的特定形式</li>
-</ul>
-<p>设计原则3 优秀的设计需要适宜的折中的方案</p>
-<p>I 型(用于立即数)</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>op</th>
-<th>rs</th>
-<th>rt</th>
-<th>constant or address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>6bit</td>
-<td>5bit</td>
-<td>5bit</td>
-<td>16bit</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>一些常见指令的编码</p>
-<h4 id="逻辑操作"><a href="#逻辑操作" class="headerlink" title="逻辑操作"></a>逻辑操作</h4><p>左移 右移</p>
-<p>用shamt 实现</p>
-<p>几个逻辑运算</p>
-<h4 id="决策指令"><a href="#决策指令" class="headerlink" title="决策指令"></a>决策指令</h4><p>beq 相等则分支</p>
-<p>bne 不相等则分支</p>
-<p>可以使用slt 小于则置位来实现 大于跳转</p>
-<ul>
-<li>条件分支 该指令先比较两个值 然后根据比较的结果决定是否从程序中的一个新地址开始执行指令序列</li>
-</ul>
-<h5 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h5><ul>
-<li>基本块 没有分支(可能出现在末尾除外) 并且灭有分支目标/分支标签(可能出现在开始者除外)</li>
-</ul>
-<h5 id="swich-case"><a href="#swich-case" class="headerlink" title="swich/case"></a>swich/case</h5><p>变为 if else  </p>
-<p>使用地址转移表</p>
-<h4 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h4><h5 id="32位立即数"><a href="#32位立即数" class="headerlink" title="32位立即数"></a>32位立即数</h5><p>lui 置高16位  低16位为0     </p>
-<p>然后ori 即可</p>
-<h5 id="分支和跳转中的寻址"><a href="#分支和跳转中的寻址" class="headerlink" title="分支和跳转中的寻址"></a>分支和跳转中的寻址</h5><p>跳转指令 指令会变成下形式</p>
-<p>j 10000</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>2</th>
-<th>100000</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>6bit</td>
-<td>26bit</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>条件分支指令还必须指定两个操作数</p>
-<p>bne s0,s1, EXIT</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>5</th>
-<th>16</th>
-<th>17</th>
-<th>EXIT</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>6bit</td>
-<td>5bit</td>
-<td>5bit</td>
-<td>16bit</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>地址计算方法为</p>
-<p>程序计数器=寄存器+分支地址</p>
-<p>这种寻址方式为PC 相对寻址</p>
-<p>范围为$2^{16}$ byte</p>
-<ul>
-<li>PC 相对寻址 一种寻址方式，它将PC和指令中的常数相加作为寻址结果</li>
-</ul>
-<h5 id="寻址模式总结"><a href="#寻址模式总结" class="headerlink" title="寻址模式总结"></a>寻址模式总结</h5><p>1 立即数寻址</p>
-<p>2 寄存器寻址</p>
-<p>3 基址寻址</p>
-<p>4 PC 相对寻址</p>
-<p>5 伪直接寻址</p>
-<p>1 直接在指令中指定数据的值</p>
-<p>2 读寄存器</p>
-<p>3  用寄存器内容 或 lw sw</p>
-<p>4 bne beq</p>
-<p>5 j </p>
 
     </div>
 
@@ -526,8 +704,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/12/17/POD1/" rel="next" title="计算机概要与技术">
-                  <i class="fa fa-chevron-left"></i> 计算机概要与技术
+                <a href="/2019/12/17/POD3/" rel="next" title="算术运算">
+                  <i class="fa fa-chevron-left"></i> 算术运算
                 </a>
               
             </div>
@@ -536,8 +714,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/12/17/POD3/" rel="prev" title="算术运算">
-                  算术运算 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/12/17/POD5/" rel="prev" title="存储器">
+                  存储器 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -587,7 +765,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#有符号数和无符号数"><span class="nav-text">有符号数和无符号数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令的表示"><span class="nav-text">指令的表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑操作"><span class="nav-text">逻辑操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策指令"><span class="nav-text">决策指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#循环"><span class="nav-text">循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#swich-case"><span class="nav-text">swich/case</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址"><span class="nav-text">寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#32位立即数"><span class="nav-text">32位立即数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支和跳转中的寻址"><span class="nav-text">分支和跳转中的寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址模式总结"><span class="nav-text">寻址模式总结</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个基本的MIPS实现"><span class="nav-text">一个基本的MIPS实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑设计的一般方法"><span class="nav-text">逻辑设计的一般方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立数据通路"><span class="nav-text">建立数据通路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一个简单的实现机制"><span class="nav-text">一个简单的实现机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-ALU-控制"><span class="nav-text">1 . ALU 控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-主控制单元的设计"><span class="nav-text">2 . 主控制单元的设计</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线概述"><span class="nav-text">流水线概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线冒险"><span class="nav-text">流水线冒险</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#结构冒险"><span class="nav-text">结构冒险</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据冒险"><span class="nav-text">数据冒险</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#控制冒险"><span class="nav-text">控制冒险</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线数据通路及其控制"><span class="nav-text">流水线数据通路及其控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据冒险-旁路与阻塞"><span class="nav-text">数据冒险  旁路与阻塞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制冒险-1"><span class="nav-text">控制冒险</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
