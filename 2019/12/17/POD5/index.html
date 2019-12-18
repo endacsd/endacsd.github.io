@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="局部性原理">
+  <meta name="description" content="存储器的结构">
 <meta name="keywords" content="计算机组成原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="存储器">
 <meta property="og:url" content="http://endacsd.github.io/2019/12/17/POD5/index.html">
 <meta property="og:site_name" content="endacsd">
-<meta property="og:description" content="局部性原理">
+<meta property="og:description" content="存储器的结构">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576138397087.png">
-<meta property="og:updated_time" content="2019-12-17T14:47:45.875Z">
+<meta property="og:updated_time" content="2019-12-18T04:10:49.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="存储器">
-<meta name="twitter:description" content="局部性原理">
+<meta name="twitter:description" content="存储器的结构">
 <meta name="twitter:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576138397087.png">
   <link rel="canonical" href="http://endacsd.github.io/2019/12/17/POD5/">
 
@@ -296,11 +296,19 @@
                 
               
 
-              <time title="创建时间：2019-12-17 21:18:45 / 修改时间：22:47:45" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:45+08:00">2019-12-17</time>
+              <time title="创建时间：2019-12-17 21:18:45" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:45+08:00">2019-12-17</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 12:10:49" itemprop="dateModified" datetime="2019-12-18T12:10:49+08:00">2019-12-18</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -328,7 +336,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>局部性原理</p>
+        <p>存储器的结构</p>
 <a id="more"></a>
 <meta name="referrer" content="no-referrer">
 
@@ -336,14 +344,6 @@
 
 
 
-
-
-
-
-
-<h6 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h6><p>时间局部性 </p>
-<p>空间局部性</p>
-<p>顺序局部性</p>
 <p><strong>时间局部性</strong>：</p>
 <p>如果一个信息项正在被访问，那么在近期它很可能还会被再次访问。</p>
 <p>程序循环、堆栈等是产生时间局部性的原因。</p>
@@ -354,7 +354,8 @@
 <p>在典型程序中，除转移类指令外，大部分指令是顺序进行的。</p>
 <p>顺序执行和非顺序执行的比例大致是5:1。</p>
 <p>指令的顺序执行、数组的连续存放等是产生顺序局部性的原因</p>
-<h5 id="块"><a href="#块" class="headerlink" title="块"></a>块</h5><p>如果处理器需要的数据</p>
+<p>块</p>
+<p>如果处理器需要的数据</p>
 <p>存放在高层存储器的某个块中</p>
 <p><strong>命中</strong>: 在高层存储器中找到目标数据</p>
 <p><strong>命中率</strong>:  命中次数/全部访问次数</p>
@@ -362,7 +363,11 @@
 <p><strong>缺失：</strong>从低层存储器拷贝包含所需数据的块,然后再从高层存储器访问数据</p>
 <p><strong>缺失代价</strong>:将相应块从低层存储器替换到高层存储器所需要的时间</p>
 <p><strong>缺失率</strong>: 缺失次数/全部访问次数<br>     = 1–命中率</p>
-<h5 id="存储器技术"><a href="#存储器技术" class="headerlink" title="存储器技术"></a>存储器技术</h5><p>比较</p>
+<h4 id="存储器技术"><a href="#存储器技术" class="headerlink" title="存储器技术"></a>存储器技术</h4><p>SRAM 和 DRAM</p>
+<p>闪存</p>
+<p>磁盘存储器</p>
+<p>存储器技术</p>
+<p>比较</p>
 <div class="table-container">
 <table>
 <thead>
@@ -397,10 +402,11 @@
 </div>
 <p>层次结构</p>
 <p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\1576138397087.png" alt="1576138397087"></p>
-<h6 id="按照存取方式"><a href="#按照存取方式" class="headerlink" title="按照存取方式"></a>按照存取方式</h6><p>​    随机存储器：内存</p>
+<h5 id="按照存取方式"><a href="#按照存取方式" class="headerlink" title="按照存取方式"></a>按照存取方式</h5><p>​    随机存储器：内存</p>
 <p>​    顺序存储器 ：磁带</p>
 <p>​    半顺序存储器：磁盘</p>
-<h6 id="按读写"><a href="#按读写" class="headerlink" title="按读写"></a>按读写</h6><h6 id="存储器系统"><a href="#存储器系统" class="headerlink" title="存储器系统"></a>存储器系统</h6><h3 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h3><p>程序访问的局部性原理</p>
+<h5 id="按读写"><a href="#按读写" class="headerlink" title="按读写"></a>按读写</h5><p>分类表</p>
+<h4 id="cache原理"><a href="#cache原理" class="headerlink" title="cache原理"></a>cache原理</h4><p>程序访问的局部性原理</p>
 <p>短时间内，CPU对存储器的访问总是局限在某个较小区域内</p>
 <p>Cache与主存分成大小相同的块</p>
 <p>当CPU读取一个字时，发出此字的内存地址到cache和主存。</p>
@@ -408,7 +414,8 @@
 <p>若在，立即传送给CPU</p>
 <p>若不在，则把此字从主存读到CPU，同时，把含有该字的数据块从主存送cache。 </p>
 <p>Cache 在存储层次中最靠近CPU</p>
-<h4 id="Cache与主存的地址映射"><a href="#Cache与主存的地址映射" class="headerlink" title="Cache与主存的地址映射"></a>Cache与主存的地址映射</h4><ul>
+<p>Cache与主存的地址映射</p>
+<ul>
 <li>直接相联</li>
 <li>全相联</li>
 <li>组相联</li>
@@ -422,6 +429,29 @@
 <p>有效位 表示某个块是否有效的位</p>
 <p>地址划分</p>
 <p>Index  V(有效位) Tag(标记位)  Data</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Index(索引)</th>
+<th>V(有效位)</th>
+<th>Tag(标记位)</th>
+<th></th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n bit</td>
+<td>1 bit</td>
+<td>m bit</td>
+<td></td>
+<td>d bit</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>$\frac{n<em>m</em>d}{4}=32$</p>
 <p>Index Cache块数</p>
 <p>V 1 bit 表示是否有效</p>
 <p>Tag 标记位 为高位 表示实际上是的位置</p>
@@ -431,9 +461,25 @@
 <p>Tag 一共有 32 - n - m- 2 </p>
 <p>(需要能够表示内存所有的位置)</p>
 <p>内存地址会变为</p>
-<p>Tag        Index      Data</p>
-<p>t             n             m+2</p>
-<p>在Cache 中 n表现在第几位中</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Index</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标记位</td>
+<td>索引</td>
+<td>数据</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在Cache 中 索引表现在第几行cache中</p>
 <p>特点</p>
 <p><strong>地址变换速度快</strong></p>
 <p><strong>无需替换算法</strong></p>
@@ -443,8 +489,23 @@
 <p>要求能迅速检索cache中的所有项</p>
 <p>由于每个项都相关的比较器并行完成（开销昂贵）</p>
 <p>内存地址</p>
-<p>Tag Index Data</p>
-<p>Tag 长度为 内存块数</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>块号</td>
+<td>数据</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Tag 与 内存块数有关</p>
 <h6 id="检索过程-1"><a href="#检索过程-1" class="headerlink" title="检索过程"></a>检索过程</h6><p>优点：</p>
 <p>比较灵活</p>
 <p>Cache利用率高</p>
@@ -461,14 +522,35 @@
 <p>Cache 分组 主存分区       主存每个区的块数与Cache的分组数相同  </p>
 <p>组间直接相联</p>
 <p>组内全相联</p>
+<p>n 路 表示 n 个块一组 </p>
+<p>主存中按n个一个块分区</p>
+<p>每个区的每一块直接映射到对应的一个组</p>
+<p>组内是全相联的</p>
 <p>特点</p>
 <p>是全相联映像与直接映像的折衷。</p>
 <p>较直接映像灵活</p>
 <p>较全相联映像标记位短，速度快</p>
 <p>地址划分</p>
-<p>区号  （区内块号 Cache 组号）块内地址</p>
-<p>Tag</p>
-<h6 id="检索过程-2"><a href="#检索过程-2" class="headerlink" title="检索过程"></a>检索过程</h6><h4 id="数据块大小的关系"><a href="#数据块大小的关系" class="headerlink" title="数据块大小的关系"></a>数据块大小的关系</h4><p>数据块大能降低缺失率</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>区号</th>
+<th>组内块号</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标志位</td>
+<td>在第几组</td>
+<td>数据</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="检索过程-2"><a href="#检索过程-2" class="headerlink" title="检索过程"></a>检索过程</h6><p>数据块大小的关系</p>
+<p>数据块大能降低缺失率</p>
 <p>因为空间局部性</p>
 <p>但在一个容量固定的cache中</p>
 <p>数据块越大 =&gt; 块数越少</p>
@@ -477,7 +559,7 @@
 <p>大数据块的缺失代价</p>
 <p>能掩盖大数据块缺失率低的优点</p>
 <p>提前重启和关键字优先能有效地降低缺失代价</p>
-<h4 id="Cache的命中率"><a href="#Cache的命中率" class="headerlink" title="Cache的命中率"></a>Cache的命中率</h4><p>Cache始终保存主存最活跃的局部区域的副本，使CPU的访存操作大多数针对Cache，提高整个程序的执行速度。</p>
+<h5 id="Cache的命中率"><a href="#Cache的命中率" class="headerlink" title="Cache的命中率"></a>Cache的命中率</h5><p>Cache始终保存主存最活跃的局部区域的副本，使CPU的访存操作大多数针对Cache，提高整个程序的执行速度。</p>
 <p>命中率，越接近1越好。</p>
 <p><em>Nc</em>——Cache完成存取的总次数</p>
 <p><em>Nm</em>——主存完成存取的总次数</p>
@@ -488,7 +570,7 @@
 <p>$t_m$——未命中时，主存访问时间</p>
 <p>$t_a$——系统平均访问时间</p>
 <p>$t_a= ht_c+(1-h)t_m$</p>
-<h4 id="Cache的缺失处理"><a href="#Cache的缺失处理" class="headerlink" title="Cache的缺失处理"></a>Cache的缺失处理</h4><p>Cache命中时，CPU继续使用该数据，就像什么都有发生过</p>
+<h5 id="Cache的缺失处理"><a href="#Cache的缺失处理" class="headerlink" title="Cache的缺失处理"></a>Cache的缺失处理</h5><p>Cache命中时，CPU继续使用该数据，就像什么都有发生过</p>
 <p>Cache缺失时</p>
 <p>引起CPU流水线阻塞</p>
 <p>从下一个存储层次读取数据块</p>
@@ -496,7 +578,7 @@
 <p>重新取指，此时该指令在cache中</p>
 <p>如果数据cache缺失</p>
 <p>完成数据操作，此时数据在cache中</p>
-<h4 id="写操作处理"><a href="#写操作处理" class="headerlink" title="写操作处理"></a>写操作处理</h4><p>数据写命中，可以只更新Cache中的块</p>
+<h5 id="写操作处理"><a href="#写操作处理" class="headerlink" title="写操作处理"></a>写操作处理</h5><p>数据写命中，可以只更新Cache中的块</p>
 <p>但这样会导致Cache和主存不一致</p>
 <ul>
 <li>写直达 ：      将数据同时写入主存  </li>
@@ -521,16 +603,13 @@
 <p>有时程序在读一个块之前通常要写整个块 (e.g., 初始化)</p>
 <p>写回法的策略</p>
 <p>通常要把这个块从内存取回到cache</p>
-<h4 id="替换策略"><a href="#替换策略" class="headerlink" title="替换策略"></a>替换策略</h4><p><strong>LFU</strong>（<strong>最不经常使用</strong> ）：被访问的行计数器增加1，换出值小的行，不能反映近期cache的访问情况，</p>
-<p><strong>LRU</strong> <strong>（近期最少使用）</strong> ：被访问的行计数器置0，其他的计数器增加1，换出值大的行，符合cache的工作原理</p>
-<p><strong>随机替换：</strong>随机替换策略实际上是从特定的行位置中随机地选取一行换出即可。这种策略在硬件上容易实现，且速度也比前两种策略快。缺点是随意换出的数据很可能马上又要使用，从而降低命中率和cache工作效率。但这个不足随着cache容量增大而减小。</p>
-<p><strong>先进先出（FIFO）</strong>：总是把最先进入的Cache字块作为被替换的块。它不需要记录各个字的使用情况，因此开销小，容易实现。但一些常用的程序块容易被替换掉。</p>
-<h4 id="Cache-的性能"><a href="#Cache-的性能" class="headerlink" title="Cache 的性能"></a>Cache 的性能</h4><p>CPU时间组成</p>
-<p>程序执行时钟周期</p>
-<p>包括cache命中时间</p>
-<p>存储器阻塞的时钟周期</p>
-<p>主要来自cache访问缺失</p>
-<p>假设存储器阻塞的时钟周期主要来自于cache缺失，在简化的存储模型上</p>
+<h4 id="Cache-的性能和改进"><a href="#Cache-的性能和改进" class="headerlink" title="Cache 的性能和改进"></a>Cache 的性能和改进</h4><h5 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h5><p>$CPU时间=(CPU的执行时钟周期数+ 存储器阻塞的额时钟周期数)\times 时钟周期$</p>
+<p>$存储器阻塞时钟周期数=读操作引起阻塞的时钟周期数+写操作引起阻塞的时钟周期数$</p>
+<p>$读操作阻塞的时钟周期数=(读的次数/程序数)\times 读缺失率 \times 读缺失代价$</p>
+<p>$写操作阻塞的时钟周期数=[(写的次数/程序数)\times 写缺失率\times 写缺失代价 ]+ 写缓冲阻塞$</p>
+<p>平均访问时间 AMAT = 命中时间+ 缺失率 × 缺失代价</p>
+<p>对于大部分写直达cache 结构中    读和写的缺失代价是一样的</p>
+<p> 忽略写缓冲阻塞下可以写成如下</p>
 <script type="math/tex; mode=display">
 存储器阻塞时钟周期=\frac{存储器的访问次数}{程序数}\times 缺失率 \times缺失代价
 \\
@@ -546,24 +625,18 @@
 <p>D-cache: 0.36 × 0.04 × 100 = 1.44</p>
 <p>实际 CPI = 2 + 2 + 1.44 = 5.44</p>
 <p>理想状态 CPU 快了 5.44/2 =2.72 倍</p>
-<p>平均访问时间 AMAT = 命中时间+ 缺失率 × 缺失代价</p>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>当CPU的性能提升时</p>
-<p>缺失代价将变得更显著</p>
-<p>降低CPI</p>
-<p>内存阻塞的时间开销所占比例更大</p>
-<p>3.44/5.44=63%—-3.44/4.44=77%</p>
-<p>增加时钟频率</p>
-<p>存储器阻塞将会浪费更多的CPU时钟</p>
-<p>在评价系统性能时，不能忽略cache的性能</p>
-<p>通过更灵活地放置块来减少cache缺失</p>
-<h4 id="多路Cache"><a href="#多路Cache" class="headerlink" title="多路Cache"></a>多路Cache</h4><p>一级cache隶属于CPU</p>
+<h5 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h5><h6 id="通过更灵活地放置块"><a href="#通过更灵活地放置块" class="headerlink" title="通过更灵活地放置块"></a>通过更灵活地放置块</h6><h6 id="替换策略"><a href="#替换策略" class="headerlink" title="替换策略"></a>替换策略</h6><p><strong>LFU</strong>（<strong>最不经常使用</strong> ）：被访问的行计数器增加1，换出值小的行，不能反映近期cache的访问情况，</p>
+<p><strong>LRU</strong> <strong>（近期最少使用）</strong> ：被访问的行计数器置0，其他的计数器增加1，换出值大的行，符合cache的工作原理</p>
+<p><strong>随机替换：</strong>随机替换策略实际上是从特定的行位置中随机地选取一行换出即可。这种策略在硬件上容易实现，且速度也比前两种策略快。缺点是随意换出的数据很可能马上又要使用，从而降低命中率和cache工作效率。但这个不足随着cache容量增大而减小。</p>
+<p><strong>先进先出（FIFO）</strong>：总是把最先进入的Cache字块作为被替换的块。它不需要记录各个字的使用情况，因此开销小，容易实现。但一些常用的程序块容易被替换掉。</p>
+<h6 id="使用多级cache"><a href="#使用多级cache" class="headerlink" title="使用多级cache"></a>使用多级cache</h6><p>一级cache隶属于CPU</p>
 <p>容量小，但速度快</p>
 <p>二级cache可以为一级cache访问缺失提供服务</p>
 <p>容量大，速度慢，但仍比主存储器快</p>
 <p>主存储器为二级cache的访问缺失提供服务</p>
 <p>一些高端系统中包含三级cache</p>
 <p>海明码</p>
-<h3 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h3><ul>
+<h4 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h4><ul>
 <li>虚拟存储器 一种将主存用辅助存储器高速缓存的技术</li>
 </ul>
 <ul>
@@ -582,21 +655,19 @@
 <p>物理页号构成物理地址的高位部分，页偏移固定，构成低位部分，决定页的大小</p>
 <p>而虚拟地址可寻址的页数无物理地址是可以不同的，可以比物理地址多，从而容量可以更大</p>
 <p>段式管理</p>
-<h4 id="页的存放和查找"><a href="#页的存放和查找" class="headerlink" title="页的存放和查找"></a>页的存放和查找</h4><ul>
+<h5 id="页的存放和查找"><a href="#页的存放和查找" class="headerlink" title="页的存放和查找"></a>页的存放和查找</h5><ul>
 <li>页表  保存着虚拟地址和物理地址之间转换关系的表，页表保存在主存中，通常使用虚页号来索引，如果这个虚页在当前主存中，页表中的对应项将包含虚页对应的物理页号</li>
 </ul>
-<p>缺页故障</p>
-<p>如果虚拟页的有效位关闭，就会发生缺页故障</p>
+<h5 id="缺页故障"><a href="#缺页故障" class="headerlink" title="缺页故障"></a>缺页故障</h5><p>如果虚拟页的有效位关闭，就会发生缺页故障</p>
 <p>关于写</p>
 <p>使用写回法，而非写直达</p>
-<p>TLB </p>
-<p>由于页表放在主存中，所以必然会访问两次主存</p>
+<p>脏位  判断是否被更改  </p>
+<h5 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h5><p>由于页表放在主存中，所以必然会访问两次主存</p>
 <p>先获得物理地址，再获得数据</p>
 <p>TLB ： 用于记录最近使用地址的映射信息的高速缓存，从而可以避免每次都要访问页表</p>
 <p>TLB 和cache 相似 用于加速，</p>
 <p>如果TLB 命中，那么页表一定在主存当中</p>
-<p>脏位  判断是否被更改  </p>
-
+<h5 id="保护机制"><a href="#保护机制" class="headerlink" title="保护机制"></a>保护机制</h5><h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><h4 id="存储器层次结构的一般框架"><a href="#存储器层次结构的一般框架" class="headerlink" title="存储器层次结构的一般框架"></a>存储器层次结构的一般框架</h4>
     </div>
 
     
@@ -678,7 +749,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#局部性原理"><span class="nav-text">局部性原理</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#块"><span class="nav-text">块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储器技术"><span class="nav-text">存储器技术</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#按照存取方式"><span class="nav-text">按照存取方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#按读写"><span class="nav-text">按读写</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#存储器系统"><span class="nav-text">存储器系统</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cache"><span class="nav-text">Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache与主存的地址映射"><span class="nav-text">Cache与主存的地址映射</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#直接映射Cache"><span class="nav-text">直接映射Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索过程"><span class="nav-text">检索过程</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#全相联-Cache"><span class="nav-text">全相联 Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索过程-1"><span class="nav-text">检索过程</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#n-路组相联Cache"><span class="nav-text">n - 路组相联Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索过程-2"><span class="nav-text">检索过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据块大小的关系"><span class="nav-text">数据块大小的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache的命中率"><span class="nav-text">Cache的命中率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache的缺失处理"><span class="nav-text">Cache的缺失处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写操作处理"><span class="nav-text">写操作处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替换策略"><span class="nav-text">替换策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-的性能"><span class="nav-text">Cache 的性能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多路Cache"><span class="nav-text">多路Cache</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟存储器"><span class="nav-text">虚拟存储器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#页的存放和查找"><span class="nav-text">页的存放和查找</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器技术"><span class="nav-text">存储器技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#按照存取方式"><span class="nav-text">按照存取方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按读写"><span class="nav-text">按读写</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cache原理"><span class="nav-text">cache原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#直接映射Cache"><span class="nav-text">直接映射Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索过程"><span class="nav-text">检索过程</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#全相联-Cache"><span class="nav-text">全相联 Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索过程-1"><span class="nav-text">检索过程</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#n-路组相联Cache"><span class="nav-text">n - 路组相联Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索过程-2"><span class="nav-text">检索过程</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache的命中率"><span class="nav-text">Cache的命中率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache的缺失处理"><span class="nav-text">Cache的缺失处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#写操作处理"><span class="nav-text">写操作处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-的性能和改进"><span class="nav-text">Cache 的性能和改进</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#性能"><span class="nav-text">性能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#改进"><span class="nav-text">改进</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#通过更灵活地放置块"><span class="nav-text">通过更灵活地放置块</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#替换策略"><span class="nav-text">替换策略</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用多级cache"><span class="nav-text">使用多级cache</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟存储器"><span class="nav-text">虚拟存储器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#页的存放和查找"><span class="nav-text">页的存放和查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#缺页故障"><span class="nav-text">缺页故障</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TLB"><span class="nav-text">TLB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保护机制"><span class="nav-text">保护机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器层次结构的一般框架"><span class="nav-text">存储器层次结构的一般框架</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->

@@ -68,7 +68,7 @@
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576165462855.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576165462855.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/1576165462855.png">
-<meta property="og:updated_time" content="2019-12-17T14:24:01.097Z">
+<meta property="og:updated_time" content="2019-12-18T04:10:46.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="处理器">
 <meta name="twitter:description" content="MIPS指令集的核心子集 处理器和流水线">
@@ -300,11 +300,19 @@
                 
               
 
-              <time title="创建时间：2019-12-17 21:18:39 / 修改时间：22:24:01" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:39+08:00">2019-12-17</time>
+              <time title="创建时间：2019-12-17 21:18:39" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:39+08:00">2019-12-17</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 12:10:46" itemprop="dateModified" datetime="2019-12-18T12:10:46+08:00">2019-12-18</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -336,7 +344,6 @@
 <p>处理器和流水线</p>
 <a id="more"></a>
 <meta name="referrer" content="no-referrer">
-
 
 
 
@@ -635,7 +642,7 @@
 <ul>
 <li>延迟 流水线的级数或则顺序执行过程中两条指令间的级数</li>
 </ul>
-<h4 id="4-6-流水线数据通路及其控制"><a href="#4-6-流水线数据通路及其控制" class="headerlink" title="4.6 流水线数据通路及其控制"></a>4.6 流水线数据通路及其控制</h4><p>1) IF: 取指令</p>
+<h4 id="流水线数据通路及其控制"><a href="#流水线数据通路及其控制" class="headerlink" title="流水线数据通路及其控制"></a>流水线数据通路及其控制</h4><p>1) IF: 取指令</p>
 <p>2) ID: 指令译码</p>
 <p>3) EX: 执行或计算地址</p>
 <p>4) MEM:数据存储器访问</p>
@@ -646,7 +653,7 @@
 <p>需要增加流水线寄存器</p>
 <p>左边代表读，右代表写</p>
 <p>灰色表示在使用</p>
-<h4 id="4-7-数据冒险-旁路与阻塞"><a href="#4-7-数据冒险-旁路与阻塞" class="headerlink" title="4.7 数据冒险  旁路与阻塞"></a>4.7 数据冒险  旁路与阻塞</h4><p>1.a EX/MEM . RegisterRd = ID/EX . RegisterRs</p>
+<h4 id="数据冒险-旁路与阻塞"><a href="#数据冒险-旁路与阻塞" class="headerlink" title="数据冒险  旁路与阻塞"></a>数据冒险  旁路与阻塞</h4><p>1.a EX/MEM . RegisterRd = ID/EX . RegisterRs</p>
 <p>1.b EX/MEM . RegisterRd = ID/EX . RegisterRt</p>
 <p>2.a MEM/WB . RegisterRd = ID/EX . RegisterRs</p>
 <p>2.b MEM/WB . RegisterRd = ID/EX . RegisterRt</p>
@@ -760,7 +767,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个基本的MIPS实现"><span class="nav-text">一个基本的MIPS实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑设计的一般方法"><span class="nav-text">逻辑设计的一般方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立数据通路"><span class="nav-text">建立数据通路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一个简单的实现机制"><span class="nav-text">一个简单的实现机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-ALU-控制"><span class="nav-text">1 . ALU 控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-主控制单元的设计"><span class="nav-text">2 . 主控制单元的设计</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线概述"><span class="nav-text">流水线概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线冒险"><span class="nav-text">流水线冒险</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#结构冒险"><span class="nav-text">结构冒险</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据冒险"><span class="nav-text">数据冒险</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#控制冒险"><span class="nav-text">控制冒险</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-流水线数据通路及其控制"><span class="nav-text">4.6 流水线数据通路及其控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-7-数据冒险-旁路与阻塞"><span class="nav-text">4.7 数据冒险  旁路与阻塞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制冒险-1"><span class="nav-text">控制冒险</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个基本的MIPS实现"><span class="nav-text">一个基本的MIPS实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑设计的一般方法"><span class="nav-text">逻辑设计的一般方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建立数据通路"><span class="nav-text">建立数据通路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一个简单的实现机制"><span class="nav-text">一个简单的实现机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-ALU-控制"><span class="nav-text">1 . ALU 控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-主控制单元的设计"><span class="nav-text">2 . 主控制单元的设计</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线概述"><span class="nav-text">流水线概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线冒险"><span class="nav-text">流水线冒险</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#结构冒险"><span class="nav-text">结构冒险</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据冒险"><span class="nav-text">数据冒险</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#控制冒险"><span class="nav-text">控制冒险</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线数据通路及其控制"><span class="nav-text">流水线数据通路及其控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据冒险-旁路与阻塞"><span class="nav-text">数据冒险  旁路与阻塞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制冒险-1"><span class="nav-text">控制冒险</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
