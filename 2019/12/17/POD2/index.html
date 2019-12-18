@@ -55,14 +55,19 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="endacsd">
-<meta property="og:url" content="http://endacsd.github.io/archives/2019/10/index.html">
+  <meta name="description" content="MIPS 指令集">
+<meta name="keywords" content="计算机组成原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="指令">
+<meta property="og:url" content="http://endacsd.github.io/2019/12/17/POD2/index.html">
 <meta property="og:site_name" content="endacsd">
+<meta property="og:description" content="MIPS 指令集">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-17T13:35:40.695Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="endacsd">
-  <link rel="canonical" href="http://endacsd.github.io/archives/2019/10/">
+<meta name="twitter:title" content="指令">
+<meta name="twitter:description" content="MIPS 指令集">
+  <link rel="canonical" href="http://endacsd.github.io/2019/12/17/POD2/">
 
 
 <script id="page-configurations">
@@ -70,13 +75,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>归档 | endacsd</title>
+  <title>指令 | endacsd</title>
   
 
 
@@ -252,235 +257,301 @@
         <div class="content-wrap">
             
 
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-  
-
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        
-        
-        
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/12/17/POD2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="endacsd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="endacsd">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">指令
+
           
-        
-        <span class="collection-header">嗯..! 目前共计 13 篇日志。 继续努力。</span>
-      </div>
-      
+        </h1>
 
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-  
-  
+              
+                
+              
 
-  
+              <time title="创建时间：2019-12-17 21:18:29 / 修改时间：21:35:40" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:29+08:00">2019-12-17</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机组成原理/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>MIPS 指令集</p>
+<a id="more"></a>
+<meta name="referrer" content="no-referrer">
+
+
+
+<ul>
+<li>指令集 一个给定的计算机体系结构所包含的指令集集合</li>
+</ul>
+<ul>
+<li>存储程序概念 多种类型的指令和数据均以数字形式存储于存储器中的盖帘，存储程序型计算机即来源于此</li>
+</ul>
+<p>  MIPS</p>
+<p>  32 个寄存器</p>
+<p>  $2^{30}$个存储器字</p>
+<ul>
+<li>字 计算机中的基本访问单元 通常时32位为一组 </li>
+</ul>
+<ul>
+<li><p>设计原则1 简单源于规整</p>
+</li>
+<li><p>设计原则2 越小越快</p>
+</li>
+</ul>
+<p>存储器操作数</p>
+<ul>
+<li>数据传送指令 再存储器和寄存器之间移动数据的命令</li>
+<li>地址 用于在存储器空间中指明某特定数据元素位置的值</li>
+</ul>
+<p>常数或立即数操作数</p>
+<h4 id="有符号数和无符号数"><a href="#有符号数和无符号数" class="headerlink" title="有符号数和无符号数"></a>有符号数和无符号数</h4><ul>
+<li>最高有效位 在MIPS字中最右边的一位</li>
+<li>最低有效位 在MIPS字中最左边的一位</li>
+</ul>
+<p>原码 反码 补码</p>
+<p>偏移表示法 加偏移表示数字   如 1111 表示最大 0000 表示最小</p>
+<h4 id="指令的表示"><a href="#指令的表示" class="headerlink" title="指令的表示"></a>指令的表示</h4><p>指令的布局形式叫做指令格式</p>
+<p>指令的数字形式称为机器语言 这样的指令序列称为机器码</p>
+<ul>
+<li>指令格式 二进制数字段组成的指令表示形式</li>
+<li>机器语言 在计算机系统中用于交流的二进制表示形式</li>
+</ul>
+<p>MIPS 字段</p>
+<ul>
+<li>操作码 指令中用来表示操作和格式的字段</li>
+</ul>
+<p>R 型(用于寄存器)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">op</th>
+<th>rs</th>
+<th>rt</th>
+<th>rd</th>
+<th>shamt</th>
+<th>funct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">6bit</td>
+<td>5bit</td>
+<td>5bit</td>
+<td>5bit</td>
+<td>5bit</td>
+<td>6bit</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>op 指令的基本操作，即操作码</li>
+<li>rs 第一个源操作数寄存器</li>
+<li>rt 第二个源操作数寄存器</li>
+<li>rd 用于存放操作结果的目的寄存器</li>
+<li>shamt 位移量 </li>
+<li>funct 功能码 用于指明op字段中操作的特定形式</li>
+</ul>
+<p>设计原则3 优秀的设计需要适宜的折中的方案</p>
+<p>I 型(用于立即数)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>op</th>
+<th>rs</th>
+<th>rt</th>
+<th>constant or address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6bit</td>
+<td>5bit</td>
+<td>5bit</td>
+<td>16bit</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>一些常见指令的编码</p>
+<h4 id="逻辑操作"><a href="#逻辑操作" class="headerlink" title="逻辑操作"></a>逻辑操作</h4><p>左移 右移</p>
+<p>用shamt 实现</p>
+<p>几个逻辑运算</p>
+<h4 id="决策指令"><a href="#决策指令" class="headerlink" title="决策指令"></a>决策指令</h4><p>beq 相等则分支</p>
+<p>bne 不相等则分支</p>
+<p>可以使用slt 小于则置位来实现 大于跳转</p>
+<ul>
+<li>条件分支 该指令先比较两个值 然后根据比较的结果决定是否从程序中的一个新地址开始执行指令序列</li>
+</ul>
+<h5 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h5><ul>
+<li>基本块 没有分支(可能出现在末尾除外) 并且灭有分支目标/分支标签(可能出现在开始者除外)</li>
+</ul>
+<h5 id="swich-case"><a href="#swich-case" class="headerlink" title="swich/case"></a>swich/case</h5><p>变为 if else  </p>
+<p>使用地址转移表</p>
+<h4 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h4><h5 id="32位立即数"><a href="#32位立即数" class="headerlink" title="32位立即数"></a>32位立即数</h5><p>lui 置高16位  低16位为0     </p>
+<p>然后ori 即可</p>
+<h5 id="分支和跳转中的寻址"><a href="#分支和跳转中的寻址" class="headerlink" title="分支和跳转中的寻址"></a>分支和跳转中的寻址</h5><p>跳转指令 指令会变成下形式</p>
+<p>j 10000</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>2</th>
+<th>100000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6bit</td>
+<td>26bit</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>条件分支指令还必须指定两个操作数</p>
+<p>bne s0,s1, EXIT</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>5</th>
+<th>16</th>
+<th>17</th>
+<th>EXIT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6bit</td>
+<td>5bit</td>
+<td>5bit</td>
+<td>16bit</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>地址计算方法为</p>
+<p>程序计数器=寄存器+分支地址</p>
+<p>这种寻址方式为PC 相对寻址</p>
+<p>范围为$2^{16}$ byte</p>
+<ul>
+<li>PC 相对寻址 一种寻址方式，它将PC和指令中的常数相加作为寻址结果</li>
+</ul>
+<h5 id="寻址模式总结"><a href="#寻址模式总结" class="headerlink" title="寻址模式总结"></a>寻址模式总结</h5><p>1 立即数寻址</p>
+<p>2 寄存器寻址</p>
+<p>3 基址寻址</p>
+<p>4 PC 相对寻址</p>
+<p>5 伪直接寻址</p>
+<p>1 直接在指令中指定数据的值</p>
+<p>2 读寄存器</p>
+<p>3  用寄存器内容 或 lw sw</p>
+<p>4 bne beq</p>
+<p>5 j </p>
+
     </div>
-  
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-16T00:05:49+08:00"
-              content="2019-10-16">
-          10-16
-        </time>
-      </div>
-
-      <h2 class="post-title">
+    
+    
+    
         
-          <a class="post-title-link" href="/2019/10/16/build-mysql/" itemprop="url">
-            <span itemprop="name">MySQL搭建</span>
-          </a>
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/计算机组成原理/" rel="tag"># 计算机组成原理</a>
+            
+          </div>
         
-      </h2>
 
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-14T18:43:47+08:00"
-              content="2019-10-14">
-          10-14
-        </time>
-      </div>
-
-      <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/10/14/LeetcodeWk158/" itemprop="url">
-            <span itemprop="name">LeetcodeWk158</span>
-          </a>
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/12/17/POD1/" rel="next" title="计算机概要与技术">
+                  <i class="fa fa-chevron-left"></i> 计算机概要与技术
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/12/17/POD3/" rel="prev" title="算术运算">
+                  算术运算 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
         
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-06T18:28:54+08:00"
-              content="2019-10-06">
-          10-06
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/06/LeetcodeWk157/" itemprop="url">
-            <span itemprop="name">Leetcode157周赛</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-06T14:56:18+08:00"
-              content="2019-10-06">
-          10-06
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/06/LeetcodeBWk10/" itemprop="url">
-            <span itemprop="name">Leetcode10双周赛</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-04T18:21:44+08:00"
-              content="2019-10-04">
-          10-04
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/04/Codeforces-Round-590-Div-3/" itemprop="url">
-            <span itemprop="name">Codeforces Round#590(Div.3)</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-01T15:07:50+08:00"
-              content="2019-10-01">
-          10-01
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/10/01/LeetcodeWk156/" itemprop="url">
-            <span itemprop="name">leetcode156周赛</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-
-    </div>
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
@@ -499,6 +570,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -511,6 +587,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#有符号数和无符号数"><span class="nav-text">有符号数和无符号数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令的表示"><span class="nav-text">指令的表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑操作"><span class="nav-text">逻辑操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策指令"><span class="nav-text">决策指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#循环"><span class="nav-text">循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#swich-case"><span class="nav-text">swich/case</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址"><span class="nav-text">寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#32位立即数"><span class="nav-text">32位立即数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支和跳转中的寻址"><span class="nav-text">分支和跳转中的寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址模式总结"><span class="nav-text">寻址模式总结</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -695,6 +773,56 @@ window.addEventListener('pjax:success', () => {
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
