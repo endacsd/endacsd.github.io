@@ -260,7 +260,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/12/17/POD5/">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2020/03/02/vim/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="endacsd">
@@ -274,7 +274,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/12/17/POD5/" class="post-title-link" itemprop="url">存储器</a>
+            <a href="/2020/03/02/vim/" class="post-title-link" itemprop="url">vim</a>
           
         </h1>
 
@@ -289,7 +289,7 @@
                 
               
 
-              <time title="创建时间：2019-12-17 21:18:45" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:45+08:00">2019-12-17</time>
+              <time title="创建时间：2020-03-02 16:36:19" itemprop="dateCreated datePublished" datetime="2020-03-02T16:36:19+08:00">2020-03-02</time>
             </span>
           
             
@@ -300,7 +300,154 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 18:31:46" itemprop="dateModified" datetime="2019-12-18T18:31:46+08:00">2019-12-18</time>
+                <time title="修改时间：2020-03-04 16:43:54" itemprop="dateModified" datetime="2020-03-04T16:43:54+08:00">2020-03-04</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>感觉vim的操作是真的多，linux的课程也在讲，个人也有使用vim的需求，这里就记录一下vim的一些操作以及配置</p>
+<p>安装vim</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
+<p>vim 一共有四种模式</p>
+<ul>
+<li>正常模式</li>
+<li>插入模式</li>
+<li>可视模式</li>
+<li>替换模式</li>
+</ul>
+<p>启动vim</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim filename</span><br></pre></td></tr></table></figure>
+<p>进入之后默认是正常模式</p>
+<p>我们使用i,o,a进入插入模式</p>
+<p>vim 是区分大小写的</p>
+<p>例如o和O的功能是不同的</p>
+<p>i 在光标左侧输入正文</p>
+<p>I 在光标所在行的开头输入正文</p>
+<p>a 在光标右侧输入正文</p>
+<p>A 在光标所在的末尾输入正文</p>
+<p>o 在光标所在行的下一行添加新行，光标位于新行的开头</p>
+<p>O 在光标所在行的上一行添加新行，光标位于新行的开头</p>
+<p>光标移动</p>
+<p>hjkl,</p>
+<p>0，^ ,$,g_,/pattern </p>
+<p>NG</p>
+<p>gg</p>
+<p>G</p>
+<p>w,e</p>
+<p>%</p>
+<p>f t</p>
+<p>dt</p>
+<p># *</p>
+<p>hjkl 对应左下上右</p>
+<p>0 到行头</p>
+<p>^ 到本行第一个非blank字符</p>
+<p>$ 到本行行尾</p>
+<p>g_ 到本行最后一个非blank字符</p>
+<p>fa 到本行下一个为a的字符</p>
+<p>ta 到本行下一个a前的字符</p>
+<p>F,T 方向相反</p>
+<p>/pattern  查找 pattern 按n下一个</p>
+<p>?pattern</p>
+<p>N<command\> 重复某个命令N次</command\></p>
+<p>. 重复上一个命令</p>
+<p>gg 到第一行</p>
+<p>G 到最后一行</p>
+<p>NG 到第N行</p>
+<p>b 到上一个单词的开头(如果不在单前字母开头，会到当前字母开头)</p>
+<p>w 到下一个单次的开头</p>
+<p>e 到下一个单词的结尾(如果不在当前单词结尾，会到当前字母结尾)</p>
+<p>(小写的单词由字母，数字，下划线组成，大写是按空格)</p>
+<p>% 匹配括号移动</p>
+<h1 id="匹配到光标当前所在的单次-上一个，下一个"><a href="#匹配到光标当前所在的单次-上一个，下一个" class="headerlink" title=" 匹配到光标当前所在的单次 (#上一个，下一个)"></a><em> 匹配到光标当前所在的单次 (#上一个，</em>下一个)</h1><p>dd 删除当前行</p>
+<p>x 删除当前光标</p>
+<p>u 撤销最近的修改</p>
+<p>U 撤销对当前行做的所有修改</p>
+<p>r 替换光标位置上的一个字符</p>
+<p>R 替换从光标位置开始的字符 同时改变进入替换文本模式</p>
+<p>visual 模式</p>
+<p><action\>a<object\> <action\>i<object\></object\></action\></object\></action\></p>
+<p>:split 分屏 </p>
+<p>:vsplit 竖直平分</p>
+<p><c-w\><dir\> 切换分屏 hjkl 方向键 </dir\></c-w\></p>
+<p><c-n\> 和<c-p\></c-p\></c-n\></p>
+<p>:Sex - 水平分割一个窗口浏览文件系统</p>
+<p>:Vex- 垂直分割一个窗口，浏览文件系统</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2020/02/29/CM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="endacsd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="endacsd">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/29/CM/" class="post-title-link" itemprop="url">组合数学</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-29 12:00:11" itemprop="dateCreated datePublished" datetime="2020-02-29T12:00:11+08:00">2020-02-29</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-07 19:22:20" itemprop="dateModified" datetime="2020-03-07T19:22:20+08:00">2020-03-07</time>
               </span>
             
           
@@ -310,7 +457,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机组成原理/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/math/" itemprop="url" rel="index"><span itemprop="name">math</span></a></span>
 
                 
                 
@@ -329,11 +476,191 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>存储器的结构</p>
+          <h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><h4 id="第一次作业"><a href="#第一次作业" class="headerlink" title="第一次作业"></a>第一次作业</h4><ol>
+<li>证明：在一个至少有2人的小组中，总存在两个人，他们在组内所认识的人数相同.</li>
+<li>证明：平面上任取5个坐标为整数的点，则其中至少有两个点，由它们所连线段的中点的坐标也是整数.<br>证明：任给5个数，则必能从中选出3个，使得它们的和能被3整除.</li>
+<li>一名实验员在50天里每天至少做一次实验，而实验总次数不超过75.证明一定存在连续的若干天，她正好做了24次实验.</li>
+<li>证明：从S={1,3,5,…,599}这300个奇数中任意选取101个数，在所选出的数中一定存在2个数，它们之间最多差4.</li>
+<li>证明：从1~200中任意选取70个数，总有两个数的差是4，5或9.</li>
+<li>在1-91这91个自然数中任取k个数，使得其中必有两个自然数p,q满足 试确定自然数k的最小值，并说明理由.</li>
+</ol>
+<script type="math/tex; mode=display">
+1. 证明：在一个至少有2人的小组中，总存在两个人，他们在组内所认识的人数相同.
+\\
+我们假设第i个人认识的人数为l_i
+显然0\leq l_i <n 
+\\ l_i 一共有n-1 个取值，
+所以必然存在相同的值</script><script type="math/tex; mode=display">
+2证明：平面上任取5个坐标为整数的点，则其中至少有两个点，由它们所连线段的中点的坐标也是整数.
+\\
+我们设坐标为(x_i,y_i)(1\leq i\leq 5)\\
+我们考虑奇偶，一共四种类型:(奇数,奇数),(奇数,偶数),(偶数,奇数),(偶数,偶数)
+\\
+显然必定有类型相同的，我们选这两个点，他们的中点坐标也一定是偶数
+\\
+
+证明：任给5个数，则必能从中选出3个，使得它们的和能被3整除.
+\\
+我们考虑每个数的余数，他们可能是0,1,2.
+\\
+情况1: 每种余数都出现了，我们直接每种余数选一个即可\\
+情况2: 有一种余数没有出现，所以必然有一种余数出现了3次，我们选这三个数即可
+综上，原命题成立</script><script type="math/tex; mode=display">
+3.一名实验员在50天里每天至少做一次实验，而实验总次数不超过75.证明一定存在连续的若干天，她正好做了24次实验.
+\\
+
+设他第i天做的实验次数为a_i,前i天一共做了s_i次实验.
+\\
+ 1 \leq s_i\leq 75
+ \\
+ 25 \leq s_i+24 \leq 99
+\\
+我们考虑序列s_1,s_2,s_3,...,s_{50},s_1+24,s_2+24+,...,s_{50}+24
+\\
+他们的值在1到99,而一共有100个数，所以必然有两个数是相等的.
+\\
+又因为，s是严格单调增加的，所以他们两两不同，所以存在i,j,使得s_i=s_j+24
+
+\\
+所以存在连续的若干天,她正好做了24次实验.</script><script type="math/tex; mode=display">
+4.证明：从S={1,3,5,…,599}这300个奇数中任意选取101个数，在所选出的数中一定存在2个数，它们之间最多差4.
+\\
+我们把这些数，分为100组，我们把这些数分为\{1,3,5\},\{7,9,11\},...,\{595,597,599\}
+\\
+取101个数，必然会在某组数中取到两个以上，而在这组数中，它们最多差4</script><script type="math/tex; mode=display">
+证明：从1到200中任意选取70个数，总有两个数的差是4，5或9.
+
+\\
+考虑选的70个数为s_1,s_2,...s_{70}.
+考虑序列为s_1,s_2,...s_{70}，s_1+4,s_2+4,...s_{70}+4,s_1+9,s_2+9,...s_{70}+9
+\\
+它们的取值为1-209,而一共有210个数，所以必然有两个相同,又s互不相同，所以必然有两个数的差为4,5或9</script><script type="math/tex; mode=display">
+在1-91这91个自然数中任取k个数，使得其中必有两个自然数p,q满足\frac{2}{3}\leq \frac{q}{p} \leq \frac{3}{2}.
+\\
+试确定自然数k的最小值，并说明理由.
+\\
+当k=9时，不满足，我们可以选择(1,2,4,7,11,17,26,40,61),这个时候不存在。
+\\
+当k=10时，满足，我们可以构造如下的划分
+\\(1)
+\\(2\dots 3) 
+\\(4\dots 6)
+\\(7\dots 10)
+\\(11\dots 16)
+\\(17\dots 25)
+\\(26\dots 39)
+\\(40\dots 60)
+\\(61\dots 91)
+\\
+所以必然会有两个数出现在同一组，而在同一组的数满足条件
+所以k最小等于10</script><script type="math/tex; mode=display">
+1. n个元素，一共n^2个选择，相当于n^2的子集
+\\
+2. 因为不能重复，所以相当于是n选r，然后每双可以分为左和右,所以考虑左右需要乘以2^r
+\\
+3.10000不是，然后考虑0000-9999,相当于选一个位置填5，其他填非5
+\\
+4. 456321, 6321递减，所以选5，然后排列1236,
+\quad1456 的下一个应该是2345
+\\
+5.直接考虑字典序即可得到</script>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2020/02/25/CSO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="endacsd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="endacsd">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/02/25/CSO/" class="post-title-link" itemprop="url">计算机系统结构</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-25 15:54:31" itemprop="dateCreated datePublished" datetime="2020-02-25T15:54:31+08:00">2020-02-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-08 11:37:56" itemprop="dateModified" datetime="2020-03-08T11:37:56+08:00">2020-03-08</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>笔记</p>
           <!--noindex-->
           
             <div class="post-button">
-              <a class="btn" href="/2019/12/17/POD5/#more" rel="contents">
+              <a class="btn" href="/2020/02/25/CSO/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -362,7 +689,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/12/17/POD4/">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2020/02/25/OS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="endacsd">
@@ -376,7 +703,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/12/17/POD4/" class="post-title-link" itemprop="url">处理器</a>
+            <a href="/2020/02/25/OS/" class="post-title-link" itemprop="url">操作系统</a>
           
         </h1>
 
@@ -391,7 +718,7 @@
                 
               
 
-              <time title="创建时间：2019-12-17 21:18:39" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:39+08:00">2019-12-17</time>
+              <time title="创建时间：2020-02-25 15:53:46" itemprop="dateCreated datePublished" datetime="2020-02-25T15:53:46+08:00">2020-02-25</time>
             </span>
           
             
@@ -402,7 +729,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 20:35:50" itemprop="dateModified" datetime="2019-12-18T20:35:50+08:00">2019-12-18</time>
+                <time title="修改时间：2020-02-28 22:05:34" itemprop="dateModified" datetime="2020-02-28T22:05:34+08:00">2020-02-28</time>
               </span>
             
           
@@ -412,7 +739,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机组成原理/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
 
                 
                 
@@ -431,12 +758,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>MIPS指令集的核心子集</p>
-<p>处理器和流水线</p>
+          <p>作为学习笔记</p>
           <!--noindex-->
           
             <div class="post-button">
-              <a class="btn" href="/2019/12/17/POD4/#more" rel="contents">
+              <a class="btn" href="/2020/02/25/OS/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -465,7 +791,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/12/17/POD3/">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2020/02/25/MCS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="endacsd">
@@ -479,7 +805,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/12/17/POD3/" class="post-title-link" itemprop="url">算术运算</a>
+            <a href="/2020/02/25/MCS/" class="post-title-link" itemprop="url">微机系统</a>
           
         </h1>
 
@@ -494,19 +820,11 @@
                 
               
 
-              <time title="创建时间：2019-12-17 21:18:34" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:34+08:00">2019-12-17</time>
+              <time title="创建时间：2020-02-25 15:53:29 / 修改时间：16:05:09" itemprop="dateCreated datePublished" datetime="2020-02-25T15:53:29+08:00">2020-02-25</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 18:03:48" itemprop="dateModified" datetime="2019-12-18T18:03:48+08:00">2019-12-18</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -515,7 +833,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机组成原理/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
 
                 
                 
@@ -534,11 +852,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>关于运算和浮点数的表示</p>
+          <p>作为学习的笔记</p>
           <!--noindex-->
           
             <div class="post-button">
-              <a class="btn" href="/2019/12/17/POD3/#more" rel="contents">
+              <a class="btn" href="/2020/02/25/MCS/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -567,7 +885,7 @@
   
   
   <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/12/17/POD2/">
+    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2020/01/19/LeetcodeWk171/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="endacsd">
@@ -581,7 +899,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/12/17/POD2/" class="post-title-link" itemprop="url">指令</a>
+            <a href="/2020/01/19/LeetcodeWk171/" class="post-title-link" itemprop="url">LeetcodeWk171</a>
           
         </h1>
 
@@ -596,7 +914,7 @@
                 
               
 
-              <time title="创建时间：2019-12-17 21:18:29 / 修改时间：21:35:40" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:29+08:00">2019-12-17</time>
+              <time title="创建时间：2020-01-19 00:21:08 / 修改时间：00:45:02" itemprop="dateCreated datePublished" datetime="2020-01-19T00:21:08+08:00">2020-01-19</time>
             </span>
           
             
@@ -609,7 +927,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机组成原理/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -628,113 +946,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>MIPS 指令集</p>
+          <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>这次比赛好像很简单的亚子，只少比这几天的自闭camp好太多了，好吧，还是我菜</p>
+<p><a href="https://leetcode-cn.com/contest/weekly-contest-171/" target="_blank" rel="noopener">第171 场周赛</a></p>
           <!--noindex-->
           
             <div class="post-button">
-              <a class="btn" href="/2019/12/17/POD2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/12/17/POD1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="endacsd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="endacsd">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/12/17/POD1/" class="post-title-link" itemprop="url">计算机概要与技术</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-12-17 21:18:24" itemprop="dateCreated datePublished" datetime="2019-12-17T21:18:24+08:00">2019-12-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 12:09:25" itemprop="dateModified" datetime="2019-12-18T12:09:25+08:00">2019-12-18</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机组成原理/" itemprop="url" rel="index"><span itemprop="name">计算机组成原理</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>一些计算机的基本概念</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/12/17/POD1/#more" rel="contents">
+              <a class="btn" href="/2020/01/19/LeetcodeWk171/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -803,7 +1020,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-19 15:41:28" itemprop="dateModified" datetime="2019-10-19T15:41:28+08:00">2019-10-19</time>
+                <time title="修改时间：2020-02-24 20:23:36" itemprop="dateModified" datetime="2020-02-24T20:23:36+08:00">2020-02-24</time>
               </span>
             
           
@@ -820,42 +1037,15 @@
 
       
           <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>被坑了很久，网上的教程真的没有问题吗</p>
-<meta name="referrer" content="no-referrer">
-
-<h3 id="在windows10-下安装MySQL"><a href="#在windows10-下安装MySQL" class="headerlink" title="在windows10 下安装MySQL"></a>在windows10 下安装<strong>MySQL</strong></h3><p>先下载安装包</p>
-<p><a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL 下载</a> </p>
-<p>解压在<strong>C:\web\mysql-8.0.18-winx64(filename)</strong></p>
-<p>然后配置MySQL 的配置文件</p>
-<p>在刚才的目录下创建my.ini 配置文件，编辑my.ini 配置一下基本信息  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line"># 设置mysql客户端默认字符集</span><br><span class="line"><span class="keyword">default</span>-character-<span class="built_in">set</span>=utf8</span><br><span class="line"> </span><br><span class="line">[mysqld]</span><br><span class="line"># 设置<span class="number">3306</span>端口</span><br><span class="line">port = <span class="number">3306</span></span><br><span class="line"># 设置mysql的安装目录</span><br><span class="line">basedir=C:\\web\\mysql<span class="number">-8.0</span><span class="number">.18</span>-winx64</span><br></pre></td></tr></table></figure>
-<p>然后以<strong>管理员</strong> 身份运行cmd </p>
-<p>切换目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd C:\web\\mysql-8.0.18-winx64\bin</span><br></pre></td></tr></table></figure>
-<p>初始化数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld --initialize --console</span><br></pre></td></tr></table></figure>
-<p>然后会出现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\web\mysql-8.0.18-winx64\bin&gt;mysqld --initialize --console </span><br><span class="line">2019-10-15T15:44:17.770101Z 0 [System] [MY-013169] [Server] C:\web\mysql-8.0.18winx64\bin\mysqld.exe (mysqld 8.0.18) initializing of server in progress as process 18420                                                                                      2019-10-15T15:44:27.230321Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: sdWkukAYW6+f</span><br></pre></td></tr></table></figure>
-<p>sdWkukAYW6+f 是<strong>初始密码</strong></p>
-<p><strong>一定要把最后的sdWkukAYW6+f记住</strong>，因为等一会会用到</p>
-<p>然后输入安装命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld install</span><br></pre></td></tr></table></figure>
-<p>初始化 data 目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld --initialize-insecure</span><br></pre></td></tr></table></figure>
-<p>启动服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql</span><br></pre></td></tr></table></figure>
-<h2 id="登录MySQL"><a href="#登录MySQL" class="headerlink" title="登录MySQL"></a>登录MySQL</h2><p>启动服务成功后</p>
-<p>登录本机的 MySQL 数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-<p>按回车确认, 如果安装正确且 MySQL 正在运行, 会得到以下响应:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter password:</span><br></pre></td></tr></table></figure>
-<p>输入我们刚才记好的初始密码，登录成功会显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">C:\web\mysql-8.0.18-winx64\bin&gt;mysql -u root -p</span><br><span class="line">Enter password: ******</span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 17</span><br><span class="line">Server version: 8.0.18 MySQL Community Server - GPL</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line">Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
-<p>然后我们需要更改初始密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password = &apos;password&apos;(your password);</span><br></pre></td></tr></table></figure>
-<p>然后退出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
-<p>然后就完成了</p>
-
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2019/10/16/build-mysql/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1167,110 +1357,6 @@
   </article>
 
     
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://endacsd.github.io/2019/10/04/Codeforces-Round-590-Div-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="endacsd">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="endacsd">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/04/Codeforces-Round-590-Div-3/" class="post-title-link" itemprop="url">Codeforces Round#590(Div.3)</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-04 18:21:44" itemprop="dateCreated datePublished" datetime="2019-10-04T18:21:44+08:00">2019-10-04</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-19 15:59:50" itemprop="dateModified" datetime="2019-10-19T15:59:50+08:00">2019-10-19</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/codeforces/" itemprop="url" rel="index"><span itemprop="name">codeforces</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><meta name="referrer" content="no-referrer"></p>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p><a href="https://codeforces.com/contest/1234" target="_blank" rel="noopener">Codeforces Round #590 (Div. 3)</a></p>
-<p><a href="https://codeforces.com/contest/1234/problems" target="_blank" rel="noopener">problems</a></p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/10/04/Codeforces-Round-590-Div-3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </div>
 
   
@@ -1324,7 +1410,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1337,7 +1423,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1350,7 +1436,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1389,7 +1475,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1506,9 +1592,9 @@ window.addEventListener('pjax:success', () => {
   
     
       
-        
-      
     
+      
+        
       
     
       
