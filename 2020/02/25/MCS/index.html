@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="endacsd">
 <meta property="og:description" content="作为学习的笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-25T08:05:09.023Z">
+<meta property="og:updated_time" content="2020-03-20T03:44:33.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微机系统">
 <meta name="twitter:description" content="作为学习的笔记">
@@ -294,11 +294,19 @@
                 
               
 
-              <time title="创建时间：2020-02-25 15:53:29 / 修改时间：16:05:09" itemprop="dateCreated datePublished" datetime="2020-02-25T15:53:29+08:00">2020-02-25</time>
+              <time title="创建时间：2020-02-25 15:53:29" itemprop="dateCreated datePublished" datetime="2020-02-25T15:53:29+08:00">2020-02-25</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-20 11:44:33" itemprop="dateModified" datetime="2020-03-20T11:44:33+08:00">2020-03-20</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -371,7 +379,7 @@
 <li>运算速度</li>
 </ul>
 <p>普遍采用单位时间内执行指令的平均条数来衡量，用MIPS作为计量单位，即每秒执行百万条指令</p>
-<h4 id="微信计算机的应用"><a href="#微信计算机的应用" class="headerlink" title="微信计算机的应用"></a>微信计算机的应用</h4><ul>
+<h4 id="微型计算机的应用"><a href="#微型计算机的应用" class="headerlink" title="微型计算机的应用"></a>微型计算机的应用</h4><ul>
 <li>科学计算</li>
 <li>信息处理</li>
 <li>检测及控制系统与装置</li>
@@ -418,6 +426,105 @@
 <li>嵌入式应用</li>
 <li>智能化</li>
 </ul>
+<h3 id="16位微处理器Intel"><a href="#16位微处理器Intel" class="headerlink" title="16位微处理器Intel"></a>16位微处理器Intel</h3><h4 id="8086微处理器的构成"><a href="#8086微处理器的构成" class="headerlink" title="8086微处理器的构成"></a>8086微处理器的构成</h4><p>内部结构</p>
+<p>由两个独立的逻辑单元组成:</p>
+<ol>
+<li>总线接口单元BIU: Bus Interface Unit,完成所有总线操作。</li>
+<li>执行单元EU: Execution Unit, 执行指令。</li>
+</ol>
+<p>二者并行工作</p>
+<p>8086/8088</p>
+<p>EU相同，BIU<strong>有差别</strong></p>
+<ol>
+<li>8086: 外部DB 16 位， 指令队列为6个字节</li>
+<li>8088: 外部DB 8   位， 指令队列为4个字节</li>
+</ol>
+<p>BIU</p>
+<p>BIU 组成</p>
+<ol>
+<li>4个16位段寄存器</li>
+<li>16位指令指针</li>
+<li>6字节指令队列</li>
+<li>总线控制逻辑</li>
+<li>20位地址加法器</li>
+</ol>
+<p>BIU功能</p>
+<ol>
+<li>取指令</li>
+<li>形成物理地址</li>
+<li>传送数据，实现CPU与内存,I/O端口间的数据传送</li>
+</ol>
+<p>指令预取策略:</p>
+<p>当指令队列出现2个以上空字节时(8086)，自动按<strong>CS:IP</strong> 组成20位物理地址，到存储器去取指令，一次取2个字节</p>
+<p>EU</p>
+<p>EU 组成:</p>
+<ol>
+<li>16位ALU</li>
+<li>16位标志寄存器</li>
+<li>EU控制电路</li>
+<li>8个16位通用寄存器</li>
+</ol>
+<p>EU 功能: 完成指令所规定的操作</p>
+<ol>
+<li>从BIU指令队列读取指令</li>
+<li>由EU控制电路译码分析</li>
+<li>在EU种计算操作数的16位偏移地址送BIU,由BIU的$\sum$形成20位物理地址</li>
+<li>将取来的操作数送ALU进行指令运算</li>
+<li>结果送寄存器或送到BIU放到内存</li>
+<li>本次操作状态放到标志寄存器中</li>
+</ol>
+<p>结构特点</p>
+<ol>
+<li>由BIU,EU 两个独立单元组成</li>
+<li>取指和执行重叠</li>
+</ol>
+<h4 id="8086的编程结构"><a href="#8086的编程结构" class="headerlink" title="8086的编程结构"></a>8086的编程结构</h4><p>8086 CPU 有14个16位寄存器</p>
+<p>数据寄存器</p>
+<p>存放操作数据及中间结果</p>
+<p>1) AX 累加器，Accumulator Register</p>
+<p>2)BS 基址寄存器， Base Register</p>
+<p>3)CX 计数器， Counter</p>
+<p>4)DX 数据寄存器 Data Register</p>
+<p>可高低字节分别寻址</p>
+<p>可存16位地址</p>
+<p>有专门功能，如计数器，累加器</p>
+<p>指针及变址寄存器</p>
+<p> 存放逻辑地址的偏移量，是20位物理地址的组成成分</p>
+<p>1)SP堆栈指针，Stack Pointer ， 指示在堆栈段中栈顶的位置，用于数据进栈，出栈的位置指向</p>
+<p>2） BP 基址指针，Base Pointer ， 指示在堆栈中一个数据区的基址位置，用于访问堆栈段中的某个数据。</p>
+<p>3） SI 源变址寄存器，Source Index ， 源串指针，指示在数据段中一个源串操作数的位置</p>
+<p>4) DI目的变址寄存器，Destination Index 目的串指针，指示在附加段中一个目的串的操作数的位置</p>
+<p>段寄存器</p>
+<p>存放当前段的段起始地址</p>
+<p>CS 代码段寄存器，Code Segment,存放当前执行程序的段起始地址</p>
+<p>SS 堆</p>
+<h3 id="Pentium-系列微处理器的基本结构"><a href="#Pentium-系列微处理器的基本结构" class="headerlink" title="Pentium 系列微处理器的基本结构"></a>Pentium 系列微处理器的基本结构</h3><p>结构特性：</p>
+<ol>
+<li>超标量流水线，超标量为2</li>
+<li>分立Cache，指令数据各8K</li>
+<li>重新设计的浮点运算部件，8级流水</li>
+<li>动态转移预测</li>
+<li>内部结构32位，外部DB64位，属于32位机</li>
+<li>4中工作方式，实地址，保护虚地址，虚拟8086，系统管理</li>
+</ol>
+<p>部件有</p>
+<ol>
+<li>总线接口部件</li>
+<li>预取缓冲存储器</li>
+<li>整数运算部件</li>
+<li>转移目标缓冲气</li>
+<li>浮点运算部件</li>
+<li>代码Cache</li>
+<li>数据Cache</li>
+<li>指令译码部件</li>
+<li>控制部件</li>
+<li>整数及浮点数寄存器组</li>
+<li>控制ROM部件</li>
+</ol>
+<p>总线接口部件</p>
+<p>总线接口部件包括三总线的控制:</p>
+<p>全部总线控制信号，独立的32位地址总线，独立的64位数据总线。</p>
+<p>​    </p>
 
     </div>
 
@@ -504,7 +611,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微信计算机的应用"><span class="nav-text">微信计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机的应用"><span class="nav-text">微型计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16位微处理器Intel"><span class="nav-text">16位微处理器Intel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8086微处理器的构成"><span class="nav-text">8086微处理器的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的编程结构"><span class="nav-text">8086的编程结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium-系列微处理器的基本结构"><span class="nav-text">Pentium 系列微处理器的基本结构</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -564,6 +671,10 @@
       友链
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://makisevon.net" title="https://makisevon.net" rel="noopener" target="_blank">JJ</a>
+        </li>
+      
         <li class="links-of-blogroll-item">
           <a href="http://blog.sagiri-photo.com" title="http://blog.sagiri-photo.com" rel="noopener" target="_blank">SAGIRI</a>
         </li>
