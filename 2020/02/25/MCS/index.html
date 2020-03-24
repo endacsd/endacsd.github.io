@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="endacsd">
 <meta property="og:description" content="作为学习的笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-20T03:44:33.867Z">
+<meta property="og:updated_time" content="2020-03-23T12:30:26.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微机系统">
 <meta name="twitter:description" content="作为学习的笔记">
@@ -305,7 +305,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-20 11:44:33" itemprop="dateModified" datetime="2020-03-20T11:44:33+08:00">2020-03-20</time>
+                <time title="修改时间：2020-03-23 20:30:26" itemprop="dateModified" datetime="2020-03-23T20:30:26+08:00">2020-03-23</time>
               </span>
             
           
@@ -494,11 +494,45 @@
 <p>2） BP 基址指针，Base Pointer ， 指示在堆栈中一个数据区的基址位置，用于访问堆栈段中的某个数据。</p>
 <p>3） SI 源变址寄存器，Source Index ， 源串指针，指示在数据段中一个源串操作数的位置</p>
 <p>4) DI目的变址寄存器，Destination Index 目的串指针，指示在附加段中一个目的串的操作数的位置</p>
+<hr>
 <p>段寄存器</p>
 <p>存放当前段的段起始地址</p>
 <p>CS 代码段寄存器，Code Segment,存放当前执行程序的段起始地址</p>
 <p>SS 堆</p>
-<h3 id="Pentium-系列微处理器的基本结构"><a href="#Pentium-系列微处理器的基本结构" class="headerlink" title="Pentium 系列微处理器的基本结构"></a>Pentium 系列微处理器的基本结构</h3><p>结构特性：</p>
+<h4 id="8086外部引脚"><a href="#8086外部引脚" class="headerlink" title="8086外部引脚"></a>8086外部引脚</h4><p>8086采用40引脚双列直插式封装</p>
+<p>8086有两种工作模式： 最大模式，最小模式</p>
+<p>有8个引脚在不同的模式功能下不同</p>
+<p>1)</p>
+<p>VCC,GND: 电源，地，单一+5V电源，两个接地</p>
+<p>2)</p>
+<p>AD15-AD0: 地址/数据</p>
+<p>3）</p>
+<p>A19/S6-A16/S3: 地址/状态</p>
+<p>分时输出高4位地址及状态信息</p>
+<p>4)</p>
+<p>INTR: 可屏蔽中断请求信号，高电平有效；</p>
+<p>NMI: 非屏蔽中断请求信号，上升沿有效</p>
+<p>5)</p>
+<p>$\overline{RD}$  : 读选通</p>
+<p>6)</p>
+<p>CLK: 时钟，占空比1/3</p>
+<p>7)</p>
+<p>RESET: 复位，4个T周期，清0标志寄存器，IP,DS，SS,ES,指令队列，CS=FFFFH</p>
+<p>8)</p>
+<p>READY: 准备就绪，有效时表示主存或I/O接口准备号</p>
+<h4 id="8086的两种组成模式"><a href="#8086的两种组成模式" class="headerlink" title="8086的两种组成模式"></a>8086的两种组成模式</h4><h4 id="8086总线周期"><a href="#8086总线周期" class="headerlink" title="8086总线周期"></a>8086总线周期</h4><p>工作时序: 微处理器按照一定的时序工作</p>
+<p>时钟周期: CPU主频每个时钟脉冲的持续时间。用一个T表示</p>
+<p>总线周期: CPU通过总线进行一次读或写的过程</p>
+<p>指令周期: 执行一条指令所需要的时间</p>
+<p>总线请求相应:利用总线传输数据时，总线控制部件必须获得总线的控制权，总线请求时总线控制部件发出的占用总线的请求信号，总线相应时但钱控制总线的部件或总线控制器在接收到总线请求后，给出的应答信号</p>
+<p>中断相应周期: 中断响应十CPU接受中断请求后的处理过程，在响应中断时，CPU在当前指令结束后，插入两个总线周期，发出中断答应，并通过总线获取中断类型码</p>
+<p>8086 时钟状态</p>
+<p>8086一个基本的总线周期由4个时钟周期组成。每个时钟称为T状态，用T1，T2,T3,和T4表示</p>
+<p>T1状态: CPU发出地址。CPU存储器地址或I/O端口的地址送上地址总线</p>
+<p>T2状态:扯地址，发控制信号，进行读写准备，CPU撤销地址/数据，地址/状态复用线上的地址，地址/数据复用线浮置，地址/状态复用线输出状态，即复用信号在这个周期切换，读写控制信号有效。</p>
+<p>T3状态: 地址/数据线上出现数据，写操作，CPU提供数据;读操作，等待存储器或I/O提供数据，检查READY信号，未就绪，插入TW,TW操作与T3相同</p>
+<p>T4状态:完成数据读/写，控制信号无效，结束总线操作</p>
+<h4 id="8086的存储器组织"><a href="#8086的存储器组织" class="headerlink" title="8086的存储器组织"></a>8086的存储器组织</h4><h4 id="8086的I-O-组织"><a href="#8086的I-O-组织" class="headerlink" title="8086的I/O 组织"></a>8086的I/O 组织</h4><h3 id="Pentium-系列微处理器的基本结构"><a href="#Pentium-系列微处理器的基本结构" class="headerlink" title="Pentium 系列微处理器的基本结构"></a>Pentium 系列微处理器的基本结构</h3><h4 id="Pentium-微处理机的基本结构"><a href="#Pentium-微处理机的基本结构" class="headerlink" title="Pentium 微处理机的基本结构"></a>Pentium 微处理机的基本结构</h4><p>结构特性：</p>
 <ol>
 <li>超标量流水线，超标量为2</li>
 <li>分立Cache，指令数据各8K</li>
@@ -525,6 +559,214 @@
 <p>总线接口部件包括三总线的控制:</p>
 <p>全部总线控制信号，独立的32位地址总线，独立的64位数据总线。</p>
 <p>​    </p>
+<h4 id="Pentium-微处理机的编程结构"><a href="#Pentium-微处理机的编程结构" class="headerlink" title="Pentium 微处理机的编程结构"></a>Pentium 微处理机的编程结构</h4><p>Pentium微处理器的寄存器组成包括5部分</p>
+<ul>
+<li><p>基本结构寄存器: 16个，其中通用8,控制2，段寄存器6个</p>
+</li>
+<li><p>系统级寄存器9个，其中系统4，控制5</p>
+</li>
+<li>调试寄存器 8个</li>
+<li>模型专用寄存器 20个</li>
+<li>浮点寄存器 18个</li>
+</ul>
+<p>E: 扩展</p>
+<p>图表</p>
+<h3 id="Pentium微处理器的指令系统"><a href="#Pentium微处理器的指令系统" class="headerlink" title="Pentium微处理器的指令系统"></a>Pentium微处理器的指令系统</h3><h4 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h4><p>一条指令由5部分组成:前缀，操作码，寻址方式，偏移量，立即数</p>
+<p>(a) 前缀 指令，段取代，操作数大小取代，地址大小取代</p>
+<h5 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h5><p>是对指令的某种限定或说明</p>
+<p>4 种：</p>
+<p>指令前缀: 说明指令的相关特性</p>
+<p>段超越前缀: 用超越段读取默认段</p>
+<p>操作数大小前缀：改变默认的数据长度</p>
+<p>地址大小地址: 改变默认的地址长度</p>
+<p>指令,段取代 显示，由编程人员确定</p>
+<h5 id="操作码"><a href="#操作码" class="headerlink" title="操作码"></a>操作码</h5><p>规定了微处理器执行的操作</p>
+<p>操作码长度为1或2个字节</p>
+<p>第一个字节的前6位是操作码，</p>
+<p>其余两位种的D位来执行数据流的方向</p>
+<p>W位用来指示数据的长度是字节还是字或双字</p>
+<p>D: 数据流方向</p>
+<p>D=1 ,R/M -&gt; REG</p>
+<p>D=0, REG -&gt; R/M</p>
+<p>W: 数据长度</p>
+<p>W=1, 字，或双字</p>
+<p>W=0, 字节</p>
+<h5 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h5><p>用来指出CPU获取操作数的方式</p>
+<p>(b) 指令   操作码，MOD/RM, SIB , 偏移量，立即数</p>
+<p>MOD/RM</p>
+<p>MOD REG R/M</p>
+<p>7      6 543   210</p>
+<p>MOD 域： 规定所选指令的寻址方式，选择寻址类型及所选的类型是否有位移量</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>16位指令功能</th>
+<th>32位指令功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>没有位移量</td>
+<td>没有位移量</td>
+</tr>
+<tr>
+<td>01</td>
+<td>8位扩展</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>REG 域:</p>
+<p>R/M 域 </p>
+<h5 id="位-偏移量及立即数"><a href="#位-偏移量及立即数" class="headerlink" title="位/偏移量及立即数"></a>位/偏移量及立即数</h5><p>位/偏移量： 允许指令种直接给出寻址方式所需要的位/偏移量。</p>
+<p>偏移量： 直接寻址地址，无符号数，如MOV AX,[2000H]</p>
+<p>位移量： 相对地址中的数据地址，有符号数，如 MOV AX, [SI+6]</p>
+<p>立即数： 允许指令中直接给出操作数</p>
+<h4 id="寻址方式-1"><a href="#寻址方式-1" class="headerlink" title="寻址方式"></a>寻址方式</h4><p>一条汇编指令要解决两个问题</p>
+<ol>
+<li>做什么</li>
+<li>对象，或对象来源，即寻址方式</li>
+</ol>
+<p>两类寻址</p>
+<ol>
+<li>对操作数寻址</li>
+<li>对转移地址，调用地址寻址</li>
+</ol>
+<h5 id="数据的寻址方式"><a href="#数据的寻址方式" class="headerlink" title="数据的寻址方式"></a>数据的寻址方式</h5><p>使用字节，字(16位)，双字(32位)和4倍字(64位)。采用低端存储方式</p>
+<p>与数据有关的寻址方式有11种：</p>
+<p>图片</p>
+<p>立即寻址：</p>
+<p>寄存器寻址：</p>
+<p>存储器寻址：</p>
+<h6 id="立即寻址"><a href="#立即寻址" class="headerlink" title="立即寻址"></a>立即寻址</h6><p>操作数是指令的一部分。</p>
+<p>主要用于寄存器赋值，速度快</p>
+<p>立即数必须以数字开头，以字母开头的16进制数必须以数字0做前缀</p>
+<p>B: 二进制，H表示16进制数，H表示16进展数，Q表示8进展数，D或者缺省表示10进制数.</p>
+<p>有符号号数用补码表示</p>
+<p>立即数可以用+,-,*./ 表示算术表达式。</p>
+<h6 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h6><p>寄存器寻址: 操作数再CPU中的某个寄存器中，指令指定寄存器号</p>
+<h6 id="存储器寻址"><a href="#存储器寻址" class="headerlink" title="存储器寻址"></a>存储器寻址</h6><p>存储器寻址： 操作数才存储器中</p>
+<p>存储器地址</p>
+<ul>
+<li><p>物理地址</p>
+</li>
+<li><p>逻辑地址： 段基址: 偏移量</p>
+</li>
+</ul>
+<p>CPU 要访问存储器操作数，必须先计算存储器的物理地址</p>
+<p>有效地址EA: Effective Address ， 把操作数的偏移地址称为有效地址EA</p>
+<p>有效地址的计算公式</p>
+<p>有效地址的计算公式</p>
+<p>EA= 基址+ (变址 $\times$ 比例因子) + 位移量</p>
+<p>基址： 基址寄存器中的内容。 通常式位于局部变量区的首地址</p>
+<p>变址：变址寄存器中的内容，变址寄存器用于访问数组或字符串的元素</p>
+<p>比例因子： 32位机的寻址方式，寻址中，得到变址值，数组访问特别有用</p>
+<p>位移量： 指令中的一个数，但不是立即数，而一个地址。</p>
+<p>图表9 种存储器寻址方式</p>
+<p>举例</p>
+<h5 id="转移地址的寻址方式"><a href="#转移地址的寻址方式" class="headerlink" title="转移地址的寻址方式"></a>转移地址的寻址方式</h5><p>转移地址寻址: 用于确定转移指令和CALL 指令的转向地址</p>
+<p>转移地址: 转移地址种的操作数式转移的目的地址，称为转移地址</p>
+<h6 id="段内相对寻址"><a href="#段内相对寻址" class="headerlink" title="段内相对寻址"></a>段内相对寻址</h6><p>位移量+IP=EA-&gt; IP/EIP</p>
+<p>位移量是相对值，所以称为段内相对寻址</p>
+<p>因为式相对值，所以便于程序再定位</p>
+<p>用于条件转移，无条件转移，条件庄毅只能用此方式</p>
+<p>短跳转：</p>
+<p>近跳转：</p>
+<p>寄存器(存储器) 内容=EA -&gt; IP/EIP</p>
+<p>这种寻址方式不能用于条件转移指令</p>
+<h6 id="段间直接寻址"><a href="#段间直接寻址" class="headerlink" title="段间直接寻址"></a>段间直接寻址</h6><p>目标段地址: 偏移量=CS:IP/EIP</p>
+<h6 id="段间间接寻址"><a href="#段间间接寻址" class="headerlink" title="段间间接寻址"></a>段间间接寻址</h6><p>连续的存储单元内容=CS:IP/EIP</p>
+<h5 id="堆栈地址寻址"><a href="#堆栈地址寻址" class="headerlink" title="堆栈地址寻址"></a>堆栈地址寻址</h5><p>堆栈: 以”先进后出”方式工作的一个特定的存储器</p>
+<p>堆栈作用: 保存传递参数，现场参数，寄存器内容，返回地址</p>
+<p>80$\times$86规定</p>
+<ol>
+<li>堆栈向小地址方向增加</li>
+<li>必须使用堆栈段SS</li>
+<li>PUSH指令压入数据时，先修改指针，在按照指针指示的单元存入数据</li>
+<li>POP弹出数据时，先按照指针指示的单元取出数据再修改指针</li>
+<li>压入和弹出的数据类型不同，堆栈指针修改的数指也不同</li>
+</ol>
+<h4 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h4><p>指令系统: 指令的集合,软硬件交界面</p>
+<p>Pentium指令按功能分为十类</p>
+<h5 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h5><p>数据传送功能: 源-&gt; 目</p>
+<p>执行指令后，源操作数不变，不影响状态标志</p>
+<p>1 MOV 传送</p>
+<p>格式: MOV DST,SRC ; (DST) &lt;- (SRC)</p>
+<p>式中DST(Destination) 为目的操作数，SRC(Source) 为源操作数</p>
+<p>源，目长度相等，CS可出不可入</p>
+<p>4 PUSH 进栈(push onto stack)</p>
+<p>格式: PUSH SRC; 堆栈 &lt;- (SRC)</p>
+<p>5 POP 出栈(pop from the stack)</p>
+<p>格式: POP DST; (DST)&lt;-堆栈栈顶内容</p>
+<p>6 PUSHF/POPF 16位标志寄存器进栈/出栈</p>
+<p>PUSHF ; 标志寄存器低16位压入堆栈</p>
+<p>POPF; 从栈定弹出2个字节送标志寄存器16位</p>
+<p>10 XCHG 交换(exchange)</p>
+<p>格式: XCHG OPR1,OPR2 ; OPR1 &lt;-&gt; OPR2</p>
+<p>12 CBW 字节转为字(convert byte to word)</p>
+<p>格式: CBW ; AX &lt;-AL 符号扩展</p>
+<p>13CWD 字转换为双字(convert word to double word)</p>
+<p>格式: CWD ; DX:AX &lt;- AX 符号扩展</p>
+<p>16 LEA 有效地址送寄存器(load effective address)</p>
+<p>格式: LEA REG, SRC ; (REG) &lt;- (SRC) 的有效地址</p>
+<p>18 LAHF 标志送AH(load AH with flags)</p>
+<p>格式： LAHF ; AH &lt;- flags 低8位</p>
+<p>19 SAHF AH 送标志寄存器(store AH into flags)</p>
+<p>格式：SAHF ;flgas低8位&lt;-AH</p>
+<p>20 XLAT 换码(translate)</p>
+<p>格式: XLAT</p>
+<p>功能: 完成代码转换，偏移量8位，表长$\leq$256</p>
+<p>16位指令(AL) &lt;- [(BX)+(AL)]</p>
+<p>32位指令(AL) &lt;-[(EBX)+(AL)]</p>
+<h5 id="算术运算指令"><a href="#算术运算指令" class="headerlink" title="算术运算指令"></a>算术运算指令</h5><p>1 ADD 加法(add)</p>
+<p>格式: ADD DST,SRC ; (DST) &lt;- (SRC) +(DST)</p>
+<p>类型: 影响CF,PF,AF,ZF,SF,SF,OF.可以进行8,16,32位操作</p>
+<p>2 ADC 带进位加法(add with carry)</p>
+<p>格式：ADC DST,SRC ; (DST) &lt;- (RSC)+(DST)+CF</p>
+<p>加到最低位</p>
+<p>3 SBU 减法(subtract) </p>
+<p>格式: SUB DST,SRC ; (DST)&lt;-(DST)-(SRC)</p>
+<p>4 SBB 带借位减法(subtract with borrow) </p>
+<p>格式: SBB DST,SRC ; (DST) &lt;- (DST)-(SRC)- CF</p>
+<p>5 INC +1 (increment)</p>
+<p>格式: INC OPR ； (OPR)&lt;-(OPR)+1</p>
+<p>6DEC -1 (decrement)</p>
+<p>格式 DEC OPR;  (OPR)&lt;-(OPR)-1</p>
+<p>7 NEG 求补(negate)</p>
+<p>格式 NEG OPR; ( OPR) &lt;- (-OPR)</p>
+<p>567</p>
+<p>目的操作数: 通用寄存器，存储器单元</p>
+<p>执行INC,DEC 不影响CF</p>
+<p>执行NEG 影响AF,CF,OF,PF,SF,ZF,这六个标志位</p>
+<p>NEG 溢出时， OF=1</p>
+<p>8 CMP 比较 (compare)</p>
+<p>格式: CMP OPR1,OPR2 ; (OPR1)-(OPR2)</p>
+<p>(12) MUL 无符号数乘法(unsigned multiple)</p>
+<p>格式 MUL SRC</p>
+<p>功能:</p>
+<p>字节乘 (AX)&lt;-(AL)$\times$ (SRC)</p>
+<p>字乘 (DX:AX)&lt;-(AX)$\times$(SRC)</p>
+<p>双字乘 (EDX:EAX)&lt;-(EAX)$\times$(SRC)</p>
+<p>说明：</p>
+<p>1）乘数和被乘数必须等长</p>
+<p>2）SRC: 通用寄存器，存储器单元</p>
+<p>3）被乘数: 默认AL,AX,EAX之一</p>
+<p>4) 若乘积的高半部分结果为0，则CF=0,OF=0;否则CF=1,OF=1.从而AF,PF,ZF,SF无定义，即状态不定</p>
+<p>13 IMUL 带符号乘法(signed multiple)</p>
+<p>格式1 IMUL SRC</p>
 
     </div>
 
@@ -560,8 +802,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2020/02/25/OS/" rel="prev" title="操作系统">
-                  操作系统 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/02/25/CSO/" rel="prev" title="计算机系统结构">
+                  计算机系统结构 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -611,7 +853,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机的应用"><span class="nav-text">微型计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16位微处理器Intel"><span class="nav-text">16位微处理器Intel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8086微处理器的构成"><span class="nav-text">8086微处理器的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的编程结构"><span class="nav-text">8086的编程结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium-系列微处理器的基本结构"><span class="nav-text">Pentium 系列微处理器的基本结构</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机的应用"><span class="nav-text">微型计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16位微处理器Intel"><span class="nav-text">16位微处理器Intel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8086微处理器的构成"><span class="nav-text">8086微处理器的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的编程结构"><span class="nav-text">8086的编程结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086外部引脚"><span class="nav-text">8086外部引脚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的两种组成模式"><span class="nav-text">8086的两种组成模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086总线周期"><span class="nav-text">8086总线周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的存储器组织"><span class="nav-text">8086的存储器组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的I-O-组织"><span class="nav-text">8086的I/O 组织</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium-系列微处理器的基本结构"><span class="nav-text">Pentium 系列微处理器的基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的基本结构"><span class="nav-text">Pentium 微处理机的基本结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的编程结构"><span class="nav-text">Pentium 微处理机的编程结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium微处理器的指令系统"><span class="nav-text">Pentium微处理器的指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式"><span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前缀"><span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作码"><span class="nav-text">操作码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位-偏移量及立即数"><span class="nav-text">位/偏移量及立即数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式-1"><span class="nav-text">寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据的寻址方式"><span class="nav-text">数据的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#立即寻址"><span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#寄存器寻址"><span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#存储器寻址"><span class="nav-text">存储器寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#转移地址的寻址方式"><span class="nav-text">转移地址的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#段内相对寻址"><span class="nav-text">段内相对寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间直接寻址"><span class="nav-text">段间直接寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间间接寻址"><span class="nav-text">段间间接寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆栈地址寻址"><span class="nav-text">堆栈地址寻址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据传送指令"><span class="nav-text">数据传送指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算术运算指令"><span class="nav-text">算术运算指令</span></a></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -643,7 +885,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -656,7 +898,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -677,6 +919,10 @@
       
         <li class="links-of-blogroll-item">
           <a href="http://blog.sagiri-photo.com" title="http://blog.sagiri-photo.com" rel="noopener" target="_blank">SAGIRI</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://zhongmz.github.io" title="https://zhongmz.github.io" rel="noopener" target="_blank">zs</a>
         </li>
       
     </ul>
