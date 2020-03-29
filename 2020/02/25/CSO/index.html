@@ -69,7 +69,7 @@
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200224110116017.png">
 <meta property="og:image" content="https://mooc1-2.chaoxing.com/images/Rtiao.png">
 <meta property="og:image" content="https://p.ananas.chaoxing.com/star3/190_190c/548e30464963ff55a1ebcf90a4374769.jpg">
-<meta property="og:updated_time" content="2020-03-22T13:39:29.982Z">
+<meta property="og:updated_time" content="2020-03-29T15:27:08.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机系统结构">
 <meta name="twitter:description" content="笔记">
@@ -312,7 +312,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-22 21:39:29" itemprop="dateModified" datetime="2020-03-22T21:39:29+08:00">2020-03-22</time>
+                <time title="修改时间：2020-03-29 23:27:08" itemprop="dateModified" datetime="2020-03-29T23:27:08+08:00">2020-03-29</time>
               </span>
             
           
@@ -712,7 +712,9 @@ x=0.842</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-im
 <p>依靠编译器解决数据冲突</p>
 <p>可以重新组织指令顺序来消除冲突，这种技术被称为(指令调度)</p>
 <p>3) 控制冲突</p>
-<h4 id="流水线的实现"><a href="#流水线的实现" class="headerlink" title="流水线的实现"></a>流水线的实现</h4><h4 id="向量处理机"><a href="#向量处理机" class="headerlink" title="*向量处理机"></a>*向量处理机</h4><h3 id="输入-输出系统"><a href="#输入-输出系统" class="headerlink" title="输入/输出系统"></a>输入/输出系统</h3><h4 id="输入-输出系统的性能"><a href="#输入-输出系统的性能" class="headerlink" title="输入/输出系统的性能"></a>输入/输出系统的性能</h4><p>输入/输出系统简称I/O系统</p>
+<h4 id="流水线的实现"><a href="#流水线的实现" class="headerlink" title="流水线的实现"></a>流水线的实现</h4><h4 id="向量处理机"><a href="#向量处理机" class="headerlink" title="*向量处理机"></a>*向量处理机</h4><h3 id="指令级并行"><a href="#指令级并行" class="headerlink" title="指令级并行"></a>指令级并行</h3><h4 id="指令等级并行"><a href="#指令等级并行" class="headerlink" title="指令等级并行"></a>指令等级并行</h4><p>概念</p>
+<p>几乎所有的处理机都利用流水线来使指令重叠并行执行，以</p>
+<h3 id="输入-输出系统"><a href="#输入-输出系统" class="headerlink" title="输入/输出系统"></a>输入/输出系统</h3><h4 id="输入-输出系统的性能"><a href="#输入-输出系统的性能" class="headerlink" title="输入/输出系统的性能"></a>输入/输出系统的性能</h4><p>输入/输出系统简称I/O系统</p>
 <p>它包括:</p>
 <ul>
 <li>I/O设备</li>
@@ -847,6 +849,119 @@ x=0.842</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-im
 <p>中断</p>
 <p>DMA</p>
 <p>通道</p>
+<h4 id="通道处理机"><a href="#通道处理机" class="headerlink" title="通道处理机"></a>通道处理机</h4><p>通道处理机能够负担外围设备的大部分I/O工作.</p>
+<p>通道处理机(简称通道): 专门负责整个计算机系统的输入/输出工作。通道处理机只能执行有限的一组输入/输出指令</p>
+<h5 id="通道的作用和功能"><a href="#通道的作用和功能" class="headerlink" title="通道的作用和功能"></a>通道的作用和功能</h5><p>1 程序控制，中断和DMA方式管理外围设备会引起两个问题</p>
+<p>所有外设的输入/输出工作均由CPU承担，CPU的计算工作经常被打断而区处理输入/输出的事务，不能充分发挥CPU的计算能力</p>
+<p>大型计算机系统的外设虽然很多，但同时工作的机会不是很多</p>
+<p>解决上述问题的方法: 采用通道处理机</p>
+<p>一个典型的由CPU,通道，设备控制器，外设构成的4级层次结构的输入/输出系统</p>
+<p>通道的功能</p>
+<p>接收CPU发来的I/O指令，并根据指令要求选择指定的外设与通道相连接</p>
+<p>执行通道程序</p>
+<p>从主存中逐条取出通道指令，堆通道指令进行译码，并根据需要相被选中的设备控制器发出各种操作命令。</p>
+<p>给出外设中要进行读/写操作的数据所在的地址(如磁盘存储器的柱面号，磁头号，扇区号等)</p>
+<p>给出主存缓冲区的首地址</p>
+<p>该缓冲区存放从外设输入的数据或者将要输出到外设中区的数据</p>
+<p>控制外设与主存缓冲区之间的数据传送的长度</p>
+<p>对传送的数据个数进行计数，并判断数据传送是否结束</p>
+<p>指定传送工作结束时要进行的操作</p>
+<p>例如: 将外设的中断请求及通道的中断请求送往CPU等</p>
+<p>检查外设的工作是否正常，并将该状态信息送往主存单元保存。</p>
+<p>在数据传输过程中完成必要的格式变换</p>
+<p>例如: 吧字拆分为字节，或者把字节装配成字等</p>
+<p>通道的主要硬件</p>
+<p>寄存器</p>
+<p>数据缓冲寄存器</p>
+<p>主存地址计数器</p>
+<p>传输字节数计数器</p>
+<p>通道命令字寄存器</p>
+<p>通道状态字寄存器</p>
+<p>控制逻辑</p>
+<p>分时控制</p>
+<p>地址分配</p>
+<p>数据传送，装配和拆分等</p>
+<p>通道对外设的控制通过输入/输出接口和设备控制器进行</p>
+<p>通道与设备控制器之间一般采用标准的输入/输出接口来连接</p>
+<p>通道通过接口标准接口把操作命令送到设备控制器</p>
+<p>设别控制器解释并执行这些通道命令，完成ming’l</p>
+<h5 id="通道的工作过程"><a href="#通道的工作过程" class="headerlink" title="通道的工作过程"></a>通道的工作过程</h5><p>1.通道完成一次数据输入/输出的工作过程</p>
+<p>在用户程序种使用访管指令进入管理程序，由管理程序生成一个通道程序，并启动通道</p>
+<p>用户在目标程序种设置一条广义指令，通过调用擦欧总系统的管理程序来实现。</p>
+<p>管理程序根据关于指令提供的参数来编制通道程序。</p>
+<p>启动输入/输出指令是一条主要的输入/输出指令，属于特权指令。</p>
+<p>工作流程</p>
+<p>图片</p>
+<p>通道处理机执行通道程序，完成指定的数据输入/输出工作</p>
+<p>通道处理机执行通道程序于与CPU执行用户程序是并行的。</p>
+<p>通道程序结束后向CPU发中断请求。</p>
+<p>CPU执行程序和通道执行程序的时间关系</p>
+<p>图片</p>
+<h5 id="通道的种类"><a href="#通道的种类" class="headerlink" title="通道的种类"></a>通道的种类</h5><p>根据信息传送方式的不同，将通道分为三种类型</p>
+<p>字节多路通道</p>
+<p>数据通道</p>
+<p>数组多路通道</p>
+<p>三种类型的通道与CPU,设备控制器和外设的连接关系</p>
+<p>1.字节多路通道</p>
+<p>为多台低速或中速的外设服务</p>
+<p>以字节交叉的方式分时轮流地为它们服务</p>
+<p>以字节多路通道可以包含多个子通道，每个子通道连接一台设备控制器</p>
+<p>2.选择通道</p>
+<p>为多台高速外围设备服务</p>
+<p>在一段时间内只为一台高速外设独占使用</p>
+<p>选择通道的硬件</p>
+<p>5个寄存器</p>
+<p>数据缓冲寄存器，设备地址寄存器，主存地址计数器，交换字节计数器，设备状态/控制寄存器</p>
+<p>格式变换部件</p>
+<p>用于在主存和设备之间进行字与字节的拆分和装配</p>
+<p>通道控制部件</p>
+<p>3.数组多路通道</p>
+<p>设用于高速设备</p>
+<p>多次选择一个高速设备后传送一个数据块，轮流为多台设备服务</p>
+<p>数组多路通道之所以能够并行地为多台高速设备服务，是因为虽然其所连设备的传输速率很高，但寻址等辅助操作时间很长。</p>
+<h5 id="通道种的数据传送过程与流量分析"><a href="#通道种的数据传送过程与流量分析" class="headerlink" title="通道种的数据传送过程与流量分析"></a>通道种的数据传送过程与流量分析</h5><p>通道流量</p>
+<p>一个通道在数据传送周期，单位时间内能够传送的数据量。所用单位一般为Bps.</p>
+<p>又称为通道吞吐率，通道数据传输率等</p>
+<p>通道最大流量</p>
+<p>一个通道在满负荷工作状态下的流量.</p>
+<p>参数的定义</p>
+<p>$T_s$: 设备选择时间，从通道响应设备发出的数据传送请求开始，到通道实际为这台设备传送数据所需要的时间。</p>
+<p>$T_D$: 传送一个字节所用的时间</p>
+<p>p: 在一个通道上连接的设备台数，且这些设备同时都在工作</p>
+<p>n: 每台设备传送的字节数，这里设备每台设备传送的字节数都相同</p>
+<p>k:数组多路通道传输的一个数据块种包含的字节数。</p>
+<p>在一般情况下，k&lt;n.对于磁盘，磁带等磁表面存储器，通常k=512.</p>
+<p>T: 通道完成全部数据传送工作所需要的时间。</p>
+<p>1.字节多路通道</p>
+<p>数据传送过程</p>
+<p>通道每连接一台外设，只传送一个字节，然后又与另一台设备连接，并传送一个字节。</p>
+<p>p台设备每台传送n个数据总共需要的时间为</p>
+<p>$T_{BYTE}=(T_S+T_D)\times p \times n$</p>
+<p>最大流量</p>
+<p>$f_{MAX-BYTE}=\frac{pn}{(T_S+T_D)pn}=\frac{1}{T_S+T_D}$</p>
+<p>实际流量是在连接在这个通道上的所有设备的数据传送率之和</p>
+<p>$f_{BYTE}=\sum\limits_{i=1}^{p}f_i$</p>
+<p>$f_i$:第i台设备的实际数据传输率</p>
+<p>选择通道</p>
+<p>在一段时间内只能单独为一台高速外设服务，当这台设备的数据传送工作全部完成后，通道才能为另一台设备服务</p>
+<p>p台设备每台传送n个数据总共所需的时间</p>
+<p>$T_{SELECT}=(\frac{T_S}{n}+T_D)\times p\times n$</p>
+<p>最大流量</p>
+<p>$f_{MAX-SELECT}=\frac{pn}{(\frac{T_S}{n}+T_D)pn}=\frac{1}{\frac{T_s}{n}+T_D}$</p>
+<p>多组数据通道</p>
+<p>工作过程</p>
+<p>p台设备每天传送n个数据总共所需的时间为</p>
+<p>$T_{BLOCK}=(\frac{T_s}{k}+T_D)\times p\times n$</p>
+<p>$f_{MAX-BLOCK}=\frac{pn}{(\frac{T_S}{n}+T_D)pn}=\frac{1}{\frac{T_s}{n}+T_D}$</p>
+<p>选择通道和数组多路通道的实际流量就是连接在这个通道上的所有设备种数据流量最大的那一个。</p>
+<p>$f_{BLOCK}\leq \max\limits_{i=1}^{p} f_i$</p>
+<p>$f_{SELECT}\leq \max\limits_{i=1}^{p} f_i$</p>
+<p>各种通道的实际流量应该不大于通道的最大流量</p>
+<p>$f_{BYTE}\leq f_{MAX-BYTE}$</p>
+<p>$f_{BLOCK}\leq f_{MAX-BYTE}$</p>
+<p>$f_{SELECT}\leq f_{MAX-BYTE}$</p>
+<p>两边的差值越小，通道的利用率就越高。</p>
+<p>等两边相等时，通道处于满负荷工作状态。</p>
 <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img src="https://p.ananas.chaoxing.com/star3/190_190c/548e30464963ff55a1ebcf90a4374769.jpg" alt="img"></p>
 <script type="math/tex; mode=display">
 加速比=\frac{总执行时间_{改进前}}{总执行时间_{改进后}}
@@ -901,7 +1016,34 @@ x=0.842</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-im
 =1.776</script><p>例题 假设一台计算机的I/O处理时间占相应时间的10%,当I/O性能保持不变，而对CPU的性能分别提高10倍和100倍时，该计算机的性能会发生什么样的变化</p>
 <p>设改进前程序的执行时间为1个单位时间</p>
 <p>如果</p>
-<h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3>
+<h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><p>总线仲裁</p>
+<ul>
+<li>要解决的问题</li>
+<li>方法和特点</li>
+</ul>
+<p>解决的是多个设备竞争使用总线的管理问题</p>
+<p>集中仲裁和分布仲裁</p>
+<p>集中式多采用CPU为仲裁器，可以实现计数器式查询，链式查询，独立查询三种方式</p>
+<p>分布式仲裁的仲裁器为各个参与的主设备，实现所谓”比大小”的仲裁方式，最终获胜的主设备获得总线的使用权</p>
+<p>总线的通信控制解决的问题是什么，大致方式</p>
+<p>目的 解决主设备和从设备的协调调度配合问题</p>
+<p>同步数据输入/输出</p>
+<p>异步数据输入/输出</p>
+<p>半同步通信方式    </p>
+<p>请自行查阅资料，说明程序查询方式的工作过程。</p>
+<p>CPU启动外设工作后，不断地读取外设的状态信息进行测试，查询外设是否准备就绪，如果准备号，则可以进行数据传送；否则，CPU继续读取外设的状态信息进行查询准备，直到外设准备好</p>
+<p>请自行查阅资料，说明程序中断方式的工作过程。</p>
+<p>当主机启动外设后，无需等待查询，而是继续执行原来的程序，外设在做好输入输出准备时，向主机发出中断请求，主机接到请求后就暂时中止原来执行的程序，转去执行中断服务程序对外部请求进行处理，在中断处理完毕后返回原来的程序继续执行</p>
+<p>请自行查阅资料，说明DMA的工作过程。</p>
+<p>1外设可通过DMA控制器向CPU发出DMA请求;</p>
+<p>2CPU响应DMA请求，系统转变为DMA工作方式，并把总线控制权交给DMA控制器；</p>
+<p>3由DMA控制器faculty存储器地址，并决定传送数据块的长度</p>
+<p>4 执行DMA传送</p>
+<p>5DMA操作结束，并把总线控制权交还CPU</p>
+<p>请自行查阅资料，试比较程序查询、程序中断、DMA三种I/O方式的区别。</p>
+<p>CPU需要根据外设的工作状态来决定何时进行数据传送，它要求CPU随时对结构状态进行查询，如果接口尚未准备好，CPU需要等待，并进行查询，只有接口准备好，CPU才进行数据的输入输出。它的的特点是简单，只需少量硬件，主要编制程序执行为主</p>
+<p>程序中断方式: CPU在执行的程序的过程中，出现某些突然时间待处理，CPU</p>
+
     </div>
 
     
@@ -926,8 +1068,8 @@ x=0.842</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-im
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/02/25/MCS/" rel="next" title="微机系统">
-                  <i class="fa fa-chevron-left"></i> 微机系统
+                <a href="/2020/02/25/OS/" rel="next" title="操作系统">
+                  <i class="fa fa-chevron-left"></i> 操作系统
                 </a>
               
             </div>
@@ -987,7 +1129,7 @@ x=0.842</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-im
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机系统结构的基本概念"><span class="nav-text">计算机系统结构的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引言"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的概念"><span class="nav-text">计算机系统结构的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构"><span class="nav-text">计算机系统的层次结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构的定义"><span class="nav-text">计算机系统结构的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机组成和计算机实现"><span class="nav-text">计算机组成和计算机实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的分类"><span class="nav-text">计算机系统结构的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定量分析技术"><span class="nav-text">定量分析技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的发展"><span class="nav-text">计算机系统结构的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#冯-cdot-诺伊曼结构"><span class="nav-text">冯 $\cdot$诺伊曼结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件对系统结构的影响"><span class="nav-text">软件对系统结构的影响</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#器件发展对系统结构的影响"><span class="nav-text">器件发展对系统结构的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#应用对系统结构的影响"><span class="nav-text">应用对系统结构的影响</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构中并行性的发展"><span class="nav-text">计算机系统结构中并行性的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#并行性的概念"><span class="nav-text">并行性的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提高并行性的技术途径"><span class="nav-text">提高并行性的技术途径</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单机系统中并行性的发展"><span class="nav-text">单机系统中并行性的发展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多机系统中并行性的发展"><span class="nav-text">多机系统中并行性的发展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机指令集结构"><span class="nav-text">计算机指令集结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令集结构的分类"><span class="nav-text">指令集结构的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令集结构的功能设计"><span class="nav-text">指令集结构的功能设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC-指令集结构的功能设计"><span class="nav-text">CISC 指令集结构的功能设计</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#面向目标程序增强功能"><span class="nav-text">面向目标程序增强功能</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#面向高级语言的优化来改进指令集"><span class="nav-text">面向高级语言的优化来改进指令集</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#面向操作系统的优化实现改进指令集"><span class="nav-text">面向操作系统的优化实现改进指令集</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RISC-指令集的功能设计"><span class="nav-text">RISC 指令集的功能设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令控制"><span class="nav-text">指令控制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数的类型和大小"><span class="nav-text">操作数的类型和大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式的设计"><span class="nav-text">指令格式的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPS指令集结构"><span class="nav-text">MIPS指令集结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流水线技术"><span class="nav-text">流水线技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线"><span class="nav-text">流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线的分类"><span class="nav-text">流水线的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单功能流水线和多功能流水线"><span class="nav-text">单功能流水线和多功能流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#静态流水线与动态流水线"><span class="nav-text">静态流水线与动态流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#部件级，处理机级及处理机间流水线"><span class="nav-text">部件级，处理机级及处理机间流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线性流水线与非线性流水线"><span class="nav-text">线性流水线与非线性流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#顺序流水线与乱序流数线"><span class="nav-text">顺序流水线与乱序流数线</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线性能指标"><span class="nav-text">流水线性能指标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#吞吐率"><span class="nav-text">吞吐率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加速比"><span class="nav-text">加速比</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#效率"><span class="nav-text">效率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子"><span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的相关与冲突"><span class="nav-text">流水线的相关与冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一个经典的5段流水线"><span class="nav-text">一个经典的5段流水线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-text">相关与流水线冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#相关"><span class="nav-text">相关</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#流水线冲突"><span class="nav-text">流水线冲突</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的实现"><span class="nav-text">流水线的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机"><span class="nav-text">*向量处理机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-输出系统"><span class="nav-text">输入/输出系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-输出系统的性能"><span class="nav-text">输入/输出系统的性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-输出系统的可靠性，可用性和可信性"><span class="nav-text">输入/输出系统的可靠性，可用性和可信性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#廉价磁盘冗余阵列"><span class="nav-text">廉价磁盘冗余阵列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#总线的设计"><span class="nav-text">总线的设计</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#习题"><span class="nav-text">习题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机系统结构的基本概念"><span class="nav-text">计算机系统结构的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引言"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的概念"><span class="nav-text">计算机系统结构的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构"><span class="nav-text">计算机系统的层次结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构的定义"><span class="nav-text">计算机系统结构的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机组成和计算机实现"><span class="nav-text">计算机组成和计算机实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的分类"><span class="nav-text">计算机系统结构的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定量分析技术"><span class="nav-text">定量分析技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的发展"><span class="nav-text">计算机系统结构的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#冯-cdot-诺伊曼结构"><span class="nav-text">冯 $\cdot$诺伊曼结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件对系统结构的影响"><span class="nav-text">软件对系统结构的影响</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#器件发展对系统结构的影响"><span class="nav-text">器件发展对系统结构的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#应用对系统结构的影响"><span class="nav-text">应用对系统结构的影响</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构中并行性的发展"><span class="nav-text">计算机系统结构中并行性的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#并行性的概念"><span class="nav-text">并行性的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提高并行性的技术途径"><span class="nav-text">提高并行性的技术途径</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单机系统中并行性的发展"><span class="nav-text">单机系统中并行性的发展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多机系统中并行性的发展"><span class="nav-text">多机系统中并行性的发展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机指令集结构"><span class="nav-text">计算机指令集结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令集结构的分类"><span class="nav-text">指令集结构的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令集结构的功能设计"><span class="nav-text">指令集结构的功能设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC-指令集结构的功能设计"><span class="nav-text">CISC 指令集结构的功能设计</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#面向目标程序增强功能"><span class="nav-text">面向目标程序增强功能</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#面向高级语言的优化来改进指令集"><span class="nav-text">面向高级语言的优化来改进指令集</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#面向操作系统的优化实现改进指令集"><span class="nav-text">面向操作系统的优化实现改进指令集</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RISC-指令集的功能设计"><span class="nav-text">RISC 指令集的功能设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令控制"><span class="nav-text">指令控制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数的类型和大小"><span class="nav-text">操作数的类型和大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式的设计"><span class="nav-text">指令格式的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPS指令集结构"><span class="nav-text">MIPS指令集结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流水线技术"><span class="nav-text">流水线技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线"><span class="nav-text">流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线的分类"><span class="nav-text">流水线的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单功能流水线和多功能流水线"><span class="nav-text">单功能流水线和多功能流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#静态流水线与动态流水线"><span class="nav-text">静态流水线与动态流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#部件级，处理机级及处理机间流水线"><span class="nav-text">部件级，处理机级及处理机间流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线性流水线与非线性流水线"><span class="nav-text">线性流水线与非线性流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#顺序流水线与乱序流数线"><span class="nav-text">顺序流水线与乱序流数线</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线性能指标"><span class="nav-text">流水线性能指标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#吞吐率"><span class="nav-text">吞吐率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加速比"><span class="nav-text">加速比</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#效率"><span class="nav-text">效率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子"><span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的相关与冲突"><span class="nav-text">流水线的相关与冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一个经典的5段流水线"><span class="nav-text">一个经典的5段流水线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-text">相关与流水线冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#相关"><span class="nav-text">相关</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#流水线冲突"><span class="nav-text">流水线冲突</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的实现"><span class="nav-text">流水线的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机"><span class="nav-text">*向量处理机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令级并行"><span class="nav-text">指令级并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令等级并行"><span class="nav-text">指令等级并行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-输出系统"><span class="nav-text">输入/输出系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-输出系统的性能"><span class="nav-text">输入/输出系统的性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-输出系统的可靠性，可用性和可信性"><span class="nav-text">输入/输出系统的可靠性，可用性和可信性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#廉价磁盘冗余阵列"><span class="nav-text">廉价磁盘冗余阵列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#总线的设计"><span class="nav-text">总线的设计</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通道处理机"><span class="nav-text">通道处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通道的作用和功能"><span class="nav-text">通道的作用和功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通道的工作过程"><span class="nav-text">通道的工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通道的种类"><span class="nav-text">通道的种类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通道种的数据传送过程与流量分析"><span class="nav-text">通道种的数据传送过程与流量分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#习题"><span class="nav-text">习题</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -1006,7 +1148,7 @@ x=0.842</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-im
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1019,7 +1161,7 @@ x=0.842</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-im
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1032,7 +1174,7 @@ x=0.842</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-im
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

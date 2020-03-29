@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="endacsd">
 <meta property="og:description" content="作为学习的笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-23T12:30:26.144Z">
+<meta property="og:updated_time" content="2020-03-28T16:06:14.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微机系统">
 <meta name="twitter:description" content="作为学习的笔记">
@@ -305,7 +305,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-23 20:30:26" itemprop="dateModified" datetime="2020-03-23T20:30:26+08:00">2020-03-23</time>
+                <time title="修改时间：2020-03-29 00:06:14" itemprop="dateModified" datetime="2020-03-29T00:06:14+08:00">2020-03-29</time>
               </span>
             
           
@@ -767,7 +767,141 @@
 <p>4) 若乘积的高半部分结果为0，则CF=0,OF=0;否则CF=1,OF=1.从而AF,PF,ZF,SF无定义，即状态不定</p>
 <p>13 IMUL 带符号乘法(signed multiple)</p>
 <p>格式1 IMUL SRC</p>
-
+<h3 id="汇编语言程序格式"><a href="#汇编语言程序格式" class="headerlink" title="汇编语言程序格式"></a>汇编语言程序格式</h3><h4 id="汇编语言概述"><a href="#汇编语言概述" class="headerlink" title="汇编语言概述"></a>汇编语言概述</h4><p>指令: 使计算机完成某种操作的命令</p>
+<p>程序: 完成某种功能的指令序列</p>
+<p>软件:各种程序总称</p>
+<p>机器语言:计算机能够直接识别的语言。用机器语言写出的程序称为机器代码</p>
+<p>汇编语言:用字符记号代替机器指令.用汇编语言编写的程序叫汇编语言程序</p>
+<p>汇编程序: 一种翻译程序，把助记符翻译成机器语言</p>
+<p>在计算机上运行汇编语言程序的步骤:</p>
+<p>编辑程序-&gt;(PROGR.ASM 文件)-&gt;汇编程序(MASM)-&gt;(PROGR.OBJ 文件)-&gt;连接程序(LINK)-&gt;(PROGR.EXE 文件)</p>
+<h4 id="汇编语言语句格式"><a href="#汇编语言语句格式" class="headerlink" title="汇编语言语句格式"></a>汇编语言语句格式</h4><p>汇编语句格式有4个字段:</p>
+<p>[名字] 操作符 操作数； [注释]</p>
+<h4 id="伪指令"><a href="#伪指令" class="headerlink" title="伪指令"></a>伪指令</h4><p>伪指令功能: 指示汇编程序完成规定的操作。如选择处理器，定义数据，分配存储区等。</p>
+<h5 id="程序开始和结束伪指令"><a href="#程序开始和结束伪指令" class="headerlink" title="程序开始和结束伪指令"></a>程序开始和结束伪指令</h5><p>(3) END源程序结束伪指令</p>
+<p>格式: END [标号]</p>
+<p>功能: 表示源程序结束，不可缺，源程序最后一条语句</p>
+<p>说明:</p>
+<p>标号指示程序开始执行的起始地址</p>
+<p>主程序缺省值为代码短的第一条指令的地址</p>
+<p>多个模块链接，主程序用标号，其他程序不用</p>
+<h5 id="段定义伪指令"><a href="#段定义伪指令" class="headerlink" title="段定义伪指令"></a>段定义伪指令</h5><p>段定义: 确定代码组织与数据存储的方式</p>
+<p>有2种段定义伪指令: 完整的段定义，简化的段定义</p>
+<p>1 完整的段定义伪操作</p>
+<p>(1) SEGMENT,END 段定义伪指令</p>
+<p>格式: 段名 SEGMENT [定位类型][组合类型][字长类型][‘类别’]</p>
+<p>段名: ENDS</p>
+<p>功能: 定义段名，段属性，并表示段的开始位置，结束位置。</p>
+<p>说明</p>
+<p>SEGMENT和ENDS必须成对出现，而且伪指令前面的段名也要相同</p>
+<p>段名是段的标识符，指明段的基址，由程序员指定。</p>
+<p>一般情况下，选项可以不用，使用默认值，但若需链接程序，就必须使用这些说明</p>
+<p>定位指令</p>
+<p>(1) SEGMENT,END 段定义伪指令</p>
+<p>格式:</p>
+<p>段名 SEGMENT [定位类型][组合类型][字长类型][‘类别’]</p>
+<p>段名 ENDS</p>
+<p>定位类型: 指定段起始地址边界</p>
+<p>5种定位类型</p>
+<p>1) BYTE 任意地址</p>
+<p>2) WOED 偶地址，地址最低1位为0</p>
+<p>3) DWORD 4的倍数地址，地址最低2位为0</p>
+<p>4) PARA 16的倍数地址，地址最低4位为0. (默认值)</p>
+<p>5)PAGE 256的倍数地址，地址最低8位为0。一页的起点</p>
+<p>组合类型</p>
+<p>1 SEGMENT,END 段定义伪指令</p>
+<p>格式:</p>
+<p>段名 SEGMENT [定位类型][组合类型][字长类型][‘类别’]</p>
+<p>段名 ENDS</p>
+<p>组合类型: 表示本段与其他模块段之间，具有相同段名的各段的组合关系。</p>
+<p>注意3个前提: 连接时，类型相同，段名相同</p>
+<p>​    </p>
+<p>字长类型</p>
+<p>段名 SEGMENT [定位类型][组合类型][字长类型][‘类别’]</p>
+<p>段名 ENDS</p>
+<p>字长类型: 386以后，说明使用16位寻址还是32寻址。</p>
+<p>2种字长类型:</p>
+<p>USE16 16位寻址，段长$\leq$64KB,16位段地址，16位偏移量。 默认值。</p>
+<p>USE32 32位寻址，段长$\leq$4GB ,16位段地址，32位偏移量</p>
+<p>类别</p>
+<p>段名 SEGMENT [定位类型][组合类型][字长类型][‘类别’]</p>
+<p>段名 ENDS</p>
+<p>类别: 引号括起来的字符串。连接时，类别相同的段(它门可能不同名)</p>
+<p>放在连续的存储空间，但它们仍然是不同的段。</p>
+<p>4种类别:</p>
+<p>DATA: 段类别是数据段</p>
+<p>CODE: 段类别是代码段</p>
+<p>STACK: 段类别是堆栈段</p>
+<p>EXTRA: 段类型别是附加数据段</p>
+<p>ASSUME</p>
+<p>(2) ASSUME 段分配伪指令</p>
+<p>格式:</p>
+<p>ASSUME 段寄存器名: 段名，段寄存器名: 段名，…</p>
+<p>功能: 说明某个段使用哪一个段寄存器</p>
+<p>说明</p>
+<p>程序段必须使用CS,堆栈段必须用SS</p>
+<p>该语句一般放在代码段最前面</p>
+<p>说明性语句，除CS外(初始化赋值)，各段寄存器在程序中赋值。</p>
+<p>取消语句: ASSUME NOTHING</p>
+<h4 id="地址计数器伪指令"><a href="#地址计数器伪指令" class="headerlink" title="地址计数器伪指令"></a>地址计数器伪指令</h4><p>地址计数器$</p>
+<p>功能: 指出汇编地址，是偏移量，记载下一个变量或指令在当前段中的偏移量</p>
+<p>每个段开始时，$=0, 随着汇编过程的进行而增值.每处理一条指令,</p>
+<p>$ 增加一个值，此值是该指令所需的字节数</p>
+<p>允许直接引用$,如JNE $+6,转向JNE指令的首地址加上6</p>
+<p>$用于指令时，表示本条指令的第一个字节的地址；</p>
+<p>$用于其他情况，表示$的当前值。</p>
+<p>ORG地址计数器设置(起始地址定义)</p>
+<p>格式: ORG 数值表达式</p>
+<p>功能: 定义指令或数据的起始地址，$&lt;- 表达式的值。</p>
+<p>说明: 数值表达式取值范围在0-65535之间</p>
+<p>EVEN 偶数地址定义(使地址计数器成为偶数)</p>
+<p>格式 EVEN</p>
+<p>功能: 使下一个变量或指令从偶地址开始</p>
+<p>说明: 便于字符存储对准。 EVEN在代码段中可能多出一个NOP语句。</p>
+<p>ALIGN 边界定义(使地址计数器满足边界要求)</p>
+<p>格式 ALIGN n ; n必须式2的整数幂</p>
+<p>功能: 使用下一个变量或指令从n的整数倍数地址开始。</p>
+<p>说明: 保证双字，四倍字对准。当n=2时，即ALIGN 2 和 EVEN 是等价的</p>
+<h5 id="数据定义伪指令"><a href="#数据定义伪指令" class="headerlink" title="数据定义伪指令"></a>数据定义伪指令</h5><p>格式:  </p>
+<p>[变量名] 操作符 操作数 [;注释]</p>
+<p>功能: 为操作数分配存储单元，用变量与存储单元相联系</p>
+<p>变量名和注释是可有可无的。</p>
+<p>操作数: 定义操作数类型。</p>
+<p>DB: 一个操作数占有1个字节单元(8位)</p>
+<p>DW: 一个操作数占有1个字单元(16位)</p>
+<p>…</p>
+<h5 id="常数与表达式"><a href="#常数与表达式" class="headerlink" title="常数与表达式"></a>常数与表达式</h5><p>操作数为常数于表达式定义形式</p>
+<h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>操作数式字符串定义形式</p>
+<h4 id="操作数字段"><a href="#操作数字段" class="headerlink" title="操作数字段"></a>操作数字段</h4><p>操作数包括: 寄存器，变量，标号，常数，表达式。</p>
+<h6 id="常数"><a href="#常数" class="headerlink" title="常数"></a>常数</h6><p>常数: 主要用于作指令中的直接操作数，也可作为存储量操作数的组成部分，或者在伪指令中用于给变量赋初值。</p>
+<p>常数包括: 数值常数，符号常数，字符串常数</p>
+<p>1.数值常数</p>
+<p>数值常数: 2进制数B,8进制数Q,10进制数D(默认)，16进制数H</p>
+<p>格式： RADIX 数值表达式； 基数控制伪指令</p>
+<p>功能: 把默认的基数改变为2-16范围内的任何基数</p>
+<p>2.字符串常数</p>
+<p>字符串常数: 在单引号中的若干个字符</p>
+<p>字符串在存储器中存储的是响应字符的ASCII码。</p>
+<p>3.符号常数</p>
+<p>EQU赋值伪指令</p>
+<p>格式: 符号常数名 EQU 表达式，将表达式的值赋给符号常数</p>
+<p>说明: 表达式可以是有效的操作数格式，也是可以任何可求出数值常数的表达式，还可以式任何有效的符号(如操作符，寄存器名，变量名等)</p>
+<p>指令定义一次</p>
+<p>(2) =伪指令</p>
+<p>格式: 符号常数名=表达式; 同EQU伪指令</p>
+<p>注意: 可重复定义</p>
+<h5 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h5><p>表达式是一个组合序列，包括常数，寄存器，标号，变量</p>
+<p>两种形式: 数值表达式，地址表达式</p>
+<p>1.运算符 </p>
+<p>6种: 算术运算，逻辑运算，位移运算，关系运算，返回值运算，属性运算</p>
+<p>算术运算符: +,-,*,/,MOD</p>
+<p>逻辑运算符: AND,OR,XOR,NOT</p>
+<p>位移运算符:左移SHL,右移SHR</p>
+<p>关系运算符: 等于EQ,不等NE，小于LT,大于GT,小于等于LE,大于等于GE.</p>
+<p>返回值运算符</p>
+<p>返回值运算符: </p>
+<p>总结</p>
+<h4 id="汇编语言程序的结构"><a href="#汇编语言程序的结构" class="headerlink" title="汇编语言程序的结构"></a>汇编语言程序的结构</h4>
     </div>
 
     
@@ -802,8 +936,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2020/02/25/CSO/" rel="prev" title="计算机系统结构">
-                  计算机系统结构 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/02/25/OS/" rel="prev" title="操作系统">
+                  操作系统 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -853,7 +987,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机的应用"><span class="nav-text">微型计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16位微处理器Intel"><span class="nav-text">16位微处理器Intel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8086微处理器的构成"><span class="nav-text">8086微处理器的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的编程结构"><span class="nav-text">8086的编程结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086外部引脚"><span class="nav-text">8086外部引脚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的两种组成模式"><span class="nav-text">8086的两种组成模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086总线周期"><span class="nav-text">8086总线周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的存储器组织"><span class="nav-text">8086的存储器组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的I-O-组织"><span class="nav-text">8086的I/O 组织</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium-系列微处理器的基本结构"><span class="nav-text">Pentium 系列微处理器的基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的基本结构"><span class="nav-text">Pentium 微处理机的基本结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的编程结构"><span class="nav-text">Pentium 微处理机的编程结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium微处理器的指令系统"><span class="nav-text">Pentium微处理器的指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式"><span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前缀"><span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作码"><span class="nav-text">操作码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位-偏移量及立即数"><span class="nav-text">位/偏移量及立即数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式-1"><span class="nav-text">寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据的寻址方式"><span class="nav-text">数据的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#立即寻址"><span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#寄存器寻址"><span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#存储器寻址"><span class="nav-text">存储器寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#转移地址的寻址方式"><span class="nav-text">转移地址的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#段内相对寻址"><span class="nav-text">段内相对寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间直接寻址"><span class="nav-text">段间直接寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间间接寻址"><span class="nav-text">段间间接寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆栈地址寻址"><span class="nav-text">堆栈地址寻址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据传送指令"><span class="nav-text">数据传送指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算术运算指令"><span class="nav-text">算术运算指令</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机的应用"><span class="nav-text">微型计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16位微处理器Intel"><span class="nav-text">16位微处理器Intel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8086微处理器的构成"><span class="nav-text">8086微处理器的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的编程结构"><span class="nav-text">8086的编程结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086外部引脚"><span class="nav-text">8086外部引脚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的两种组成模式"><span class="nav-text">8086的两种组成模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086总线周期"><span class="nav-text">8086总线周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的存储器组织"><span class="nav-text">8086的存储器组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的I-O-组织"><span class="nav-text">8086的I/O 组织</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium-系列微处理器的基本结构"><span class="nav-text">Pentium 系列微处理器的基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的基本结构"><span class="nav-text">Pentium 微处理机的基本结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的编程结构"><span class="nav-text">Pentium 微处理机的编程结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium微处理器的指令系统"><span class="nav-text">Pentium微处理器的指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式"><span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前缀"><span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作码"><span class="nav-text">操作码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位-偏移量及立即数"><span class="nav-text">位/偏移量及立即数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式-1"><span class="nav-text">寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据的寻址方式"><span class="nav-text">数据的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#立即寻址"><span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#寄存器寻址"><span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#存储器寻址"><span class="nav-text">存储器寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#转移地址的寻址方式"><span class="nav-text">转移地址的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#段内相对寻址"><span class="nav-text">段内相对寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间直接寻址"><span class="nav-text">段间直接寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间间接寻址"><span class="nav-text">段间间接寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆栈地址寻址"><span class="nav-text">堆栈地址寻址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据传送指令"><span class="nav-text">数据传送指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算术运算指令"><span class="nav-text">算术运算指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言程序格式"><span class="nav-text">汇编语言程序格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言概述"><span class="nav-text">汇编语言概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言语句格式"><span class="nav-text">汇编语言语句格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪指令"><span class="nav-text">伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序开始和结束伪指令"><span class="nav-text">程序开始和结束伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段定义伪指令"><span class="nav-text">段定义伪指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址计数器伪指令"><span class="nav-text">地址计数器伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据定义伪指令"><span class="nav-text">数据定义伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常数与表达式"><span class="nav-text">常数与表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串"><span class="nav-text">字符串</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数字段"><span class="nav-text">操作数字段</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#常数"><span class="nav-text">常数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表达式"><span class="nav-text">表达式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言程序的结构"><span class="nav-text">汇编语言程序的结构</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -872,7 +1006,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -885,7 +1019,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -898,7 +1032,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
