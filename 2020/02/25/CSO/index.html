@@ -73,7 +73,7 @@
 <meta property="og:image" content="https://p.ananas.chaoxing.com/star3/190_190c/548e30464963ff55a1ebcf90a4374769.jpg">
 <meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/049bff7024af510580dff9b7f3bc8a4d.png">
 <meta property="og:image" content="https://p.ananas.chaoxing.com/star3/origin/6252809c23aab9be73671204dcf31880.png">
-<meta property="og:updated_time" content="2020-04-19T07:10:40.433Z">
+<meta property="og:updated_time" content="2020-04-23T14:23:51.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="endacsd">
 <meta name="twitter:description" content="笔记">
@@ -316,7 +316,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 15:10:40" itemprop="dateModified" datetime="2020-04-19T15:10:40+08:00">2020-04-19</time>
+                <time title="修改时间：2020-04-23 22:23:51" itemprop="dateModified" datetime="2020-04-23T22:23:51+08:00">2020-04-23</time>
               </span>
             
           
@@ -1118,7 +1118,167 @@ CPU时间=(CPU执行周期数+存储器停顿周期数)\times 时钟周期时间
 <li>减少冲突不命中 — 提高相联度</li>
 </ol>
 <p>但是使用一种方法提高某一项性能的同时，可能会牺牲其他方面的性能</p>
-<h5 id="增加Cache块大小"><a href="#增加Cache块大小" class="headerlink" title="增加Cache块大小"></a>增加Cache块大小</h5><h5 id="增加Cache的容量"><a href="#增加Cache的容量" class="headerlink" title="增加Cache的容量"></a>增加Cache的容量</h5><h5 id="提高相联度"><a href="#提高相联度" class="headerlink" title="提高相联度"></a>提高相联度</h5><h5 id="伪相联Cache"><a href="#伪相联Cache" class="headerlink" title="伪相联Cache"></a>伪相联Cache</h5><h4 id="减少Cache不命中开销"><a href="#减少Cache不命中开销" class="headerlink" title="减少Cache不命中开销"></a>减少Cache不命中开销</h4><h5 id="采用两级Cache"><a href="#采用两级Cache" class="headerlink" title="采用两级Cache"></a>采用两级Cache</h5><h5 id="让读不命中优先于写"><a href="#让读不命中优先于写" class="headerlink" title="让读不命中优先于写"></a>让读不命中优先于写</h5><h5 id="写缓冲合并"><a href="#写缓冲合并" class="headerlink" title="写缓冲合并"></a>写缓冲合并</h5><h5 id="请求字处理技术"><a href="#请求字处理技术" class="headerlink" title="请求字处理技术"></a>请求字处理技术</h5><h5 id="非阻塞Cache"><a href="#非阻塞Cache" class="headerlink" title="非阻塞Cache"></a>非阻塞Cache</h5><h4 id="并行主存系统"><a href="#并行主存系统" class="headerlink" title="并行主存系统"></a>并行主存系统</h4><h3 id="输入-输出系统"><a href="#输入-输出系统" class="headerlink" title="输入/输出系统"></a>输入/输出系统</h3><h4 id="输入-输出系统的性能"><a href="#输入-输出系统的性能" class="headerlink" title="输入/输出系统的性能"></a>输入/输出系统的性能</h4><p>输入/输出系统简称I/O系统</p>
+<h5 id="增加Cache块大小"><a href="#增加Cache块大小" class="headerlink" title="增加Cache块大小"></a>增加Cache块大小</h5><h5 id="增加Cache的容量"><a href="#增加Cache的容量" class="headerlink" title="增加Cache的容量"></a>增加Cache的容量</h5><h5 id="提高相联度"><a href="#提高相联度" class="headerlink" title="提高相联度"></a>提高相联度</h5><h5 id="伪相联Cache"><a href="#伪相联Cache" class="headerlink" title="伪相联Cache"></a>伪相联Cache</h5><h4 id="减少Cache不命中开销"><a href="#减少Cache不命中开销" class="headerlink" title="减少Cache不命中开销"></a>减少Cache不命中开销</h4><h5 id="采用两级Cache"><a href="#采用两级Cache" class="headerlink" title="采用两级Cache"></a>采用两级Cache</h5><p>增加一级Cache</p>
+<ul>
+<li>第一级Cache(L1)小而快</li>
+<li>第二级Cache(L2)容量大</li>
+</ul>
+<p>性能分析</p>
+<script type="math/tex; mode=display">
+平均访存时间=命中时间_{L1}+不命中率_{L1}\times 不命中开销_{L1}
+\\
+不命中开销_{L1}=命中时间_{L2}+不命中率_{L2}\times 不命中开销_{L2}</script><p>局部命中率与全局不命中率</p>
+<script type="math/tex; mode=display">
+局部命中率=\frac{该级Cache的不命中次数}{到达该级Cache的访问次数}
+\\
+全局不命中率=\frac{该级Cache的不命中次数}{CPU发出的访存的总次数}
+\\
+全局不命中率_{L2}=不命中率_{L1}\times 不命中率_{L2}</script><p>评价第二级Cache时，应该使用全局不命中率这个指标，它指出了在CPU发出的访存中，究竟有多大比例时穿过各级Cache,最终达到存储器的</p>
+<p>采用两级Cache时，每条指令的平均访存停顿时间:</p>
+<script type="math/tex; mode=display">
+每条指令的平均访存停顿时间=\\
+每条指令的平均不命中次数_{L1}\times 命中时间_{L2}\\
+每条指令的平均不命中次数_{L2}\times 不命中开销_{L2}</script><p>一些结论</p>
+<p>\\after</p>
+<h5 id="让读不命中优先于写"><a href="#让读不命中优先于写" class="headerlink" title="让读不命中优先于写"></a>让读不命中优先于写</h5><ol>
+<li>读不命中，需要访存时，可能存储器还未更新，要读入的内容尚在写缓冲区中，若推迟读访问，直到写缓冲区的数据都写入主存，会增加读命中时间</li>
+<li>不等写缓冲区清空，读访问不命中的时候，直接在写缓冲区里面找时有需要的数据</li>
+</ol>
+<p>Cache中的写缓冲器导致对存储器访问的复杂化，在读不命中时，所读单元的最新值有可能还在写缓冲器中，尚未写入主存</p>
+<p>解决方法:</p>
+<ul>
+<li>推迟读不命中的处理(读不命中的开销增加)</li>
+<li>检查写缓冲器中内容</li>
+</ul>
+<p>在写回法Cache中，也可采用写缓冲器</p>
+<h5 id="写缓冲合并"><a href="#写缓冲合并" class="headerlink" title="写缓冲合并"></a>写缓冲合并</h5><p>提高些缓冲器的效率</p>
+<p>写直达Cache</p>
+<p>依靠写缓冲来减少对下一级存储器写操作的时间</p>
+<ul>
+<li>如果缓冲器为空，就把数据和相应地址写入该缓冲器。(从CPU的角度，写操作完成)</li>
+<li><p>如果写缓冲器中已经有待写入的数据，就要把这次的写入地址与缓冲器已有的所有地址进性比较，看是否有匹配的项。如果有地址匹配而对应的位置又是空闲的，就把这次要写入的数据与该项合并。这就叫写缓冲合并</p>
+</li>
+<li><p>如果写缓冲器满足又没有能进行写合并的项，就必须等待</p>
+</li>
+</ul>
+<p>提高了写缓冲器的空间利用率，而且还能减少因写缓冲器而要进行的等待时间</p>
+<h5 id="请求字处理技术"><a href="#请求字处理技术" class="headerlink" title="请求字处理技术"></a>请求字处理技术</h5><p>请求字</p>
+<ul>
+<li>从下一级存储器调入Cache的快中，只有一个字是立即需要的，这个字称为请求字</li>
+</ul>
+<p>应该尽早把请求字发送给CPU</p>
+<ul>
+<li>尽早重启动: 调块时，从块的起始位置开始读起，一旦请求字达到，就立即发送给CPU,让CPU继续执行</li>
+<li>请求字优先: 调块时，从请求字所在的位置读起。这样，第一个读出的字便时请求字。将之立即发送个CPU</li>
+</ul>
+<p>Cache块小或者下一条指令正好访问同一块Cache</p>
+<h5 id="非阻塞Cache技术"><a href="#非阻塞Cache技术" class="headerlink" title="非阻塞Cache技术"></a>非阻塞Cache技术</h5><p>非阻塞Cache: Cache 不命中时仍允许CPU进行其他的命中访问。即允许”不命中下命中”。</p>
+<p>进一步提高性能:</p>
+<ul>
+<li>“多重不命中下命中”</li>
+<li>“不命中下命中”</li>
+</ul>
+<p>可以同时处理的不命中次数越多，所能带来的性能上的提高就越大</p>
+<p>简单的”一次不命中下命中”就几乎可以得到所有的好处</p>
+<h4 id="减少命中时间"><a href="#减少命中时间" class="headerlink" title="减少命中时间"></a>减少命中时间</h4><p>Cache的访问时间往往会限制处理器的时钟频率</p>
+<h5 id="容量小，结构简单的Cache"><a href="#容量小，结构简单的Cache" class="headerlink" title="容量小，结构简单的Cache"></a>容量小，结构简单的Cache</h5><p>硬件越简单，速度就越快</p>
+<p>应使Cache足够小(物理空间)，以便于可以与CPU一起放在同一块芯片上</p>
+<p>折衷方案(?) 把标识放在片内，把Cache的数据存储器放在片外</p>
+<h5 id="虚拟Cache"><a href="#虚拟Cache" class="headerlink" title="虚拟Cache"></a>虚拟Cache</h5><p>物理Cache</p>
+<ul>
+<li>使用物理地址进行访问的传统Cache</li>
+<li>标识存储器中存放的时物理地址，进行地址检测也是用物理地址</li>
+<li>缺点:地址转xing换和访问Cache串行进行，访问速度慢</li>
+</ul>
+<p>虚拟Cache</p>
+<ul>
+<li>可以直接用虚拟地址进行访问的Cache。标识存储器存放的时虚拟地址，进行地址检测用的也是虚拟地址。</li>
+<li>优点<ul>
+<li>在命中时不需要地址转换，省去了地址转换的时间。即使不命中地址转换和访问Cache也是并行的，其速度比物理Cache块很多</li>
+</ul>
+</li>
+</ul>
+<p>并非都采用虚拟Cache</p>
+<ul>
+<li>虚拟Cache的清空问题<ul>
+<li>解决方法: 在地址标识中增加PID字段</li>
+</ul>
+</li>
+<li>同义和别名<ul>
+<li>解决方法: 反别名法，页着色</li>
+</ul>
+</li>
+</ul>
+<p>虚拟索引+物理标识</p>
+<ul>
+<li>优点：兼得虚拟Cache和物理Cache的好处</li>
+<li>局限性：Cache容量受到限制<ul>
+<li>Cache容量$\leq$ 页大小$\times$ 相联读</li>
+</ul>
+</li>
+</ul>
+<p>硬件散列变换</p>
+<h5 id="Cache访问流水化"><a href="#Cache访问流水化" class="headerlink" title="Cache访问流水化"></a>Cache访问流水化</h5><ol>
+<li>对第一级Cache的访问按流水方式组织</li>
+<li>访问Cache需要多个时钟周期才可以完成</li>
+</ol>
+<h5 id="踪迹Cache"><a href="#踪迹Cache" class="headerlink" title="踪迹Cache"></a>踪迹Cache</h5><p>开发指令级并行所遇到的一个挑战是:</p>
+<p>当要每个时钟周期流出超过4条指令时，要提供足够多条彼此互不相关的指令时很困难的</p>
+<p>一个解决方法: 采用踪迹 Cache</p>
+<p>存放CPU所执行的动态指令序列</p>
+<ul>
+<li>包含了由分支预测展开的指令，该分支预测事否正确需要在取到该指令时进行确认</li>
+</ul>
+<p>优缺点</p>
+<ul>
+<li>地址映像机制复杂</li>
+<li>相同的指令序列</li>
+</ul>
+<h4 id="并行主存系统"><a href="#并行主存系统" class="headerlink" title="并行主存系统"></a>并行主存系统</h4><p>主存的主要性能指标: 延迟和带宽</p>
+<p>以往:</p>
+<p>Cache主要关系延迟，I/O主要关系带宽</p>
+<p>Cache 关心两者</p>
+<p>并行主存系统式在一个访存周期内能并行访问多个存储子的存储器</p>
+<ul>
+<li>能够有效地提高存储器的带宽</li>
+</ul>
+<h5 id="单体多字存储器"><a href="#单体多字存储器" class="headerlink" title="单体多字存储器"></a>单体多字存储器</h5><p>能提高带宽</p>
+<p>优缺点:</p>
+<ul>
+<li>优点: 实现简单</li>
+<li>缺点: 访存效率不高</li>
+</ul>
+<p>原因:</p>
+<ul>
+<li>分支指令使得后面指令无效</li>
+<li>不一定都是有用的</li>
+<li>写入可能变得复杂</li>
+</ul>
+<h5 id="多体交叉存储器"><a href="#多体交叉存储器" class="headerlink" title="多体交叉存储器"></a>多体交叉存储器</h5><p>由多个单字存储体构成，每个体由自己的地址寄存器以及地址译码和读/写驱动等电路，如下图式四个体交叉存储器</p>
+<p>//图片</p>
+<p>高位和低位</p>
+<h5 id="避免存储体冲突"><a href="#避免存储体冲突" class="headerlink" title="避免存储体冲突"></a>避免存储体冲突</h5><p>体冲突: 两个请求要求访问同一个体</p>
+<p>减少体冲突次数的一种方法: 采用许多体</p>
+<p>解决体冲突的方法</p>
+<ul>
+<li>软件方法(编译器)<ul>
+<li>循环交换优化</li>
+<li>扩展数组的大小，使之不是2的幂</li>
+</ul>
+</li>
+<li>硬件方法<ul>
+<li>使体数为素数</li>
+<li>体内地址=地址 A mod (存储体中的字数)</li>
+</ul>
+</li>
+</ul>
+<h4 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h4><h5 id="基本概率"><a href="#基本概率" class="headerlink" title="基本概率"></a>基本概率</h5><h5 id="快速地址转换技术"><a href="#快速地址转换技术" class="headerlink" title="快速地址转换技术"></a>快速地址转换技术</h5><p>地址变换缓冲器TLB</p>
+<p>TLB中的项由两部分构成: 标识和数据</p>
+<p>标识中存放的式虚地址的一部分</p>
+<p>数据部分存放的则是物理页帧号，有效位，存储保护信息，使用位，修改位等</p>
+<p>一般保证TLB比Cache的标识存储器更小,更快</p>
+<p>保证TLB的读出操作不会使Cache的命中时间延长</p>
+<h3 id="输入-输出系统"><a href="#输入-输出系统" class="headerlink" title="输入/输出系统"></a>输入/输出系统</h3><h4 id="输入-输出系统的性能"><a href="#输入-输出系统的性能" class="headerlink" title="输入/输出系统的性能"></a>输入/输出系统的性能</h4><p>输入/输出系统简称I/O系统</p>
 <p>它包括:</p>
 <ul>
 <li>I/O设备</li>
@@ -1654,7 +1814,7 @@ CPU时间=(CPU执行周期数+存储器停顿周期数)\times 时钟周期时间
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机系统结构的基本概念"><span class="nav-text">计算机系统结构的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引言"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的概念"><span class="nav-text">计算机系统结构的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构"><span class="nav-text">计算机系统的层次结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构的定义"><span class="nav-text">计算机系统结构的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机组成和计算机实现"><span class="nav-text">计算机组成和计算机实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的分类"><span class="nav-text">计算机系统结构的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定量分析技术"><span class="nav-text">定量分析技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的发展"><span class="nav-text">计算机系统结构的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#冯-cdot-诺伊曼结构"><span class="nav-text">冯 $\cdot$诺伊曼结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件对系统结构的影响"><span class="nav-text">软件对系统结构的影响</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#器件发展对系统结构的影响"><span class="nav-text">器件发展对系统结构的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#应用对系统结构的影响"><span class="nav-text">应用对系统结构的影响</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构中并行性的发展"><span class="nav-text">计算机系统结构中并行性的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#并行性的概念"><span class="nav-text">并行性的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提高并行性的技术途径"><span class="nav-text">提高并行性的技术途径</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单机系统中并行性的发展"><span class="nav-text">单机系统中并行性的发展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多机系统中并行性的发展"><span class="nav-text">多机系统中并行性的发展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机指令集结构"><span class="nav-text">计算机指令集结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令集结构的分类"><span class="nav-text">指令集结构的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令集结构的功能设计"><span class="nav-text">指令集结构的功能设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC-指令集结构的功能设计"><span class="nav-text">CISC 指令集结构的功能设计</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#面向目标程序增强功能"><span class="nav-text">面向目标程序增强功能</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#面向高级语言的优化来改进指令集"><span class="nav-text">面向高级语言的优化来改进指令集</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#面向操作系统的优化实现改进指令集"><span class="nav-text">面向操作系统的优化实现改进指令集</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RISC-指令集的功能设计"><span class="nav-text">RISC 指令集的功能设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令控制"><span class="nav-text">指令控制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数的类型和大小"><span class="nav-text">操作数的类型和大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式的设计"><span class="nav-text">指令格式的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPS指令集结构"><span class="nav-text">MIPS指令集结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流水线技术"><span class="nav-text">流水线技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线"><span class="nav-text">流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线的分类"><span class="nav-text">流水线的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单功能流水线和多功能流水线"><span class="nav-text">单功能流水线和多功能流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#静态流水线与动态流水线"><span class="nav-text">静态流水线与动态流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#部件级，处理机级及处理机间流水线"><span class="nav-text">部件级，处理机级及处理机间流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线性流水线与非线性流水线"><span class="nav-text">线性流水线与非线性流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#顺序流水线与乱序流数线"><span class="nav-text">顺序流水线与乱序流数线</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线性能指标"><span class="nav-text">流水线性能指标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#吞吐率"><span class="nav-text">吞吐率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加速比"><span class="nav-text">加速比</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#效率"><span class="nav-text">效率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子"><span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的相关与冲突"><span class="nav-text">流水线的相关与冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一个经典的5段流水线"><span class="nav-text">一个经典的5段流水线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-text">相关与流水线冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#相关"><span class="nav-text">相关</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#流水线冲突"><span class="nav-text">流水线冲突</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的实现"><span class="nav-text">流水线的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机"><span class="nav-text">*向量处理机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令级并行"><span class="nav-text">指令级并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令级并行-1"><span class="nav-text">指令级并行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令的动态调度"><span class="nav-text">指令的动态调度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动态调度的基本思想"><span class="nav-text">动态调度的基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Tomasulo-算法"><span class="nav-text">Tomasulo 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Tomasulo的基本结构"><span class="nav-text">Tomasulo的基本结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Tomasulo算法的基本执行步骤"><span class="nav-text">Tomasulo算法的基本执行步骤</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Tomasulo算法详细解"><span class="nav-text">Tomasulo算法详细解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-text">动态分支预测技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#采用分支历史表-BHT"><span class="nav-text">采用分支历史表(BHT)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#采用分支目标缓冲器BTB"><span class="nav-text">采用分支目标缓冲器BTB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于硬件的前瞻预测"><span class="nav-text">基于硬件的前瞻预测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法详述"><span class="nav-text">算法详述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储系统"><span class="nav-text">存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储系统的层次结构"><span class="nav-text">存储系统的层次结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#存储系统的性能参数"><span class="nav-text">存储系统的性能参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三级存储系统"><span class="nav-text">三级存储系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储层次的4个问题"><span class="nav-text">存储层次的4个问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache"><span class="nav-text">Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本结构和原理"><span class="nav-text">基本结构和原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#映像规则"><span class="nav-text">映像规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找算法"><span class="nav-text">查找算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替换算法"><span class="nav-text">替换算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#写策略"><span class="nav-text">写策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#工作过程"><span class="nav-text">工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache的性能分析"><span class="nav-text">Cache的性能分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低Cache不命中率"><span class="nav-text">降低Cache不命中率</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#三种类型的不命中"><span class="nav-text">三种类型的不命中</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#增加Cache块大小"><span class="nav-text">增加Cache块大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#增加Cache的容量"><span class="nav-text">增加Cache的容量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提高相联度"><span class="nav-text">提高相联度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#伪相联Cache"><span class="nav-text">伪相联Cache</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#减少Cache不命中开销"><span class="nav-text">减少Cache不命中开销</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#采用两级Cache"><span class="nav-text">采用两级Cache</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#让读不命中优先于写"><span class="nav-text">让读不命中优先于写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#写缓冲合并"><span class="nav-text">写缓冲合并</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#请求字处理技术"><span class="nav-text">请求字处理技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非阻塞Cache"><span class="nav-text">非阻塞Cache</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并行主存系统"><span class="nav-text">并行主存系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-输出系统"><span class="nav-text">输入/输出系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-输出系统的性能"><span class="nav-text">输入/输出系统的性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-输出系统的可靠性，可用性和可信性"><span class="nav-text">输入/输出系统的可靠性，可用性和可信性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#廉价磁盘冗余阵列"><span class="nav-text">廉价磁盘冗余阵列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#总线的设计"><span class="nav-text">总线的设计</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通道处理机"><span class="nav-text">通道处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通道的作用和功能"><span class="nav-text">通道的作用和功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通道的工作过程"><span class="nav-text">通道的工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通道的种类"><span class="nav-text">通道的种类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通道种的数据传送过程与流量分析"><span class="nav-text">通道种的数据传送过程与流量分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#习题"><span class="nav-text">习题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机系统结构的基本概念"><span class="nav-text">计算机系统结构的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引言"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的概念"><span class="nav-text">计算机系统结构的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构"><span class="nav-text">计算机系统的层次结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构的定义"><span class="nav-text">计算机系统结构的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机组成和计算机实现"><span class="nav-text">计算机组成和计算机实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的分类"><span class="nav-text">计算机系统结构的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定量分析技术"><span class="nav-text">定量分析技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构的发展"><span class="nav-text">计算机系统结构的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#冯-cdot-诺伊曼结构"><span class="nav-text">冯 $\cdot$诺伊曼结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件对系统结构的影响"><span class="nav-text">软件对系统结构的影响</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#器件发展对系统结构的影响"><span class="nav-text">器件发展对系统结构的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#应用对系统结构的影响"><span class="nav-text">应用对系统结构的影响</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统结构中并行性的发展"><span class="nav-text">计算机系统结构中并行性的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#并行性的概念"><span class="nav-text">并行性的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提高并行性的技术途径"><span class="nav-text">提高并行性的技术途径</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单机系统中并行性的发展"><span class="nav-text">单机系统中并行性的发展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多机系统中并行性的发展"><span class="nav-text">多机系统中并行性的发展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机指令集结构"><span class="nav-text">计算机指令集结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令集结构的分类"><span class="nav-text">指令集结构的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令集结构的功能设计"><span class="nav-text">指令集结构的功能设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC-指令集结构的功能设计"><span class="nav-text">CISC 指令集结构的功能设计</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#面向目标程序增强功能"><span class="nav-text">面向目标程序增强功能</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#面向高级语言的优化来改进指令集"><span class="nav-text">面向高级语言的优化来改进指令集</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#面向操作系统的优化实现改进指令集"><span class="nav-text">面向操作系统的优化实现改进指令集</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RISC-指令集的功能设计"><span class="nav-text">RISC 指令集的功能设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令控制"><span class="nav-text">指令控制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数的类型和大小"><span class="nav-text">操作数的类型和大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式的设计"><span class="nav-text">指令格式的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPS指令集结构"><span class="nav-text">MIPS指令集结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流水线技术"><span class="nav-text">流水线技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线"><span class="nav-text">流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线的分类"><span class="nav-text">流水线的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单功能流水线和多功能流水线"><span class="nav-text">单功能流水线和多功能流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#静态流水线与动态流水线"><span class="nav-text">静态流水线与动态流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#部件级，处理机级及处理机间流水线"><span class="nav-text">部件级，处理机级及处理机间流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#线性流水线与非线性流水线"><span class="nav-text">线性流水线与非线性流水线</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#顺序流水线与乱序流数线"><span class="nav-text">顺序流水线与乱序流数线</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线性能指标"><span class="nav-text">流水线性能指标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#吞吐率"><span class="nav-text">吞吐率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加速比"><span class="nav-text">加速比</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#效率"><span class="nav-text">效率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子"><span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的相关与冲突"><span class="nav-text">流水线的相关与冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一个经典的5段流水线"><span class="nav-text">一个经典的5段流水线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-text">相关与流水线冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#相关"><span class="nav-text">相关</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#流水线冲突"><span class="nav-text">流水线冲突</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的实现"><span class="nav-text">流水线的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机"><span class="nav-text">*向量处理机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令级并行"><span class="nav-text">指令级并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令级并行-1"><span class="nav-text">指令级并行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令的动态调度"><span class="nav-text">指令的动态调度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动态调度的基本思想"><span class="nav-text">动态调度的基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Tomasulo-算法"><span class="nav-text">Tomasulo 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Tomasulo的基本结构"><span class="nav-text">Tomasulo的基本结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Tomasulo算法的基本执行步骤"><span class="nav-text">Tomasulo算法的基本执行步骤</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Tomasulo算法详细解"><span class="nav-text">Tomasulo算法详细解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-text">动态分支预测技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#采用分支历史表-BHT"><span class="nav-text">采用分支历史表(BHT)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#采用分支目标缓冲器BTB"><span class="nav-text">采用分支目标缓冲器BTB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于硬件的前瞻预测"><span class="nav-text">基于硬件的前瞻预测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法详述"><span class="nav-text">算法详述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储系统"><span class="nav-text">存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储系统的层次结构"><span class="nav-text">存储系统的层次结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#存储系统的性能参数"><span class="nav-text">存储系统的性能参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三级存储系统"><span class="nav-text">三级存储系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储层次的4个问题"><span class="nav-text">存储层次的4个问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache"><span class="nav-text">Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本结构和原理"><span class="nav-text">基本结构和原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#映像规则"><span class="nav-text">映像规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找算法"><span class="nav-text">查找算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替换算法"><span class="nav-text">替换算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#写策略"><span class="nav-text">写策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#工作过程"><span class="nav-text">工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache的性能分析"><span class="nav-text">Cache的性能分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降低Cache不命中率"><span class="nav-text">降低Cache不命中率</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#三种类型的不命中"><span class="nav-text">三种类型的不命中</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#增加Cache块大小"><span class="nav-text">增加Cache块大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#增加Cache的容量"><span class="nav-text">增加Cache的容量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提高相联度"><span class="nav-text">提高相联度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#伪相联Cache"><span class="nav-text">伪相联Cache</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#减少Cache不命中开销"><span class="nav-text">减少Cache不命中开销</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#采用两级Cache"><span class="nav-text">采用两级Cache</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#让读不命中优先于写"><span class="nav-text">让读不命中优先于写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#写缓冲合并"><span class="nav-text">写缓冲合并</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#请求字处理技术"><span class="nav-text">请求字处理技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非阻塞Cache技术"><span class="nav-text">非阻塞Cache技术</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#减少命中时间"><span class="nav-text">减少命中时间</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#容量小，结构简单的Cache"><span class="nav-text">容量小，结构简单的Cache</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟Cache"><span class="nav-text">虚拟Cache</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache访问流水化"><span class="nav-text">Cache访问流水化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#踪迹Cache"><span class="nav-text">踪迹Cache</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并行主存系统"><span class="nav-text">并行主存系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单体多字存储器"><span class="nav-text">单体多字存储器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多体交叉存储器"><span class="nav-text">多体交叉存储器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#避免存储体冲突"><span class="nav-text">避免存储体冲突</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟存储器"><span class="nav-text">虚拟存储器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本概率"><span class="nav-text">基本概率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#快速地址转换技术"><span class="nav-text">快速地址转换技术</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入-输出系统"><span class="nav-text">输入/输出系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-输出系统的性能"><span class="nav-text">输入/输出系统的性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-输出系统的可靠性，可用性和可信性"><span class="nav-text">输入/输出系统的可靠性，可用性和可信性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#廉价磁盘冗余阵列"><span class="nav-text">廉价磁盘冗余阵列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#总线的设计"><span class="nav-text">总线的设计</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通道处理机"><span class="nav-text">通道处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通道的作用和功能"><span class="nav-text">通道的作用和功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通道的工作过程"><span class="nav-text">通道的工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通道的种类"><span class="nav-text">通道的种类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通道种的数据传送过程与流量分析"><span class="nav-text">通道种的数据传送过程与流量分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#习题"><span class="nav-text">习题</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -1673,7 +1833,7 @@ CPU时间=(CPU执行周期数+存储器停顿周期数)\times 时钟周期时间
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
