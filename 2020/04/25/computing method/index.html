@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="endacsd">
 <meta property="og:description" content="笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-11T10:55:50.753Z">
+<meta property="og:updated_time" content="2020-05-15T07:21:53.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算方法">
 <meta name="twitter:description" content="笔记">
@@ -213,6 +213,17 @@
     <a href="/playlist/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>歌单</a>
 
   </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-game">
+      
+    
+
+    <a href="/game/" rel="section"><i class="menu-item-icon fa fa-fw fa-game"></i> <br>game</a>
+
+  </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
@@ -305,7 +316,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-11 18:55:50" itemprop="dateModified" datetime="2020-05-11T18:55:50+08:00">2020-05-11</time>
+                <time title="修改时间：2020-05-15 15:21:53" itemprop="dateModified" datetime="2020-05-15T15:21:53+08:00">2020-05-15</time>
               </span>
             
           
@@ -357,14 +368,14 @@
 <p>要合理安排运算</p>
 <h4 id="误差来源"><a href="#误差来源" class="headerlink" title="误差来源"></a>误差来源</h4><p>实际问题-&gt; 数学模型-&gt; 数值方法-&gt; 程序设计-&gt; 计算机计算-&gt; 解答</p>
 <p>观测误差  模型误差  方法误差    舍入误差</p>
-<h3 id="误差的基本概率"><a href="#误差的基本概率" class="headerlink" title="误差的基本概率"></a>误差的基本概率</h3><p>设$x$为准确值，$x^{<em>}$是$x$的一个近似值，称$e^</em>=x^<em>-x$为近似值$x^{</em>}$的绝对误差，或简称误差</p>
-<p>设$\epsilon^*&gt;0$,并满足</p>
+<h3 id="误差的基本概念"><a href="#误差的基本概念" class="headerlink" title="误差的基本概念"></a>误差的基本概念</h3><p>设$x$为准确值,<script type="math/tex">x^*</script> 是$x$的一个近似值，称<script type="math/tex">e^*=x^*-x</script>为近似值<script type="math/tex">x^{*}</script>的绝对误差，或简称误差</p>
+<p>设<script type="math/tex">\epsilon^*>0</script>,并满足</p>
 <script type="math/tex; mode=display">
-|e^*|=|x^*-x|\leq \epsilon^*</script><p>则称$\epsilon^<em>$为近似值$x^</em>$的绝对误差限，或简称误差限</p>
+|e^*|=|x^*-x|\leq \epsilon^*</script><p>则称<script type="math/tex">\epsilon^*</script>为近似值<script type="math/tex">x^*</script>的绝对误差限，或简称误差限</p>
 <p>设$x$为精确值，$x^*$为近似值，则称比值</p>
 <script type="math/tex; mode=display">
-\frac{e^*}{x}=\frac{x^*-x}{x}</script><p>为近似值$x^<em>$的相对误差，记左$e^{</em>}_{r}$ (实际常常用$x^*$代替分母的$x$)</p>
-<p>设$\epsilon^<em>$是近似值$x^</em>$的误差限,则称</p>
+\frac{e^*}{x}=\frac{x^*-x}{x}</script><p>为近似值<script type="math/tex">x^*</script>的相对误差，记左<script type="math/tex">e^{*}_{r}</script> (实际常常用<script type="math/tex">x^*</script>代替分母的<script type="math/tex">x</script>)</p>
+<p>设<script type="math/tex">\epsilon^*</script>是近似值<script type="math/tex">x^*</script>的误差限,则称</p>
 <script type="math/tex; mode=display">
 \epsilon^{*}_{r}=\frac{ \epsilon^*}{|x^*|}</script><p>为近似值$x^*$的相对误差限,此时，有</p>
 <script type="math/tex; mode=display">
@@ -378,7 +389,7 @@ x^* = + 0.\alpha_1\alpha_2\cdots\alpha_k\times10^m()</script><p>如果</p>
 |e^*|=|x^*-x|\leq 0.5 \times 10^{m-n}</script><p>则说近似值$x^*$具有$n$位有效数值.这里n是正整数，m是整数</p>
 <p>若近似值$x^*$具有n位有效数值，则其相对误差满足</p>
 <script type="math/tex; mode=display">
-|e^{*}_{r}|\leq \frac{1}{\alpha_1}\times 10^{-(n-1)}</script><p>反之，如果$x^<em>$的相对误差$e^{</em>}_{r}$满足</p>
+|e^{*}_{r}|\leq \frac{1}{\alpha_1}\times 10^{-(n-1)}</script><p>反之，如果<script type="math/tex">x^*</script>的相对误差<script type="math/tex">e^{*}_{r}</script>满足</p>
 <script type="math/tex; mode=display">
 |e^{*}_{r}|\leq \frac{1}{2(\alpha_1+1)}\times10^{-(10-1)}</script><p>则$x^*$至少具有n位有效数值。</p>
 <h4 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h4><p>可以将$e^*$看成为微分</p>
@@ -388,7 +399,35 @@ e^*(x+y)=d(x+y)=dx + dy =e^*(x)+e^*(y)</script><p>自变量有误差时计算函
 <script type="math/tex; mode=display">
 f(x)-f(x^*)=f(x^*)(x-x^*)+\frac{f'()}{2}(x-x^*)^2
 \\
-e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script>
+e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script><h3 id="线性方程数值解"><a href="#线性方程数值解" class="headerlink" title="线性方程数值解"></a>线性方程数值解</h3><script type="math/tex; mode=display">
+Ax=b</script><ul>
+<li><p>直接法</p>
+<p>假设过程中不产生舍入误差，经过有限次运算可得方程组的精确解的方法</p>
+<p>低阶稠密矩阵方程组</p>
+<p>分为消元法和三角法</p>
+</li>
+<li><p>迭代法</p>
+<p>从解的某个近似值出发，通过构造无穷序列去逼近精确解的方法</p>
+<p>大型稀疏矩阵方程组</p>
+</li>
+</ul>
+<h4 id="高斯消元法"><a href="#高斯消元法" class="headerlink" title="高斯消元法"></a>高斯消元法</h4><p>基本思想 用以下三种变换将其化为阶梯新式求解</p>
+<ol>
+<li>用一个非零的数乘某一个方程</li>
+<li>把一个方程的倍数加到另一个方程上</li>
+<li>互换两个方程的位置</li>
+</ol>
+<p>三个初等变换总是把方程组变为同解的方程组</p>
+<p>我们可以化为上三角，这样可以简单的求解(其过程比较单一)</p>
+<p>消元回代</p>
+<p>实际上就是</p>
+<script type="math/tex; mode=display">
+A^{-1}Ax=A^{-1}b</script><p>增广矩阵</p>
+<script type="math/tex; mode=display">
+(A|b) \rightarrow (E|b')</script><p>计算次数</p>
+<p>回代 $\frac{n(n-1)}{2}$</p>
+<h4 id="矩阵的三角分解"><a href="#矩阵的三角分解" class="headerlink" title="矩阵的三角分解"></a>矩阵的三角分解</h4><h5 id="矩阵的LU分解"><a href="#矩阵的LU分解" class="headerlink" title="矩阵的LU分解"></a>矩阵的LU分解</h5><p>可以把高斯消元的过程描述称矩阵</p>
+
     </div>
 
     
@@ -413,7 +452,7 @@ e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script>
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/04/24/LeetcodeWk187/" rel="next" title="LeetcodeWk185">
+                <a href="/2020/04/24/LeetcodeWk185/" rel="next" title="LeetcodeWk185">
                   <i class="fa fa-chevron-left"></i> LeetcodeWk185
                 </a>
               
@@ -474,7 +513,7 @@ e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差"><span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的浮点表示及算术运算"><span class="nav-text">计算机的浮点表示及算术运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差来源"><span class="nav-text">误差来源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差的基本概率"><span class="nav-text">误差的基本概率</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#误差分析"><span class="nav-text">误差分析</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差"><span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的浮点表示及算术运算"><span class="nav-text">计算机的浮点表示及算术运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差来源"><span class="nav-text">误差来源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差的基本概念"><span class="nav-text">误差的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#误差分析"><span class="nav-text">误差分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程数值解"><span class="nav-text">线性方程数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯消元法"><span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的三角分解"><span class="nav-text">矩阵的三角分解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的LU分解"><span class="nav-text">矩阵的LU分解</span></a></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -493,7 +532,7 @@ e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -506,7 +545,7 @@ e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script>
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -519,7 +558,7 @@ e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script>
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -544,6 +583,10 @@ e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script>
       
         <li class="links-of-blogroll-item">
           <a href="https://zhongmz.github.io" title="https://zhongmz.github.io" rel="noopener" target="_blank">zs</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.kaaass.net" title="https://blog.kaaass.net" rel="noopener" target="_blank">gs</a>
         </li>
       
     </ul>

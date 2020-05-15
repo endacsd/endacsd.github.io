@@ -64,7 +64,7 @@
 <meta property="og:description" content="作为学习的笔记">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200418223347872.png">
-<meta property="og:updated_time" content="2020-05-05T13:43:05.755Z">
+<meta property="og:updated_time" content="2020-05-15T14:36:16.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微机系统">
 <meta name="twitter:description" content="作为学习的笔记">
@@ -215,6 +215,17 @@
     <a href="/playlist/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>歌单</a>
 
   </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-game">
+      
+    
+
+    <a href="/game/" rel="section"><i class="menu-item-icon fa fa-fw fa-game"></i> <br>game</a>
+
+  </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
@@ -307,7 +318,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-05 21:43:05" itemprop="dateModified" datetime="2020-05-05T21:43:05+08:00">2020-05-05</time>
+                <time title="修改时间：2020-05-15 22:36:16" itemprop="dateModified" datetime="2020-05-15T22:36:16+08:00">2020-05-15</time>
               </span>
             
           
@@ -1331,7 +1342,58 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
 <p>执行指令引起，如缺段</p>
 </li>
 </ul>
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
+<p>中断接口电路</p>
+<p>中断优先级</p>
+<p>硬件确定</p>
+<p>中断屏蔽</p>
+<p>中断处理过程</p>
+<ol>
+<li><p>单重中断: 中断服务不被其他中断请求打断</p>
+<ul>
+<li><p>CPU相应中断的条件</p>
+<ul>
+<li>一条指令执行结束后</li>
+<li>有中断请求</li>
+<li>开中断</li>
+</ul>
+</li>
+<li><p>中断处理</p>
+<p>关中断，保护现场，保护断点，形成中断服务程序入口地址，转入中断服务程序</p>
+</li>
+<li><p>中断服务程序</p>
+<p>保护现场，中断处理，恢复现场，开中断，返回断点</p>
+</li>
+</ul>
+</li>
+<li><p>多重中断: 允许在中断服务程序处理过程中相应优先级别更高的中断请求</p>
+<ul>
+<li><p>CPU相应中断的条件</p>
+<p>相同</p>
+</li>
+<li><p>中断处理</p>
+<p>相同</p>
+</li>
+<li><p>中断服务程序</p>
+<p>保护现场，保护原中断屏蔽字,送新中断频闭字，开中断，中断处理，关中断，恢复屏蔽字，恢复现场，开中断，送回断点</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>流程图来</p>
+<h4 id="Pentium的中断机制"><a href="#Pentium的中断机制" class="headerlink" title="Pentium的中断机制"></a>Pentium的中断机制</h4><p>最多可以处理256个中断源，每个中断源都有一个8位二进制数的中断类型码</p>
+<p>中断源分为4中：</p>
+<ul>
+<li>可屏蔽中断(INTR)</li>
+<li>非屏蔽中断(NMI)</li>
+<li>软件中断(INTO,INT3,INT n )</li>
+<li>异常</li>
+</ul>
+<h5 id="中断向量表"><a href="#中断向量表" class="headerlink" title="中断向量表"></a>中断向量表</h5><p>图来</p>
+<ul>
+<li>中断向量： 中断服务程序的入口地址</li>
+<li>中断向量表: 存放中断服务程序入口地址的表格</li>
+</ul>
+<h3 id="可编程接口芯片及其应用"><a href="#可编程接口芯片及其应用" class="headerlink" title="可编程接口芯片及其应用"></a>可编程接口芯片及其应用</h3><h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
     </div>
 
     
@@ -1417,7 +1479,7 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机的应用"><span class="nav-text">微型计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16位微处理器Intel"><span class="nav-text">16位微处理器Intel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8086微处理器的构成"><span class="nav-text">8086微处理器的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的编程结构"><span class="nav-text">8086的编程结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086外部引脚"><span class="nav-text">8086外部引脚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的两种组成模式"><span class="nav-text">8086的两种组成模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086总线周期"><span class="nav-text">8086总线周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的存储器组织"><span class="nav-text">8086的存储器组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的I-O-组织"><span class="nav-text">8086的I/O 组织</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium-系列微处理器的基本结构"><span class="nav-text">Pentium 系列微处理器的基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的基本结构"><span class="nav-text">Pentium 微处理机的基本结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的编程结构"><span class="nav-text">Pentium 微处理机的编程结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium微处理器的指令系统"><span class="nav-text">Pentium微处理器的指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式"><span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前缀"><span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作码"><span class="nav-text">操作码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位-偏移量及立即数"><span class="nav-text">位/偏移量及立即数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式-1"><span class="nav-text">寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据的寻址方式"><span class="nav-text">数据的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#立即寻址"><span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#寄存器寻址"><span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#存储器寻址"><span class="nav-text">存储器寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#转移地址的寻址方式"><span class="nav-text">转移地址的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#段内相对寻址"><span class="nav-text">段内相对寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间直接寻址"><span class="nav-text">段间直接寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间间接寻址"><span class="nav-text">段间间接寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆栈地址寻址"><span class="nav-text">堆栈地址寻址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据传送指令"><span class="nav-text">数据传送指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算术运算指令"><span class="nav-text">算术运算指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BCD码调整指令"><span class="nav-text">BCD码调整指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算指令"><span class="nav-text">逻辑运算指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位处理指令"><span class="nav-text">位处理指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制转移指令"><span class="nav-text">控制转移指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言程序格式"><span class="nav-text">汇编语言程序格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言概述"><span class="nav-text">汇编语言概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言语句格式"><span class="nav-text">汇编语言语句格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪指令"><span class="nav-text">伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序开始和结束伪指令"><span class="nav-text">程序开始和结束伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段定义伪指令"><span class="nav-text">段定义伪指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址计数器伪指令"><span class="nav-text">地址计数器伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据定义伪指令"><span class="nav-text">数据定义伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常数与表达式"><span class="nav-text">常数与表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串"><span class="nav-text">字符串</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数字段"><span class="nav-text">操作数字段</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#常数"><span class="nav-text">常数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#表达式"><span class="nav-text">表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言程序的结构"><span class="nav-text">汇编语言程序的结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言程序设计"><span class="nav-text">汇编语言程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述-1"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支程序设计"><span class="nav-text">分支程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二分支程序设计方法"><span class="nav-text">二分支程序设计方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多路分支程序设计方法"><span class="nav-text">多路分支程序设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#逻辑分解法"><span class="nav-text">逻辑分解法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#地址表法"><span class="nav-text">地址表法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段内转移表法"><span class="nav-text">段内转移表法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环程序的结构形式"><span class="nav-text">循环程序的结构形式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#计数控制循环"><span class="nav-text">计数控制循环</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单重循环"><span class="nav-text">单重循环</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子程序设计"><span class="nav-text">子程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子程序的定义"><span class="nav-text">子程序的定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium保护模式存储管理"><span class="nav-text">Pentium保护模式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟存储器及其工作原理"><span class="nav-text">虚拟存储器及其工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#地址空间及地址"><span class="nav-text">地址空间及地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟存储器工作原理"><span class="nav-text">虚拟存储器工作原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分段存储管理"><span class="nav-text">分段存储管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出"><span class="nav-text">输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口与端口"><span class="nav-text">接口与端口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#接口的功能"><span class="nav-text">接口的功能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的分类"><span class="nav-text">接口的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I-O端口的地址选择"><span class="nav-text">I/O端口的地址选择</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#输入输出的寻址方式"><span class="nav-text">输入输出的寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用门电路组合法进行端口的地址选择"><span class="nav-text">使用门电路组合法进行端口的地址选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用译码器译码法进行端口地址选择"><span class="nav-text">用译码器译码法进行端口地址选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用比较器比较法进行端口地址选择"><span class="nav-text">用比较器比较法进行端口地址选择</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入输出控制方式"><span class="nav-text">输入输出控制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序查询式"><span class="nav-text">程序查询式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序中断方式"><span class="nav-text">程序中断方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA方式"><span class="nav-text">DMA方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#I-O处理机方式"><span class="nav-text">I/O处理机方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断"><span class="nav-text">中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束"><span class="nav-text">结束</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机的应用"><span class="nav-text">微型计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16位微处理器Intel"><span class="nav-text">16位微处理器Intel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8086微处理器的构成"><span class="nav-text">8086微处理器的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的编程结构"><span class="nav-text">8086的编程结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086外部引脚"><span class="nav-text">8086外部引脚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的两种组成模式"><span class="nav-text">8086的两种组成模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086总线周期"><span class="nav-text">8086总线周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的存储器组织"><span class="nav-text">8086的存储器组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的I-O-组织"><span class="nav-text">8086的I/O 组织</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium-系列微处理器的基本结构"><span class="nav-text">Pentium 系列微处理器的基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的基本结构"><span class="nav-text">Pentium 微处理机的基本结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的编程结构"><span class="nav-text">Pentium 微处理机的编程结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium微处理器的指令系统"><span class="nav-text">Pentium微处理器的指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式"><span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前缀"><span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作码"><span class="nav-text">操作码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位-偏移量及立即数"><span class="nav-text">位/偏移量及立即数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式-1"><span class="nav-text">寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据的寻址方式"><span class="nav-text">数据的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#立即寻址"><span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#寄存器寻址"><span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#存储器寻址"><span class="nav-text">存储器寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#转移地址的寻址方式"><span class="nav-text">转移地址的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#段内相对寻址"><span class="nav-text">段内相对寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间直接寻址"><span class="nav-text">段间直接寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间间接寻址"><span class="nav-text">段间间接寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆栈地址寻址"><span class="nav-text">堆栈地址寻址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据传送指令"><span class="nav-text">数据传送指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算术运算指令"><span class="nav-text">算术运算指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BCD码调整指令"><span class="nav-text">BCD码调整指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算指令"><span class="nav-text">逻辑运算指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位处理指令"><span class="nav-text">位处理指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制转移指令"><span class="nav-text">控制转移指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言程序格式"><span class="nav-text">汇编语言程序格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言概述"><span class="nav-text">汇编语言概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言语句格式"><span class="nav-text">汇编语言语句格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪指令"><span class="nav-text">伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序开始和结束伪指令"><span class="nav-text">程序开始和结束伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段定义伪指令"><span class="nav-text">段定义伪指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址计数器伪指令"><span class="nav-text">地址计数器伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据定义伪指令"><span class="nav-text">数据定义伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常数与表达式"><span class="nav-text">常数与表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串"><span class="nav-text">字符串</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数字段"><span class="nav-text">操作数字段</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#常数"><span class="nav-text">常数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#表达式"><span class="nav-text">表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言程序的结构"><span class="nav-text">汇编语言程序的结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言程序设计"><span class="nav-text">汇编语言程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述-1"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支程序设计"><span class="nav-text">分支程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二分支程序设计方法"><span class="nav-text">二分支程序设计方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多路分支程序设计方法"><span class="nav-text">多路分支程序设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#逻辑分解法"><span class="nav-text">逻辑分解法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#地址表法"><span class="nav-text">地址表法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段内转移表法"><span class="nav-text">段内转移表法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环程序的结构形式"><span class="nav-text">循环程序的结构形式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#计数控制循环"><span class="nav-text">计数控制循环</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单重循环"><span class="nav-text">单重循环</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子程序设计"><span class="nav-text">子程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子程序的定义"><span class="nav-text">子程序的定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium保护模式存储管理"><span class="nav-text">Pentium保护模式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟存储器及其工作原理"><span class="nav-text">虚拟存储器及其工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#地址空间及地址"><span class="nav-text">地址空间及地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟存储器工作原理"><span class="nav-text">虚拟存储器工作原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分段存储管理"><span class="nav-text">分段存储管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出"><span class="nav-text">输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口与端口"><span class="nav-text">接口与端口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#接口的功能"><span class="nav-text">接口的功能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口的分类"><span class="nav-text">接口的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I-O端口的地址选择"><span class="nav-text">I/O端口的地址选择</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#输入输出的寻址方式"><span class="nav-text">输入输出的寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用门电路组合法进行端口的地址选择"><span class="nav-text">使用门电路组合法进行端口的地址选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用译码器译码法进行端口地址选择"><span class="nav-text">用译码器译码法进行端口地址选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用比较器比较法进行端口地址选择"><span class="nav-text">用比较器比较法进行端口地址选择</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入输出控制方式"><span class="nav-text">输入输出控制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序查询式"><span class="nav-text">程序查询式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序中断方式"><span class="nav-text">程序中断方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA方式"><span class="nav-text">DMA方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#I-O处理机方式"><span class="nav-text">I/O处理机方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断"><span class="nav-text">中断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium的中断机制"><span class="nav-text">Pentium的中断机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#中断向量表"><span class="nav-text">中断向量表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可编程接口芯片及其应用"><span class="nav-text">可编程接口芯片及其应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束"><span class="nav-text">结束</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -1436,7 +1498,7 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1449,7 +1511,7 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1462,7 +1524,7 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1487,6 +1549,10 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
       
         <li class="links-of-blogroll-item">
           <a href="https://zhongmz.github.io" title="https://zhongmz.github.io" rel="noopener" target="_blank">zs</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.kaaass.net" title="https://blog.kaaass.net" rel="noopener" target="_blank">gs</a>
         </li>
       
     </ul>

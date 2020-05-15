@@ -867,7 +867,7 @@ pre .javascript .function {
 html,
 body {
   height: 0%;
-  background: url("/images/bg2.png");
+  background: url("/images/bg1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -1180,7 +1180,7 @@ body {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4d7fee;
+  background: #ff5416;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
