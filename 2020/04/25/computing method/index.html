@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="endacsd">
 <meta property="og:description" content="笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-15T15:22:26.258Z">
+<meta property="og:updated_time" content="2020-05-16T05:49:38.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算方法">
 <meta name="twitter:description" content="笔记">
@@ -305,7 +305,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-15 23:22:26" itemprop="dateModified" datetime="2020-05-15T23:22:26+08:00">2020-05-15</time>
+                <time title="修改时间：2020-05-16 13:49:38" itemprop="dateModified" datetime="2020-05-16T13:49:38+08:00">2020-05-16</time>
               </span>
             
           
@@ -351,10 +351,15 @@
 <p>浮点数的四则运算</p>
 <p>加减法先对阶</p>
 <p>特点</p>
-<p>大数吃小数 </p>
-<p>接近的数相减</p>
-<p>除以绝对值小的数</p>
-<p>要合理安排运算</p>
+<ul>
+<li><p>大数吃小数 </p>
+</li>
+<li><p>接近的数相减</p>
+</li>
+<li><p>除以绝对值小的数</p>
+</li>
+</ul>
+<p>以上三种会造成比较大的误差，所以我们要合理安排顺序</p>
 <h4 id="误差来源"><a href="#误差来源" class="headerlink" title="误差来源"></a>误差来源</h4><p>实际问题-&gt; 数学模型-&gt; 数值方法-&gt; 程序设计-&gt; 计算机计算-&gt; 解答</p>
 <p>观测误差  模型误差  方法误差    舍入误差</p>
 <h3 id="误差的基本概念"><a href="#误差的基本概念" class="headerlink" title="误差的基本概念"></a>误差的基本概念</h3><p>设$x$为准确值,<script type="math/tex">x^*</script> 是$x$的一个近似值，称<script type="math/tex">e^*=x^*-x</script>为近似值<script type="math/tex">x^{*}</script>的绝对误差，或简称误差</p>
@@ -388,7 +393,16 @@ e^*(x+y)=d(x+y)=dx + dy =e^*(x)+e^*(y)</script><p>自变量有误差时计算函
 <script type="math/tex; mode=display">
 f(x)-f(x^*)=f(x^*)(x-x^*)+\frac{f'()}{2}(x-x^*)^2
 \\
-e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script><h3 id="线性方程数值解"><a href="#线性方程数值解" class="headerlink" title="线性方程数值解"></a>线性方程数值解</h3><script type="math/tex; mode=display">
+e^*(f(x^*))=|f(x^*)-f(x)| = |f'(x^*)|\cdot e^*(x^*)</script><script type="math/tex; mode=display">
+e^*(x\pm y) = \mathrm{d}(x\pm y) =\mathrm{d}x \pm \mathrm{d}y=e^*(x)\pm e^*(y)
+\\
+e^*(xy)=\mathrm{d}(xy)=y\mathrm{d}x+x\mathrm{d}y=ye^*(x)+xe^*(y)
+\\
+e^*(\frac{x}{y})=\mathrm{d}(\frac{x}{y})=\frac{y\mathrm{d}x-x\mathrm{d}y}{y^2}=\frac{ye^*(x)-xe^*(y)}{y^2}\quad (y\neq0)
+\\
+e_{*}^{r}(xy)=\mathrm{d}\ln(xy)=\mathrm{d}\ln(x)+\mathrm{d}\ln(y)=e_{*}^{r}(x)+e_{*}^{r}(y)
+\\
+e_{*}^{r}(\frac{x}{y})=\mathrm{d}\ln(\frac{x}{y})=\mathrm{d}\ln(x)-\mathrm{d}\ln(y)=e_{*}^{r}(x)-e_{*}^{r}(y)</script><h3 id="线性方程数值解"><a href="#线性方程数值解" class="headerlink" title="线性方程数值解"></a>线性方程数值解</h3><script type="math/tex; mode=display">
 Ax=b</script><ul>
 <li><p>直接法</p>
 <p>假设过程中不产生舍入误差，经过有限次运算可得方程组的精确解的方法</p>
@@ -416,7 +430,41 @@ A^{-1}Ax=A^{-1}b</script><p>增广矩阵</p>
 (A|b) \rightarrow (E|b')</script><p>计算次数</p>
 <p>回代 $\frac{n(n-1)}{2}$</p>
 <h4 id="矩阵的三角分解"><a href="#矩阵的三角分解" class="headerlink" title="矩阵的三角分解"></a>矩阵的三角分解</h4><h5 id="矩阵的LU分解"><a href="#矩阵的LU分解" class="headerlink" title="矩阵的LU分解"></a>矩阵的LU分解</h5><p>可以把高斯消元的过程描述称矩阵</p>
-
+<p>我们可以让</p>
+<script type="math/tex; mode=display">
+A=LU
+\\
+Ax=b
+\\
+LUx=b
+\\
+Ly=b
+\\
+Ux=y</script><h5 id="Doolittle分解"><a href="#Doolittle分解" class="headerlink" title="Doolittle分解"></a>Doolittle分解</h5><p>不能使用Gauss矩阵构造，相同与直接消元</p>
+<p>待定系数法求LU</p>
+<p>A=LU</p>
+<p>待定系数法和矩阵相等</p>
+<p>按顺序求解</p>
+<p>可得</p>
+<script type="math/tex; mode=display">
+u_{ik}=a_{ik}-\sum_{j=1}^{i-1}l_{ij}u_{jk}
+\\
+l_{ki}=\frac{a_{ki}-\sum_{j=1}^{i-1}l_{kj}u_{ji}}{u_{ii}}</script><h5 id="对称正定矩阵的平方根法和LDLT分解"><a href="#对称正定矩阵的平方根法和LDLT分解" class="headerlink" title="对称正定矩阵的平方根法和LDLT分解"></a>对称正定矩阵的平方根法和LDLT分解</h5><p>当A时对称正定矩阵时，存在非奇异的下三角矩阵L,使得</p>
+<script type="math/tex; mode=display">
+A=LL^T</script><p>当限定L的对角元素为正时，该分解是唯一的</p>
+<script type="math/tex; mode=display">
+a_{jj}=\sum_{i=1}^{j}l_{ji}^{2}
+\\
+a_{ij}=\sum_{k=1}^{j}l_{ik}l_{jk} \quad j<i</script><p>为了避免开平方根</p>
+<p>我们可以将对称正定矩阵A分解为</p>
+<script type="math/tex; mode=display">
+A=LDL^T</script><p>D是对角矩阵，而且都是正数</p>
+<p>可以得到</p>
+<script type="math/tex; mode=display">
+d_j=a_{jj}-\sum^{j-1}_{k=1}l^{2}_{jk}d_k
+\\
+l_{ij}=\frac{a_{ij}-\sum_{j-1}^{k=1}l_{ik}l_{jk}dk}{dj} \quad i>j</script><p>然后和LU分解类似</p>
+<h5 id="解三对角"><a href="#解三对角" class="headerlink" title="解三对角"></a>解三对角</h5>
     </div>
 
     
@@ -441,7 +489,7 @@ A^{-1}Ax=A^{-1}b</script><p>增广矩阵</p>
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/04/24/LeetcodeWk187/" rel="next" title="LeetcodeWk185">
+                <a href="/2020/04/24/LeetcodeWk185/" rel="next" title="LeetcodeWk185">
                   <i class="fa fa-chevron-left"></i> LeetcodeWk185
                 </a>
               
@@ -502,7 +550,7 @@ A^{-1}Ax=A^{-1}b</script><p>增广矩阵</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差"><span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的浮点表示及算术运算"><span class="nav-text">计算机的浮点表示及算术运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差来源"><span class="nav-text">误差来源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差的基本概念"><span class="nav-text">误差的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#误差分析"><span class="nav-text">误差分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程数值解"><span class="nav-text">线性方程数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯消元法"><span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的三角分解"><span class="nav-text">矩阵的三角分解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的LU分解"><span class="nav-text">矩阵的LU分解</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差"><span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的浮点表示及算术运算"><span class="nav-text">计算机的浮点表示及算术运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差来源"><span class="nav-text">误差来源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差的基本概念"><span class="nav-text">误差的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#误差分析"><span class="nav-text">误差分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程数值解"><span class="nav-text">线性方程数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯消元法"><span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的三角分解"><span class="nav-text">矩阵的三角分解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的LU分解"><span class="nav-text">矩阵的LU分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Doolittle分解"><span class="nav-text">Doolittle分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对称正定矩阵的平方根法和LDLT分解"><span class="nav-text">对称正定矩阵的平方根法和LDLT分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解三对角"><span class="nav-text">解三对角</span></a></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -521,7 +569,7 @@ A^{-1}Ax=A^{-1}b</script><p>增广矩阵</p>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
