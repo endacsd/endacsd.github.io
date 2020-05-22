@@ -29,7 +29,7 @@
     version: '7.4.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
+    copycode: {"enable":true,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
@@ -63,14 +63,16 @@
 <meta property="og:site_name" content="endacsd">
 <meta property="og:description" content="作为学习的笔记">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200518173224235.png">
+<meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200518173817157.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200418223347872.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200516003744997.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200516224056021.png">
-<meta property="og:updated_time" content="2020-05-16T15:07:21.607Z">
+<meta property="og:updated_time" content="2020-05-21T16:25:54.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微机系统">
 <meta name="twitter:description" content="作为学习的笔记">
-<meta name="twitter:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200418223347872.png">
+<meta name="twitter:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200518173224235.png">
   <link rel="canonical" href="http://endacsd.github.io/2020/02/25/MCS/">
 
 
@@ -309,7 +311,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-16 23:07:21" itemprop="dateModified" datetime="2020-05-16T23:07:21+08:00">2020-05-16</time>
+                <time title="修改时间：2020-05-22 00:25:54" itemprop="dateModified" datetime="2020-05-22T00:25:54+08:00">2020-05-22</time>
               </span>
             
           
@@ -562,7 +564,6 @@
 <p>总线接口部件</p>
 <p>总线接口部件包括三总线的控制:</p>
 <p>全部总线控制信号，独立的32位地址总线，独立的64位数据总线。</p>
-<p>​    </p>
 <h4 id="Pentium-微处理机的编程结构"><a href="#Pentium-微处理机的编程结构" class="headerlink" title="Pentium 微处理机的编程结构"></a>Pentium 微处理机的编程结构</h4><p>Pentium微处理器的寄存器组成包括5部分</p>
 <ul>
 <li><p>基本结构寄存器: 16个，其中通用8,控制2，段寄存器6个</p>
@@ -576,19 +577,48 @@
 <p>E: 扩展</p>
 <p>图表</p>
 <h3 id="Pentium微处理器的指令系统"><a href="#Pentium微处理器的指令系统" class="headerlink" title="Pentium微处理器的指令系统"></a>Pentium微处理器的指令系统</h3><h4 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h4><p>一条指令由5部分组成:前缀，操作码，寻址方式，偏移量，立即数</p>
-<p>(a) 前缀 指令，段取代，操作数大小取代，地址大小取代</p>
+<p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200518173224235.png" alt="image-20200518173224235"></p>
 <h5 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h5><p>是对指令的某种限定或说明</p>
 <p>4 种：</p>
-<p>指令前缀: 说明指令的相关特性</p>
-<p>段超越前缀: 用超越段读取默认段</p>
-<p>操作数大小前缀：改变默认的数据长度</p>
-<p>地址大小地址: 改变默认的地址长度</p>
-<p>指令,段取代 显示，由编程人员确定</p>
+<ul>
+<li><p>指令前缀: 说明指令的相关特性</p>
+</li>
+<li><p>段超越前缀: 用超越段读取默认段(三种情况禁止段超越)</p>
+</li>
+<li><p>操作数大小前缀：改变默认的数据长度</p>
+</li>
+<li><p>地址大小地址: 改变默认的地址长度</p>
+</li>
+</ul>
+<p>在实地址，虚拟8086的方式下，隐含寻址16位</p>
+<p>在保护方式下，隐含寻址由段描述符的D位确定</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>D=0</th>
+<th>D=1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16位</td>
+<td>32位</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>操作数大小前缀核地址大小前缀用于改变隐含特性</p>
+<ul>
+<li>显式， 2选1</li>
+<li>隐式， 可共存</li>
+</ul>
 <h5 id="操作码"><a href="#操作码" class="headerlink" title="操作码"></a>操作码</h5><p>规定了微处理器执行的操作</p>
 <p>操作码长度为1或2个字节</p>
 <p>第一个字节的前6位是操作码，</p>
 <p>其余两位种的D位来执行数据流的方向</p>
 <p>W位用来指示数据的长度是字节还是字或双字</p>
+<p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200518173817157.png" alt="image-20200518173817157"></p>
 <p>D: 数据流方向</p>
 <p>D=1 ,R/M -&gt; REG</p>
 <p>D=0, REG -&gt; R/M</p>
@@ -618,17 +648,18 @@
 </tr>
 <tr>
 <td>01</td>
-<td>8位扩展</td>
-<td></td>
+<td>8位符号扩展的位移量</td>
+<td>8位符号扩展的位移量</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>10</td>
+<td>16位的位移量</td>
+<td>32位的位移量</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>11</td>
+<td>R/M是寄存器</td>
+<td>R/M是寄存器</td>
 </tr>
 </tbody>
 </table>
@@ -662,7 +693,7 @@
 <p>有符号号数用补码表示</p>
 <p>立即数可以用+,-,*./ 表示算术表达式。</p>
 <h6 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h6><p>寄存器寻址: 操作数再CPU中的某个寄存器中，指令指定寄存器号</p>
-<h6 id="存储器寻址"><a href="#存储器寻址" class="headerlink" title="存储器寻址"></a>存储器寻址</h6><p>存储器寻址： 操作数才存储器中</p>
+<h6 id="存储器寻址"><a href="#存储器寻址" class="headerlink" title="存储器寻址"></a>存储器寻址</h6><p>存储器寻址： 操作数在存储器中</p>
 <p>存储器地址</p>
 <ul>
 <li><p>物理地址</p>
@@ -705,61 +736,141 @@
 </ol>
 <h4 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h4><p>指令系统: 指令的集合,软硬件交界面</p>
 <p>Pentium指令按功能分为十类</p>
+<ul>
+<li>数据传送指令</li>
+<li>算术运算指令</li>
+<li>BCD码调整指令</li>
+<li>逻辑运算指令</li>
+<li>位处理指令</li>
+<li>控制转移指令</li>
+<li>条件设置指令</li>
+<li>串操作指令</li>
+<li>处理器控制指令</li>
+<li>保护模式系统控制指令</li>
+</ul>
 <h5 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h5><p>数据传送功能: 源-&gt; 目</p>
 <p>执行指令后，源操作数不变，不影响状态标志</p>
-<p>1 MOV 传送</p>
-<p>格式: MOV DST,SRC ; (DST) &lt;- (SRC)</p>
-<p>式中DST(Destination) 为目的操作数，SRC(Source) 为源操作数</p>
-<p>源，目长度相等，CS可出不可入</p>
-<p>4 PUSH 进栈(push onto stack)</p>
-<p>格式: PUSH SRC; 堆栈 &lt;- (SRC)</p>
-<p>5 POP 出栈(pop from the stack)</p>
-<p>格式: POP DST; (DST)&lt;-堆栈栈顶内容</p>
-<p>6 PUSHF/POPF 16位标志寄存器进栈/出栈</p>
-<p>PUSHF ; 标志寄存器低16位压入堆栈</p>
-<p>POPF; 从栈定弹出2个字节送标志寄存器16位</p>
-<p>10 XCHG 交换(exchange)</p>
-<p>格式: XCHG OPR1,OPR2 ; OPR1 &lt;-&gt; OPR2</p>
-<p>12 CBW 字节转为字(convert byte to word)</p>
-<p>格式: CBW ; AX &lt;-AL 符号扩展</p>
-<p>13CWD 字转换为双字(convert word to double word)</p>
-<p>格式: CWD ; DX:AX &lt;- AX 符号扩展</p>
-<p>16 LEA 有效地址送寄存器(load effective address)</p>
-<p>格式: LEA REG, SRC ; (REG) &lt;- (SRC) 的有效地址</p>
-<p>18 LAHF 标志送AH(load AH with flags)</p>
-<p>格式： LAHF ; AH &lt;- flags 低8位</p>
-<p>19 SAHF AH 送标志寄存器(store AH into flags)</p>
-<p>格式：SAHF ;flgas低8位&lt;-AH</p>
-<p>20 XLAT 换码(translate)</p>
-<p>格式: XLAT</p>
+<ol>
+<li><p>MOV 传送 (move)</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV DST,SRC; (DST) &lt;- (SRC)</span><br></pre></td></tr></table></figure>
+<p>DST(Destination) 为目的操作数，SRC(Source) 为源操作数<br>DST和SRC长度相等，CS可出不可入</p>
+</li>
+<li><p>PUSH 进栈(push onto stack)</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PUSH SRC; 堆栈 &lt;- (SRC)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>POP 出栈(pop from the stack)</p>
+<p>格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POP DST; (DST)&lt;-堆栈栈顶内容</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PUSHF/POPF 16位标志寄存器进栈/出栈</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PUSHF ; 标志寄存器低16位压入堆栈</span><br><span class="line">POPF  ; 从栈定弹出2个字节送标志寄存器16位</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>XCHG 交换(exchange)</p>
+<p> 格式: </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XCHG OPR1,OPR2 ; OPR1 &lt;-&gt; OPR2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CBW 字节转为字(convert byte to word)</p>
+<p> 格式: </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CBW ; AX &lt;-AL 符号扩展</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CWD 字转换为双字(convert word to double word)</p>
+<p> 格式: </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CWD ; DX:AX &lt;- AX 符号扩展</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LEA 有效地址送寄存器(load effective address)</p>
+<p> 格式: </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LEA REG, SRC ; (REG) &lt;- (SRC) 的有效地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LDS,LES,LFS,LGS和LSS指针送寄存器和段寄存器</p>
+<p> 格式：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDS REG,SRC</span><br></pre></td></tr></table></figure>
+<p> 功能:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REG&lt;-[SRC]</span><br><span class="line">(DS)&lt;-[SRC+2](16位EA)</span><br><span class="line">(DS)&lt;-[SRC+4](32位EA)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LAHF 标志送AH(load AH with flags)<br>格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LEA REG, SRC ; (REG) &lt;- (SRC) 的有效地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SAHF AH 送标志寄存器(store AH into flags)</p>
+<p>格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SAHF ;flgas低8位&lt;-AH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>XLAT 换码(translate)</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XLAT</span><br></pre></td></tr></table></figure>
 <p>功能: 完成代码转换，偏移量8位，表长$\leq$256</p>
 <p>16位指令(AL) &lt;- [(BX)+(AL)]</p>
 <p>32位指令(AL) &lt;-[(EBX)+(AL)]</p>
-<h5 id="算术运算指令"><a href="#算术运算指令" class="headerlink" title="算术运算指令"></a>算术运算指令</h5><p>1 ADD 加法(add)</p>
-<p>格式: ADD DST,SRC ; (DST) &lt;- (SRC) +(DST)</p>
+</li>
+<li><p>IN/OUT 输入输出指令(不需要段地址)</p>
+<ol>
+<li><p>IN 输入指令(input)</p>
+<ol>
+<li><p>直接寻址</p>
+<p>ddd</p>
+</li>
+<li><p>间接寻址</p>
+<p>ddd</p>
+</li>
+</ol>
+</li>
+<li><p>OUT输出指令(output)</p>
+<ol>
+<li><p>直接寻址</p>
+<p>ddd</p>
+</li>
+<li><p>间接寻址</p>
+<p>ddd</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="算术运算指令"><a href="#算术运算指令" class="headerlink" title="算术运算指令"></a>算术运算指令</h5><ol>
+<li><p>ADD 加法(add)</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADD DST,SRC ; (DST) &lt;- (SRC) +(DST)</span><br></pre></td></tr></table></figure>
 <p>类型: 影响CF,PF,AF,ZF,SF,SF,OF.可以进行8,16,32位操作</p>
-<p>2 ADC 带进位加法(add with carry)</p>
-<p>格式：ADC DST,SRC ; (DST) &lt;- (RSC)+(DST)+CF</p>
+</li>
+<li><p>ADC 带进位加法(add with carry)</p>
+<p>格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADC DST,SRC ; (DST) &lt;- (RSC)+(DST)+CF</span><br></pre></td></tr></table></figure>
 <p>加到最低位</p>
-<p>3 SBU 减法(subtract) </p>
-<p>格式: SUB DST,SRC ; (DST)&lt;-(DST)-(SRC)</p>
-<p>4 SBB 带借位减法(subtract with borrow) </p>
-<p>格式: SBB DST,SRC ; (DST) &lt;- (DST)-(SRC)- CF</p>
-<p>5 INC +1 (increment)</p>
-<p>格式: INC OPR ； (OPR)&lt;-(OPR)+1</p>
-<p>6DEC -1 (decrement)</p>
-<p>格式 DEC OPR;  (OPR)&lt;-(OPR)-1</p>
-<p>7 NEG 求补(negate)</p>
-<p>格式 NEG OPR; ( OPR) &lt;- (-OPR)</p>
+</li>
+<li><p>SBU 减法(subtract) </p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUB DST,SRC ; (DST)&lt;-(DST)-(SRC)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SBB 带借位减法(subtract with borrow) </p>
+<p>格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SBB DST,SRC ; (DST) &lt;- (DST)-(SRC)- CF</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>INC +1 (increment)</p>
+<p>格式: INC OPR ； </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(OPR)&lt;-(OPR)+1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DEC -1 (decrement)</p>
+<p>格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEC OPR;  (OPR)&lt;-(OPR)-1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NEG 求补(negate)</p>
+<p>格式 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NEG OPR; ( OPR) &lt;- (-OPR)</span><br></pre></td></tr></table></figure>
 <p>567</p>
 <p>目的操作数: 通用寄存器，存储器单元</p>
 <p>执行INC,DEC 不影响CF</p>
 <p>执行NEG 影响AF,CF,OF,PF,SF,ZF,这六个标志位</p>
 <p>NEG 溢出时， OF=1</p>
-<p>8 CMP 比较 (compare)</p>
-<p>格式: CMP OPR1,OPR2 ; (OPR1)-(OPR2)</p>
-<p>(12) MUL 无符号数乘法(unsigned multiple)</p>
-<p>格式 MUL SRC</p>
+</li>
+<li><p>CMP 比较 (compare)</p>
+<p>格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMP OPR1,OPR2 ; (OPR1)-(OPR2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MUL 无符号数乘法(unsigned multiple)</p>
+<p>格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MUL SRC</span><br></pre></td></tr></table></figure>
 <p>功能:</p>
 <p>字节乘 (AX)&lt;-(AL)$\times$ (SRC)</p>
 <p>字乘 (DX:AX)&lt;-(AX)$\times$(SRC)</p>
@@ -769,8 +880,24 @@
 <p>2）SRC: 通用寄存器，存储器单元</p>
 <p>3）被乘数: 默认AL,AX,EAX之一</p>
 <p>4) 若乘积的高半部分结果为0，则CF=0,OF=0;否则CF=1,OF=1.从而AF,PF,ZF,SF无定义，即状态不定</p>
-<p>13 IMUL 带符号乘法(signed multiple)</p>
-<p>格式1 IMUL SRC</p>
+</li>
+<li><p>IMUL 带符号乘法(signed multiple)</p>
+<p>格式1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IMUL SRC</span><br></pre></td></tr></table></figure>
+<p>功能:</p>
+<p>字节乘 (AX)&lt;-(AL)$\times$ (SRC)</p>
+<p>字乘 (DX:AX)&lt;-(AX)$\times$(SRC)</p>
+<p>双字乘 (EDX:EAX)&lt;-(EAX)$\times$(SRC)</p>
+</li>
+<li><p>DIV 无符号除法(unsigned divide)</p>
+<p>格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DIV SRC</span><br></pre></td></tr></table></figure>
+<p>功能</p>
+<p>说明</p>
+</li>
+<li><p>IDIV有符号数的除法(signed divide)</p>
+</li>
+</ol>
 <h5 id="BCD码调整指令"><a href="#BCD码调整指令" class="headerlink" title="BCD码调整指令"></a>BCD码调整指令</h5><p>​                       7    4 3   0</p>
 <p>压缩BCD码: BCDBCD</p>
 <p>​                           7     4 3   0</p>
@@ -833,43 +960,73 @@
 <p>1) OPR: 通用寄存器，存储器单元,8位,16位,32位.</p>
 <p>2)CNT: 8位立即数(1-31,8086中只能为1)，CL.</p>
 <p>3)CF依操作设置。OF当CNT=1时有效</p>
-<h5 id="控制转移指令"><a href="#控制转移指令" class="headerlink" title="控制转移指令"></a>控制转移指令</h5><p>1.无条件段内相对短转移(jump)</p>
-<p>格式: JMP SHORT OPR</p>
+<h5 id="控制转移指令"><a href="#控制转移指令" class="headerlink" title="控制转移指令"></a>控制转移指令</h5><ol>
+<li><p>无条件段内相对短转移(jump)</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JMP SHORT OPR</span><br></pre></td></tr></table></figure>
 <p>功能: (IP)&lt;-(IP)+8位位移量或(EIP)&lt;-(EIP)+8位位移量</p>
 <p>说明: SHORT 是短转移属性描述符号，8位位移量是一个带符号数，范围是-128到+127字节</p>
-<p>2.无条件段内相对近转移</p>
-<p>格式: JMP NEAR PTR OPR</p>
+</li>
+<li><p>无条件段内相对近转移</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JMP NEAR PTR OPR</span><br></pre></td></tr></table></figure>
 <p>功能:(IP)&lt;-(IP)+16位位移量或(EIP)&lt;-(EIP)+32位位移量</p>
 <p>说明: NEAR是近转移属性描述符，16位，32位位移量是一个带符号数，</p>
-<p>3.无条件段内间接转移</p>
-<p>格式: JMP OPR </p>
-<p>格式: (IP)&lt;-(EA) 或 (EIP)&lt;-(EA)</p>
-<p>4.无条件段间直接转移</p>
-<p>格式: JMP FAR PTR OPR; OPR为指令的标号(指令地址)</p>
+</li>
+<li><p>无条件段内间接转移</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JMP OPR</span><br></pre></td></tr></table></figure>
+<p>功能: (IP)&lt;-(EA) 或 (EIP)&lt;-(EA)</p>
+</li>
+<li><p>无条件段间直接转移</p>
+<p>格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JMP FAR PTR OPR; OPR为指令的标号(指令地址)</span><br></pre></td></tr></table></figure>
 <p>功能:(IP/EIP)&lt;-OPR的段内偏移地址 (CS)&lt;-OPR所在段的段地址</p>
-<p>5.无条件段间间接转移</p>
-<p>格式: JMP DWORD PTR OPR ; OPR为存储器单元</p>
-<p>功能: (IP/EIP)&lt;-[EA] (CS)&lt;-[EA+2]/[EA+4]</p>
-<p>6.条件先对转移(8位偏移量)</p>
-<p>(1) 单条件先对转移</p>
+</li>
+<li><p>条件段间间接转移</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JMP DWORD PTR OPR ; OPR为存储器单元</span><br></pre></td></tr></table></figure>
+<p>功能: (IP/EIP)&lt;-[EA] ,(CS)&lt;-[EA+2]/[EA+4]</p>
+</li>
+<li><p>条件先对转移(8位偏移量)</p>
+<ol>
+<li><p>单条件先对转移</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">JZ / JE   OPR ;</span><br><span class="line">JNZ / JNE OPR ;</span><br><span class="line">JS        OPR ;</span><br><span class="line">JNS       OPR ;</span><br><span class="line">JO        OPR ;</span><br><span class="line">JP/JPE    OPR ;</span><br><span class="line">JNP / JPO OPR ;</span><br><span class="line">JC        OPR ;</span><br><span class="line">JNC       OPR ;</span><br><span class="line"></span><br><span class="line">J: jump Z: zoro E: equal N: not</span><br><span class="line">S: sign P: parity C: carry O: overflow</span><br><span class="line">PE: parity even PO: parity odd</span><br></pre></td></tr></table></figure>
-<p>(2)无符号数比较条件相对转移(A-B) (A:above 高于 B: below低于)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JB / JNAE / JC  OPR ;</span><br><span class="line">JAE / JNB / JNC OPR ;</span><br><span class="line">JBE / JNB       OPR ;</span><br><span class="line">JA / JNBE       OPR</span><br></pre></td></tr></table></figure>
-<p>（3) 有符号数比较条件相对转移(A-B) (G: greater 大于 L: less 小于)</p>
+</li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><p>无符号数比较条件相对转移(A-B) (A:above 高于 B: below低于)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JB / JNAE / JC  OPR ;</span><br><span class="line">JAE / JNB / JNC OPR ;</span><br><span class="line">JBE / JNB       OPR ;</span><br><span class="line">JA / JNBE       OPR ;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>有符号数比较条件相对转移(A-B) (G: greater 大于 L: less 小于)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JL / JNEG OPR ;</span><br><span class="line">JGE / JNL OPR ;</span><br><span class="line">JLE / JNG OPR ;</span><br><span class="line">JG / JNLE OPR ;</span><br></pre></td></tr></table></figure>
-<p>4测试CS条件相对转移</p>
-<p>JCXZ OPR ; (CX)=0转移</p>
-<p>7.LOOP 循环控制相对转移</p>
-<p>格式: LOOP OPR</p>
+</li>
+</ol>
+</li>
+<li><p>测试CS条件相对转移</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JCXZ OPR ; (CX)=0转移</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>LOOP 循环控制相对转移</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOOP OPR</span><br></pre></td></tr></table></figure>
 <p>功能: (CX/ECX)&lt;- (CX/ECX)-1; (CX/ECX)$\neq$0转移</p>
-<p>8.LOOPZ/LOOPE循环控制相对转移</p>
-<p>格式: LOOPZ/LOOPE OPR</p>
+</li>
+<li><p>LOOPZ/LOOPE循环控制相对转移</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOOPZ/LOOPE OPR</span><br></pre></td></tr></table></figure>
 <p>功能:(CX/ECX)&lt;-(CX/ECX)-1;(CX/ECX)$\neq$0且ZF=1转移</p>
-<p>9.LOOPNZ/LOOPNE 循环控制相对转移</p>
-<p>格式: LOOPNZ/LOOPNE OPR</p>
+</li>
+<li><p>LOOPNZ/LOOPNE 循环控制相对转移</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOOPNZ/LOOPNE OPR</span><br></pre></td></tr></table></figure>
 <p>功能: (CX/ECX) &lt;- (CX/ECX)-1; (CX/ECX)$\neq$0且ZF=0转移</p>
 <p>说明: 上述三条循环控制先对转移指令中的转移地址为(IP/EIP)&lt;-(IP/EIP)+8位带符号数；8位带符号数；8位位移量是由目标地址OPR确定</p>
-<p>10.子程序调用与返回</p>
+</li>
+<li><p>子程序调用与返回</p>
 <p>子程序:具有独立功能的程序模块</p>
 <p>程序中可由调用程序(或称为主程序)调用这些子程序，而在子程序执行完后又返回调用程序继续执行。为实现这一功能，微机提供了CALL调用指令和RET返回指令。</p>
 <p>(1) 段内相对调用</p>
@@ -911,7 +1068,7 @@
 <p>SP&lt;-(SP)-2, [SP]&lt;-(CS)</p>
 <p>SP&lt;-(SP)-2, [SP]&lt;-(IP)</p>
 <p>IP&lt;-(EA)</p>
-<p>CS&lt;-(EA+4)</p>
+<p>CS&lt;-(EA+4)    </p>
 <p>操作数32位:</p>
 <p>ESP&lt;-(ESP)-2,[ESP]&lt;-(CS)</p>
 <p>ESP&lt;-(ESP)-4, [ESP]&lt;-(EIP)</p>
@@ -939,22 +1096,29 @@
 <p>功能:</p>
 <p>操作数16位: IP&lt;-栈弹出2字节，SP&lt;-(SP)+2，CS&lt;-栈弹出2字节,SP&lt;-(SP)+2,SP&lt;-(SP)+N</p>
 <p>操作数32位:EIP&lt;-栈弹出4字节，ESP&lt;-(ESP)+4, CS&lt;-栈弹出2字节,ESP&lt;-(ESP)+2, ESP&lt;-(ESP)+N</p>
-<p>11 中断指令</p>
+</li>
+<li><p>中断指令</p>
 <p>中断指令作用: 调用中断服务程序。中断向量地址=中断类型码$\times$4</p>
-<p>(1) INT中断指令</p>
-<p>格式: INT n ;不影响标志位</p>
+<ol>
+<li><p>INT中断指令</p>
+<p>格式: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INT n ;不影响标志位</span><br></pre></td></tr></table></figure>
 <p>功能:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SP&lt;- (SP) -2</span><br><span class="line">PUSH(FR)     ; 标志寄存器FR进栈</span><br><span class="line">SP&lt;- (SP) -2</span><br><span class="line">PUSH(CS)     ; 断点段地址CS进栈</span><br><span class="line">SP&lt;- (SP) -2</span><br><span class="line">PUSH (IP)    ; 断点地址指针IP进栈</span><br><span class="line">TF&lt;-0        ; 禁止单步</span><br><span class="line">IF&lt;-0        ; 禁止中断</span><br><span class="line">IP&lt;-[n*4]    ; 转向中断服务程序</span><br><span class="line">CS&lt;-[n*4+2]</span><br></pre></td></tr></table></figure>
-<p>(2) INT3中断断点</p>
+</li>
+<li><p>INT3中断断点</p>
 <p>格式: INT3 ;同INT n.</p>
 <p>说明: 产生类型为3的中断,不影响标志位。</p>
-<p>(3)INTO溢出中断</p>
+</li>
+<li><p>INTO溢出中断</p>
 <p>格式: INTO ; OF=1产生类型为4的中断,OF=0顺序执行下条指令。</p>
 <p>说明: 产生中断时,TF&lt;-0, IF&lt;-0 ，其他标志位不受影响</p>
-<p>(4)IRET中断返回</p>
+</li>
+<li><p>IRET中断返回</p>
 <p>格式: IRET ; 标志位随标志寄存器出操作栈操作而变</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IP&lt;- 栈弹出2字节 ;</span><br><span class="line">SP&lt;- (SP) +2 </span><br><span class="line">CS&lt;- 栈弹出2字节 ;</span><br><span class="line">SP&lt;- (SP)+2</span><br><span class="line">FR&lt;- 栈弹出2字节 ;</span><br><span class="line">SP&lt;- (SP)+2</span><br></pre></td></tr></table></figure>
-<p>(6) INT 21H 系统功能调用</p>
+</li>
+<li><p>INT 21H 系统功能调用</p>
 <p>系统功能调用: DOS为系统程序员及用户提供的一组中断服务程序</p>
 <p>过程:</p>
 <p>1)AH&lt;- 功能调用编号</p>
@@ -965,11 +1129,18 @@
 <p>MOV AH, 1 ; (AH) &lt;-功能号01H</p>
 <p>INT 21H ;调用21H号软中断</p>
 <p>说明: 出口参数(AL) = 键入字符的ASCII码。</p>
-<p>2)功能号 : 2 ; 输出字符送显示器</p>
-<p>MOV DL, 41H ; 入口参数: (DL)&lt;- 字符A的ASCII码</p>
-<p>MOV AH,2 ; (AH)&lt;- 功能号02H</p>
-<p>INT 21H ; 在屏幕输出字符A</p>
-<h3 id="汇编语言程序格式"><a href="#汇编语言程序格式" class="headerlink" title="汇编语言程序格式"></a>汇编语言程序格式</h3><h4 id="汇编语言概述"><a href="#汇编语言概述" class="headerlink" title="汇编语言概述"></a>汇编语言概述</h4><p>指令: 使计算机完成某种操作的命令</p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>   2)功能号 : 2 ; 输出字符送显示器
+
+   MOV DL, 41H ; 入口参数: (DL)&lt;- 字符A的ASCII码
+
+   MOV AH,2 ; (AH)&lt;- 功能号02H
+
+   INT 21H ; 在屏幕输出字符A
+</code></pre><h3 id="汇编语言程序格式"><a href="#汇编语言程序格式" class="headerlink" title="汇编语言程序格式"></a>汇编语言程序格式</h3><h4 id="汇编语言概述"><a href="#汇编语言概述" class="headerlink" title="汇编语言概述"></a>汇编语言概述</h4><p>指令: 使计算机完成某种操作的命令</p>
 <p>程序: 完成某种功能的指令序列</p>
 <p>软件:各种程序总称</p>
 <p>机器语言:计算机能够直接识别的语言。用机器语言写出的程序称为机器代码</p>
@@ -1075,7 +1246,7 @@
 <h5 id="常数与表达式"><a href="#常数与表达式" class="headerlink" title="常数与表达式"></a>常数与表达式</h5><p>操作数为常数于表达式定义形式</p>
 <h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>操作数式字符串定义形式</p>
 <h4 id="操作数字段"><a href="#操作数字段" class="headerlink" title="操作数字段"></a>操作数字段</h4><p>操作数包括: 寄存器，变量，标号，常数，表达式。</p>
-<h6 id="常数"><a href="#常数" class="headerlink" title="常数"></a>常数</h6><p>常数: 主要用于作指令中的直接操作数，也可作为存储量操作数的组成部分，或者在伪指令中用于给变量赋初值。</p>
+<h5 id="常数"><a href="#常数" class="headerlink" title="常数"></a>常数</h5><p>常数: 主要用于作指令中的直接操作数，也可作为存储量操作数的组成部分，或者在伪指令中用于给变量赋初值。</p>
 <p>常数包括: 数值常数，符号常数，字符串常数</p>
 <p>1.数值常数</p>
 <p>数值常数: 2进制数B,8进制数Q,10进制数D(默认)，16进制数H</p>
@@ -1092,7 +1263,7 @@
 <p>(2) =伪指令</p>
 <p>格式: 符号常数名=表达式; 同EQU伪指令</p>
 <p>注意: 可重复定义</p>
-<h6 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h6><p>表达式是一个组合序列，包括常数，寄存器，标号，变量</p>
+<h5 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h5><p>表达式是一个组合序列，包括常数，寄存器，标号，变量</p>
 <p>两种形式: 数值表达式，地址表达式</p>
 <p>1.运算符 </p>
 <p>6种: 算术运算，逻辑运算，位移运算，关系运算，返回值运算，属性运算</p>
@@ -1103,7 +1274,8 @@
 <p>返回值运算符</p>
 <p>返回值运算符: </p>
 <p>总结</p>
-<h4 id="汇编语言程序的结构"><a href="#汇编语言程序的结构" class="headerlink" title="汇编语言程序的结构"></a>汇编语言程序的结构</h4><h3 id="汇编语言程序设计"><a href="#汇编语言程序设计" class="headerlink" title="汇编语言程序设计"></a>汇编语言程序设计</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>基本结构形式: 顺序,分支，循环，子程序</p>
+<h4 id="汇编语言程序的结构"><a href="#汇编语言程序的结构" class="headerlink" title="汇编语言程序的结构"></a>汇编语言程序的结构</h4><p>moyuing</p>
+<h3 id="汇编语言程序设计"><a href="#汇编语言程序设计" class="headerlink" title="汇编语言程序设计"></a>汇编语言程序设计</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>基本结构形式: 顺序,分支，循环，子程序</p>
 <h4 id="分支程序设计"><a href="#分支程序设计" class="headerlink" title="分支程序设计"></a>分支程序设计</h4><h5 id="二分支程序设计方法"><a href="#二分支程序设计方法" class="headerlink" title="二分支程序设计方法"></a>二分支程序设计方法</h5><p>例1: 有一个函数,任意给定自变量X值($-128\leq X\leq127$) ,当$X\geq 0$时函数值Y=1,当X&lt;0时Y=-1;设给定的X的值存入变量XX1单元,函数Y值存入变量YY1单元。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">DATA 	SEGMENT</span><br><span class="line">XX1  	DB     X</span><br><span class="line">YY1  	DB     ?</span><br><span class="line">DATA 	ENDS</span><br><span class="line">CODE 	SEGMENT</span><br><span class="line">        ASSUME CS:CODE, DS:DATA</span><br><span class="line">START:	MOV  AX, DATA</span><br><span class="line">        MOV  DS, AX</span><br><span class="line">        MOV  AL, XX1</span><br><span class="line">        CMP  AL, 0</span><br><span class="line">        JNS  AA2</span><br><span class="line">        MOV  AL, 0FFH</span><br><span class="line">        JMP  AA1</span><br><span class="line">AA2:	MOV  AL, 1</span><br><span class="line">AA1:    MOV  YY1, AL</span><br><span class="line">        MOV  AH, 4CH</span><br><span class="line">        INT  21H</span><br><span class="line">CODE    ENDS</span><br><span class="line">        END  START</span><br></pre></td></tr></table></figure>
 <h5 id="多路分支程序设计方法"><a href="#多路分支程序设计方法" class="headerlink" title="多路分支程序设计方法"></a>多路分支程序设计方法</h5><p>三种方法: 逻辑分解法，地址表法，转移表法</p>
@@ -1121,7 +1293,7 @@
 <p>计数控制,条件控制(判断数据)，变量控制(判断地址,变量地址)</p>
 <p>例3： 某个数据段中，从偏移地址1000H单元开始，连续存放255个8位无符号整数x1,x2,…,x255.编写程序求这些数据得和,并讲结果存入SUM1单元</p>
 <p>AX为累加和，先清0，DL为相应的”加数”，DH清0，实现AX&lt;-AX+DX</p>
-<h6 id="计数控制循环"><a href="#计数控制循环" class="headerlink" title="计数控制循环"></a>计数控制循环</h6><p>(1) 先执行，后判断</p>
+<h5 id="计数控制循环"><a href="#计数控制循环" class="headerlink" title="计数控制循环"></a>计数控制循环</h5><p>(1) 先执行，后判断</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">DATA    SEGMENT</span><br><span class="line">        ORG    1000H</span><br><span class="line">NUMBER1  DB  x1, x2, ...x254, x255</span><br><span class="line">SUM1    DW    ?</span><br><span class="line">DATA    ENDS</span><br><span class="line">CODE    SEGMENT</span><br><span class="line">        ASSUME CS:CODE, DS:DATA</span><br><span class="line">START:  MOV    AX, DATA</span><br><span class="line">        MOV    DS, AX</span><br><span class="line">        LEA    BX, NUMBER1</span><br><span class="line">        MOV    AX, 0</span><br><span class="line">        SUB    CL, 255</span><br><span class="line">A11:    MOV    DL, [BX]</span><br><span class="line">        ADD    AX, DX</span><br><span class="line">        INC    BX</span><br><span class="line">        SUB    CL, 1</span><br><span class="line">        JNZ    AA1</span><br><span class="line">        MOV    SUM1, AX</span><br><span class="line">        MOV    AH, 4CH</span><br><span class="line">        INT    21H</span><br><span class="line">CODE    ENDS</span><br><span class="line">        END    START</span><br></pre></td></tr></table></figure>
 <p>(2)先判断,后执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">DATA    SEGMENT</span><br><span class="line">        ORG    1000H</span><br><span class="line">NUMBER1  DB  x1, x2, ...x254, x255</span><br><span class="line">SUM1    DW    ?</span><br><span class="line">DATA    ENDS</span><br><span class="line">CODE    SEGMENT</span><br><span class="line">        ASSUME CS:CODE, DS:DATA</span><br><span class="line">START:  MOV    AX, DATA</span><br><span class="line">        MOV    DS, AX</span><br><span class="line">        LEA    BX, NUMBER1-1</span><br><span class="line">        MOV    AX, 0</span><br><span class="line">        MOV    DH, 0</span><br><span class="line">        MOV    CL, 0</span><br><span class="line">AA1:    INC    BX</span><br><span class="line">        SUB    CL, 1</span><br><span class="line">        JZ     AA2</span><br><span class="line">        MOV    DL, [BX]</span><br><span class="line">        ADD    AX, DX</span><br><span class="line">        JMP    A11</span><br><span class="line">A22:    MOV    SUM1,AX</span><br><span class="line">        MOV    AH, 4CH</span><br><span class="line">        INT    21H</span><br><span class="line">CODE    ENDS</span><br><span class="line">        END    START</span><br></pre></td></tr></table></figure>
@@ -1509,6 +1681,7 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
 </ul>
 <p>初始化命令字 一般在系统复位后的初始化编程中设置，用于确定8259A的基本工作方式，设置以后一般保持不变</p>
 <p>操作命令: 实在初始化以后的正常工作中写入，它实现对8259A的状态，中断方式和过程的动态控制，在工作中随时写入操作命令以修改某些控制方式</p>
+<p>补充()</p>
 <p>8259A内部有7个寄存器，分为两组: 初始化命令寄存器组合操作命令寄存器组</p>
 <ul>
 <li>ICW1-ICW4</li>
@@ -1517,10 +1690,74 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
 <ol>
 <li><p>初始化命令字</p>
 <p>图来</p>
-<p>ICW1使用偶地址，ICW2,ICW3,ICW4都使用及地址</p>
+<p>ICW1使用偶地址，ICW2,ICW3,ICW4都使用奇地址</p>
+<p>必须要有一个特定的顺序</p>
+<ol>
+<li><p>8259A的ICW1格式(A0=0)</p>
+<p>图来</p>
+<p>ICW1主要功能: 确定级联方式，触发方式</p>
+<p>ICW1时初始化命令字</p>
+<p>写入ICW1后</p>
+</li>
+<li><p>8259AdeICW2格式(A0=1)</p>
+<p>图来</p>
+<p>ICW2主要功能：确定中断向量，中断类型码</p>
+<p>ICW2的功能时设置中断类型码的初始化命令字</p>
+</li>
+<li><p>8259ICW3格式</p>
+<p>图来</p>
+<p>ICW3主要功能:确定主片，重片的级联状态，即确定主片的连接位和从片的编码</p>
+<p>ICW3仅仅用于8259A的级联方式，它分为主片ICW3和从片ICW3两种格式</p>
+<ul>
+<li><p>主片ICW3</p>
+<p>功能: 表明主片IRx与从片INT之间的连接关系</p>
+</li>
+<li><p>从片ICW3</p>
+<p>功能 表明从片INT引脚是和主片的哪一个IRx相联</p>
+<p>D2-D0的值与从片的输出端INT连载主片的哪条中断请求输入引脚有关</p>
+</li>
+</ul>
+</li>
+<li><p>8259A的ICW4格式(A0=1)</p>
+<p>图来</p>
+<p>ICW4主要功能：选择CPU系统，确定中断结束方式，规定是主片还是从片，选择是否采用缓冲方式</p>
 </li>
 </ol>
-<h3 id="可编程接口芯片及其应用"><a href="#可编程接口芯片及其应用" class="headerlink" title="可编程接口芯片及其应用"></a>可编程接口芯片及其应用</h3><h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
+</li>
+<li><p>操作命令字</p>
+<p>没有顺序</p>
+<ol>
+<li><p>OCW1</p>
+<p>图来</p>
+<p>功能保存中断屏蔽字</p>
+<p>操作命令字OCW1对8259A内的中断屏蔽寄存器IMR中的各位进行动态地设置屏蔽字，M0-M7分别于8259A的IR0-IR7对应</p>
+</li>
+<li><p>OCW2(A0=0)</p>
+<p>图来</p>
+<p>主要功能: 控制8259A的中断循环优先级及发送命令中断结束方式</p>
+<p>R循环优先级设定</p>
+<p>SL是否采用二进制编码</p>
+<p>EOI中断结束方式</p>
+</li>
+<li><p>OCW3(A0=0)</p>
+<p>图来</p>
+<p>主要功能: 设定查询方式，特殊屏蔽方式，寄存器读取方式</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="可编程接口芯片及其应用"><a href="#可编程接口芯片及其应用" class="headerlink" title="可编程接口芯片及其应用"></a>可编程接口芯片及其应用</h3><h3 id="汇编实验"><a href="#汇编实验" class="headerlink" title="汇编实验"></a>汇编实验</h3><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>由于采用DosBox, 所以最好先弄好自动mount</p>
+<p>写代码采用emu8086和vscode(<del>下载一个插件即可，但是下了之后有时候会突然卡顿，所以不下载也可</del>)</p>
+<p>代码来源于实验教程，做了一些修改</p>
+<h4 id="实验环境及DEBUG使用"><a href="#实验环境及DEBUG使用" class="headerlink" title="实验环境及DEBUG使用"></a>实验环境及DEBUG使用</h4><h4 id="汇编语言程序结构"><a href="#汇编语言程序结构" class="headerlink" title="汇编语言程序结构"></a>汇编语言程序结构</h4><h5 id="实验内容1"><a href="#实验内容1" class="headerlink" title="实验内容1"></a>实验内容1</h5><p>编写完整的汇编语言程序：从变量 DD1 开始存放 3 个无符号字节数据，试编制一个找出其 中最大者存入 DD2 单元的源程序。</p>
+<h6 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h6><h6 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">DATA    SEGMENT</span><br><span class="line">DD1     DB 36H,32H,32H</span><br><span class="line">DD2     DB 0H</span><br><span class="line"></span><br><span class="line">DATA    ENDS </span><br><span class="line">        </span><br><span class="line">CODE    SEGMENT </span><br><span class="line">        ASSUME CS:CODE,DS:DATA</span><br><span class="line">        </span><br><span class="line">START:  MOV   AX,DATA</span><br><span class="line">        MOV   DS,AX</span><br><span class="line">        SUB   AL,AL</span><br><span class="line">        MOV   AL,DD1</span><br><span class="line">        CMP   AL,DD1+1</span><br><span class="line">        JA    AAA1</span><br><span class="line">        MOV   AL,DD1+1</span><br><span class="line">AAA1:   CMP   AL,DD1+2</span><br><span class="line">        JA    AAA2</span><br><span class="line">        MOV   AL,DD1+2</span><br><span class="line">AAA2:   MOV   DD2,AL</span><br><span class="line">        MOV   DL,[DD2]</span><br><span class="line">        MOV   AH,2H</span><br><span class="line">        INT   21H</span><br><span class="line">CODE    ENDS</span><br><span class="line">        END  START</span><br></pre></td></tr></table></figure>
+<h5 id="实验内容2"><a href="#实验内容2" class="headerlink" title="实验内容2"></a>实验内容2</h5><p>试编写一个汇编语言程序，要求对键盘输入的小写字母用大写字母显示出来。</p>
+<h6 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a>流程图</h6><h6 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">DATA    SEGMENT</span><br><span class="line">NOTIC   DB &quot;Please input the world!&quot;,0AH,0DH</span><br><span class="line">DATA    ENDS </span><br><span class="line"></span><br><span class="line">CODE    SEGMENT</span><br><span class="line">        ASSUME   CS:CODE,DS:DATA</span><br><span class="line"></span><br><span class="line">START:  MOV    AX,DATA</span><br><span class="line">        MOV    DS,AX               ; 初始化加载</span><br><span class="line">        MOV    CX,19H              ; 字符串长度</span><br><span class="line">        LEA    BX,[NOTIC]          ; 送地址</span><br><span class="line">AA0:    MOV    DL,[BX]</span><br><span class="line">        MOV    AH,2</span><br><span class="line">        INT    21H</span><br><span class="line">        INC    BX</span><br><span class="line">        LOOP   AA0                 ; 输出字符串</span><br><span class="line"></span><br><span class="line">AA1:    MOV    AH,1            </span><br><span class="line">        INT    21H                 ; 输入字符串  </span><br><span class="line">        CMP    AL,1BH</span><br><span class="line">        JZ     AA3                 ; Esc 退出 </span><br><span class="line">        CMP    AL,61H              ; 是否大于 a</span><br><span class="line">        JS     AA2</span><br><span class="line">        CMP    AL,7AH              ; 是否小于 z</span><br><span class="line">        JNS    AA2</span><br><span class="line">        SUB    AL,20H              ; 是小写字母，转换</span><br><span class="line">AA2:    MOV    DL,AL</span><br><span class="line">        MOV    AH,2                ; 输出字符</span><br><span class="line">        INT    21H</span><br><span class="line">        LOOP   AA1                 ; 重新读入程序</span><br><span class="line">AA3:    MOV    AH,4CH              ; 退出程序</span><br><span class="line">        INT    21H         </span><br><span class="line">CODE    ENDS</span><br><span class="line">        END    START</span><br></pre></td></tr></table></figure>
+<h4 id="分支程序设计-1"><a href="#分支程序设计-1" class="headerlink" title="分支程序设计"></a>分支程序设计</h4><h5 id="实验内容1-1"><a href="#实验内容1-1" class="headerlink" title="实验内容1"></a>实验内容1</h5><p>编写程序,将一个包含有 20 个数据的数组 M 分成两个数组：正数数组 P 和负数数组 N,并分 别把这两个数组中数据的个数显示出来。</p>
+<h6 id="流程图-2"><a href="#流程图-2" class="headerlink" title="流程图"></a>流程图</h6><h6 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">DSEG    SEGMENT  PARA  PUBLIC&apos;DSEG&apos;</span><br><span class="line">M       DB 1,2,3,4,5,6,7,8,9,-10,1,2,3,4,5,6,7,8,9,10</span><br><span class="line">P       DB 20 DUP(0)</span><br><span class="line">N       DB 20 DUP(0)</span><br><span class="line">DSEG    ENDS</span><br><span class="line">CODE    SEGMENT</span><br><span class="line">        ASSUME  CS:CODE,DS:DSEG</span><br><span class="line"></span><br><span class="line">START:  MOV AX,DSEG</span><br><span class="line">        MOV DS,AX</span><br><span class="line">        LEA SI,P</span><br><span class="line">        LEA DI,N</span><br><span class="line">        LEA BX,M</span><br><span class="line">        XOR AX,AX</span><br><span class="line">        XOR DX,DX                 </span><br><span class="line">        MOV CX,20</span><br><span class="line">L1:     MOV AL,[BX]</span><br><span class="line">        TEST AL,80H         ; 判断正负数</span><br><span class="line">        JZ  L2              ;</span><br><span class="line">        MOV [DI],AL         </span><br><span class="line">        INC BX</span><br><span class="line">        INC DI</span><br><span class="line">        INC DH              ; 负数个数++</span><br><span class="line">        JMP L3</span><br><span class="line">L2:     MOV [SI],AL         ; 正数</span><br><span class="line">        INC BX</span><br><span class="line">        INC SI</span><br><span class="line">        INC DL              ; 正数个数++</span><br><span class="line">L3:     LOOP L1             ; 继续</span><br><span class="line">        MOV CX,2            ; 已经得到正负数各有多少个</span><br><span class="line">L5:     MOV BL,DL           ; 记录DL</span><br><span class="line">        SHR DL,1</span><br><span class="line">        SHR DL,1</span><br><span class="line">        SHR DL,1</span><br><span class="line">        SHR DL,1            ; DL&gt;&gt;4</span><br><span class="line">        AND DL,0FH          ; DL高4位值移动到低4位   </span><br><span class="line">        CMP DL,10           ; 判断和10的大小关系</span><br><span class="line">        JB  L4</span><br><span class="line">        ADD DL,7            ; 加7后调整输出16进制</span><br><span class="line">L4:     ADD DL,30H          ; DL &lt; 10  DL变为数字</span><br><span class="line">        MOV AH,2</span><br><span class="line">        INT 21H             ; 输出</span><br><span class="line">        MOV DL,BL           ; 低4位</span><br><span class="line">        AND DL,0FH          ; 获得高4位</span><br><span class="line">        CMP DL,10           ; 判断大小</span><br><span class="line">        JB  L6</span><br><span class="line">        ADD DL,7            ; 调整为16进制</span><br><span class="line">L6:     ADD DL,30H          </span><br><span class="line">        MOV AH,2             </span><br><span class="line">        INT 21H             ; 输出</span><br><span class="line">        MOV DL,0AH          </span><br><span class="line">        MOV AH,2            </span><br><span class="line">        INT 21H             </span><br><span class="line">        MOV DL,0DH          ; 换行</span><br><span class="line">        MOV AH,2</span><br><span class="line">        INT 21H</span><br><span class="line">        MOV DL,DH           ; 切换为负数个数</span><br><span class="line">        LOOP L5             ; 判断是否输出两次</span><br><span class="line">        MOV AH,4CH          ; 结束程序</span><br><span class="line">        INT 21H</span><br><span class="line">CODE    ENDS</span><br><span class="line">        END START</span><br></pre></td></tr></table></figure>
+<h5 id="实验内容2-1"><a href="#实验内容2-1" class="headerlink" title="实验内容2"></a>实验内容2</h5><p>接收键盘输入字符，判别该字符是否为字母、数字或非字母也非数字类的字符。若是数字， 则显示“DIGIT”；若是字母，显示“LETTER”；若是非数字也非字母类的字符，则显示“OTHER”。</p>
+<h6 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h6><h6 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">DATA    SEGMENT</span><br><span class="line">DIGIT   DB &quot;DIGIT&quot;,0AH,0DH</span><br><span class="line">LETTER  DB &quot;LETTER&quot;,0AH,0DH</span><br><span class="line">OTHER   DB &quot;OTHER&quot;,0AH,0DH</span><br><span class="line"></span><br><span class="line">DATA    ENDS</span><br><span class="line">CODE    SEGMENT</span><br><span class="line">        ASSUME  CS:CODE,DS:DATA</span><br><span class="line"></span><br><span class="line">START:  MOV  AX,DATA</span><br><span class="line">        MOV  DS,AX</span><br><span class="line">        MOV  AH,07               ; 接受输入不回显</span><br><span class="line">        INT  21H</span><br><span class="line">        CMP  AL,30H              ; 判断是否&lt;0</span><br><span class="line">        JB   AA1</span><br><span class="line">        CMP  Al,39H              ; 判断是否&gt;9</span><br><span class="line">        JA   AA1</span><br><span class="line">        MOV  CX,7                ; 长度为7</span><br><span class="line">        LEA  SI,DIGIT            ; 是数字</span><br><span class="line"></span><br><span class="line">AA0:    MOV  DL,[SI]             ; 输出DIGIT</span><br><span class="line">        MOV  AH,2</span><br><span class="line">        INT  21H</span><br><span class="line">        INC  SI</span><br><span class="line">        LOOP AA0</span><br><span class="line">        JMP  BB                  ; 跳出</span><br><span class="line">AA1:    CMP  AL,41H              </span><br><span class="line">        JB   AA3</span><br><span class="line">        CMP  AL,5AH</span><br><span class="line">        JA   AA2                 ; 判断是大写字母</span><br><span class="line">        LEA  SI,LETTER</span><br><span class="line">        MOV  CX,8</span><br><span class="line">AA4:    MOV  DL,[SI]             ; 输出是字母</span><br><span class="line">        MOV  AH,2</span><br><span class="line">        INT  21H</span><br><span class="line">        INC  SI</span><br><span class="line">        LOOP AA4</span><br><span class="line">        JMP  BB                  ; 跳出 </span><br><span class="line">AA2:    CMP  AL,61H</span><br><span class="line">        JB   AA3</span><br><span class="line">        CMP  AL,7AH</span><br><span class="line">        JA   AA3</span><br><span class="line">        LEA  SI,LETTER           ; 判断是小写字母</span><br><span class="line">        MOV  CX,8</span><br><span class="line">        JMP  AA4</span><br><span class="line">AA3:    LEA  SI,OTHER            ; 都不是</span><br><span class="line">        MOV  CX,7</span><br><span class="line">AA5:    MOV  DL,[SI]</span><br><span class="line">        MOV  AH,2</span><br><span class="line">        INT  21H</span><br><span class="line">        INC  SI</span><br><span class="line">        LOOP AA5</span><br><span class="line">BB:     MOV  AH,4CH              ; 跳出</span><br><span class="line">        INT  21H</span><br><span class="line">CODE   ENDS</span><br><span class="line">       END START</span><br></pre></td></tr></table></figure>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
     </div>
 
     
@@ -1545,8 +1782,8 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/01/19/LeetcodeWk171/" rel="next" title="LeetcodeWk171">
-                  <i class="fa fa-chevron-left"></i> LeetcodeWk171
+                <a href="/2020/02/25/OS/" rel="next" title="操作系统">
+                  <i class="fa fa-chevron-left"></i> 操作系统
                 </a>
               
             </div>
@@ -1555,8 +1792,8 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2020/02/25/OS/" rel="prev" title="操作系统">
-                  操作系统 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/02/25/CSO/" rel="prev" title="">
+                   <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -1606,7 +1843,7 @@ n^2=1+3+5+\dots+(2n-1)</script><p>方法: 计数减去”奇数” 的次数</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机的应用"><span class="nav-text">微型计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16位微处理器Intel"><span class="nav-text">16位微处理器Intel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8086微处理器的构成"><span class="nav-text">8086微处理器的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的编程结构"><span class="nav-text">8086的编程结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086外部引脚"><span class="nav-text">8086外部引脚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的两种组成模式"><span class="nav-text">8086的两种组成模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086总线周期"><span class="nav-text">8086总线周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的存储器组织"><span class="nav-text">8086的存储器组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的I-O-组织"><span class="nav-text">8086的I/O 组织</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium-系列微处理器的基本结构"><span class="nav-text">Pentium 系列微处理器的基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的基本结构"><span class="nav-text">Pentium 微处理机的基本结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的编程结构"><span class="nav-text">Pentium 微处理机的编程结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium微处理器的指令系统"><span class="nav-text">Pentium微处理器的指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式"><span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前缀"><span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作码"><span class="nav-text">操作码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位-偏移量及立即数"><span class="nav-text">位/偏移量及立即数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式-1"><span class="nav-text">寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据的寻址方式"><span class="nav-text">数据的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#立即寻址"><span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#寄存器寻址"><span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#存储器寻址"><span class="nav-text">存储器寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#转移地址的寻址方式"><span class="nav-text">转移地址的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#段内相对寻址"><span class="nav-text">段内相对寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间直接寻址"><span class="nav-text">段间直接寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间间接寻址"><span class="nav-text">段间间接寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆栈地址寻址"><span class="nav-text">堆栈地址寻址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据传送指令"><span class="nav-text">数据传送指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算术运算指令"><span class="nav-text">算术运算指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BCD码调整指令"><span class="nav-text">BCD码调整指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算指令"><span class="nav-text">逻辑运算指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位处理指令"><span class="nav-text">位处理指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制转移指令"><span class="nav-text">控制转移指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言程序格式"><span class="nav-text">汇编语言程序格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言概述"><span class="nav-text">汇编语言概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言语句格式"><span class="nav-text">汇编语言语句格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪指令"><span class="nav-text">伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序开始和结束伪指令"><span class="nav-text">程序开始和结束伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段定义伪指令"><span class="nav-text">段定义伪指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址计数器伪指令"><span class="nav-text">地址计数器伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据定义伪指令"><span class="nav-text">数据定义伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常数与表达式"><span class="nav-text">常数与表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串"><span class="nav-text">字符串</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数字段"><span class="nav-text">操作数字段</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#常数"><span class="nav-text">常数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#表达式"><span class="nav-text">表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言程序的结构"><span class="nav-text">汇编语言程序的结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言程序设计"><span class="nav-text">汇编语言程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述-1"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支程序设计"><span class="nav-text">分支程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二分支程序设计方法"><span class="nav-text">二分支程序设计方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多路分支程序设计方法"><span class="nav-text">多路分支程序设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#逻辑分解法"><span class="nav-text">逻辑分解法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#地址表法"><span class="nav-text">地址表法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段内转移表法"><span class="nav-text">段内转移表法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环程序的结构形式"><span class="nav-text">循环程序的结构形式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#计数控制循环"><span class="nav-text">计数控制循环</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单重循环"><span class="nav-text">单重循环</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子程序设计"><span class="nav-text">子程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子程序的定义"><span class="nav-text">子程序的定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium保护模式存储管理"><span class="nav-text">Pentium保护模式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟存储器及其工作原理"><span class="nav-text">虚拟存储器及其工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#地址空间及地址"><span class="nav-text">地址空间及地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟存储器工作原理"><span class="nav-text">虚拟存储器工作原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分段存储管理"><span class="nav-text">分段存储管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出"><span class="nav-text">输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口与端口"><span class="nav-text">接口与端口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#接口的功能"><span class="nav-text">接口的功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#接口的分类"><span class="nav-text">接口的分类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I-O端口的地址选择"><span class="nav-text">I/O端口的地址选择</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#输入输出的寻址方式"><span class="nav-text">输入输出的寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用门电路组合法进行端口的地址选择"><span class="nav-text">使用门电路组合法进行端口的地址选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用译码器译码法进行端口地址选择"><span class="nav-text">用译码器译码法进行端口地址选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用比较器比较法进行端口地址选择"><span class="nav-text">用比较器比较法进行端口地址选择</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入输出控制方式"><span class="nav-text">输入输出控制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序查询式"><span class="nav-text">程序查询式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序中断方式"><span class="nav-text">程序中断方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA方式"><span class="nav-text">DMA方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#I-O处理机方式"><span class="nav-text">I/O处理机方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DMA控制器8237A"><span class="nav-text">DMA控制器8237A</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8237A的内部结构及引角功能"><span class="nav-text">8237A的内部结构及引角功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8237A的工作方式"><span class="nav-text">8237A的工作方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8237A的工作时序"><span class="nav-text">8237A的工作时序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8237A的编程"><span class="nav-text">8237A的编程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断"><span class="nav-text">中断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium的中断机制"><span class="nav-text">Pentium的中断机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#中断向量表"><span class="nav-text">中断向量表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可屏蔽中断INTR"><span class="nav-text">可屏蔽中断INTR</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非屏蔽中断NMI"><span class="nav-text">非屏蔽中断NMI</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#软件中断"><span class="nav-text">软件中断</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异常"><span class="nav-text">异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实模式处理中断过程"><span class="nav-text">实模式处理中断过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保护模式中断操作"><span class="nav-text">保护模式中断操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可编程中断控制器8259A"><span class="nav-text">可编程中断控制器8259A</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8259A的内部结构及引角功能"><span class="nav-text">8259A的内部结构及引角功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8259A的工作方式"><span class="nav-text">8259A的工作方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#全嵌套方式"><span class="nav-text">全嵌套方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8259A的编程"><span class="nav-text">8259A的编程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可编程接口芯片及其应用"><span class="nav-text">可编程接口芯片及其应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束"><span class="nav-text">结束</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#绪论"><span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机由五大部分组成"><span class="nav-text">计算机由五大部分组成:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总线"><span class="nav-text">总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能指标"><span class="nav-text">性能指标</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微型计算机的应用"><span class="nav-text">微型计算机的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CISC与RISC结构的微处理器"><span class="nav-text">CISC与RISC结构的微处理器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#未处理器及微型计算机发展简况"><span class="nav-text">未处理器及微型计算机发展简况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16位微处理器Intel"><span class="nav-text">16位微处理器Intel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8086微处理器的构成"><span class="nav-text">8086微处理器的构成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的编程结构"><span class="nav-text">8086的编程结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086外部引脚"><span class="nav-text">8086外部引脚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的两种组成模式"><span class="nav-text">8086的两种组成模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086总线周期"><span class="nav-text">8086总线周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的存储器组织"><span class="nav-text">8086的存储器组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8086的I-O-组织"><span class="nav-text">8086的I/O 组织</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium-系列微处理器的基本结构"><span class="nav-text">Pentium 系列微处理器的基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的基本结构"><span class="nav-text">Pentium 微处理机的基本结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium-微处理机的编程结构"><span class="nav-text">Pentium 微处理机的编程结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium微处理器的指令系统"><span class="nav-text">Pentium微处理器的指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令格式"><span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前缀"><span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作码"><span class="nav-text">操作码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址方式"><span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位-偏移量及立即数"><span class="nav-text">位/偏移量及立即数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寻址方式-1"><span class="nav-text">寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据的寻址方式"><span class="nav-text">数据的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#立即寻址"><span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#寄存器寻址"><span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#存储器寻址"><span class="nav-text">存储器寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#转移地址的寻址方式"><span class="nav-text">转移地址的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#段内相对寻址"><span class="nav-text">段内相对寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间直接寻址"><span class="nav-text">段间直接寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段间间接寻址"><span class="nav-text">段间间接寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#堆栈地址寻址"><span class="nav-text">堆栈地址寻址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据传送指令"><span class="nav-text">数据传送指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算术运算指令"><span class="nav-text">算术运算指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BCD码调整指令"><span class="nav-text">BCD码调整指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算指令"><span class="nav-text">逻辑运算指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位处理指令"><span class="nav-text">位处理指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制转移指令"><span class="nav-text">控制转移指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言程序格式"><span class="nav-text">汇编语言程序格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言概述"><span class="nav-text">汇编语言概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言语句格式"><span class="nav-text">汇编语言语句格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪指令"><span class="nav-text">伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序开始和结束伪指令"><span class="nav-text">程序开始和结束伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段定义伪指令"><span class="nav-text">段定义伪指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址计数器伪指令"><span class="nav-text">地址计数器伪指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据定义伪指令"><span class="nav-text">数据定义伪指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常数与表达式"><span class="nav-text">常数与表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串"><span class="nav-text">字符串</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数字段"><span class="nav-text">操作数字段</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常数"><span class="nav-text">常数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表达式"><span class="nav-text">表达式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言程序的结构"><span class="nav-text">汇编语言程序的结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言程序设计"><span class="nav-text">汇编语言程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述-1"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支程序设计"><span class="nav-text">分支程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二分支程序设计方法"><span class="nav-text">二分支程序设计方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多路分支程序设计方法"><span class="nav-text">多路分支程序设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#逻辑分解法"><span class="nav-text">逻辑分解法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#地址表法"><span class="nav-text">地址表法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段内转移表法"><span class="nav-text">段内转移表法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环程序的结构形式"><span class="nav-text">循环程序的结构形式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计数控制循环"><span class="nav-text">计数控制循环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单重循环"><span class="nav-text">单重循环</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子程序设计"><span class="nav-text">子程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子程序的定义"><span class="nav-text">子程序的定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pentium保护模式存储管理"><span class="nav-text">Pentium保护模式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟存储器及其工作原理"><span class="nav-text">虚拟存储器及其工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#地址空间及地址"><span class="nav-text">地址空间及地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟存储器工作原理"><span class="nav-text">虚拟存储器工作原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分段存储管理"><span class="nav-text">分段存储管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出"><span class="nav-text">输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口与端口"><span class="nav-text">接口与端口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#接口的功能"><span class="nav-text">接口的功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#接口的分类"><span class="nav-text">接口的分类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I-O端口的地址选择"><span class="nav-text">I/O端口的地址选择</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#输入输出的寻址方式"><span class="nav-text">输入输出的寻址方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用门电路组合法进行端口的地址选择"><span class="nav-text">使用门电路组合法进行端口的地址选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用译码器译码法进行端口地址选择"><span class="nav-text">用译码器译码法进行端口地址选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用比较器比较法进行端口地址选择"><span class="nav-text">用比较器比较法进行端口地址选择</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入输出控制方式"><span class="nav-text">输入输出控制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#程序查询式"><span class="nav-text">程序查询式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序中断方式"><span class="nav-text">程序中断方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA方式"><span class="nav-text">DMA方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#I-O处理机方式"><span class="nav-text">I/O处理机方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DMA控制器8237A"><span class="nav-text">DMA控制器8237A</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8237A的内部结构及引角功能"><span class="nav-text">8237A的内部结构及引角功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8237A的工作方式"><span class="nav-text">8237A的工作方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8237A的工作时序"><span class="nav-text">8237A的工作时序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8237A的编程"><span class="nav-text">8237A的编程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断"><span class="nav-text">中断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pentium的中断机制"><span class="nav-text">Pentium的中断机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#中断向量表"><span class="nav-text">中断向量表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可屏蔽中断INTR"><span class="nav-text">可屏蔽中断INTR</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非屏蔽中断NMI"><span class="nav-text">非屏蔽中断NMI</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#软件中断"><span class="nav-text">软件中断</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异常"><span class="nav-text">异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实模式处理中断过程"><span class="nav-text">实模式处理中断过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保护模式中断操作"><span class="nav-text">保护模式中断操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可编程中断控制器8259A"><span class="nav-text">可编程中断控制器8259A</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#8259A的内部结构及引角功能"><span class="nav-text">8259A的内部结构及引角功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8259A的工作方式"><span class="nav-text">8259A的工作方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#全嵌套方式"><span class="nav-text">全嵌套方式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8259A的编程"><span class="nav-text">8259A的编程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可编程接口芯片及其应用"><span class="nav-text">可编程接口芯片及其应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编实验"><span class="nav-text">汇编实验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验环境及DEBUG使用"><span class="nav-text">实验环境及DEBUG使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#汇编语言程序结构"><span class="nav-text">汇编语言程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实验内容1"><span class="nav-text">实验内容1</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#流程图"><span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实验内容2"><span class="nav-text">实验内容2</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#流程图-1"><span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码-1"><span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支程序设计-1"><span class="nav-text">分支程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实验内容1-1"><span class="nav-text">实验内容1</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#流程图-2"><span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码-2"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实验内容2-1"><span class="nav-text">实验内容2</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#流程"><span class="nav-text">流程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码-3"><span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束"><span class="nav-text">结束</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
