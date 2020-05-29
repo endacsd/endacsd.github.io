@@ -65,7 +65,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200517144549130.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200517144621460.png">
-<meta property="og:updated_time" content="2020-05-21T06:58:07.635Z">
+<meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200528201803308.png">
+<meta property="og:updated_time" content="2020-05-29T11:23:39.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算方法">
 <meta name="twitter:description" content="笔记">
@@ -308,7 +309,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-21 14:58:07" itemprop="dateModified" datetime="2020-05-21T14:58:07+08:00">2020-05-21</time>
+                <time title="修改时间：2020-05-29 19:23:39" itemprop="dateModified" datetime="2020-05-29T19:23:39+08:00">2020-05-29</time>
               </span>
             
           
@@ -365,7 +366,7 @@
 <p>以上三种会造成比较大的误差，所以我们要合理安排顺序</p>
 <h4 id="误差来源"><a href="#误差来源" class="headerlink" title="误差来源"></a>误差来源</h4><p>实际问题-&gt; 数学模型-&gt; 数值方法-&gt; 程序设计-&gt; 计算机计算-&gt; 解答</p>
 <p>观测误差  模型误差  方法误差    舍入误差</p>
-<h3 id="误差的基本概念"><a href="#误差的基本概念" class="headerlink" title="误差的基本概念"></a>误差的基本概念</h3><p>设$x$为准确值,<script type="math/tex">x^*</script> 是$x$的一个近似值，称<script type="math/tex">e^*=x^*-x</script>为近似值<script type="math/tex">x^{*}</script>的绝对误差，或简称误差</p>
+<h4 id="误差的基本概念"><a href="#误差的基本概念" class="headerlink" title="误差的基本概念"></a>误差的基本概念</h4><p>设$x$为准确值,<script type="math/tex">x^*</script> 是$x$的一个近似值，称<script type="math/tex">e^*=x^*-x</script>为近似值<script type="math/tex">x^{*}</script>的绝对误差，或简称误差</p>
 <p>设<script type="math/tex">\epsilon^*>0</script>,并满足</p>
 <script type="math/tex; mode=display">
 |e^*|=|x^*-x|\leq \epsilon^*</script><p>则称<script type="math/tex">\epsilon^*</script>为近似值<script type="math/tex">x^*</script>的绝对误差限，或简称误差限</p>
@@ -450,9 +451,6 @@ Ux=y</script><h5 id="Doolittle分解"><a href="#Doolittle分解" class="headerli
 <p>按顺序求解</p>
 <p>可得</p>
 <script type="math/tex; mode=display">
-
-
-
 u_{ik}=a_{ik}-\sum_{j=1}^{i-1}l_{ij}u_{jk} \quad  k\geq i 
 \\
 l_{ki}=\frac{a_{ki}-\sum_{j=1}^{i-1}l_{kj}u_{ji}}{u_{ii}} \quad k>i
@@ -519,6 +517,7 @@ r_i=e_i-l_if_{i-1}</script><h4 id="消元法在计算机上的实现"><a href="#
 <p>在变换到第k步时，选择绝对值最大的作为新的主元</p>
 <p>然后交换到当前行</p>
 <p>可以避免除以太小数的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function [x]=Gausscolumn(A,b)</span><br><span class="line">% Gauss elimination method according to Column</span><br><span class="line"> [ni,nj]=size(A);</span><br><span class="line"> for j=1:ni %Find the max element in Column</span><br><span class="line"> [tv,ti]=max(A(j:ni,j));</span><br><span class="line"> A([ti+j-1,j],:)=A([j,ti+j-1],:);</span><br><span class="line"> b([ti+j-1,j])=b([j,ti+j-1]);</span><br><span class="line"> for i=j+1:ni %Elimination Process</span><br><span class="line"> d=-A(i,j)/A(j,j);</span><br><span class="line"> A(i,:)=A(i,:)+d*A(j,:);</span><br><span class="line"> b(i)=b(i)+d*b(j);</span><br><span class="line"> endfor</span><br><span class="line"> endfor</span><br><span class="line"> x=zeros(size(b)); %Back Substitute Process</span><br><span class="line"> x(ni)=b(ni)/A(ni,ni);</span><br><span class="line"> for i=ni-1:-1:1</span><br><span class="line"> x(i)=(b(i)-sum(x(i+1:ni).*A(i,i+1:ni)&apos;))/A(i,i);</span><br><span class="line"> endfor</span><br><span class="line">endfunction</span><br></pre></td></tr></table></figure>
 <p>定理2.2 设A非奇异，则存在转置矩阵P,以及单位下三角阵L和上三角阵U,使得</p>
 <script type="math/tex; mode=display">
 PA=LU</script><p>全选主元</p>
@@ -547,8 +546,257 @@ PA=LU
 |P||A|=|L||U|
 \\
 |A|=|P||U|</script><script type="math/tex; mode=display">
-PAX=LUX=P</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200517144549130.png" alt="image-20200517144549130"></p>
+PAX=LUX=P</script><h4 id="向量和矩阵范数"><a href="#向量和矩阵范数" class="headerlink" title="向量和矩阵范数"></a>向量和矩阵范数</h4><h5 id="向量范数"><a href="#向量范数" class="headerlink" title="向量范数"></a>向量范数</h5><p>定义 设$x\in R^n,N(x) \equiv |x|$为$x$的实直函数，若它满足下列条件</p>
+<script type="math/tex; mode=display">
+\begin{align}
+ &(1)\quad 非负性  &\| x \|\geq 0 , \|x\| = 0 \Leftrightarrow x=0  &\\
+ &(2)\quad 齐次性   &     \|kx\|=|k|\cdot\|x\| &     \\
+ &(3)\quad 三角不等式  &\|x+y\|\leq \|x\|+\|y\|, \forall x,y\in R^n&
+\end{align}</script><p>则称$N(x) \equiv |x| 为R^n$上的一个向量范数(或向量模),$|x|$的值成为向量$x$的范数</p>
+<p>由定义可以推导出</p>
+<script type="math/tex; mode=display">
+\|x-y\|\geq |\|x\|-\|y\||</script><p>三种范数</p>
+<script type="math/tex; mode=display">
+\|x\|_1=\sum_{i=1}^{n}|x_i|
+\\
+\|x\|_2=\sqrt{\sum_{i=1}^{n}|x_i|^2}
+\\
+\|x\|_{\infty}=\max_{i\leq i\leq n} |x_i|</script><p>容易得到</p>
+<script type="math/tex; mode=display">
+\|x\|_{\infty} \leq \|x\|_2 \leq \sqrt{n}\|x\|_{\infty}
+\\
+\|x\|_{\infty} \leq \|x\|_1\leq n\|x\|_{\infty}</script><p>等价性</p>
+<p>设$|x|_s,|x|_t$为$R_n$上向量的任意两种范数，则存在常数$c_1,c_2&gt;0$，使得对于一切$x\in R^n$ 有$c_1|x|\leq |x|_t \leq |x|_s$  </p>
+<p>向量序列收敛性</p>
+<p>设$\{x^{(k)}=(x_{1}^{(k)} ,x_{2}^{(k)},x_{3}^{(k)} \cdots ,x_{n}^{(k)})^T\} $为$R^n$上的一个向量序列<script type="math/tex">(k=1,2,\cdots)</script>,<script type="math/tex">x^*=(x_1^*,x_2^*,\cdots,x_n^*)^T\in R^n.</script> 如果对于<script type="math/tex">i=1,2,\cdots,n</script>有</p>
+<script type="math/tex; mode=display">
+\lim_{k\rightarrow\infty} x_i^{(k)}=x_{i}^*</script><p>则称向量序列$\{x^{(k)}\}$收敛于向量$x^*$</p>
+<p>容易证明,$x^{(k)}$收敛于向量$x^*$的充要条件是</p>
+<script type="math/tex; mode=display">
+\lim_{k\rightarrow\infty}\|x^{(k)}-x^*\|_{\infty}=0</script><h5 id="矩阵范数"><a href="#矩阵范数" class="headerlink" title="矩阵范数"></a>矩阵范数</h5><p>对于实数，可以用绝对值度量其大小，对于复数可以用模度量它的大小，对于矩阵，可以用矩阵范数来度量它的大小</p>
+<p>设$A\in R^{n\times n}\quad N(A)\equiv|A|$为A的实值函数，如果它满足下列条件</p>
+<script type="math/tex; mode=display">
+\begin{align}
+ &(1)\quad 非负性  &\| A \|\geq 0 , \|A\| = 0 \Leftrightarrow A=0  &\\
+ &(2)\quad 齐次性   &     \|kA\|=|k|\cdot\|A\| &     \\
+ &(3)\quad 三角不等式  &\|A+B\|\leq \|A\|+\|B\|, \forall A,B\in R^{n\times n}&
+\end{align}</script><p>则称$N(A)\equiv|A|为R^{n\times n}$上的一个矩阵范数(或矩阵模)，$|A|$的值成为矩阵$A$的范数</p>
+<p>相容范数</p>
+<script type="math/tex; mode=display">
+\|AB\|\leq \|A\| \cdot \|B\| \quad \forall A,B\in R^{n\times n}
+\\
+\|Ax\|\leq \|A\| \cdot \|x\| \quad \forall x\in R^{n},A\in R^{n\times n}</script><p>算子范数</p>
+<p>最常用的是利用向量范数来定义的矩阵范数</p>
+<script type="math/tex; mode=display">
+\|A\|_p=\max_{x\neq0}\frac{\|Ax\|_p}{\|x\|_p}=\max_{\|x\|_p=1}\|Ax\|_p</script><p>称之为矩阵A的算子范数，其中$p=1,2,\infty    $</p>
+<p>由上定义的矩阵范数为相容范数</p>
+<script type="math/tex; mode=display">
+容易证明,由上所定义的函数
+\\
+\|\cdot  \|: R^{n\times n} \rightarrow R
+\\
+满足定义的三个条件，所以他是矩阵范数，另外，当x=0时,成立。
+\\
+对于任意的x\neq0,
+\\
+\frac{\|Ax\|_p}{\|x\|_p}\leq\max_{y\neq 0} \frac{\|Ay\|_p}{\|y\|_p}=\|A\|_p
+\\
+同乘以\|x\|_p,即得
+\\
+
+\forall A,B \in R^{n \times n} 注意到 Bx\in R^{n}
+\\
+可得
+\|AB\|_p = \max_{\|x\|_p=1}\|ABx\|_p
+\leq \max_{\|x\|_p=1}\|A\|\cdot\|Bx\|_p
+= \|A\|_p \max_{\|x\|_p=1} \|Bx\|_p
+\\
+=\|A\|_p \cdot \|B\|_p</script><p>算子范数满足</p>
+<script type="math/tex; mode=display">
+\|A\|_{\infty} =\max_{1\leq i \leq n} \sum_{j=1}^{n} |a_{ij}|
+\\
+\|A\|_{1} =\max_{1\leq j \leq n} \sum_{i=1}^{n} |a_{ij}|
+\\
+\|A\|_{2} = \sqrt{AA^{T} 之最大特征值}</script><p>证明</p>
+<script type="math/tex; mode=display">
+\forall \|x\|_{\infty}=1得x\in R^{n}, 又|x_j|\leq \|x\|_{\infty}=1
+\\
+||AX||_{\infty}=\max_{1\leq i \leq n} |(Ax)_i|=\max_{1\leq i \leq n}|\sum_{j=1}^{n}a_{ij}x_j|\leq \max_{1\leq i \leq n}(\sum_{j=1}^{n}|a_{ij}||x_j|)\leq \max_{1\leq i \leq n}\sum_{j=1}^{n}|a_{ij}|
+\\
+\|Ax\|_{2}^{2} = (Ax,Ax) = x^TA^TAx=(x,A^TAx)
+\\
+当A\in R^{n\times n} , A^TA是对称非负定矩阵，所有A^TA有完全正交得特征向量系v_1,v_2,\cdots,v_n \\
+即为
+A^TAv_i = \lambda_i v_i   \quad (v_i,v_j) = (i=j)
+//
+其中\lambda_1\geq \cdots \geq \lambda_n \geq 0
+为A^TA得特征值
+\\
+\forall x \in R^n, 借助于特征向量系可表示为
+\\
+x=\sum_{i=1}^{b}\alpha_iv_i
+\\ \|x\|^{2}_{2} = (x,x) = \sum_{i=1}^{n}|\alpha|^2
+\\
+
+(A^TAx,x)= (\sum_{j=1}^{n}A^TA\alpha_jv_j,\sum_{i=1}^n\alpha_iv_i)
+=(\sum_{j=1}^{n}\lambda_j\alpha_jv_j,\sum_{i=1}^{n}\alpha_iv_i)=\sum_{i=1}^{n}\lambda_i|\alpha_i|^2
+
+\\
+由于, \lambda_n\sum_{i=1}^{n}|a_i|^2\leq \sum_{i=1}^{n}\lambda_i|\alpha_i|^2\leq \lambda_1 \sum_{i=1}^{n}|\alpha_i|^2
+\\
+有:
+\sqrt{\lambda_n}\|x\|_2\leq \sqrt{(A^TAx,x)}=\|Ax\|_2\leq \sqrt{\lambda_1}\|x\|_2
+\\
+\sqrt{\lambda_1} 是\frac{\|Ax\|_2}{\|x\|_2}的上界,并且这个上界是在x=V_1时候到达的</script><p>2</p>
+<script type="math/tex; mode=display">
+\|A\|_p = \max_{x\neq 0} \frac{\|Ax\|_p}{\|x\|_p}
+\\
+\|A\|_{\infty}=\max_{1\leq i \leq n} \sum_{j=1}^{n} |a_{ij}|
+\\
+\|A\|_1= \max_{1\leq j \leq n} \sum_{i=1}^{n} |a_{ij}|
+\\
+\|A\|_2=\sqrt{(A^TA的最大特征值)}</script><h5 id="谱半径"><a href="#谱半径" class="headerlink" title="谱半径"></a>谱半径</h5><p>矩阵A的特征值按模最大值称为A的谱半径记作$\rho(A)$,即</p>
+<script type="math/tex; mode=display">
+\rho(A)=\max_{1\leq i \leq n} |\lambda_i|</script><script type="math/tex; mode=display">
+\forall A\in R_{n\times n}\quad   \rho(A)\leq \|A\|_p \quad p=1,2,\infty</script><p>由谱半径的定义，矩阵的2范数可以记为</p>
+<script type="math/tex; mode=display">
+\|A\|_2= \sqrt{\rho(A^TA)}</script><p>当A是实对称矩阵时，有</p>
+<script type="math/tex; mode=display">
+\|A\|_2 = \sqrt{\rho(A^TA)}=\sqrt{\rho(A^2)}=\rho(A)</script><h4 id="矩阵的条件数与病态方程组"><a href="#矩阵的条件数与病态方程组" class="headerlink" title="矩阵的条件数与病态方程组"></a>矩阵的条件数与病态方程组</h4><p>例</p>
+<script type="math/tex; mode=display">
+x=(x_1,x_2,x_3)^T,b=(b_1,b_2,b_3)^T
+\\
+A=
+\left[
+\begin{matrix}
+ \frac{1}{2}&\frac{1}{3} &\frac{1}{4} \\
+ \frac{1}{3}&\frac{1}{4} &\frac{1}{5} \\
+ \frac{1}{4}&\frac{1}{6} &\frac{1}{6} \\
+\end{matrix}
+\right]</script><p>如果矩阵A或常数项b的微小变化，引起方程组$Ax=b$的矩阵变化，则称此方程组为‘病态’方程组，矩阵A称为‘病态’矩阵，否则称为良态</p>
+<h5 id="条件数"><a href="#条件数" class="headerlink" title="条件数"></a>条件数</h5><p>设$A$为非奇异矩阵，用$x$表示$Ax=b$的精确解，而$\widetilde{x}$时扰动方程组</p>
+<script type="math/tex; mode=display">
+A\widetilde{x}=b+\delta b</script><p>的精确解.由$A=bx$两式相减，可知解的误差满足</p>
+<script type="math/tex; mode=display">
+\delta x= \tilde{x} - x
+\\
+A\delta x=\delta b
+\\
+\delta x =A^{-1}\delta b</script><p>利用矩阵的范数性质，有</p>
+<script type="math/tex; mode=display">
+\|\delta x\|_p \leq \|A^{-1}\|_{p}\|\delta b\|_p</script><p>又由$Ax=b$, 有</p>
+<script type="math/tex; mode=display">
+\|A\|_p \cdot \|x\|_p \geq \|Ax\|_p = \|b\|_p</script><script type="math/tex; mode=display">
+\frac{\|\delta x\|_p}{\|x\|_p} \leq (\|A\|_p\cdot\|A^{-1}\|_p)
+\cdot \frac{\|\delta b\|_p}{\|b\|_p}</script><p>进一步考虑当A发生扰动时，方程组$Ax=b$的解的误差。设$\tilde{x}$是下列扰动方程组的</p>
+<script type="math/tex; mode=display">
+(A+\delta A)\tilde{x}=b</script><p>的精确解，由$Ax=b$和两式相减，可知解的误差满足方程</p>
+<script type="math/tex; mode=display">
+\delta x = \tilde{x}-x
+\\
+A\delta x = - \delta A(x+\delta)</script><p>由此</p>
+<script type="math/tex; mode=display">
+\delta x = -A^{-1}\delta A(x+\delta x)</script><p>于是有 </p>
+<script type="math/tex; mode=display">
+\|\delta x\|_p = \|-A^{-1}\delta A(x+\delta x)\|_p \leq \|A^{-1}\|\cdot \|\delta A\|_p \cdot\|x+\delta x\|_p
+\\
+\frac{\|\delta x\|_p}{\|x+\delta x\|_p}\leq (\|A^{-1}\|_p\cdot
+ \|A\|_p) \frac{\|\delta A\|_p}{\|A\|_p}</script><p>定义 设A$\in R^{n\times n}$为可逆矩阵，称</p>
+<script type="math/tex; mode=display">
+Cond_p(A) = \|A\|_p \cdot \|A^{-1}\|_p</script><p>为矩阵A在范数$|\cdot|_p$意义下的条件数</p>
+<p>条件数越大，方程组的扰动误差对方程组的影响越严重</p>
+<h5 id="矩阵的平衡"><a href="#矩阵的平衡" class="headerlink" title="矩阵的平衡"></a>矩阵的平衡</h5><p>对于条件数过大的矩阵，求解方程组</p>
+<script type="math/tex; mode=display">
+Ax=b</script><p>是困难的，为了改善系数矩阵的条件数可以用适当的非奇异对角矩阵$D_1$左乘上式的两端，得到</p>
+<script type="math/tex; mode=display">
+D_1Ax=D_1b</script><p>这叫做按行平衡</p>
+<p>进一步还可以进行按列平衡，用非奇异对角矩阵$D_2$右乘矩阵$A$ 转而求解方程组</p>
+<script type="math/tex; mode=display">
+D_1AD_2y=D_1b</script><p>由$x=D_2y$求得x,选择对角阵$D_1,D_2$的标准就是使矩阵$D_1AD_2$的条件数尽可能的小</p>
+<h4 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h4><p>比较适合打型稀疏系数矩阵</p>
+<h5 id="一般方法"><a href="#一般方法" class="headerlink" title="一般方法"></a>一般方法</h5><p>考虑求解线性代数方程组</p>
+<script type="math/tex; mode=display">
+Ax=b</script><p>为了采用迭代法，首先要将方程组改写为等价形式</p>
+<script type="math/tex; mode=display">
+x=Hx+g</script><p>其中$H\in R^{n\times n}$ ，$H=[h_{ij}]$，$g\in R^n$ 为已知向量，</p>
+<p>$x\in R$ 代表未知向量</p>
+<p>给定初始近似值$x^{(0)}\in R^n$, 定义向量序列</p>
+<script type="math/tex; mode=display">
+x^{(k+1)}=Hx^{(k)}+g \quad k=0,1,\cdots</script><p>则称$\{x^{(k)}\}$为<strong>迭代序列</strong>,并称$H$为迭代矩阵</p>
+<p>如果当$k\rightarrow \infty$ 时，${x^{(k)}}$极限存在，设$x^*\in R^n$ </p>
+<p>则有</p>
+<script type="math/tex; mode=display">
+x^{(k+1)}=Hx^{(k)}+g \quad k=0,1,2,\cdots.
+\\
+x^*=Hx^* + g</script><p>收敛性</p>
+<p>利用迭代公式构造的序列$\{x^{(k)}\}$,以求得方程组的近似解的算法称为解式的简单迭代法，如果迭代序列$\{x^{()k}\}$收敛，久称此方法式收敛的</p>
+<p>我们要关心的式是否能够收敛</p>
+<script type="math/tex; mode=display">
+x^*=Hx^* + g
+\\
+x^{(k+1)}-x^*=H(x^{(k)}-x^*)</script><script type="math/tex; mode=display">
+x^{(k+1)}-x^*=H^{(k+1)}(x^{(0)}-x^*)</script><script type="math/tex; mode=display">
+x^{(k)}-x^* \rightarrow 0</script><p>即$x^{(k)} \rightarrow x^*$ 的充分必要条件是$H^{(k)}\rightarrow 0,k\rightarrow \infty$</p>
+<p>引理1 ，对任意值收敛的充分必要条件是</p>
+<script type="math/tex; mode=display">
+H^{k}\rightarrow 0 (k\rightarrow \infty)</script><p>引理2，</p>
+<p>$H^{k}\rightarrow0(k\rightarrow\infty)$的充分必要条件是$H$的普半径</p>
+<script type="math/tex; mode=display">
+\rho(H) < 1</script><script type="math/tex; mode=display">
+H=P^{-1}JP
+\\
+H^k=P^{-1} J^kP
+\\
+J_i^k=(\lambda_iE+N)^k=
+\sum_{j=0}^{k}C_k^j\lambda_i^jN^{k-j}
+\\</script><p>若$|H|&lt; 1$ ,$(|\cdot|$允许为任何一种相容的矩阵范数$)$ 则迭代法收敛</p>
+<h5 id="一般步骤"><a href="#一般步骤" class="headerlink" title="一般步骤"></a>一般步骤</h5><ul>
+<li>依据方程组分离$x$</li>
+<li>得到迭代格式</li>
+<li>判断迭代格式是否收敛</li>
+<li>迭代求解</li>
+<li>满足终止条件，迭代结束</li>
+</ul>
+<p>定理</p>
+<p>当$|H|\leq 1$ 时，由迭代式所定义的序列满足如下估计式</p>
+<script type="math/tex; mode=display">
+\|x^{(k)}-x^*\|\leq \frac{\|H\|}{1-\|H\|}\|x^{(k)}-x^{(k-1)}\|
+\\
+\|x^{(k)}-x^*\|\leq \frac{\|H\|^k}{1-\|H\|}\|x^{(1)}-x^{(0)}\|</script><h5 id="雅可比迭代法"><a href="#雅可比迭代法" class="headerlink" title="雅可比迭代法"></a>雅可比迭代法</h5><p>考虑方程组</p>
+<script type="math/tex; mode=display">
+Ax=b</script><p>其中$A\in R^{n\times n}$ 是非奇异的,$b\in R$ 为已知向量，将矩阵A写成如下</p>
+<script type="math/tex; mode=display">
+A=D-L-U</script><p>其中$D=diag(a_{11},\cdots,a_{nn})$为对角阵,$-L，-U$分别为$A$的严格下，上三角部分构成的三角形</p>
+<p>当D非奇异，即$a_{ii}\neq 0(i=1,2,\dots)$时,可将方程组$Ax=b$写成</p>
+<script type="math/tex; mode=display">
+x=D^{-1}(L+U)x+D^{-1}b</script><p>可以得到迭代格式</p>
+<script type="math/tex; mode=display">
+x^{(k+1)}=D^{-1}(L+U)x^{(k)}+D^{-1}b
+\quad k=0,1,2,\cdots</script><p>此格式为求解方程组$Ax=b$的$jacobi$迭代法</p>
+<p>注意到$L+U=D-A$ 也可以写为</p>
+<script type="math/tex; mode=display">
+x=(I-D^{-1}A)x+D^{-1}b</script><p>$jacobi$方法的迭代矩阵为</p>
+<script type="math/tex; mode=display">
+H=D^{-1}(L+U)=I-D^{-1}A</script><p>$jacobi$迭代法的分量形式为</p>
+<script type="math/tex; mode=display">
+x_i^{(k+1)}=\frac{1}{a_{ii}}(\sum_{j=1}^{i-1}a_{ij}x_j^{(k)}+\sum_{j=i+1}^{n}a_{ij}x_j^{(k)}-b_i)</script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">function [x]=jacobi(A,b)</span><br><span class="line">    n=size(A,1);</span><br><span class="line">    x=[0;0;0]</span><br><span class="line">    normVal=Inf;</span><br><span class="line">    JacobItr=0;</span><br><span class="line">    eps=1.0e-5;</span><br><span class="line">    while normVal&gt;eps</span><br><span class="line">    xold=x;</span><br><span class="line">    for i=1:n</span><br><span class="line">    sigma=0;</span><br><span class="line">    for j=1:n</span><br><span class="line">    if j~=i</span><br><span class="line">    sigma=sigma+A(i,j)*xold(j);</span><br><span class="line">    %sigma=sigma+A(i,j)*x(j);</span><br><span class="line">    endif</span><br><span class="line">    endfor</span><br><span class="line">    x(i)=(1/A(i,i))*(b(i)-sigma);</span><br><span class="line">    endfor</span><br><span class="line">    JacobItr=JacobItr+1;</span><br><span class="line">    x=x</span><br><span class="line">    normVal=norm(xold-x);</span><br><span class="line">    end</span><br><span class="line">endfunction </span><br><span class="line">b=[25;10;14];</span><br><span class="line">A=[20,2,3;1,8,1;2,-3,15];</span><br><span class="line">x=jacobi(A,b);</span><br></pre></td></tr></table></figure>
+<h5 id="高斯-塞德尔迭代法"><a href="#高斯-塞德尔迭代法" class="headerlink" title="高斯-塞德尔迭代法"></a>高斯-塞德尔迭代法</h5><p>简单迭代法的分量形式时</p>
+<script type="math/tex; mode=display">
+x_i^{(k+1)}=\sum_{j=1}^{i-1}h_{ij}x^{(k)}_j+\sum_{j=1}^{n}h_{ij}x_j^{(k)}+g_i</script><p>可以用这些新值来计算$x_i^{(k+1)}$于是可以得到迭代格式</p>
+<script type="math/tex; mode=display">
+x_i^{(k+1)}=\sum_{j=1}^{i-1}h_{ij}x^{(k+1)}_j+\sum_{j=1}^{n}h_{ij}x_j^{(k)}+g_i</script><p>此方法称为$Seidel$迭代法</p>
+<p>是对于迭代的一种策略，而非具体的某种迭代方法</p>
+<p>对Jacobi迭代运用$Seidel$技巧得到</p>
+<script type="math/tex; mode=display">
+x_i^{(k+1)}=\frac{1}{a_{ii}}(\sum_{j=1}^{i-1}a_{ij}x_j^{(k+1)}+\sum_{j=i+1}^{n}a_{ij}x_j^{(k)}-b_i)</script><p>称为$Gauss-Seidel$迭代法，其矩阵形式为</p>
+<script type="math/tex; mode=display">
+x^{(k+1)}=D^{-1}(Lx^{(x+1)}+U(x^{(k)}+b)</script><p>整理可得</p>
+<script type="math/tex; mode=display">
+x^{(k+1)}=(D-L)^{-1}Ux^{(k)}+(D-L)^{-1}b</script><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> b=[25;10;14];</span><br><span class="line"> A=[20,2,3;1,8,1;2,-3,15];</span><br><span class="line">function [x]=Gauss_Seidel(A,b)</span><br><span class="line">    n=size(A,1);</span><br><span class="line">    x=rand(n,1);</span><br><span class="line">    normVal=Inf;</span><br><span class="line">    eps=1.0e-5;</span><br><span class="line">    GaussItr=0;</span><br><span class="line">    for i=1:n</span><br><span class="line">    	x(i)=0;</span><br><span class="line">    endfor</span><br><span class="line">    while normVal&gt;eps</span><br><span class="line">         x_old=x;</span><br><span class="line">         for i=1:n</span><br><span class="line">             sigma=0;</span><br><span class="line">             for j=1:i-1</span><br><span class="line">             	sigma=sigma+A(i,j)*x(j);</span><br><span class="line">             end</span><br><span class="line">             for j=i+1:n</span><br><span class="line">             	sigma=sigma+A(i,j)*x_old(j);</span><br><span class="line">             end</span><br><span class="line">             x(i)=(1/A(i,i))*(b(i)-sigma);</span><br><span class="line">         end</span><br><span class="line">         GaussItr=GaussItr+1;</span><br><span class="line">         x</span><br><span class="line">         normVal=norm(x_old-x);</span><br><span class="line">    end</span><br><span class="line">endfunction </span><br><span class="line">Gauss_Seidel(A,b)</span><br></pre></td></tr></table></figure>
+<p>两种方法收敛性无关</p>
+<h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200517144549130.png" alt="image-20200517144549130"></p>
 <p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200517144621460.png" alt="image-20200517144621460"></p>
+<p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200528201803308.png" alt="image-20200528201803308"></p>
 
     </div>
 
@@ -574,7 +822,7 @@ PAX=LUX=P</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/04/24/LeetcodeWk187/" rel="next" title="LeetcodeWk185">
+                <a href="/2020/04/24/LeetcodeWk185/" rel="next" title="LeetcodeWk185">
                   <i class="fa fa-chevron-left"></i> LeetcodeWk185
                 </a>
               
@@ -635,7 +883,7 @@ PAX=LUX=P</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差"><span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的浮点表示及算术运算"><span class="nav-text">计算机的浮点表示及算术运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差来源"><span class="nav-text">误差来源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差的基本概念"><span class="nav-text">误差的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#误差分析"><span class="nav-text">误差分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程数值解"><span class="nav-text">线性方程数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯消元法"><span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的三角分解"><span class="nav-text">矩阵的三角分解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的LU分解"><span class="nav-text">矩阵的LU分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Doolittle分解"><span class="nav-text">Doolittle分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对称正定矩阵的平方根法和LDLT分解"><span class="nav-text">对称正定矩阵的平方根法和LDLT分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解三对角方程组的追赶法"><span class="nav-text">解三对角方程组的追赶法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消元法在计算机上的实现"><span class="nav-text">消元法在计算机上的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#主元选择的必要性"><span class="nav-text">主元选择的必要性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选主元的方法"><span class="nav-text">选主元的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代改善"><span class="nav-text">迭代改善</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#行列式和逆矩阵的计算"><span class="nav-text">行列式和逆矩阵的计算</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差"><span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的浮点表示及算术运算"><span class="nav-text">计算机的浮点表示及算术运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差来源"><span class="nav-text">误差来源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差的基本概念"><span class="nav-text">误差的基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差分析"><span class="nav-text">误差分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程数值解"><span class="nav-text">线性方程数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯消元法"><span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的三角分解"><span class="nav-text">矩阵的三角分解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的LU分解"><span class="nav-text">矩阵的LU分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Doolittle分解"><span class="nav-text">Doolittle分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对称正定矩阵的平方根法和LDLT分解"><span class="nav-text">对称正定矩阵的平方根法和LDLT分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解三对角方程组的追赶法"><span class="nav-text">解三对角方程组的追赶法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消元法在计算机上的实现"><span class="nav-text">消元法在计算机上的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#主元选择的必要性"><span class="nav-text">主元选择的必要性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选主元的方法"><span class="nav-text">选主元的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代改善"><span class="nav-text">迭代改善</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#行列式和逆矩阵的计算"><span class="nav-text">行列式和逆矩阵的计算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量和矩阵范数"><span class="nav-text">向量和矩阵范数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#向量范数"><span class="nav-text">向量范数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵范数"><span class="nav-text">矩阵范数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#谱半径"><span class="nav-text">谱半径</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的条件数与病态方程组"><span class="nav-text">矩阵的条件数与病态方程组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#条件数"><span class="nav-text">条件数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的平衡"><span class="nav-text">矩阵的平衡</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代法"><span class="nav-text">迭代法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一般方法"><span class="nav-text">一般方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一般步骤"><span class="nav-text">一般步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#雅可比迭代法"><span class="nav-text">雅可比迭代法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高斯-塞德尔迭代法"><span class="nav-text">高斯-塞德尔迭代法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业"><span class="nav-text">作业</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -667,7 +915,7 @@ PAX=LUX=P</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -680,7 +928,7 @@ PAX=LUX=P</script><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
