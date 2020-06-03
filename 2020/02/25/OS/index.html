@@ -68,7 +68,7 @@
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200416225822935.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200416230054776.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200416230230453.png">
-<meta property="og:updated_time" content="2020-05-25T13:11:35.265Z">
+<meta property="og:updated_time" content="2020-06-02T12:44:00.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统">
 <meta name="twitter:description" content="作为学习笔记">
@@ -311,7 +311,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-25 21:11:35" itemprop="dateModified" datetime="2020-05-25T21:11:35+08:00">2020-05-25</time>
+                <time title="修改时间：2020-06-02 20:44:00" itemprop="dateModified" datetime="2020-06-02T20:44:00+08:00">2020-06-02</time>
               </span>
             
           
@@ -661,15 +661,17 @@
 <p>优点: 公平</p>
 <p>缺点：短作业等待时间长</p>
 <h6 id="短作业优先-SJF"><a href="#短作业优先-SJF" class="headerlink" title="短作业优先(SJF)"></a>短作业优先(SJF)</h6><p>Shortest Job First</p>
-<p>按CPU burst长度</p>
+<p>按CPU burst长度递增的次序调度</p>
 <p>表</p>
 <p>特点:</p>
 <p>假定锁业任务同时到达，平均等待时间最短</p>
 <p>长作业可能被饿死</p>
 <h6 id="最短剩余时间优先算法-SRTN"><a href="#最短剩余时间优先算法-SRTN" class="headerlink" title="最短剩余时间优先算法(SRTN)"></a>最短剩余时间优先算法(SRTN)</h6><p>Shortest Remaining Time Next</p>
 <p>可剥夺SJF</p>
+<p>选择剩余时间最短的进程</p>
 <h6 id="最高响应比优先-HRN"><a href="#最高响应比优先-HRN" class="headerlink" title="最高响应比优先(HRN)"></a>最高响应比优先(HRN)</h6><p>Highest Response Ratio Next</p>
-<p>RR=(RT+WT)/BT=1+WT/BT</p>
+<p>$RR=\frac{BT+WT}{BT}=1+\frac{WT}{BT}$</p>
+<p>RR为响应比</p>
 <p>BT=burst time</p>
 <p>WT=wait time</p>
 <p>优点:</p>
@@ -713,6 +715,7 @@
 <p>队列1: 实时进程就绪队列(HPF)</p>
 <p>队列2: 分时进程就绪队列(RR)</p>
 <p>队列3: 批处理进程就绪队列(HPF)</p>
+<h6 id="反馈排队算法"><a href="#反馈排队算法" class="headerlink" title="反馈排队算法"></a>反馈排队算法</h6><p>多优先级的循环轮转算法</p>
 <h5 id="处理机调度时机"><a href="#处理机调度时机" class="headerlink" title="处理机调度时机"></a>处理机调度时机</h5><p>运行进程结束</p>
 <p>运行进程等待</p>
 <p>处理机别剥夺</p>
@@ -1311,7 +1314,8 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 <li>存储扩充</li>
 <li>地址映射</li>
 </ul>
-<h5 id="存储分配"><a href="#存储分配" class="headerlink" title="存储分配"></a>存储分配</h5><h5 id="存储共享"><a href="#存储共享" class="headerlink" title="存储共享"></a>存储共享</h5><p>存储共享式之两个或者多个进程公用内存中的相同区域，即它们的物理空间有相交的部分</p>
+<h5 id="存储分配"><a href="#存储分配" class="headerlink" title="存储分配"></a>存储分配</h5><p>作业进入内存，变为进程，并为进程分配空间，进程运行结束后，操作系统需要收回分配的空间</p>
+<h5 id="存储共享"><a href="#存储共享" class="headerlink" title="存储共享"></a>存储共享</h5><p>存储共享式之两个或者多个进程公用内存中的相同区域，即它们的物理空间有相交的部分</p>
 <p><strong>1.存储共享的目的</strong></p>
 <p><strong>1)</strong> 节省内存空间</p>
 <p><strong>2)</strong>实现进程间的通信</p>
@@ -1322,10 +1326,15 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 <p><strong>2)</strong>防止操作越权</p>
 <h5 id="存储扩充"><a href="#存储扩充" class="headerlink" title="存储扩充"></a>存储扩充</h5><p>将内存和外存结合起来，形成虚拟存储系统</p>
 <h5 id="地址映射"><a href="#地址映射" class="headerlink" title="地址映射"></a>地址映射</h5><p>将逻辑地址转换为物理地址</p>
-<h4 id="内存资源管理"><a href="#内存资源管理" class="headerlink" title="内存资源管理"></a>内存资源管理</h4><h5 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h5><ol>
+<p>完成地址映射的硬件机构称为存储器管理部件(MMU)</p>
+<h4 id="内存资源管理"><a href="#内存资源管理" class="headerlink" title="内存资源管理"></a>内存资源管理</h4><ul>
+<li>分区方法</li>
+<li>分配方法</li>
+</ul>
+<h5 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h5><ol>
 <li>静态分区与动态分区<ul>
 <li>静态分区<br>静态分区在系统运行之前就将内存空间划分为若干个区域。当进程需要进程空间时，系统按照某种分配原则为其分配一个或者多个满足要求的区域。</li>
-<li>动态分区<br>与静态分区相反，动态分区在系统运行的过程中活粉内存空间，通常，系统可以按照进程所需存储空间的大小为其分配恰好满足要求的一个或者多个区域</li>
+<li>动态分区<br>与静态分区相反，动态分区在系统运行的过程中划分内存空间，通常，系统可以按照进程所需存储空间的大小为其分配恰好满足要求的一个或者多个区域</li>
 </ul>
 </li>
 <li>等长分区与异长分区<ul>
@@ -1334,8 +1343,9 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 </ul>
 </li>
 </ol>
-<p>在实际系统中，静态分区与等长分区通常结合在一起，构成金泰等长分区的分配形式，动态分区域异常分区通常结合在一个其，构成动态异常分区的分配形式</p>
-<h5 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h5><ol>
+<p>在实际系统中，静态分区与等长分区通常结合在一起，构成静态等长分区的分配形式，动态分区域异长分区通常结合在一个其，构成动态异长分区的分配形式</p>
+<h5 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h5><p>按什么原则把内存区域分配给各个进程</p>
+<ol>
 <li>静态等长分区的分配<ul>
 <li>位图<br>位图(bitmap)用一位(1b)来代表一个页面的状态，规定当其值位0时，表示改页面为空闲；当其值为1时，表示该页面被占用。<br>|1|0|…|1|…|0|<br>|—-|—-|—-|—-|—-|—-|<br>|第0页|第1页|…|第i页|…|第n-页|</li>
 </ul>
@@ -1346,13 +1356,27 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 <li>空闲页链<br>将所有的空闲页面连成一个空闲页链(idle page link),分配时可以取链头的页，取配时可以将被释放的页面链头(类似一个结构来保存所有空闲的页表，同时可以释放和申请)</li>
 </ul>
 <ol>
-<li>动态异长分区的分配<br>这种存储分配形式常用于界地址存储管理方式与段式存储管理方式中，存储空间被动态划分为若干个长度不等的区域,系统中需要一张表，称为空闲区域表，表种记录所有当前未被进程占用的空闲区域，没有记录于空闲区域表中的区域即为已经被进程占用的非空闲区域</li>
+<li><p>动态异长分区的分配<br>这种存储分配形式常用于界地址存储管理方式与段式存储管理方式中，存储空间被动态划分为若干个长度不等的区域,系统中需要一张表，称为空闲区域表，表种记录所有当前未被进程占用的空闲区域，没有记录于空闲区域表中的区域即为已经被进程占用的非空闲区域</p>
+<p>| 空闲区域首址 | 空闲区域长度 |<br>| —————— | —————— |<br>| addr         | size         |</p>
+</li>
 </ol>
 <ul>
-<li>最先适应算法</li>
-<li>下次适应算法</li>
-<li>最佳适应算法</li>
-<li>最坏适应算法</li>
+<li><p>最先适应算法</p>
+<p>(first fit,FF) 算法是指对于存储申请命令，选取满足申请长度满足要求且起始地址最小的空闲区域。</p>
+<p>尽量使用低地址的区域</p>
+</li>
+<li><p>下次适应算法</p>
+<p>(next fit,NF)算法从上一次分配空闲区域的下一个位置开始，找到第一个课满足的空闲区域。</p>
+<p>空闲区域分布和分配得更均匀，缺点是可能分割大空闲区域</p>
+</li>
+<li><p>最佳适应算法</p>
+<p>(best fit,BF)算法在分配时取满足申请要求且长度最小得空闲区域</p>
+<p>尽量不分割大得空闲区域，会形成碎片(很小的内存区域)</p>
+</li>
+<li><p>最坏适应算法</p>
+<p>(wrost fit,WF)算法在分配时选取满足申请要求而且长度最大的空闲区域</p>
+<p>可以避免形成碎片，有可能无法满足分割较大区域</p>
+</li>
 </ul>
 <h5 id="碎片与紧凑"><a href="#碎片与紧凑" class="headerlink" title="碎片与紧凑"></a>碎片与紧凑</h5><p>动态异长分配存储分配可能形成很小的空闲区域，称为碎片。<br>解决碎片的问题的方法时移动所有的占有区域，以使所有的空闲区域连成一片，这个过程称为紧凑</p>
 <h4 id="单一连续区存储管理"><a href="#单一连续区存储管理" class="headerlink" title="单一连续区存储管理"></a>单一连续区存储管理</h4><p>单一连续区(single contiguous region)存储管理又称为但对接存储管理方，一个进程在内粗你空间的地址由两个参数决定:进程起始地址和长度，称为一个对界</p>
@@ -1360,69 +1384,99 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 <li>内存空间划分<br>内存空间采用动态异长分区的方法，整个内存被动态地划分未若干个长度各异的区域</li>
 </ol>
 <ol>
-<li>进程空间划分<br>一个进程空间由连续的区域构成。假设进程的长度为l，则其逻辑地址为0—(l-1)</li>
-</ol>
+<li><p>进程空间划分<br>一个进程空间由连续的区域构成。假设进程的长度为l，则其逻辑地址为0~(l-1)</p>
+</li>
+<li><p>进程空间于内存空间的对应关系<br>一个进程在内存中占有一个连续的区域。假设进程的长度为l，在内存中的起始位置为b,其物理地址为b~(b+l-1)</p>
+</li>
+<li><p>所需表目<br>为了实现存储分配和地址映射，需要如下的表目</p>
 <ol>
-<li>进程空间于内存空间的对应关系<br>一个进程在内存中占有一个连续的区域。假设进程的长度为l，在内存中的起始位置为b,其物理地址为b - (b+l-1)</li>
-</ol>
-<ol>
-<li>所需表目<br>为了实现存储分配和地址映射，需要如下的表目<ol>
-<li>内存分配表</li>
-<li>空闲区域表</li>
+<li>内存分配表:用于记录内存中所有已被分配的区域，该表有时可以省略，此时各个分配区域分别登记在占有进程的进程控制块中</li>
+<li>空闲区域表:用于记录所有尚未分配的区域</li>
 </ol>
 </li>
-</ol>
+<li><p>所需寄存器<br>为了加快地址映射的速度，硬件应当提供以下两个寄存器</p>
 <ol>
-<li>所需寄存器<br>为了加快地址映射的速度，硬件应当提供以下两个寄存器<ol>
-<li>首址寄存器</li>
-<li>限长寄存器<br>当一个进程被进程调度程序选择将要投入运行时，系统将其起始地址和长度由内存分配表或者进程控制块中分别取出并送入首址存储器和限长存储器</li>
+<li>首址寄存器: 整个系统有一个，用于保存正在运行进程的起始地址</li>
+<li>限长寄存器: 整个系统有一个，用于保存正在运行进程的长度<br>当一个进程被进程调度程序选择将要投入运行时，系统将其起始地址和长度由内存分配表或者进程控制块中分别取出并送入首址存储器和限长存储器</li>
 </ol>
 </li>
 </ol>
 <ol>
 <li>地址映射<br>地址映射需要将程序产生的逻辑地址转换为内存中的物理地址，即为完成如下映射:<script type="math/tex; mode=display">
-\sigma : (a) \rightarrow (b+a) \cup \{\Omega \} $</script></li>
+\sigma : (a) \rightarrow (b+a) \cup \{\Omega \}</script></li>
 </ol>
 <p>   其中,a为逻辑地址,b为进程起始地址。当a所对应物理地址不存在(越界)时,映射没有意义，结果为$\Omega$,地址映射的关系为:</p>
 <p>   图片</p>
 <p>   地址映射的步骤如下</p>
 <ol>
-<li>由程序确定逻辑地址<ol>
+<li>由程序确定逻辑地址</li>
 <li>由逻辑地址与线程存储器的内容相比较以判断是否越界，若越界发生越界中断</li>
 <li>由逻辑地址与首地址寄存器的内容相加得到物理地址</li>
-</ol>
-</li>
 </ol>
 <h5 id="双对界"><a href="#双对界" class="headerlink" title="双对界"></a>双对界</h5><p>单对界限制一个进程在内存中只占有一个连续区域，双对接则允许一个进程在内存中占有两个连续的区域</p>
 <h5 id="交换与重定位"><a href="#交换与重定位" class="headerlink" title="交换与重定位"></a>交换与重定位</h5><p>进程在内存空间与外存空间之间的动态调度</p>
 <h5 id="覆盖技术"><a href="#覆盖技术" class="headerlink" title="覆盖技术"></a>覆盖技术</h5><h4 id="页式存储管理"><a href="#页式存储管理" class="headerlink" title="页式存储管理"></a>页式存储管理</h4><h5 id="基本原理-1"><a href="#基本原理-1" class="headerlink" title="基本原理"></a>基本原理</h5><ol>
 <li><p>内存空间划分</p>
 <p>内存空间被静态的划分为若干个等长的区域，每个区域称为一个物理页框(page frame)，每个x·通常有$2^i$个单元</p>
-<p>将其由0开始依次编址，称为页内地址，设内存的容量为$2^n$B,则共有$2^{n-i}$,将所有页匡由0开始依次编号，称为页框号</p>
-<p>图</p>
-<p>1</p>
+<p>将其由0开始依次编址，称为页内地址，设内存的容量为$2^n$B,则共有$2^{n-i}$个页框,将所有页匡由0开始依次编号，称为页框号。</p>
+<p>一个内存单元的地址称为物理地址</p>
+<script type="math/tex; mode=display">
+物理地址=物理页框首址+页内地址=页框号\times 2^{i} + 页内地址</script><p>| 页框号   | 页内地址 |<br>| ———— | ———— |<br>| $n-i$ 位 | $i$位    |</p>
 </li>
+</ol>
+<ol>
 <li><p>进程地址划分</p>
-<p>进程空间被静态的划分为若干个登场的区域，每个区域称为一个逻辑页面，其长度与页框的长度相同，即共有$2^i$个单元，</p>
-<p>图</p>
-<p>1</p>
+<p>进程空间被静态的划分为若干个登场的区域，每个区域称为一个逻辑页面，其长度与页框的长度相同，即共有$2^i$个单元，将其由0开始依次编址,称为页内地址，设进程共有l个逻辑页面，将其由0开始依次编号，称为逻辑页号</p>
+<p>一个进程单元的地址称为逻辑地址</p>
+<script type="math/tex; mode=display">
+逻辑地址=逻辑页首址+页内地址=逻辑页号\times 2^{i} + 页内地址</script><p>| 逻辑页号 | 页内地址 |<br>| ———— | ———— |<br>| $n-i$位  | $i$位    |</p>
 </li>
 <li><p>进程空间与内存空间的对应关系</p>
-<p>当进程运行时</p>
+<p>当进程运行时，需要将它的各个逻辑页面保存到存储空间的物理页框中，即需要确定逻辑页面与物理页框之间的对应关系。</p>
 </li>
 <li><p>所需表目</p>
-<p>为了实现逻辑地址和物理地址之间的转换</p>
+<p>为了实现逻辑地址和物理地址之间的转换，系统中需要两个表目</p>
+<ul>
+<li><p>页表</p>
+<p>该表用于记录进程的逻辑页面与内存页框之间的对应关系(逻辑页号是连续的，可以省略)</p>
+<p>对于一个给定的逻辑页号，将其于页表的起始地址相加后便可得到对应的页框号在页表中的入口地址</p>
+<p>| 逻辑页号 | 页框号 |<br>| ———— | ——— |<br>| 0        | 18     |</p>
+</li>
+<li><p>总页表</p>
+<p>用于记录页框的使用情况。</p>
+</li>
+</ul>
 </li>
 <li><p>所需寄存器</p>
-<p>地址银蛇需要将逻辑页号转换为页框号</p>
+<p>地址映射需要将逻辑页号转换为页框号，先由进程控制块找到页表的起始地址及长度，然后由逻辑页号查页表找到页框号。由于进程控制块和页表均保存于内存空间中，因而每次地址变换需要访问内存两次，使速度降低50%,为了效率，硬件通常提供如下3组寄存器</p>
+<ol>
+<li><p>页表首址寄存器</p>
+<p>用于保存正在运行进程页表的首地址</p>
+</li>
+<li><p>页表长度寄存器</p>
+<p>用于保存正在运行进程的页表的首地址</p>
+</li>
+<li><p>一组联想寄存器(快表)</p>
+<p>用于保存正在运行进程种的页表种的部分项目</p>
+<p>说明</p>
+<p>| 逻辑页号 | 页框号 |<br>| ———— | ——— |<br>| p        | f      |</p>
+</li>
+</ol>
+<p>访问页号在快表种的次数与总访问次数之比称为命中率</p>
+<p>快表对命中率有显著影响(长度大于16之后影响变小)</p>
 </li>
 <li><p>地址映射</p>
-<p>地址</p>
+<p>地址映射需要将逻辑地址转换为物理地址，即为完成如下映射关系</p>
+<script type="math/tex; mode=display">
+\sigma: (p,d) \rightarrow (f,d)\cup\{\Omega\}</script><p>其中，p为逻辑页号，d为页内地址，f为页框号</p>
+<p>过程</p>
 </li>
 </ol>
 <p>访问页号再快票中的次数与总访问次数纸币称为命中率(hit ratio)</p>
-<h5 id="多级页表"><a href="#多级页表" class="headerlink" title="多级页表"></a>多级页表</h5><h5 id="反置页表"><a href="#反置页表" class="headerlink" title="反置页表"></a>反置页表</h5><p>用于存下表页</p>
-<p>(复习时再进一步学习)</p>
+<h5 id="多级页表"><a href="#多级页表" class="headerlink" title="多级页表"></a>多级页表</h5><p>页表长度变大，可以控制页表长度</p>
+<h5 id="反置页表"><a href="#反置页表" class="headerlink" title="反置页表"></a>反置页表</h5><p>面向物理页框，对应内存的每个物理页框设置一个表项，表项的序号就是物理页框号f,表项的内容则为进程标识pid与逻辑页号p的有序对，系统只需要设置一个反置页表，为所有进程共用</p>
+<p>地址映射 由(pid,p) 反向搜索反置页表，一旦找到所有匹配的表项，其位移便是页框序号f</p>
+<p>速度问题，可以采用hash技术，由hash(pid,p)计算得到反置页表入口地址，</p>
 <h5 id="快速可达"><a href="#快速可达" class="headerlink" title="快速可达"></a>快速可达</h5><p>TLB思想</p>
 <h4 id="段式存储管理"><a href="#段式存储管理" class="headerlink" title="段式存储管理"></a>段式存储管理</h4><p>分页是透明的，而分段是对用户可见的，一个段恰好对应一个程序单位</p>
 <h5 id="基本原理-2"><a href="#基本原理-2" class="headerlink" title="基本原理"></a>基本原理</h5><ol>
@@ -1458,7 +1512,9 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 </ul>
 </li>
 <li><p>地址映射</p>
-<p>地址映射需要将逻辑地址转换为物理地址，即完成一下映射关系</p>
+<p>地址映射需要将逻辑地址转换为物理地址</p>
+<script type="math/tex; mode=display">
+\sigma:(s,d) \rightarrow (b'+d) \cup\{\Omega\}</script><p>步骤</p>
 </li>
 </ol>
 <h5 id="段的共享和保护"><a href="#段的共享和保护" class="headerlink" title="段的共享和保护"></a>段的共享和保护</h5><ol>
@@ -1474,10 +1530,16 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 <h5 id="基本原理-3"><a href="#基本原理-3" class="headerlink" title="基本原理"></a>基本原理</h5><ol>
 <li><p>内存空间划分</p>
 <p>和页式相同</p>
+<p>| 页框号  | 页内地址 |<br>| ———- | ———— |<br>| $n-i$位 | $i$位    |</p>
 </li>
+</ol>
+<ol>
 <li><p>进程空间划分</p>
 <p>和段式现同</p>
+<p>| 段号      | 逻辑页号 | 页内地址 |<br>| ————- | ———— | ———— |<br>| $n-i-j$位 | $j$位    | $i$位    |</p>
 </li>
+</ol>
+<ol>
 <li><p>进程空间与内存空间的对应关系</p>
 <p>进程空间的一个逻辑页面对应内存空间的一个页框，同一段的逻辑页面是连续的，而对应的页框却未必连续</p>
 </li>
@@ -1503,8 +1565,12 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 </li>
 <li><p>地址映射</p>
 <p>地址映射需要将逻辑地址转换为物理地址</p>
+<script type="math/tex; mode=display">
+\sigma:(s,p,d) \rightarrow (f,d) \cup \{\Omega\}</script><p>关系图</p>
+<p>步骤</p>
 </li>
 </ol>
+<h6 id="段的共享与保护"><a href="#段的共享与保护" class="headerlink" title="段的共享与保护"></a>段的共享与保护</h6><p>同段式相同</p>
 <h4 id="Intel-32-与-x86-64存储体系"><a href="#Intel-32-与-x86-64存储体系" class="headerlink" title="Intel 32 与 x86-64存储体系"></a>Intel 32 与 x86-64存储体系</h4><h3 id="虚拟存储系统"><a href="#虚拟存储系统" class="headerlink" title="虚拟存储系统"></a>虚拟存储系统</h3><p>时间上的局部性</p>
 <p>空间上的局部性</p>
 <h4 id="外存储器管理技术"><a href="#外存储器管理技术" class="headerlink" title="外存储器管理技术"></a>外存储器管理技术</h4><p>外存空间是指 磁盘等存储型设备上的存储区域，在逻辑上可以划分为4个主要部分</p>
@@ -1547,15 +1613,64 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 <li>读入所需的页面，修改页表及页框分配表  </li>
 <li>启动进程，重新被中断的指令</li>
 </ol>
+<p>图</p>
 <p>为了实现虚拟页式存储管理，在页表种需要郑家以下栏目: 外存块号，内外标志，修改标志等</p>
 <p>内存标志和修改标志各一位</p>
-<p>块表也需要做相应的改动，当某页被修改该时，硬件将自动将对应得修改标志为1</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>逻辑页号</th>
+<th>页框号</th>
+<th>外存块号</th>
+<th>访问权限</th>
+<th>外存标志</th>
+<th>修改标志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>f</td>
+<td>b’</td>
+<td>a</td>
+<td>i</td>
+<td>m</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>块表也需要做相应的改动，当某页被修改该时，硬件将自动将对应得修改标志为1,快表项被淘汰时，其标志位被写入页表中</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>逻辑页号</th>
+<th>页框号</th>
+<th>访问权限</th>
+<th>修改标志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>f</td>
+<td>a</td>
+<td>m</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h5 id="内存页框分配策略"><a href="#内存页框分配策略" class="headerlink" title="内存页框分配策略"></a>内存页框分配策略</h5><ol>
 <li><p>平均分配</p>
 <p>平均分配也就是将内存种所以物理页面等分给操作系统种的进程</p>
 </li>
 <li><p>按进程程序长度的比例分配</p>
-<p>对之前的改进</p>
+<p>按程序长度的比例确定分配内存物理页面数。设$s_i$为进程$P_i$的逻辑空间的页面数，定义</p>
+<script type="math/tex; mode=display">
+S=\sum s_i</script><p>设m为内存空间的物理页面总数，则分配给进程$P_i$的内存物理页面数为$a_i$</p>
+<script type="math/tex; mode=display">
+a_i=\frac{s_i}{S}\times m</script><p>需要对$a_i$进行调整使之不低于程序运行所需的最少物理页面数且不高于m</p>
 </li>
 <li><p>按进程优先级别的比例分配</p>
 <p>考虑优先级</p>
@@ -1564,11 +1679,28 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 </li>
 </ol>
 <h5 id="外存块的分配策略"><a href="#外存块的分配策略" class="headerlink" title="外存块的分配策略"></a>外存块的分配策略</h5><ol>
-<li>静态分配</li>
-<li>动态分配</li>
+<li><p>静态分配</p>
+<p>在一个进程运行之前，将七所有页面全部装入外存储器，当某一外存页面被调入内存时，所占用的外存页面并不释放。这样可以减少因为页面调度所引起的系统开销</p>
+</li>
+<li><p>动态分配</p>
+<p>一个程序运行之前，仅将未装入内存的那部分页面装入外存储器，当某一外存页面被调入内存时，将释放所有占用的外存页面。可以节省外存空间</p>
+</li>
 </ol>
 <h5 id="页面调入时机"><a href="#页面调入时机" class="headerlink" title="页面调入时机"></a>页面调入时机</h5><p>页面调入时机是指何时将一个页面由内存储器调入内存。可以有两种方法，请调和预调</p>
-<h5 id="写时复制"><a href="#写时复制" class="headerlink" title="写时复制"></a>写时复制</h5><h5 id="替换算法"><a href="#替换算法" class="headerlink" title="替换算法"></a>替换算法</h5><p>替换算法(replacement algorithm) 又称为淘汰算法，替换算法</p>
+<ol>
+<li><p>请调</p>
+<p>(demand paging,请求分页) 当页故障发生时进行调度，即当访问某一页面而该页面不在内存时由动态调页系统将其调入内存。</p>
+</li>
+<li><p>预调</p>
+<p>(pre-paging) 先行调度，预测</p>
+</li>
+</ol>
+<h5 id="写时复制"><a href="#写时复制" class="headerlink" title="写时复制"></a>写时复制</h5><p>采用fork创建子进程时，子进程将复制父进程的地址空间，如果父进程较大，则需为子进程复制较多的页面。</p>
+<p>并不会立即分配地址空间，而是共用，知道任何一个对其地址空间的某个页面执行写操作时，才为其分配独立的页框</p>
+<h5 id="替换算法"><a href="#替换算法" class="headerlink" title="替换算法"></a>替换算法</h5><p>替换算法(replacement algorithm) 又称为淘汰算法，替换算法</p>
+<p>当要访问的页面在外存储器而不在内存中时，需要将其调入内存，如果此时内存中无空闲页面，则需要将内存中的某一个页面移至外存储器</p>
+<p>需要考虑效果和开销</p>
+<p>局部和全局</p>
 <ol>
 <li><p>最佳算法</p>
 <p>从理论上来说，最佳算法是淘汰以后不再需要的或者在最长的时间以后才会用到的页面</p>
@@ -1582,7 +1714,12 @@ F(r_{k1})<F(r_{k2})<\cdots <F(r_{kn})<F(r_{k1})</script><p>优点</p>
 <p>LRU</p>
 </li>
 </ol>
-<p>   需要硬件的支持</p>
+<ul>
+<li>计时法</li>
+<li><p>双端队列(栈法)</p>
+<p>需要硬件的支持</p>
+</li>
+</ul>
 <ol>
 <li><p>最近不用的先淘汰</p>
 <p>NUR算法淘汰最近一段时间内未使用的页面</p>
@@ -1665,7 +1802,8 @@ f=F/A</script><p>页面的内存与外存储器之间频繁的调度，以至系
 <li>淘汰</li>
 </ul>
 <p>图来</p>
-<h5 id="段的动态连接"><a href="#段的动态连接" class="headerlink" title="段的动态连接"></a>段的动态连接</h5><ol>
+<h5 id="段的动态连接"><a href="#段的动态连接" class="headerlink" title="段的动态连接"></a>段的动态连接</h5><p>下次一定</p>
+<ol>
 <li><p>动态连接的提出</p>
 <p>由操作系统实现，是运行时连接</p>
 </li>
@@ -1838,7 +1976,28 @@ f=F/A</script><p>页面的内存与外存储器之间频繁的调度，以至系
 <p>对文件进行加密</p>
 </li>
 </ol>
-<h4 id="文件存储空间的管理"><a href="#文件存储空间的管理" class="headerlink" title="文件存储空间的管理"></a>文件存储空间的管理</h4><h3 id="设备与输入输出管理"><a href="#设备与输入输出管理" class="headerlink" title="设备与输入输出管理"></a>设备与输入输出管理</h3><h3 id="作业-1"><a href="#作业-1" class="headerlink" title="作业"></a>作业</h3><h4 id="第一次"><a href="#第一次" class="headerlink" title="第一次"></a>第一次</h4><p>1.进程切换时需要保存哪些现场信息？请尽量考虑完全。</p>
+<h4 id="文件存储空间的管理"><a href="#文件存储空间的管理" class="headerlink" title="文件存储空间的管理"></a>文件存储空间的管理</h4><p>用于保存文件的外存空间是被划分为分块的，文件被创建或执行写操作时，需要为其分配外存块，当文件被撤销时，当文件被撤销时，需要收回所占外存块</p>
+<h5 id="空闲链表"><a href="#空闲链表" class="headerlink" title="空闲链表"></a>空闲链表</h5><p>把所有的空闲块记录在同一个表中，该表称为空闲表块</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>首空闲块号</th>
+<th>空闲块数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>b</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>从a到a+b-1 都是空闲的，所有其他块都是被占用的，表中空闲块数为0的表目被标记为表尾</p>
+<p>适合于文件的物理组织形式为连续结构的文件系统</p>
+<h5 id="空闲块链"><a href="#空闲块链" class="headerlink" title="空闲块链"></a>空闲块链</h5><p>把所有的空闲块连成一条链</p>
+<h5 id="位图"><a href="#位图" class="headerlink" title="位图"></a>位图</h5><h4 id="内存所需的表目"><a href="#内存所需的表目" class="headerlink" title="内存所需的表目"></a>内存所需的表目</h4><h5 id="系统打开文件夹"><a href="#系统打开文件夹" class="headerlink" title="系统打开文件夹"></a>系统打开文件夹</h5><h5 id="用户打开文件表"><a href="#用户打开文件表" class="headerlink" title="用户打开文件表"></a>用户打开文件表</h5><h5 id="表间联系"><a href="#表间联系" class="headerlink" title="表间联系"></a>表间联系</h5><h4 id="文件系统的界面"><a href="#文件系统的界面" class="headerlink" title="文件系统的界面"></a>文件系统的界面</h4><h3 id="设备与输入输出管理"><a href="#设备与输入输出管理" class="headerlink" title="设备与输入输出管理"></a>设备与输入输出管理</h3><h4 id="设备管理的功能和目标"><a href="#设备管理的功能和目标" class="headerlink" title="设备管理的功能和目标"></a>设备管理的功能和目标</h4><h4 id="设备的分类"><a href="#设备的分类" class="headerlink" title="设备的分类"></a>设备的分类</h4><h4 id="设备的物理特性"><a href="#设备的物理特性" class="headerlink" title="设备的物理特性"></a>设备的物理特性</h4><h4 id="数据传输方式"><a href="#数据传输方式" class="headerlink" title="数据传输方式"></a>数据传输方式</h4><h4 id="I-O软件层次"><a href="#I-O软件层次" class="headerlink" title="I/O软件层次"></a>I/O软件层次</h4><h4 id="同步I-O和异步I-O"><a href="#同步I-O和异步I-O" class="headerlink" title="同步I/O和异步I/O"></a>同步I/O和异步I/O</h4><h4 id="设备驱动"><a href="#设备驱动" class="headerlink" title="设备驱动"></a>设备驱动</h4><h4 id="设备调度"><a href="#设备调度" class="headerlink" title="设备调度"></a>设备调度</h4><h4 id="缓冲与缓存"><a href="#缓冲与缓存" class="headerlink" title="缓冲与缓存"></a>缓冲与缓存</h4><h4 id="输入输出进程"><a href="#输入输出进程" class="headerlink" title="输入输出进程"></a>输入输出进程</h4><h4 id="RAID-技术"><a href="#RAID-技术" class="headerlink" title="RAID 技术"></a>RAID 技术</h4><h4 id="虚拟设备"><a href="#虚拟设备" class="headerlink" title="虚拟设备"></a>虚拟设备</h4><h4 id="虚拟设备-1"><a href="#虚拟设备-1" class="headerlink" title="虚拟设备"></a>虚拟设备</h4><h4 id="稳定存储器"><a href="#稳定存储器" class="headerlink" title="稳定存储器"></a>稳定存储器</h4><h4 id="系统举例"><a href="#系统举例" class="headerlink" title="系统举例"></a>系统举例</h4><h3 id="作业-1"><a href="#作业-1" class="headerlink" title="作业"></a>作业</h3><h4 id="第一次"><a href="#第一次" class="headerlink" title="第一次"></a>第一次</h4><p>1.进程切换时需要保存哪些现场信息？请尽量考虑完全。</p>
 <p>进程切换过程式进程上下文的切换过程，进程上下文式指进程运行的物理环境。</p>
 <p>包括地址映寄存器，通用寄存器，浮点寄存器，SP，PSW(程序状态字)，PC，以及打开的文件表等</p>
 <p>2.由核心返回目态程序时，进程的PSW和PC为何必须用一条机器指令同时恢复？</p>
@@ -1979,8 +2138,8 @@ f=F/A</script><p>页面的内存与外存储器之间频繁的调度，以至系
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/01/19/LeetcodeWk171/" rel="next" title="LeetcodeWk171">
-                  <i class="fa fa-chevron-left"></i> LeetcodeWk171
+                <a href="/2020/02/25/MCS/" rel="next" title="微机系统">
+                  <i class="fa fa-chevron-left"></i> 微机系统
                 </a>
               
             </div>
@@ -1989,8 +2148,8 @@ f=F/A</script><p>页面的内存与外存储器之间频繁的调度，以至系
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2020/02/25/MCS/" rel="prev" title="微机系统">
-                  微机系统 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/02/25/CSO/" rel="prev" title="">
+                   <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -2040,7 +2199,7 @@ f=F/A</script><p>页面的内存与外存储器之间频繁的调度，以至系
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统概述"><span class="nav-text">操作系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统概念"><span class="nav-text">操作系统概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统地位"><span class="nav-text">操作系统地位</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统的作用"><span class="nav-text">操作系统的作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统定义"><span class="nav-text">操作系统定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统的历史"><span class="nav-text">操作系统的历史</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统的产生"><span class="nav-text">操作系统的产生</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统的完善"><span class="nav-text">操作系统的完善</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的发展"><span class="nav-text">计算机系统的发展</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统特性"><span class="nav-text">操作系统特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统类型"><span class="nav-text">操作系统类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统运行环境"><span class="nav-text">操作系统运行环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程、线程与作业"><span class="nav-text">进程、线程与作业</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多通道程序设计"><span class="nav-text">多通道程序设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程的引入"><span class="nav-text">进程的引入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断与处理器调度"><span class="nav-text">中断与处理器调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中断与中断系统"><span class="nav-text">中断与中断系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#中断的概念"><span class="nav-text">中断的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中断装置"><span class="nav-text">中断装置</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#中断源与中断字"><span class="nav-text">中断源与中断字</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#中断类型与中断向量"><span class="nav-text">中断类型与中断向量</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#中断嵌套与系统栈"><span class="nav-text">中断嵌套与系统栈</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#中断优先级与中断屏蔽"><span class="nav-text">中断优先级与中断屏蔽</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中断处理程序"><span class="nav-text">中断处理程序</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中断嵌套与处理过程"><span class="nav-text">中断嵌套与处理过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IO中断处理"><span class="nav-text">IO中断处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#时钟中断处理"><span class="nav-text">时钟中断处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序性中断的处理"><span class="nav-text">程序性中断的处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自愿性中断的处理"><span class="nav-text">自愿性中断的处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理机调度"><span class="nav-text">处理机调度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#处理机调度算法"><span class="nav-text">处理机调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#先到先服务算法-FCFS"><span class="nav-text">先到先服务算法(FCFS)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#短作业优先-SJF"><span class="nav-text">短作业优先(SJF)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最短剩余时间优先算法-SRTN"><span class="nav-text">最短剩余时间优先算法(SRTN)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最高响应比优先-HRN"><span class="nav-text">最高响应比优先(HRN)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最高优先数算法-HPF"><span class="nav-text">最高优先数算法(HPF)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最高优先数算法-Cont"><span class="nav-text">最高优先数算法(Cont.)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#循环轮转算法-RR"><span class="nav-text">循环轮转算法(RR)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级队列算法（MLQ"><span class="nav-text">多级队列算法（MLQ)</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#处理机调度时机"><span class="nav-text">处理机调度时机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#处理机调度过程"><span class="nav-text">处理机调度过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实时调度与多处理机调度"><span class="nav-text">实时调度与多处理机调度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#最早截止期调度"><span class="nav-text">最早截止期调度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#速率单调调度"><span class="nav-text">速率单调调度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作业"><span class="nav-text">作业</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度级别与多级别调度"><span class="nav-text">调度级别与多级别调度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥、同步与通信"><span class="nav-text">互斥、同步与通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并发进程"><span class="nav-text">并发进程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前驱图的定义"><span class="nav-text">前驱图的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序程序及其特性"><span class="nav-text">顺序程序及其特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#并发程序及其特性"><span class="nav-text">并发程序及其特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序并发执行的条件"><span class="nav-text">程序并发执行的条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#并发程序的表示"><span class="nav-text">并发程序的表示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与时间有关的错误"><span class="nav-text">与时间有关的错误</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程互斥"><span class="nav-text">进程互斥</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#共享变量与临界区"><span class="nav-text">共享变量与临界区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#临界区域与进程互斥"><span class="nav-text">临界区域与进程互斥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三种尝试"><span class="nav-text">三种尝试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dekkel算法"><span class="nav-text">Dekkel算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Peterson算法"><span class="nav-text">Peterson算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Lamport面包店算法"><span class="nav-text">Lamport面包店算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Eisenberg-Mcguire算法"><span class="nav-text">Eisenberg/Mcguire算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#硬件实现"><span class="nav-text">硬件实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机环境下的互斥"><span class="nav-text">多处理机环境下的互斥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程同步"><span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#进程同步的概念"><span class="nav-text">进程同步的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进程同步机制"><span class="nav-text">进程同步机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号量与PV操作"><span class="nav-text">信号量与PV操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实现"><span class="nav-text">实现</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#应用"><span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#条件临界区"><span class="nav-text">条件临界区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#管程"><span class="nav-text">管程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#提出"><span class="nav-text">提出</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#形式"><span class="nav-text">形式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#语义"><span class="nav-text">语义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用"><span class="nav-text">使用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#管程和PV操作的等价性"><span class="nav-text">管程和PV操作的等价性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#管程嵌套调用"><span class="nav-text">管程嵌套调用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Java-管程"><span class="nav-text">Java 管程</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#会合"><span class="nav-text">会合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#描述"><span class="nav-text">描述</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事务存储器"><span class="nav-text">事务存储器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程高级通信"><span class="nav-text">进程高级通信</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#进程间通信的模式"><span class="nav-text">进程间通信的模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接方式"><span class="nav-text">直接方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#有缓冲途径"><span class="nav-text">有缓冲途径</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#无缓冲途径"><span class="nav-text">无缓冲途径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#间接方式"><span class="nav-text">间接方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁与饥饿"><span class="nav-text">死锁与饥饿</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁"><span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁类型"><span class="nav-text">死锁类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的条件"><span class="nav-text">死锁的条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的处理"><span class="nav-text">死锁的处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#资源分配图"><span class="nav-text">资源分配图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁防御"><span class="nav-text">死锁防御</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#预先分配法"><span class="nav-text">预先分配法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#有序分配法"><span class="nav-text">有序分配法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁避免"><span class="nav-text">死锁避免</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的发现"><span class="nav-text">死锁的发现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁的检测算法"><span class="nav-text">死锁的检测算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁的检测时刻"><span class="nav-text">死锁的检测时刻</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的恢复"><span class="nav-text">死锁的恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饥饿与饿死"><span class="nav-text">饥饿与饿死</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#活锁"><span class="nav-text">活锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子"><span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#哲学家就餐问题"><span class="nav-text">哲学家就餐问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#过河问题"><span class="nav-text">过河问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主存储器管理"><span class="nav-text">主存储器管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储管理的功能"><span class="nav-text">存储管理的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#存储分配"><span class="nav-text">存储分配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储共享"><span class="nav-text">存储共享</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储保护"><span class="nav-text">存储保护</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储扩充"><span class="nav-text">存储扩充</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#地址映射"><span class="nav-text">地址映射</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存资源管理"><span class="nav-text">内存资源管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#内存分区"><span class="nav-text">内存分区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存分配"><span class="nav-text">内存分配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#碎片与紧凑"><span class="nav-text">碎片与紧凑</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单一连续区存储管理"><span class="nav-text">单一连续区存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#双对界"><span class="nav-text">双对界</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交换与重定位"><span class="nav-text">交换与重定位</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#覆盖技术"><span class="nav-text">覆盖技术</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#页式存储管理"><span class="nav-text">页式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-1"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多级页表"><span class="nav-text">多级页表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反置页表"><span class="nav-text">反置页表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#快速可达"><span class="nav-text">快速可达</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#段式存储管理"><span class="nav-text">段式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-2"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段的共享和保护"><span class="nav-text">段的共享和保护</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#段页式存储管理"><span class="nav-text">段页式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-3"><span class="nav-text">基本原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Intel-32-与-x86-64存储体系"><span class="nav-text">Intel 32 与 x86-64存储体系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟存储系统"><span class="nav-text">虚拟存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#外存储器管理技术"><span class="nav-text">外存储器管理技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#外存空间划分"><span class="nav-text">外存空间划分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#外存空间分配"><span class="nav-text">外存空间分配</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟页式存储管理"><span class="nav-text">虚拟页式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-4"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存页框分配策略"><span class="nav-text">内存页框分配策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#外存块的分配策略"><span class="nav-text">外存块的分配策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#页面调入时机"><span class="nav-text">页面调入时机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#写时复制"><span class="nav-text">写时复制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替换算法"><span class="nav-text">替换算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#颠簸"><span class="nav-text">颠簸</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#工作集合模型"><span class="nav-text">工作集合模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#页故障反馈模型"><span class="nav-text">页故障反馈模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交换"><span class="nav-text">交换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非均匀存储器访问"><span class="nav-text">非均匀存储器访问</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟段式存储管理"><span class="nav-text">虚拟段式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-5"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段的动态连接"><span class="nav-text">段的动态连接</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟段页式存储管理"><span class="nav-text">虚拟段页式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-6"><span class="nav-text">基本原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#现代操作系统对存储管理方式的选择"><span class="nav-text">现代操作系统对存储管理方式的选择</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件管理"><span class="nav-text">文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件与文件管理"><span class="nav-text">文件与文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件"><span class="nav-text">文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件系统"><span class="nav-text">文件系统</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的访问方式"><span class="nav-text">文件的访问方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序访问"><span class="nav-text">顺序访问</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机访问"><span class="nav-text">随机访问</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的组织"><span class="nav-text">文件的组织</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件的逻辑组织"><span class="nav-text">文件的逻辑组织</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件的物理组织"><span class="nav-text">文件的物理组织</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#顺序结构"><span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#链接结构"><span class="nav-text">链接结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#索引结构"><span class="nav-text">索引结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#散列结构"><span class="nav-text">散列结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#倒排结构"><span class="nav-text">倒排结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件目录"><span class="nav-text">文件目录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件控制块与目录项"><span class="nav-text">文件控制块与目录项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件目录与目录文件"><span class="nav-text">文件目录与目录文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单级目录多级目录"><span class="nav-text">单级目录多级目录</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件目录的改进"><span class="nav-text">文件目录的改进</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#根目录与当前目录"><span class="nav-text">根目录与当前目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件目录查找"><span class="nav-text">文件目录查找</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件共享"><span class="nav-text">文件共享</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目的"><span class="nav-text">目的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模式"><span class="nav-text">模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现-1"><span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的保护与保密"><span class="nav-text">文件的保护与保密</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件的保护"><span class="nav-text">文件的保护</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件的保密"><span class="nav-text">文件的保密</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件存储空间的管理"><span class="nav-text">文件存储空间的管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备与输入输出管理"><span class="nav-text">设备与输入输出管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业-1"><span class="nav-text">作业</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一次"><span class="nav-text">第一次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二次"><span class="nav-text">第二次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三次"><span class="nav-text">第三次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四次"><span class="nav-text">第四次</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统概述"><span class="nav-text">操作系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统概念"><span class="nav-text">操作系统概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统地位"><span class="nav-text">操作系统地位</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统的作用"><span class="nav-text">操作系统的作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统定义"><span class="nav-text">操作系统定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统的历史"><span class="nav-text">操作系统的历史</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统的产生"><span class="nav-text">操作系统的产生</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统的完善"><span class="nav-text">操作系统的完善</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的发展"><span class="nav-text">计算机系统的发展</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统特性"><span class="nav-text">操作系统特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统类型"><span class="nav-text">操作系统类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统运行环境"><span class="nav-text">操作系统运行环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程、线程与作业"><span class="nav-text">进程、线程与作业</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多通道程序设计"><span class="nav-text">多通道程序设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程的引入"><span class="nav-text">进程的引入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断与处理器调度"><span class="nav-text">中断与处理器调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中断与中断系统"><span class="nav-text">中断与中断系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#中断的概念"><span class="nav-text">中断的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中断装置"><span class="nav-text">中断装置</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#中断源与中断字"><span class="nav-text">中断源与中断字</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#中断类型与中断向量"><span class="nav-text">中断类型与中断向量</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#中断嵌套与系统栈"><span class="nav-text">中断嵌套与系统栈</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#中断优先级与中断屏蔽"><span class="nav-text">中断优先级与中断屏蔽</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中断处理程序"><span class="nav-text">中断处理程序</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中断嵌套与处理过程"><span class="nav-text">中断嵌套与处理过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IO中断处理"><span class="nav-text">IO中断处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#时钟中断处理"><span class="nav-text">时钟中断处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序性中断的处理"><span class="nav-text">程序性中断的处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自愿性中断的处理"><span class="nav-text">自愿性中断的处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理机调度"><span class="nav-text">处理机调度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#处理机调度算法"><span class="nav-text">处理机调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#先到先服务算法-FCFS"><span class="nav-text">先到先服务算法(FCFS)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#短作业优先-SJF"><span class="nav-text">短作业优先(SJF)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最短剩余时间优先算法-SRTN"><span class="nav-text">最短剩余时间优先算法(SRTN)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最高响应比优先-HRN"><span class="nav-text">最高响应比优先(HRN)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最高优先数算法-HPF"><span class="nav-text">最高优先数算法(HPF)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最高优先数算法-Cont"><span class="nav-text">最高优先数算法(Cont.)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#循环轮转算法-RR"><span class="nav-text">循环轮转算法(RR)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级队列算法（MLQ"><span class="nav-text">多级队列算法（MLQ)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#反馈排队算法"><span class="nav-text">反馈排队算法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#处理机调度时机"><span class="nav-text">处理机调度时机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#处理机调度过程"><span class="nav-text">处理机调度过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实时调度与多处理机调度"><span class="nav-text">实时调度与多处理机调度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#最早截止期调度"><span class="nav-text">最早截止期调度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#速率单调调度"><span class="nav-text">速率单调调度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作业"><span class="nav-text">作业</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度级别与多级别调度"><span class="nav-text">调度级别与多级别调度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥、同步与通信"><span class="nav-text">互斥、同步与通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并发进程"><span class="nav-text">并发进程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前驱图的定义"><span class="nav-text">前驱图的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序程序及其特性"><span class="nav-text">顺序程序及其特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#并发程序及其特性"><span class="nav-text">并发程序及其特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序并发执行的条件"><span class="nav-text">程序并发执行的条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#并发程序的表示"><span class="nav-text">并发程序的表示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与时间有关的错误"><span class="nav-text">与时间有关的错误</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程互斥"><span class="nav-text">进程互斥</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#共享变量与临界区"><span class="nav-text">共享变量与临界区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#临界区域与进程互斥"><span class="nav-text">临界区域与进程互斥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三种尝试"><span class="nav-text">三种尝试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dekkel算法"><span class="nav-text">Dekkel算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Peterson算法"><span class="nav-text">Peterson算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Lamport面包店算法"><span class="nav-text">Lamport面包店算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Eisenberg-Mcguire算法"><span class="nav-text">Eisenberg/Mcguire算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#硬件实现"><span class="nav-text">硬件实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机环境下的互斥"><span class="nav-text">多处理机环境下的互斥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程同步"><span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#进程同步的概念"><span class="nav-text">进程同步的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进程同步机制"><span class="nav-text">进程同步机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号量与PV操作"><span class="nav-text">信号量与PV操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实现"><span class="nav-text">实现</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#应用"><span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#条件临界区"><span class="nav-text">条件临界区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#管程"><span class="nav-text">管程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#提出"><span class="nav-text">提出</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#形式"><span class="nav-text">形式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#语义"><span class="nav-text">语义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用"><span class="nav-text">使用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#管程和PV操作的等价性"><span class="nav-text">管程和PV操作的等价性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#管程嵌套调用"><span class="nav-text">管程嵌套调用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Java-管程"><span class="nav-text">Java 管程</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#会合"><span class="nav-text">会合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#描述"><span class="nav-text">描述</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事务存储器"><span class="nav-text">事务存储器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程高级通信"><span class="nav-text">进程高级通信</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#进程间通信的模式"><span class="nav-text">进程间通信的模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接方式"><span class="nav-text">直接方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#有缓冲途径"><span class="nav-text">有缓冲途径</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#无缓冲途径"><span class="nav-text">无缓冲途径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#间接方式"><span class="nav-text">间接方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁与饥饿"><span class="nav-text">死锁与饥饿</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁"><span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁类型"><span class="nav-text">死锁类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的条件"><span class="nav-text">死锁的条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的处理"><span class="nav-text">死锁的处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#资源分配图"><span class="nav-text">资源分配图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁防御"><span class="nav-text">死锁防御</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#预先分配法"><span class="nav-text">预先分配法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#有序分配法"><span class="nav-text">有序分配法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁避免"><span class="nav-text">死锁避免</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的发现"><span class="nav-text">死锁的发现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁的检测算法"><span class="nav-text">死锁的检测算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁的检测时刻"><span class="nav-text">死锁的检测时刻</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁的恢复"><span class="nav-text">死锁的恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饥饿与饿死"><span class="nav-text">饥饿与饿死</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#活锁"><span class="nav-text">活锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子"><span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#哲学家就餐问题"><span class="nav-text">哲学家就餐问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#过河问题"><span class="nav-text">过河问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主存储器管理"><span class="nav-text">主存储器管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储管理的功能"><span class="nav-text">存储管理的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#存储分配"><span class="nav-text">存储分配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储共享"><span class="nav-text">存储共享</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储保护"><span class="nav-text">存储保护</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储扩充"><span class="nav-text">存储扩充</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#地址映射"><span class="nav-text">地址映射</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存资源管理"><span class="nav-text">内存资源管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#内存分区"><span class="nav-text">内存分区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存分配"><span class="nav-text">内存分配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#碎片与紧凑"><span class="nav-text">碎片与紧凑</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单一连续区存储管理"><span class="nav-text">单一连续区存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#双对界"><span class="nav-text">双对界</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交换与重定位"><span class="nav-text">交换与重定位</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#覆盖技术"><span class="nav-text">覆盖技术</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#页式存储管理"><span class="nav-text">页式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-1"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多级页表"><span class="nav-text">多级页表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反置页表"><span class="nav-text">反置页表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#快速可达"><span class="nav-text">快速可达</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#段式存储管理"><span class="nav-text">段式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-2"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段的共享和保护"><span class="nav-text">段的共享和保护</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#段页式存储管理"><span class="nav-text">段页式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-3"><span class="nav-text">基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#段的共享与保护"><span class="nav-text">段的共享与保护</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Intel-32-与-x86-64存储体系"><span class="nav-text">Intel 32 与 x86-64存储体系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟存储系统"><span class="nav-text">虚拟存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#外存储器管理技术"><span class="nav-text">外存储器管理技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#外存空间划分"><span class="nav-text">外存空间划分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#外存空间分配"><span class="nav-text">外存空间分配</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟页式存储管理"><span class="nav-text">虚拟页式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-4"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存页框分配策略"><span class="nav-text">内存页框分配策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#外存块的分配策略"><span class="nav-text">外存块的分配策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#页面调入时机"><span class="nav-text">页面调入时机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#写时复制"><span class="nav-text">写时复制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替换算法"><span class="nav-text">替换算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#颠簸"><span class="nav-text">颠簸</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#工作集合模型"><span class="nav-text">工作集合模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#页故障反馈模型"><span class="nav-text">页故障反馈模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交换"><span class="nav-text">交换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非均匀存储器访问"><span class="nav-text">非均匀存储器访问</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟段式存储管理"><span class="nav-text">虚拟段式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-5"><span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段的动态连接"><span class="nav-text">段的动态连接</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟段页式存储管理"><span class="nav-text">虚拟段页式存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本原理-6"><span class="nav-text">基本原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#现代操作系统对存储管理方式的选择"><span class="nav-text">现代操作系统对存储管理方式的选择</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件管理"><span class="nav-text">文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件与文件管理"><span class="nav-text">文件与文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件"><span class="nav-text">文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件系统"><span class="nav-text">文件系统</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的访问方式"><span class="nav-text">文件的访问方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序访问"><span class="nav-text">顺序访问</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机访问"><span class="nav-text">随机访问</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的组织"><span class="nav-text">文件的组织</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件的逻辑组织"><span class="nav-text">文件的逻辑组织</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件的物理组织"><span class="nav-text">文件的物理组织</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#顺序结构"><span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#链接结构"><span class="nav-text">链接结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#索引结构"><span class="nav-text">索引结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#散列结构"><span class="nav-text">散列结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#倒排结构"><span class="nav-text">倒排结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件目录"><span class="nav-text">文件目录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件控制块与目录项"><span class="nav-text">文件控制块与目录项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件目录与目录文件"><span class="nav-text">文件目录与目录文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单级目录多级目录"><span class="nav-text">单级目录多级目录</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件目录的改进"><span class="nav-text">文件目录的改进</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#根目录与当前目录"><span class="nav-text">根目录与当前目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件目录查找"><span class="nav-text">文件目录查找</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件共享"><span class="nav-text">文件共享</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目的"><span class="nav-text">目的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模式"><span class="nav-text">模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现-1"><span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件的保护与保密"><span class="nav-text">文件的保护与保密</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件的保护"><span class="nav-text">文件的保护</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件的保密"><span class="nav-text">文件的保密</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件存储空间的管理"><span class="nav-text">文件存储空间的管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#空闲链表"><span class="nav-text">空闲链表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#空闲块链"><span class="nav-text">空闲块链</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位图"><span class="nav-text">位图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存所需的表目"><span class="nav-text">内存所需的表目</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#系统打开文件夹"><span class="nav-text">系统打开文件夹</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用户打开文件表"><span class="nav-text">用户打开文件表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表间联系"><span class="nav-text">表间联系</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件系统的界面"><span class="nav-text">文件系统的界面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备与输入输出管理"><span class="nav-text">设备与输入输出管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设备管理的功能和目标"><span class="nav-text">设备管理的功能和目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设备的分类"><span class="nav-text">设备的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设备的物理特性"><span class="nav-text">设备的物理特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传输方式"><span class="nav-text">数据传输方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I-O软件层次"><span class="nav-text">I/O软件层次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步I-O和异步I-O"><span class="nav-text">同步I/O和异步I/O</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设备驱动"><span class="nav-text">设备驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设备调度"><span class="nav-text">设备调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓冲与缓存"><span class="nav-text">缓冲与缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入输出进程"><span class="nav-text">输入输出进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RAID-技术"><span class="nav-text">RAID 技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟设备"><span class="nav-text">虚拟设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟设备-1"><span class="nav-text">虚拟设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#稳定存储器"><span class="nav-text">稳定存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统举例"><span class="nav-text">系统举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业-1"><span class="nav-text">作业</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一次"><span class="nav-text">第一次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二次"><span class="nav-text">第二次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三次"><span class="nav-text">第三次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四次"><span class="nav-text">第四次</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
