@@ -68,7 +68,7 @@
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200528201803308.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200603145901857.png">
 <meta property="og:image" content="c:/Users/EndA/AppData/Roaming/Typora/typora-user-images/image-20200603150927965.png">
-<meta property="og:updated_time" content="2020-06-03T11:06:01.453Z">
+<meta property="og:updated_time" content="2020-06-07T07:35:30.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算方法">
 <meta name="twitter:description" content="笔记">
@@ -311,7 +311,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-03 19:06:01" itemprop="dateModified" datetime="2020-06-03T19:06:01+08:00">2020-06-03</time>
+                <time title="修改时间：2020-06-07 15:35:30" itemprop="dateModified" datetime="2020-06-07T15:35:30+08:00">2020-06-07</time>
               </span>
             
           
@@ -872,7 +872,27 @@ x_{k+1}=\varphi(x_k),k=0,1,2,\dots</script><p>所定义$\{x_k\}$收敛于唯一�
 |x^*-x_k|\leq \frac{1}{1-L}|x_{k+1}-x_k|
 \\
 |x^*-x_k|\leq \frac{L^k}{1-L}|x_1-x_0|</script><p>证明:</p>
-<p>条件三可以放宽为</p>
+<p>令$h(x)=x-\varphi(x)$，则$h(x)$在$[a,b]$上连续且可微.</p>
+<p>可知道<script type="math/tex">h(a)\leq 0,h(b)\geq 0</script> 由连续函数的介值定理，必有<script type="math/tex">x^*\in [a,b]</script>使$h(x^*)=0$，</p>
+<p>即$x^<em>=\varphi(x^</em>)$.因此$x^<em>$便为方程$x=\varphi(x)$在$[a,b]$内的不动点，假定另有$\overline{x}\in [a,b]$且$$\overline{x}\neq x^</em>$$使得$\overline{x}=\varphi(\overline{x})$,由lagrange中值定理，得到</p>
+<script type="math/tex; mode=display">
+x^*-\overline{x}=\varphi(x^*)-\varphi(\overline{x})=\varphi'(\xi)(x^*-\overline{x})</script><p>其中$\xi$介于<script type="math/tex">x^*</script>和$\overline{x}$之间</p>
+<p>从而</p>
+<script type="math/tex; mode=display">
+(x^*-\overline{x})(1-\varphi'(\xi))=0</script><p>矛盾</p>
+<p>对任$x\in [a,b]$，由$\varphi\leq L &lt;1$得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+|x^*-x_k|=&|\varphi(x^*)-\varphi(x_{k-1})|\\
+         =&|\varphi'(\xi_{k-1})(x^*-x_{k-1})|\\
+         \leq& L|x^*-x_k| \\
+         \leq& L^2|x^*-x_{k-1}|\\
+         \dots&\\
+         \leq& L^{k}||x^*-x_0| \rightarrow 0,k\rightarrow \infty
+\end{aligned}</script><p>即对于任意<script type="math/tex">x_0\in [a,b],\lim_{k\rightarrow \infty} x_k=x^*</script></p>
+<p>注意</p>
+<script type="math/tex; mode=display">
+|x^*-x_{k+1}|\leq L |x^*-x_k|</script><p>条件三可以放宽为</p>
 <p>若$\varphi(x)$在$[a,b]$满足$Lipschiz$条件，即对$[a,b]$上的任意两点$x_1,x_2$，有</p>
 <script type="math/tex; mode=display">
 |\varphi(x_1)-\varphi(x_2)|\leq L |x_1-x_2|</script><p>且$Lipschiz$常数$L&lt;1$，则定理依然成立</p>
@@ -918,7 +938,206 @@ x_{k+1}=x_k-\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}f(x_k)\quad k=1,2,\dots</script
 <h4 id="解非线性方程组的Newton迭代法"><a href="#解非线性方程组的Newton迭代法" class="headerlink" title="解非线性方程组的Newton迭代法"></a>解非线性方程组的Newton迭代法</h4><p>考虑非线性方程组</p>
 <script type="math/tex; mode=display">
 f_i(x_1,x_2,\dots,x_n)=0\quad i=1,2,\dots,n</script><p>设<script type="math/tex">x_*=(x_1^*,x_2^*,\dots,x_n^*)</script>是它的一个精确解</p>
-<h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200517144549130.png" alt="image-20200517144549130"></p>
+<h3 id="矩阵特征值与特征向量的计算"><a href="#矩阵特征值与特征向量的计算" class="headerlink" title="矩阵特征值与特征向量的计算"></a>矩阵特征值与特征向量的计算</h3><h4 id="幂法及其变体"><a href="#幂法及其变体" class="headerlink" title="幂法及其变体"></a>幂法及其变体</h4><h5 id="乘幂法"><a href="#乘幂法" class="headerlink" title="乘幂法"></a>乘幂法</h5><p>求解大型稀疏矩阵的主特征值的迭代方法</p>
+<p>设$A=(a_{ij})\in R^{n\times n}$</p>
+<p>取初始向量 $x^{(0)}\in R^{n}$</p>
+<p>令</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+
+x^{(1)}=& Ax^{(0)} \\
+x^{(2)}=& Ax^{(1)}\\
+\cdots\\
+x^{(k)}=& Ax^{(k-1)}
+\end{aligned}</script><p>又此可得向量序列$\{x^{(k)}\}$</p>
+<p>有</p>
+<script type="math/tex; mode=display">
+x^{(k)}=A^{k}x^{(0)}</script><p>乘幂公式</p>
+<p>$\{x^{(x)}\}$被称为乘幂序列</p>
+<p>设A有完全的特征向量系，且有唯一的主特征值(按模最大),及特征值满足</p>
+<script type="math/tex; mode=display">
+|\lambda_1|\geq |\lambda_2| \geq \dots\geq |\lambda_n|</script><p>$v_1,v_2,\dots,v_n$为相应的特征向量并且线性无关，从而构成$R^{n}$上的一组基底</p>
+<p>对任取的初始向量$x^{(0)}\in R^{n} (x^{(0)}\neq 0)$,它可按上述基底展开为</p>
+<script type="math/tex; mode=display">
+x^{(0)}=\sum_{j=1}^{n}\alpha_jv_j</script><p>其中$\alpha_i$为展开系数</p>
+<p>把上面$x^{(0)}$带入得</p>
+<script type="math/tex; mode=display">
+x^{(k)}=A^{k}x^{(0)}=A^{k}\sum_{j=1}^{n}\alpha_jv_j=\sum_{j=1}^{n}\alpha_j(A^kv_j)=\sum_{j=1}^{n}\alpha_j\lambda_j^kv_j</script><p>又$\lambda_1\neq 0$</p>
+<p>有</p>
+<script type="math/tex; mode=display">
+x^{(k)}=\lambda_1^k(\alpha_1v_1+\sum_{j=2}^{n}\alpha_j(\frac{\lambda_j}{\lambda_1})^kv_j)=\lambda_1^k(\alpha_1v_1+\varepsilon_k)</script><script type="math/tex; mode=display">
+\varepsilon_k=\sum_{j=2}^{n}\alpha_j(\frac{\lambda_j}{\lambda_1})^kv_j</script><p>由于$|\frac{\lambda_j}{\lambda_1}|&lt;1 ,j=2,3,\dots,n$</p>
+<p>当$k\rightarrow \infty$时 $\varepsilon_k$为一无穷小量</p>
+<script type="math/tex; mode=display">
+x^{(k)}\approx \lambda_1^k\alpha_1v_1</script><p>若$\alpha_1v_1\neq 0$对$i=1,2,\dots,n$,计算相联迭代向量对应分量比值</p>
+<script type="math/tex; mode=display">
+\frac{x_i^{(k+1)}}{x_i^{(k)}}\approx \frac{\lambda_1^{k+1}\alpha_1v_1}{\lambda_1^{k}\alpha_1v_1}=\lambda_1</script><p>可见</p>
+<script type="math/tex; mode=display">
+\lim_{k\rightarrow \infty} \frac{x_{i}^{(k+1)}}{x_i^{(k)}}=\lambda_1</script><p>迭代收敛速度取决于$\frac{\lambda_2}{\lambda_1}$</p>
+<p>乘幂法可以用于近似计算矩阵按模最大得一个，或几个特征值以及相应得特征向量</p>
+<p>当比值$r=\frac{\lambda_2}{\lambda_1}&lt;&lt;1$时收敛速度快</p>
+<p>$|\lambda_1|&gt;1$ 非常大，上溢出</p>
+<p>&lt; 1 ，则会导致计算机的下溢出   需要规范化</p>
+<p>规范化的乘幂法公式</p>
+<p>令$\max(x)$表示向量x个分量绝对值最大者，即如果有某个$i_0$，使得</p>
+<script type="math/tex; mode=display">
+|x_{i_{0}}|=\max_{1\leq i\leq n}|x_i|</script><p>则了令$\max(x)=x_{i_{0}}$</p>
+<p>对任取的初始向量$x^{(0)}$，记</p>
+<script type="math/tex; mode=display">
+y^{(0)}=\frac{x^{(0)}}{\max(x^{(0)})}</script><p>并且定义</p>
+<script type="math/tex; mode=display">
+x^{(1)}=Ay^{(0)}</script><p>取n维异于0 初始向量$x^{(0)}$</p>
+<p>一般地令$x^{(0)}$满足$|x^{(0)}|_{\infty}=1$</p>
+<p>对于k=0,1,2…按下迭代</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\ y^{(k)}=\frac{x^{(k)}}{\max(x^{(k)})}
+ \\
+\ x^{(k+1)}=Ay^{(k)}
+\end{cases}</script><p>终止条件</p>
+<script type="math/tex; mode=display">
+|\|x^{(k)}\|_{\infty}-\|x^{(k-1)}\|_\infty|< \varepsilon</script><p>输出结果</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\ \lambda_1=\max({x^{(k)}})
+ \\
+\ v_1=y^{(k)}
+\end{cases}</script><p>几个问题</p>
+<h5 id="反幂法"><a href="#反幂法" class="headerlink" title="反幂法"></a>反幂法</h5><p>设$A\in R^{n\times n}$ 若有$Ax=\lambda x(x\neq 0)$  则$A^{-1}x=\lambda^{-1}x$</p>
+<p>可以按之前就行迭代</p>
+<p>求逆比较复杂</p>
+<p>改为</p>
+<script type="math/tex; mode=display">
+Ax^{(k)}=x^{(k-1)}</script><p>解系数矩阵为A的线性方程组</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\ y^{(k)}=\frac{x^{(k)}}{\max(x^{(k)})}
+ \\
+\ Ax^{(k+1)}=y^{(k)}
+\end{cases}</script><p>幂反法每一部都要求一个线性方程组，而系数矩阵A是不变的</p>
+<p>可以先做LU分解</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\ L\tilde{x}=y^{(k)}
+ \\
+\ Ux^{(k+1)}=\tilde{x}
+\end{cases}</script><p>当$|\lambda_1|\geq |\lambda| \geq\dots &gt; |\lambda_n|&gt;0$时，</p>
+<p>有</p>
+<script type="math/tex; mode=display">
+\lim_{k\rightarrow \infty} \max(x^{(k)})=\frac{1}{\lambda_n}</script><h5 id="幂法的平移"><a href="#幂法的平移" class="headerlink" title="幂法的平移"></a>幂法的平移</h5><p>如果已经知道特征值和特征向量</p>
+<p>有</p>
+<p>$Ax=\lambda x$</p>
+<p>则令</p>
+<script type="math/tex; mode=display">
+B=A-\lambda_0I</script><p>必有</p>
+<script type="math/tex; mode=display">
+Bx=(\lambda-\lambda_0)x</script><p>我们以矩阵B代替矩阵A进行乘幂迭代的方法，称为乘幂法的远点平移</p>
+<h4 id="Jacobi旋转法"><a href="#Jacobi旋转法" class="headerlink" title="Jacobi旋转法"></a>Jacobi旋转法</h4><p>用来求实对称矩阵的全部特征值以及特征向量的方法</p>
+<p>设$A=(a_{ij})\in R^{n\times n}$为$n$阶实对称矩阵，存在正交矩阵P,有</p>
+<script type="math/tex; mode=display">
+P^TAP=P^{-1}AP=D=diga(\lambda_1,\lambda_2,\dots,\lambda_n)</script><p>其中为A的n个特征值，正交阵P的各列是对应的特征向量</p>
+<p>构造一系列正交矩阵$P_1,P_2,\dots,P_n$</p>
+<p>对A实现正交相似变换，将A逐渐约化为近似对角阵，从而得到其全部特征值的近似值，把逐次得到的正交相似变换矩阵乘在一起，则积矩阵的各列便为所求近似</p>
+<script type="math/tex; mode=display">
+P^{-1}AP x_i=\lambda_ix_i
+\\
+A(Px_i)=\lambda_i(Px_i)</script><h5 id="平面旋转阵"><a href="#平面旋转阵" class="headerlink" title="平面旋转阵"></a>平面旋转阵</h5><script type="math/tex; mode=display">
+P=P_{ij}=
+\left[
+\begin{matrix}
+ \ 1& & & & & &  &\\
+ \ & \dots& & & & & & \\
+ \ & & \cos \theta& \dots& \sin\theta& & & \\
+ \ & & \dots& & \dots& & & \\
+ \ & & -\sin \theta& & \cos\theta& & & \\
+ \ & & & && \dots & & \\
+ \ & & & & & &1&  \\
+\end{matrix}
+\right]</script><script type="math/tex; mode=display">
+i!=j</script><script type="math/tex; mode=display">
+P^{-1}=P_{ji}=
+\left[
+\begin{matrix}
+ \ 1& & & & & &  &\\
+ \ & \dots& & & & & & \\
+ \ & & \cos \theta& \dots& -\sin\theta& & & \\
+ \ & & \dots& & \dots& & & \\
+ \ & & \sin \theta& & \cos\theta& & & \\
+ \ & & & && \dots & & \\
+ \ & & & & & &1&  \\
+\end{matrix}
+\right]</script><p>$P$为正交矩阵$P^TP=I$</p>
+<p>用矩阵P对A进行正交相似变换，即令</p>
+<script type="math/tex; mode=display">
+C=P^TAP</script><p>则有如下关系</p>
+<script type="math/tex; mode=display">
+c_{ii}=a_{ii}\cos^2\theta + a_{jj}\sin ^2 \theta -a_{ij}\sin 2\theta
+\\
+c_{jj}=a_{ii}\sin^2\theta+a_{jj}\cos^2 \theta +a_{ij}\sin 2\theta</script><script type="math/tex; mode=display">
+c_{ij}=c_{ji}=\frac{1}{2}(a_{ii}-a_{jj})\sin 2\theta + a_{ij}\cos 2\theta
+\\
+c_{ik}=c_{ki}=a_{ik}\cos \theta -a_{kj}\sin \theta (k\neq i,j)
+\\
+c_{jk}=c_{jk}=a_{jk}\cos\theta +a_ik\sin\theta (k\neq i,j)</script><p>其他元素为</p>
+<script type="math/tex; mode=display">
+c_{lk}=a_{lk} (l,k\neq i,j)</script><p>可以验证</p>
+<script type="math/tex; mode=display">
+c_{il}^2+c_{jl}^2=a_{il}^2+a_{jl}^2 \quad (l\neq i,j)
+\\
+c_{ii}^2+c_{jj}^2+2c_{ij}^2=a_{ii}^2+a_{jj}^2+2a_{ij}^2</script><p>引入记号</p>
+<script type="math/tex; mode=display">
+\sigma(A)=\sum_{i,j=1}^{n}a_{ij}^2\quad \tau(A)=\sum_{i,j=1,i\neq j}a_{ij}^2</script><script type="math/tex; mode=display">
+\sigma(C)=\sigma(A) \quad \tau(C)=\tau(A)-2a_{ij}^2+2C^2_{ij}</script><p>若想进过一次正交相似变换，使得</p>
+<script type="math/tex; mode=display">
+c_{ij}=c_{ji}=0</script><script type="math/tex; mode=display">
+\frac{1}{2}(a_{ii}-a_{jj})\sin 2\theta +a_{ij}\cos 2\theta=0</script><p>或</p>
+<script type="math/tex; mode=display">
+\tan 2\theta =\frac{2a_{ij}}{a_{jj}-a_{ii}} (|\theta|\leq \frac{\pi}{4})</script><h5 id="Jacobi旋转法-1"><a href="#Jacobi旋转法-1" class="headerlink" title="Jacobi旋转法"></a>Jacobi旋转法</h5><p>由于一次正交相似变换</p>
+<script type="math/tex; mode=display">
+A\rightarrow C=P^TAP</script><p>可将A得两个非对角元素化为零元素，因此可以选择一系列正交矩阵$P_K$进行正交相似变换，直到将A化为近似对角矩阵</p>
+<p>具体算法</p>
+<p>在$A=A_1=(a_{ls}^{(1)})$得非对角元素中选取绝对值最大得元素，记录为</p>
+<script type="math/tex; mode=display">
+|a_{i_{1},j_{1}}^{(1)}|=\max_{l\neq s} |a^{(l)}_{ls}|(\neq 0)</script><p>对确定的$i_1,j_1$，确定出$\theta$ 从而产生选择阵$P_{1}=P{i_1,j_1}$，约化$A_1$为</p>
+<script type="math/tex; mode=display">
+A_2=P_1^TA_1P_1</script><script type="math/tex; mode=display">
+\lambda=|a_{jj}-a_{ii}| \quad \mu=sign(a_{jj}-a_{ii}) \cdot 2a_{ij}</script><script type="math/tex; mode=display">
+\tan 2\theta = \frac{\mu}{\lambda}</script><script type="math/tex; mode=display">
+\cos \theta = \frac{\lambda}{\sqrt{\lambda^2+\mu^2}}=\omega \quad
+\cos \theta = \sqrt{\frac{1+\omega}{2}}</script><script type="math/tex; mode=display">
+\sin 2\theta = \frac{\mu^2}{\sqrt{\lambda^2+\mu^2}}\quad \sin \theta =\frac{\mu\omega}{\lambda\sqrt{2(1+\omega)}}</script><p>且 $A_2=(a_{ls}^{(2)})$的非对角元素$a^{(2)}_{i_1,j_1}=a^{(2)}_{j_1,i_1}=0$</p>
+<p>再继续选择最大元素</p>
+<p>如此做下去，可以得到一些列平面旋转阵</p>
+<script type="math/tex; mode=display">
+P_k=P_{i_k,j_k}  \quad k=1,2,\dots</script><p>使得</p>
+<script type="math/tex; mode=display">
+A_{k+1}=P^T_{k}\dots P_2^TP_1^TA_1P_1P_2\dots P_k</script><p>当k充分大的时候，$A_k$的对角元素可作为矩阵A的特征值的近似值</p>
+<p>由于每一次变换都会将A的两个非对角元素化为0</p>
+<script type="math/tex; mode=display">
+\tau(A_k)=\tau(A_{k-1})-2(a_{ij}^{(k-1)})^2+2(a_{ij}^{(k)})^2=\tau(A_{k-1})-2(a_{ij}^{(k-1)})^2</script><p>进一步，由于消掉的是非对角元素绝对值最大的两个</p>
+<script type="math/tex; mode=display">
+(a_{ij}^{(k-1)})^2\geq \frac{1}{n(n+1)}\tau(A_{k-1})</script><p>有</p>
+<script type="math/tex; mode=display">
+\tau(A_k)\leq \tau(A_{k-1})-\frac{2}{n(n-1)}\tau(A_{k-1})
+\\
+=(1-\frac{2}{n(n-1)}\tau(A_{k-1}))\leq \dots
+\\
+\leq (1-\frac{2}{n(n-1)})^k \tau(A_1) \rightarrow 0 \quad(k\rightarrow \infty)</script><script type="math/tex; mode=display">
+S^{(k)}_{ip}=S^{(k-1)}_{ip} \cos \theta + S^{(k-1)}_{iq}\sin \theta
+\\
+S^{(k)}_{iq}=S^{(k-1)}_{ip}\sin \theta + S^{(k-1)}_{iq} \cos \theta
+\\
+S_{ij}^{(k)}=S^{(k-1)}_{ij}</script><p>Jacobi 过关法</p>
+<p>计算矩阵A的非对角元素平方和，预取阈值</p>
+<script type="math/tex; mode=display">
+\gamma_0 = (\sum_{l\neq s} ^n a_{ls}^2 )^{\frac{1}{2}}=[\tau(A)]^{\frac{1}{2}}
+\\
+\gamma_1=\frac{\gamma_0}{n}</script><p>对A的非对角元素进行扫描 ，对$|a_{ij}|\geq \gamma_1$的元素进行旋转置换，其余元素视为过关</p>
+<p>不做对应的变换</p>
+<p>对于都小于之后，改变阈值</p>
+<p>直到满足</p>
+<script type="math/tex; mode=display">
+\gamma_n=\frac{\gamma_0}{n^r}\leq \varepsilon</script><h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200517144549130.png" alt="image-20200517144549130"></p>
 <p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200517144621460.png" alt="image-20200517144621460"></p>
 <p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200528201803308.png" alt="image-20200528201803308"></p>
 <p><img src="C:\Users\EndA\AppData\Roaming\Typora\typora-user-images\image-20200603145901857.png" alt="image-20200603145901857"></p>
@@ -975,6 +1194,13 @@ f(x)=(x-1)(x-2)</script><script type="math/tex; mode=display">
 |\varphi'_4(2)|=& 0          < 1
 \\
 \end{aligned}</script><p>所以1 发散，其他应该收敛</p>
+<p>如果进一步考虑</p>
+<p>如果我们把区间限定在 [1.1,3]</p>
+<p>我们可以验证</p>
+<p>对1都满足</p>
+<p>对于2 </p>
+<p>1 不满足，</p>
+<p>对于3 1 不满足 2不满足 3不满足</p>
 <p>实验可得</p>
 <p>代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%deri=@(x)(4*x-3+cos(x)+exp(x));</span><br><span class="line">phi_1=@(x)((x*x+2)./3);</span><br><span class="line">phi_2=@(x)(sqrt(3*x-2));</span><br><span class="line">phi_3=@(x)(3-2./x);</span><br><span class="line">phi_4=@(x)((x*x-2)./(2*x-3));</span><br></pre></td></tr></table></figure>
@@ -1071,7 +1297,7 @@ f(x)=(x-1)(x-2)</script><script type="math/tex; mode=display">
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差"><span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的浮点表示及算术运算"><span class="nav-text">计算机的浮点表示及算术运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差来源"><span class="nav-text">误差来源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差的基本概念"><span class="nav-text">误差的基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差分析"><span class="nav-text">误差分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程数值解"><span class="nav-text">线性方程数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯消元法"><span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的三角分解"><span class="nav-text">矩阵的三角分解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的LU分解"><span class="nav-text">矩阵的LU分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Doolittle分解"><span class="nav-text">Doolittle分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对称正定矩阵的平方根法和LDLT分解"><span class="nav-text">对称正定矩阵的平方根法和LDLT分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解三对角方程组的追赶法"><span class="nav-text">解三对角方程组的追赶法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消元法在计算机上的实现"><span class="nav-text">消元法在计算机上的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#主元选择的必要性"><span class="nav-text">主元选择的必要性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选主元的方法"><span class="nav-text">选主元的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代改善"><span class="nav-text">迭代改善</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#行列式和逆矩阵的计算"><span class="nav-text">行列式和逆矩阵的计算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量和矩阵范数"><span class="nav-text">向量和矩阵范数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#向量范数"><span class="nav-text">向量范数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵范数"><span class="nav-text">矩阵范数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#谱半径"><span class="nav-text">谱半径</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的条件数与病态方程组"><span class="nav-text">矩阵的条件数与病态方程组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#条件数"><span class="nav-text">条件数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的平衡"><span class="nav-text">矩阵的平衡</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代法"><span class="nav-text">迭代法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一般方法"><span class="nav-text">一般方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一般步骤"><span class="nav-text">一般步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#雅可比迭代法"><span class="nav-text">雅可比迭代法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高斯-塞德尔迭代法"><span class="nav-text">高斯-塞德尔迭代法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解非线性方程-组-的数值法"><span class="nav-text">解非线性方程(组)的数值法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引入"><span class="nav-text">引入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非线性方程组问题"><span class="nav-text">非线性方程组问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分法"><span class="nav-text">二分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不动点迭代法及其收敛性"><span class="nav-text">不动点迭代法及其收敛性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Newton迭代法"><span class="nav-text">Newton迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解非线性方程组的Newton迭代法"><span class="nav-text">解非线性方程组的Newton迭代法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业"><span class="nav-text">作业</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差"><span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的浮点表示及算术运算"><span class="nav-text">计算机的浮点表示及算术运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差来源"><span class="nav-text">误差来源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差的基本概念"><span class="nav-text">误差的基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差分析"><span class="nav-text">误差分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程数值解"><span class="nav-text">线性方程数值解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯消元法"><span class="nav-text">高斯消元法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的三角分解"><span class="nav-text">矩阵的三角分解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的LU分解"><span class="nav-text">矩阵的LU分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Doolittle分解"><span class="nav-text">Doolittle分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对称正定矩阵的平方根法和LDLT分解"><span class="nav-text">对称正定矩阵的平方根法和LDLT分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解三对角方程组的追赶法"><span class="nav-text">解三对角方程组的追赶法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消元法在计算机上的实现"><span class="nav-text">消元法在计算机上的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#主元选择的必要性"><span class="nav-text">主元选择的必要性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选主元的方法"><span class="nav-text">选主元的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代改善"><span class="nav-text">迭代改善</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#行列式和逆矩阵的计算"><span class="nav-text">行列式和逆矩阵的计算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量和矩阵范数"><span class="nav-text">向量和矩阵范数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#向量范数"><span class="nav-text">向量范数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵范数"><span class="nav-text">矩阵范数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#谱半径"><span class="nav-text">谱半径</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵的条件数与病态方程组"><span class="nav-text">矩阵的条件数与病态方程组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#条件数"><span class="nav-text">条件数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵的平衡"><span class="nav-text">矩阵的平衡</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代法"><span class="nav-text">迭代法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一般方法"><span class="nav-text">一般方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一般步骤"><span class="nav-text">一般步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#雅可比迭代法"><span class="nav-text">雅可比迭代法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高斯-塞德尔迭代法"><span class="nav-text">高斯-塞德尔迭代法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解非线性方程-组-的数值法"><span class="nav-text">解非线性方程(组)的数值法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引入"><span class="nav-text">引入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非线性方程组问题"><span class="nav-text">非线性方程组问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分法"><span class="nav-text">二分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不动点迭代法及其收敛性"><span class="nav-text">不动点迭代法及其收敛性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Newton迭代法"><span class="nav-text">Newton迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解非线性方程组的Newton迭代法"><span class="nav-text">解非线性方程组的Newton迭代法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵特征值与特征向量的计算"><span class="nav-text">矩阵特征值与特征向量的计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#幂法及其变体"><span class="nav-text">幂法及其变体</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#乘幂法"><span class="nav-text">乘幂法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反幂法"><span class="nav-text">反幂法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#幂法的平移"><span class="nav-text">幂法的平移</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jacobi旋转法"><span class="nav-text">Jacobi旋转法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#平面旋转阵"><span class="nav-text">平面旋转阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Jacobi旋转法-1"><span class="nav-text">Jacobi旋转法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业"><span class="nav-text">作业</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
